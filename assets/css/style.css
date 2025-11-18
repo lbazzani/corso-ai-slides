@@ -696,7 +696,7 @@ code[class*="language-"] {
     background-clip: text;
     line-height: 1.2;
     text-align: center;
-    width: 100%;
+    max-width: 90%;
     padding: 0;
     border: none;
     box-shadow: none;
@@ -708,7 +708,7 @@ code[class*="language-"] {
     color: var(--text-light);
     margin: 0.5rem 0 2rem 0;
     text-align: center;
-    width: 100%;
+    max-width: 80%;
     padding: 0;
     border: none;
     box-shadow: none;
