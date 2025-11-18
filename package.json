@@ -1,0 +1,21 @@
+{
+  "name": "corso-ai-generativa",
+  "version": "1.0.0",
+  "description": "Motore di slide show per corso avanzato su AI Generativa",
+  "main": "generator.js",
+  "scripts": {
+    "generate": "node generator.js",
+    "open": "node generator.js && open index.html",
+    "start": "npm run open"
+  },
+  "keywords": [
+    "ai",
+    "generative-ai",
+    "llm",
+    "rag",
+    "course",
+    "slides"
+  ],
+  "author": "",
+  "license": "MIT"
+}

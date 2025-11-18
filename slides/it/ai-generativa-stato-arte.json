@@ -1,0 +1,547 @@
+{
+  "number": 1,
+  "title": "AI Generativa: Stato dell'Arte Fine 2025",
+  "description": "Dati, numeri, player e previsioni per il 2026",
+  "steps": [
+    {
+      "name": "Introduzione",
+      "slides": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Mercato e Adozione",
+      "slides": [
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Player Principali",
+      "slides": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "name": "Confronto LLM",
+      "slides": [
+        10,
+        11
+      ]
+    },
+    {
+      "name": "Tendenze 2026",
+      "slides": [
+        12,
+        13
+      ]
+    },
+    {
+      "name": "Investimenti",
+      "slides": [
+        14
+      ]
+    },
+    {
+      "name": "Visione Pratica",
+      "slides": [
+        15,
+        16
+      ]
+    },
+    {
+      "name": "Conclusioni",
+      "slides": [
+        17
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "AI Generativa",
+      "subtitle": "Stato dell'Arte Fine 2025",
+      "description": "Dati concreti, player reali, previsioni per il 2026",
+      "ironicClosing": "Quando i numeri parlano più forte dell'hype"
+    },
+    {
+      "type": "data",
+      "title": "Il Mercato: I Numeri del 2025",
+      "metrics": [
+        {
+          "value": "$1.5 trilioni",
+          "label": "Spesa AI globale 2025"
+        },
+        {
+          "value": "$2 trilioni",
+          "label": "Previsione per il 2026"
+        },
+        {
+          "value": "+33%",
+          "label": "Crescita anno su anno"
+        }
+      ],
+      "ironicClosing": "Da 'interessante' a 'infrastruttura critica' in 24 mesi",
+      "citations": [
+        {
+          "text": "Gartner: Worldwide AI spending will total $1.5 trillion in 2025",
+          "source": "Gartner Press Release",
+          "url": "https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025"
+        },
+        {
+          "text": "Global AI spending forecast to top $2 trillion in 2026",
+          "source": "Next Platform - Gartner Analysis",
+          "url": "https://www.nextplatform.com/2025/09/25/dicing-slicing-and-augmenting-gartners-ai-spending-forecast/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "AI Software: La Crescita",
+      "metrics": [
+        {
+          "value": "$297.9 miliardi",
+          "label": "AI software entro 2027"
+        },
+        {
+          "value": "CAGR 19.1%",
+          "label": "Tasso crescita annuale"
+        },
+        {
+          "value": "35%",
+          "label": "Quota GenAI sul totale AI software (2027, era 8% nel 2023)"
+        }
+      ],
+      "ironicClosing": "Il software che scrive software sta diventando il software più venduto",
+      "citations": [
+        {
+          "text": "AI software spending to grow to $297.9B by 2027 with 19.1% CAGR",
+          "source": "Gartner Market Forecast",
+          "url": "https://softwarestrategiesblog.com/2024/01/24/gartner-predicts-ai-software-will-grow-to-297-billion-by-2027/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Adozione Enterprise: Il Salto",
+      "metrics": [
+        {
+          "value": "70%+",
+          "label": "ISV integreranno GenAI entro 2026 (vs <1% nel 2024)"
+        },
+        {
+          "value": "33%",
+          "label": "Enterprise app con AI agentica entro 2028"
+        },
+        {
+          "value": "65%+",
+          "label": "Enterprises hanno adottato AI agents (fine 2025)"
+        }
+      ],
+      "ironicClosing": "Da 'stiamo valutando' a 'già in produzione' più veloce di quanto pensassimo",
+      "citations": [
+        {
+          "text": "70% of ISVs will embed GenAI in enterprise apps by 2026, up from <1% in 2024",
+          "source": "Gartner Strategic Predictions",
+          "url": "https://www.gartner.com/en/articles/strategic-predictions-for-2026"
+        },
+        {
+          "text": "33% of enterprise software to include agentic AI by 2028",
+          "source": "Medium - Agentic AI Frameworks 2025",
+          "url": "https://medium.com/@iamanraghuvanshi/agentic-ai-3-top-ai-agent-frameworks-in-2025-langchain-autogen-crewai-beyond-2fc3388e7dec"
+        },
+        {
+          "text": "Global AI agent adoption in enterprises exceeds 65% in 2025",
+          "source": "SuperAGI - AI Agent Frameworks",
+          "url": "https://superagi.com/top-10-open-source-ai-agent-frameworks-for-2025-a-comparison-of-features-and-use-cases/"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "name": "OpenAI",
+      "tagline": "Il Pioneer da $300 Miliardi",
+      "facts": [
+        {
+          "label": "Fondata",
+          "value": "Dicembre 2015"
+        },
+        {
+          "label": "Revenue 2024",
+          "value": "$3.7 miliardi"
+        },
+        {
+          "label": "Projected 2025",
+          "value": "$12.7 miliardi (+243%)"
+        },
+        {
+          "label": "Valutazione",
+          "value": "$300 miliardi (Marzo 2025)"
+        },
+        {
+          "label": "Ultimo funding",
+          "value": "$40 miliardi (record storico)"
+        }
+      ],
+      "ironicClosing": "Da ricerca no-profit a valutazione da big tech in meno di 10 anni",
+      "citations": [
+        {
+          "text": "OpenAI founded December 2015, revenue $3.7B (2024), projected $12.7B (2025)",
+          "source": "Tap Twice Digital - OpenAI Statistics",
+          "url": "https://taptwicedigital.com/stats/openai"
+        },
+        {
+          "text": "OpenAI valued at $300B after March 2025 funding round of $40B",
+          "source": "Calcalist Tech - OpenAI Funding",
+          "url": "https://www.calcalistech.com/ctechnews/article/bjfztiftjl"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "OpenAI: La Dominanza",
+      "intro": "ChatGPT: Il leader indiscusso",
+      "metrics": [
+        {
+          "value": "92%",
+          "label": "delle Fortune 500 usa tecnologia OpenAI"
+        },
+        {
+          "value": "300M+",
+          "label": "utenti settimanali"
+        },
+        {
+          "value": "+1,700%",
+          "label": "crescita revenue in 2 anni"
+        }
+      ],
+      "ironicClosing": "Quando 'hai provato ChatGPT?' diventa come chiedere 'hai un email?'",
+      "citations": [
+        {
+          "text": "92% of Fortune 500 use OpenAI technology",
+          "source": "AmplifAI - Generative AI Statistics",
+          "url": "https://www.amplifai.com/blog/generative-ai-statistics"
+        },
+        {
+          "text": "OpenAI revenue up 1,700% since beginning of previous year",
+          "source": "Sacra - OpenAI Analysis",
+          "url": "https://sacra.com/c/openai/"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "name": "Anthropic",
+      "tagline": "L'Eticista da $183 Miliardi",
+      "facts": [
+        {
+          "label": "Fondata",
+          "value": "2021 (da ex-OpenAI)"
+        },
+        {
+          "label": "Revenue 2024",
+          "value": "$1 miliardo"
+        },
+        {
+          "label": "Projected 2025",
+          "value": "$2.2 miliardi (+120%)"
+        },
+        {
+          "label": "Run-rate Agosto 2025",
+          "value": "$5 miliardi+"
+        },
+        {
+          "label": "Valutazione",
+          "value": "$183 miliardi (Settembre 2025)"
+        },
+        {
+          "label": "Funding totale",
+          "value": "$27.3 miliardi"
+        }
+      ],
+      "ironicClosing": "Crescere del 120% mentre parli di AI safety: il segreto è farle entrambe bene",
+      "citations": [
+        {
+          "text": "Anthropic founded 2021, revenue $1B (2024), projected $2.2B (2025), $5B+ run-rate August 2025",
+          "source": "Tap Twice Digital - Anthropic Statistics",
+          "url": "https://taptwicedigital.com/stats/anthropic"
+        },
+        {
+          "text": "Anthropic valued at $183B post-money from Series F (September 2025)",
+          "source": "Anthropic Official - Series F Announcement",
+          "url": "https://www.anthropic.com/news/anthropic-raises-series-f-at-usd183b-post-money-valuation"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Anthropic: I Backers",
+      "paragraphs": [
+        "<strong>Amazon:</strong> $8 miliardi investiti",
+        "<strong>Google:</strong> $3+ miliardi investiti",
+        "<strong>Series F:</strong> $13 miliardi (led by ICONIQ)",
+        "Quando i due giganti cloud investono miliardi nella stessa startup AI, forse stanno vedendo qualcosa che noi non vediamo"
+      ],
+      "ironicClosing": "La competizione tra hyperscaler finanzia la tua alternativa open",
+      "citations": [
+        {
+          "text": "Amazon invested $8B in Anthropic, Google committed $3B+",
+          "source": "VentureBeat - Anthropic Funding",
+          "url": "https://venturebeat.com/ai/anthropic-raises-3-5-billion-reaching-61-5-billion-valuation-as-ai-investment-frenzy-continues"
+        },
+        {
+          "text": "Series F of $13B led by ICONIQ, Fidelity, Lightspeed",
+          "source": "Goldman Sachs - Anthropic Series F",
+          "url": "https://am.gs.com/en-us/advisors/news/press-release/2025/anthropic"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Google: Il Gigante che Accelera",
+      "paragraphs": [
+        "<strong>Gemini:</strong> Quota web più che raddoppiata (2024-2025)",
+        "<strong>Vertex AI:</strong> Platform enterprise leader",
+        "<strong>Investimenti:</strong> $3B+ in Anthropic, infrastruttura massiccia",
+        "Google AI esisteva prima dell'hype. Ora domina l'infrastruttura che lo alimenta"
+      ],
+      "ironicClosing": "Quando possiedi già la search, l'email e il cloud, aggiungere l'AI è solo questione di quando",
+      "citations": [
+        {
+          "text": "Gemini more than doubled web traffic share in last year",
+          "source": "TuttoAndroid - ChatGPT vs Gemini",
+          "url": "https://www.tuttoandroid.net/news/2025/11/15/dati-traffico-web-chatgpt-calo-gemini-crescita-1127166/"
+        },
+        {
+          "text": "Google invested $3B+ in Anthropic for 10% stake",
+          "source": "Startmag - Google Anthropic",
+          "url": "https://www.startmag.it/innovazione/google-anthropic-nuovo-investimento-1-miliardo/"
+        }
+      ]
+    },
+    {
+      "type": "two-column",
+      "title": "Meta, Cohere, Mistral",
+      "leftColumn": {
+        "title": "Meta",
+        "items": [
+          "<strong>LLaMA:</strong> Open source leader",
+          "<strong>Context:</strong> 10M tokens (LLaMA 4)",
+          "Strategia: open weight, infra propria"
+        ]
+      },
+      "rightColumn": {
+        "title": "Cohere",
+        "items": [
+          "<strong>Command R+:</strong> Enterprise focus",
+          "<strong>RAG:</strong> Native optimization",
+          "Use case: production systems"
+        ]
+      },
+      "note": "<strong>Mistral AI (Francia):</strong> Valuation $6B+ (2024). Focus: sovereignty, open models, Europa",
+      "ironicClosing": "Il campo di battaglia è globale, ma i player europei stanno difendendo il terreno",
+      "citations": [
+        {
+          "text": "LLaMA 4 offers context windows up to 10M tokens",
+          "source": "Promptitude - AI Models Comparison 2025",
+          "url": "https://www.promptitude.io/post/ultimate-2025-ai-language-models-comparison-gpt5-gpt-4-claude-gemini-sonar-more"
+        }
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "LLM Showdown: Coding",
+      "items": [
+        {
+          "rank": "🏆",
+          "name": "Claude",
+          "description": "Precision, context awareness, costruisce app complete"
+        },
+        {
+          "rank": "🥈",
+          "name": "GPT-4o",
+          "description": "Flessibilità, creatività, spiegazioni chiare"
+        },
+        {
+          "rank": "🥉",
+          "name": "Gemini",
+          "description": "Solido, veloce (Flash), cost-effective"
+        }
+      ],
+      "note": "Reality check: Claude 4 Sonnet costa 20x Gemini Flash",
+      "ironicClosing": "Il migliore per il tuo task != il più costoso != il più hyped",
+      "citations": [
+        {
+          "text": "Claude excels in coding with precision and context awareness",
+          "source": "FastBots - LLMs Comparison 2025",
+          "url": "https://fastbots.ai/blog/top-llms-in-2025-comparing-claude-gemini-and-gpt-4-llama"
+        },
+        {
+          "text": "Practical tests: Claude built complete game, GPT-4 structured code, Gemini solid",
+          "source": "AnalyticsVidhya - LLM Comparison",
+          "url": "https://www.analyticsvidhya.com/blog/2025/01/gpt-4o-claude-3-5-gemini-2-0-which-llm-to-use-and-when/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "LLM Showdown: Writing & Research",
+      "paragraphs": [
+        "<strong>Creative Writing:</strong>",
+        "🏆 Claude 3.5 Sonnet - Profondità emotiva, storytelling",
+        "🥈 ChatGPT - Conversazionale, popolare, versatile",
+        "",
+        "<strong>Deep Research:</strong>",
+        "Claude: 7 pagine / <strong>427 fonti</strong>",
+        "ChatGPT: 36 pagine / 25 fonti",
+        "Gemini: 48 pagine / 100 fonti"
+      ],
+      "ironicClosing": "Volume vs densità: entrambi hanno ragione, dipende cosa stai cercando",
+      "citations": [
+        {
+          "text": "Claude 3.5 Sonnet creative powerhouse for emotional depth",
+          "source": "Ideas2IT - LLM Comparison",
+          "url": "https://www.ideas2it.com/blogs/llm-comparison"
+        },
+        {
+          "text": "Research test: Claude 7pg/427 sources, ChatGPT 36pg/25 sources, Gemini 48pg/100 sources",
+          "source": "Vellum LLM Leaderboard",
+          "url": "https://www.vellum.ai/llm-leaderboard"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Tendenze 2026: Multimodalità Nativa",
+      "intro": "Input/Output nativamente <strong>cross-modal:</strong>",
+      "items": [
+        "Testo + Immagini + Audio + Video",
+        "Gemini 2.0: multimodal-first design",
+        "GPT-4o: ottimizzato per interazione real-time",
+        "Claude: visual understanding avanzato"
+      ],
+      "ironicClosing": "Quando descrivere un'immagine con parole inizia a sembrare primitivo",
+      "citations": [
+        {
+          "text": "2025 models show significant multimodal capabilities across modalities",
+          "source": "IA2023 - AI Generativa e Creatività",
+          "url": "https://ia2023.it/2025/05/10/ia-generativa-e-creativita-stato-arte-impatti-settoriali-scenari-futuri/"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Tendenze 2026: AI Agentica",
+      "intro": "Da chatbot reattivi ad <strong>agent autonomi:</strong>",
+      "subtitle": "Caratteristiche:",
+      "items": [
+        "Reasoning multi-step",
+        "Planning e decomposizione task",
+        "Memory persistente",
+        "Tool use (API, DB, browser)",
+        "Collaboration multi-agent"
+      ],
+      "ironicClosing": "L'AI che non aspetta i tuoi comandi ma capisce i tuoi obiettivi",
+      "citations": [
+        {
+          "text": "2025 trend: autonomous AI systems with multi-step reasoning capabilities",
+          "source": "IA2023 - Scenari Futuri",
+          "url": "https://ia2023.it/2025/05/10/ia-generativa-e-creativita-stato-arte-impatti-settoriali-scenari-futuri/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Investimenti: Follow the Money",
+      "metrics": [
+        {
+          "value": "$33.9B",
+          "label": "Investimenti privati AI 2024 (+18.7% vs 2023)"
+        },
+        {
+          "value": "$80B",
+          "label": "Microsoft in AI datacenter (fiscal 2025)"
+        },
+        {
+          "value": "$95.3B",
+          "label": "Cloud infra Q2 2025"
+        },
+        {
+          "value": "$1.49T",
+          "label": "Datacenter projected 2026 (+36.2%)"
+        }
+      ],
+      "ironicClosing": "Quando i data center costano più di alcuni PIL nazionali, forse stiamo costruendo il futuro",
+      "citations": [
+        {
+          "text": "AI attracted $33.9B in private investment in 2024, +18.7% vs 2023",
+          "source": "Hatchworks - Generative AI Statistics",
+          "url": "https://hatchworks.com/blog/gen-ai/generative-ai-statistics/"
+        },
+        {
+          "text": "Microsoft plans $80B in AI-enabled datacenters fiscal 2025",
+          "source": "Mend.io - AI Investment Trends",
+          "url": "https://www.mend.io/blog/generative-ai-statistics-to-know-in-2025/"
+        },
+        {
+          "text": "Cloud infrastructure $95.3B Q2 2025, datacenter projected $1.49T 2026",
+          "source": "Channel Insider - Cloud Spending",
+          "url": "https://www.channelinsider.com/infrastructure/canalys-cloud-hyperscaler-report-sept-2025/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "La Scelta Pragmatica 2026",
+      "paragraphs": [
+        "<strong>Coding production:</strong> Claude o DeepSeek (cost)",
+        "<strong>Creative content:</strong> Claude 3.5 Sonnet",
+        "<strong>Conversational:</strong> ChatGPT (ecosystem)",
+        "<strong>Multimodal:</strong> Gemini 2.0",
+        "<strong>Research intensive:</strong> Claude (citations)",
+        "<strong>Budget-conscious:</strong> Gemini Flash, LLaMA 4",
+        "<strong>Enterprise compliance:</strong> Hyperscaler managed services"
+      ],
+      "ironicClosing": "Non esiste 'il migliore', esiste il fit giusto per il tuo problema e il tuo budget",
+      "citations": [
+        {
+          "text": "Best LLM 2025: the one that solves your problem, not newest or most expensive",
+          "source": "Ideas2IT - LLM Comparison",
+          "url": "https://www.ideas2it.com/blogs/llm-comparison"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Previsioni 2026",
+      "paragraphs": [
+        "<strong>Consolidamento:</strong> Le piattaforme vincenti integrano tutto (LLM + RAG + agents + tools)",
+        "<strong>Commoditization:</strong> I modelli base diventeranno commodity, il valore si sposta su specializzazione e orchestrazione",
+        "<strong>Regulation:</strong> EU AI Act e simili iniziano a mordere",
+        "<strong>Open source:</strong> Continua a guidare innovazione bottom-up"
+      ],
+      "ironicClosing": "Il 2026 sarà l'anno in cui l'AI diventa noioso (in senso buono: funziona, basta)"
+    },
+    {
+      "type": "summary",
+      "title": "Cosa Abbiamo Imparato",
+      "items": [
+        "Mercato: $1.5T → $2T (2026)",
+        "OpenAI: $300B valuation, $12.7B revenue projected",
+        "Anthropic: $183B valuation, $5B+ run-rate",
+        "Adozione: 65%+ enterprises, 70% ISV entro 2026",
+        "Tendenze: Multimodalità + AI Agentica",
+        "Reality: Non esiste 'il migliore', esiste il fit giusto"
+      ],
+      "ironicClosing": "Fine 2025: l'hype è morto, ma l'AI è appena iniziata"
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

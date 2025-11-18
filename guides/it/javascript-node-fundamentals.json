@@ -1,0 +1,956 @@
+{
+  "title": "JavaScript & Node.js Fundamentals",
+  "description": "Dalla nascita di JavaScript nel '95 all'evoluzione di Node.js - Storia, sintassi, e best practices moderne",
+  "steps": [
+    {
+      "name": "Storia & Setup",
+      "slides": [0, 1, 2, 3, 4, 5]
+    },
+    {
+      "name": "Variabili & Tipi",
+      "slides": [6, 7, 8, 9, 10, 11]
+    },
+    {
+      "name": "Operatori & Logica",
+      "slides": [12, 13, 14, 15]
+    },
+    {
+      "name": "Funzioni",
+      "slides": [16, 17, 18, 19, 20, 21]
+    },
+    {
+      "name": "Array & Oggetti",
+      "slides": [22, 23, 24, 25, 26, 27]
+    },
+    {
+      "name": "Async & Promises",
+      "slides": [28, 29, 30, 31, 32, 33]
+    },
+    {
+      "name": "ES6+ Features",
+      "slides": [34, 35, 36, 37, 38, 39]
+    },
+    {
+      "name": "Node.js Basics",
+      "slides": [40, 41, 42, 43, 44, 45]
+    },
+    {
+      "name": "NPM & Moduli",
+      "slides": [46, 47, 48, 49, 50]
+    },
+    {
+      "name": "File System & I/O",
+      "slides": [51, 52, 53, 54]
+    },
+    {
+      "name": "Node.js Moderno",
+      "slides": [55, 56, 57, 58, 59]
+    },
+    {
+      "name": "Best Practices",
+      "slides": [60, 61, 62]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "JavaScript & Node.js",
+      "subtitle": "Storia, Evoluzione e Guida Completa",
+      "description": "Da Brendan Eich (1995) a Node.js 25 (2025) - 30 anni di evoluzione continua",
+      "ironicClosing": "JavaScript: nato in 10 giorni, ancora qui dopo 30 anni. Non male per un prototipo."
+    },
+    {
+      "type": "text",
+      "title": "📜 La Storia di JavaScript",
+      "paragraphs": [
+        "<strong>1995:</strong> Brendan Eich crea JavaScript in 10 giorni per Netscape",
+        "<strong>1997:</strong> ECMAScript 1 - Primo standard ufficiale",
+        "<strong>1999:</strong> ES3 - Regex, try/catch, string methods",
+        "<strong>2009:</strong> ES5 - JSON, Array methods, strict mode",
+        "<strong>2009:</strong> <strong>Ryan Dahl crea Node.js</strong> - JavaScript esce dal browser",
+        "<strong>2015:</strong> ES6/ES2015 - Rivoluzione: let/const, arrow functions, classes, modules",
+        "<strong>2016-2024:</strong> Release annuali ES - Async/await, optional chaining, top-level await",
+        "<strong>2025:</strong> Node.js 25 - V8 14.1, performance ottimizzate, WebAssembly nativo",
+        "",
+        "<strong>Oggi:</strong> #1 linguaggio più usato (GitHub), runtime ovunque (browser, server, IoT)"
+      ],
+      "ironicClosing": "Da 'linguaggio giocattolo' a pilastro del web. Redemption arc completa."
+    },
+    {
+      "type": "text",
+      "title": "🚀 Evoluzione di Node.js",
+      "paragraphs": [
+        "<strong>2009:</strong> Node.js 0.x - Ryan Dahl, basato su V8 Chrome",
+        "<strong>2011:</strong> npm diventa package manager standard",
+        "<strong>2015:</strong> Fork io.js, poi merge → Node.js 4.0 (prima LTS)",
+        "<strong>2017:</strong> Node.js 8 - async/await nativo",
+        "<strong>2018:</strong> Node.js 10 - ES modules sperimentali",
+        "<strong>2020:</strong> Node.js 14 - Top-level await, diagnostic reports",
+        "<strong>2021:</strong> Node.js 16 - V8 9.0, Apple M1 support",
+        "<strong>2022:</strong> Node.js 18 - Fetch API nativo, Test runner",
+        "<strong>2023:</strong> Node.js 20 - Permissions model, import.meta",
+        "<strong>2024:</strong> Node.js 22 \"Jod\" - Active LTS, require() ESM",
+        "<strong>2025:</strong> Node.js 24 \"Krypton\" - Active LTS fino ad aprile 2028",
+        "<strong>2025:</strong> Node.js 25 (Current) - V8 14.1, WASM optimizations"
+      ],
+      "ironicClosing": "Node.js: da esperimento a enterprise standard. JavaScript domina ovunque."
+    },
+    {
+      "type": "text",
+      "title": "Versioni Node.js Attuali (2025)",
+      "paragraphs": [
+        "<strong>Node.js 25.x (Current) - Cutting Edge</strong>",
+        "• V8 14.1 con JSON.stringify 2x più veloce",
+        "• Uint8Array base64/hex conversion nativa",
+        "• WebAssembly ottimizzazioni avanzate",
+        "• Perfetto per: sviluppo, sperimentazione",
+        "",
+        "<strong>Node.js 24.x \"Krypton\" (Active LTS) ⭐ CONSIGLIATO</strong>",
+        "• LTS da ottobre 2025 fino ad aprile 2028",
+        "• Performance, sicurezza, stabilità eccellente",
+        "• Perfetto per: produzione, nuovi progetti",
+        "",
+        "<strong>Node.js 22.x \"Jod\" (Active LTS) ⭐ AFFIDABILE</strong>",
+        "• Active LTS, sicurezza garantita",
+        "• Perfetto per: produzione enterprise, sistemi critici",
+        "",
+        "<strong>Node.js 20.x (Maintenance LTS)</strong>",
+        "• Solo security fixes, fine supporto vicino",
+        "• Migrazione consigliata a 22.x o 24.x"
+      ],
+      "ironicClosing": "Produzione? Usa LTS. Voglia di vivere pericolosamente? Prova Current."
+    },
+    {
+      "type": "text",
+      "title": "Perché JavaScript/Node.js?",
+      "paragraphs": [
+        "<strong>Ovunque:</strong> Browser, server, desktop (Electron), mobile (React Native), IoT",
+        "<strong>Un solo linguaggio:</strong> Frontend + backend = JavaScript full-stack",
+        "<strong>Performance:</strong> V8 engine (Chrome) compila a codice nativo, velocità incredibile",
+        "<strong>Ecosystem:</strong> npm ha 2.5+ milioni di packages. Tutto è già stato fatto",
+        "<strong>Async nativo:</strong> Event loop, non-blocking I/O, perfetto per I/O intensive",
+        "<strong>Community:</strong> La più grande al mondo, tutorial ovunque, stack overflow pieno",
+        "",
+        "<strong>Usato da:</strong> Netflix, LinkedIn, PayPal, NASA, Uber, Microsoft, Amazon"
+      ],
+      "ironicClosing": "Se devi imparare un solo linguaggio nel 2025, impara JavaScript. Fine."
+    },
+    {
+      "type": "text",
+      "title": "Setup: Cosa Serve",
+      "paragraphs": [
+        "<strong>1. Node.js installato:</strong> nodejs.org/download (versione 24.x LTS o 22.x)",
+        "<strong>2. Editor:</strong> VS Code (il migliore), WebStorm, o Sublime",
+        "<strong>3. Terminal:</strong> Bash, Zsh, PowerShell, o terminal integrato",
+        "",
+        "<strong>Verifica installazione:</strong>",
+        "<code>node --version</code> → Output: <code>v24.x.x</code> o <code>v22.x.x</code>",
+        "<code>npm --version</code> → Output: <code>10.x.x</code>",
+        "",
+        "<strong>Primo programma:</strong>",
+        "Crea <code>hello.js</code>: <code>console.log('Hello, Node.js!');</code>",
+        "Esegui: <code>node hello.js</code>"
+      ],
+      "ironicClosing": "Se console.log funziona, sei dentro. Benvenuto nella famiglia JavaScript."
+    },
+    {
+      "type": "title",
+      "title": "Variabili & Tipi",
+      "subtitle": "let, const, var e i 7 tipi JavaScript",
+      "description": "Da var (old) a let/const (modern) - Best practices 2025"
+    },
+    {
+      "type": "code",
+      "title": "💻 Variabili: let vs const vs var",
+      "code": {
+        "language": "javascript",
+        "snippet": "// const - NON riassegnabile (preferito)\nconst name = 'Alice';\nconst age = 25;\n// age = 26;  // ❌ ERROR: Assignment to constant variable\n\n// let - riassegnabile, block-scoped\nlet score = 100;\nscore = 150;  // ✅ OK\n\nlet city = 'Milan';\nif (true) {\n  let city = 'Rome';  // Diversa variabile (block scope)\n  console.log(city);  // 'Rome'\n}\nconsole.log(city);  // 'Milan'\n\n// var - DEPRECATO, function-scoped (NON usare)\nvar old = 'legacy';  // ❌ Non usare nel codice moderno\n\n// Best practice: const by default, let solo se serve riassegnare"
+      },
+      "explanation": "const è default. let solo se riassegni. var è legacy, evitare sempre."
+    },
+    {
+      "type": "code",
+      "title": "💻 I 7 Tipi Primitivi",
+      "code": {
+        "language": "javascript",
+        "snippet": "// 1. Number (int e float insieme)\nconst integer = 42;\nconst float = 3.14;\nconst negative = -10;\nconst infinity = Infinity;\nconst notANumber = NaN;  // Not a Number\n\n// 2. String\nconst single = 'JavaScript';\nconst double = \"Node.js\";\nconst template = `Hello ${single}`;  // Template literals (preferiti)\n\n// 3. Boolean\nconst isTrue = true;\nconst isFalse = false;\n\n// 4. undefined (variabile dichiarata ma non inizializzata)\nlet x;\nconsole.log(x);  // undefined\n\n// 5. null (assenza intenzionale di valore)\nconst empty = null;\n\n// 6. Symbol (identificatore unico)\nconst id = Symbol('id');\n\n// 7. BigInt (numeri enormi)\nconst huge = 9007199254740991n;"
+      },
+      "explanation": "7 primitivi + Object. typeof per verificare il tipo."
+    },
+    {
+      "type": "code",
+      "title": "💻 Type Coercion & Conversions",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Conversioni esplicite\nconst str = '42';\nconst num = Number(str);     // '42' → 42\nconst bool = Boolean(0);     // 0 → false\nconst text = String(100);    // 100 → '100'\n\n// parseInt e parseFloat\nconst int = parseInt('42px');      // 42 (ignora px)\nconst float = parseFloat('3.14');  // 3.14\n\n// Type coercion (automatica, pericolosa)\nconsole.log('5' + 3);    // '53' (concatenazione)\nconsole.log('5' - 3);    // 2 (sottrazione)\nconsole.log('5' * '2');  // 10 (moltiplicazione)\nconsole.log(true + 1);   // 2 (true = 1)\n\n// Uguaglianza: == vs ===\nconsole.log(5 == '5');   // true (coercion)\nconsole.log(5 === '5');  // false (strict)\n\n// Best practice: SEMPRE usare ==="
+      },
+      "explanation": "JavaScript converte tipi automaticamente. Usa === per evitare sorprese."
+    },
+    {
+      "type": "text",
+      "title": "Truthy e Falsy Values",
+      "paragraphs": [
+        "<strong>Falsy values</strong> (convertono a false):",
+        "• <code>false</code> - Il booleano false",
+        "• <code>0</code>, <code>-0</code>, <code>0n</code> - Zero in tutte le forme",
+        "• <code>''</code>, <code>\"\"</code>, <code>``</code> - Stringhe vuote",
+        "• <code>null</code> - Assenza intenzionale",
+        "• <code>undefined</code> - Non definito",
+        "• <code>NaN</code> - Not a Number",
+        "",
+        "<strong>Truthy values</strong> (tutto il resto):",
+        "• Qualsiasi numero diverso da 0",
+        "• Qualsiasi stringa non vuota (anche <code>' '</code>)",
+        "• Array e oggetti (anche vuoti: <code>[]</code>, <code>{}</code>)",
+        "• <code>true</code> - Il booleano true"
+      ],
+      "ironicClosing": "Array vuoto è truthy. [] == false è true. JavaScript logic. Non chiedere."
+    },
+    {
+      "type": "code",
+      "title": "💻 Template Literals (Backticks)",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Old way (concatenazione)\nconst name = 'Alice';\nconst age = 25;\nconst old = 'Hello ' + name + ', you are ' + age + ' years old';\n\n// Modern way (template literals)\nconst modern = `Hello ${name}, you are ${age} years old`;\n\n// Multi-line\nconst multiline = `\n  Line 1\n  Line 2\n  Line 3\n`;\n\n// Espressioni dentro ${}\nconst calculation = `2 + 2 = ${2 + 2}`;\nconst conditional = `You are ${age >= 18 ? 'adult' : 'minor'}`;\n\n// Tagged templates (avanzato)\nfunction tag(strings, ...values) {\n  console.log(strings);  // ['Hello ', ', age: ']\n  console.log(values);   // ['Alice', 25]\n}\ntag`Hello ${name}, age: ${age}`;"
+      },
+      "explanation": "Backticks (`) permettono interpolazione. Usa sempre questi, non concatenazione."
+    },
+    {
+      "type": "code",
+      "title": "💻 Destructuring Assignment",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Array destructuring\nconst colors = ['red', 'green', 'blue'];\nconst [first, second, third] = colors;\nconsole.log(first);  // 'red'\n\n// Skip elementi\nconst [r, , b] = colors;  // Salta green\n\n// Rest operator\nconst [head, ...tail] = [1, 2, 3, 4, 5];\nconsole.log(head);  // 1\nconsole.log(tail);  // [2, 3, 4, 5]\n\n// Object destructuring\nconst user = { name: 'Alice', age: 25, city: 'Milan' };\nconst { name, age } = user;\nconsole.log(name);  // 'Alice'\n\n// Rename\nconst { name: userName, age: userAge } = user;\n\n// Default values\nconst { name, country = 'Italy' } = user;\nconsole.log(country);  // 'Italy' (default)\n\n// Nested\nconst { address: { street } } = { address: { street: 'Via Roma' } };"
+      },
+      "explanation": "Destructuring estrae valori da array/oggetti. Elegante e molto usato."
+    },
+    {
+      "type": "title",
+      "title": "Operatori & Logica",
+      "subtitle": "Aritmetici, Confronto, Logici, Ternary",
+      "description": "Tutti gli operatori moderni JavaScript"
+    },
+    {
+      "type": "code",
+      "title": "💻 Operatori Aritmetici & Assignment",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Aritmetici base\nlet a = 10, b = 3;\nconsole.log(a + b);   // 13\nconsole.log(a - b);   // 7\nconsole.log(a * b);   // 30\nconsole.log(a / b);   // 3.333...\nconsole.log(a % b);   // 1 (modulo)\nconsole.log(a ** b);  // 1000 (potenza, ES2016)\n\n// Increment/Decrement\nlet x = 5;\nx++;      // x = 6 (postfix)\n++x;      // x = 7 (prefix)\nx--;      // x = 6\n\n// Assignment composti\nlet n = 10;\nn += 5;   // n = 15\nn -= 3;   // n = 12\nn *= 2;   // n = 24\nn /= 4;   // n = 6\nn %= 4;   // n = 2\nn **= 3;  // n = 8"
+      },
+      "explanation": "Operatori standard + potenza (**) introdotta in ES2016."
+    },
+    {
+      "type": "code",
+      "title": "💻 Confronto & Logica",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Confronto (usa SEMPRE ===)\nconsole.log(5 === 5);      // true\nconsole.log(5 === '5');    // false (tipi diversi)\nconsole.log(5 == '5');     // true (coercion - EVITARE)\nconsole.log(5 !== '5');    // true (strict not equal)\n\n// Maggiore/Minore\nconsole.log(10 > 5);       // true\nconsole.log(3 <= 3);       // true\n\n// Operatori logici\nconst t = true, f = false;\nconsole.log(t && f);       // false (AND)\nconsole.log(t || f);       // true (OR)\nconsole.log(!t);           // false (NOT)\n\n// Short-circuit evaluation\nconst user = null;\nconst name = user && user.name;  // null (evita errore)\nconst fallback = user || 'Guest';  // 'Guest'\n\n// Nullish coalescing (ES2020)\nconst value = null ?? 'default';  // 'default'\nconst zero = 0 ?? 'default';      // 0 (non null/undefined)"
+      },
+      "explanation": "=== è sacro. ?? è meglio di || per default values (0 e '' sono validi)."
+    },
+    {
+      "type": "code",
+      "title": "💻 Ternary & Optional Chaining",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Operatore ternario (if compatto)\nconst age = 20;\nconst status = age >= 18 ? 'adult' : 'minor';\nconsole.log(status);  // 'adult'\n\n// Nested ternary (leggibile con attenzione)\nconst score = 85;\nconst grade = score >= 90 ? 'A' :\n              score >= 80 ? 'B' :\n              score >= 70 ? 'C' : 'F';\n\n// Optional chaining (ES2020) - game changer\nconst user = { name: 'Alice' };\nconsole.log(user.address?.street);  // undefined (no error)\nconsole.log(user.getName?.());      // undefined (metodo opzionale)\n\n// Array optional\nconst arr = null;\nconsole.log(arr?.[0]);  // undefined\n\n// Before ES2020 (verboso)\nconst street = user && user.address && user.address.street;\n// After ES2020 (elegante)\nconst street2 = user?.address?.street;"
+      },
+      "explanation": "Optional chaining (?.) evita errori su null/undefined. Indispensabile."
+    },
+    {
+      "type": "text",
+      "title": "⚠️ Errori Comuni",
+      "paragraphs": [
+        "<strong>Usare == invece di ===</strong>",
+        "<code>5 == '5'  // true (coercion nascosta)</code>",
+        "<code>5 === '5' // false (corretto)</code>",
+        "",
+        "<strong>Dimenticare const/let (crea variabile globale)</strong>",
+        "<code>name = 'Alice';  // ❌ Variabile globale</code>",
+        "<code>const name = 'Alice';  // ✅ Corretto</code>",
+        "",
+        "<strong>Confondere null e undefined</strong>",
+        "<code>null</code> - Assenza intenzionale (programma lo imposta)",
+        "<code>undefined</code> - Non definito (default JavaScript)",
+        "",
+        "<strong>Type coercion nascosta</strong>",
+        "<code>'5' + 3 = '53'</code> (concatenazione)",
+        "<code>'5' - 3 = 2</code> (sottrazione)"
+      ],
+      "ironicClosing": "JavaScript perdona molto. Troppo. Usa strict mode e linter per sicurezza."
+    },
+    {
+      "type": "title",
+      "title": "Funzioni",
+      "subtitle": "Declaration, Expression, Arrow, Callbacks",
+      "description": "Tutte le sintassi moderne per definire funzioni"
+    },
+    {
+      "type": "code",
+      "title": "💻 Function Declaration vs Expression",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Function Declaration (hoisted)\nfunction greet(name) {\n  return `Hello, ${name}!`;\n}\nconsole.log(greet('Alice'));  // 'Hello, Alice!'\n\n// Function Expression (NON hoisted)\nconst sayHi = function(name) {\n  return `Hi, ${name}!`;\n};\nconsole.log(sayHi('Bob'));  // 'Hi, Bob!'\n\n// Named Function Expression\nconst factorial = function fact(n) {\n  return n <= 1 ? 1 : n * fact(n - 1);\n};\n\n// Hoisting example\nconsole.log(hoisted());  // ✅ Funziona\nfunction hoisted() { return 'Hoisted!'; }\n\n// console.log(notHoisted());  // ❌ ERROR\nconst notHoisted = function() { return 'Not hoisted'; };"
+      },
+      "explanation": "Declaration è hoisted (disponibile prima), Expression no. Preferisci Expression."
+    },
+    {
+      "type": "code",
+      "title": "💻 Arrow Functions (ES6)",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Sintassi classica\nconst add = function(a, b) {\n  return a + b;\n};\n\n// Arrow function\nconst add2 = (a, b) => {\n  return a + b;\n};\n\n// Arrow function (compact - implicit return)\nconst add3 = (a, b) => a + b;\n\n// Singolo parametro (no parentesi)\nconst square = x => x * x;\n\n// Nessun parametro\nconst getRandom = () => Math.random();\n\n// Return oggetto (parentesi necessarie)\nconst makePerson = (name, age) => ({ name, age });\n\n// Arrow in metodi array\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(n => n * 2);\nconst evens = numbers.filter(n => n % 2 === 0);\nconst sum = numbers.reduce((acc, n) => acc + n, 0);"
+      },
+      "explanation": "Arrow functions: sintassi compatta, no this binding. Preferite nel codice moderno."
+    },
+    {
+      "type": "code",
+      "title": "💻 Parameters: Default, Rest, Spread",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Default parameters (ES6)\nfunction greet(name = 'Guest', greeting = 'Hello') {\n  return `${greeting}, ${name}!`;\n}\nconsole.log(greet());            // 'Hello, Guest!'\nconsole.log(greet('Alice'));     // 'Hello, Alice!'\n\n// Rest parameters (variadic)\nfunction sum(...numbers) {\n  return numbers.reduce((acc, n) => acc + n, 0);\n}\nconsole.log(sum(1, 2, 3, 4));  // 10\n\n// Spread operator (espande array)\nconst arr1 = [1, 2, 3];\nconst arr2 = [4, 5, 6];\nconst combined = [...arr1, ...arr2];  // [1,2,3,4,5,6]\n\nconst max = Math.max(...arr1);  // 3\n\n// Spread in oggetti\nconst user = { name: 'Alice', age: 25 };\nconst updated = { ...user, age: 26 };  // Clone + modifica"
+      },
+      "explanation": "... come rest raccoglie argomenti, come spread espande array/oggetti."
+    },
+    {
+      "type": "code",
+      "title": "💻 Callbacks & Higher-Order Functions",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Callback: funzione passata come argomento\nfunction process(data, callback) {\n  const result = data * 2;\n  callback(result);\n}\n\nprocess(5, (result) => {\n  console.log(result);  // 10\n});\n\n// Higher-order functions (ritornano funzioni)\nfunction multiplier(factor) {\n  return (number) => number * factor;\n}\n\nconst double = multiplier(2);\nconst triple = multiplier(3);\nconsole.log(double(5));  // 10\nconsole.log(triple(5));  // 15\n\n// Array methods (callbacks everywhere)\nconst numbers = [1, 2, 3, 4, 5];\nnumbers.forEach(n => console.log(n));\nconst doubled = numbers.map(n => n * 2);\nconst evens = numbers.filter(n => n % 2 === 0);\nconst sum = numbers.reduce((acc, n) => acc + n, 0);"
+      },
+      "explanation": "Callbacks sono ovunque in JavaScript. Array methods li usano intensivamente."
+    },
+    {
+      "type": "code",
+      "title": "💻 IIFE & Closures",
+      "code": {
+        "language": "javascript",
+        "snippet": "// IIFE (Immediately Invoked Function Expression)\n(function() {\n  console.log('Eseguita subito!');\n})();\n\n// Arrow IIFE\n(() => {\n  console.log('Arrow IIFE');\n})();\n\n// Closure: funzione ricorda scope esterno\nfunction counter() {\n  let count = 0;  // Privata\n  return {\n    increment: () => ++count,\n    decrement: () => --count,\n    get: () => count\n  };\n}\n\nconst c = counter();\nconsole.log(c.increment());  // 1\nconsole.log(c.increment());  // 2\nconsole.log(c.get());        // 2\n// console.log(count);       // ❌ ERROR: count non accessibile\n\n// Closure in loop (classico gotcha)\nfor (let i = 0; i < 3; i++) {\n  setTimeout(() => console.log(i), 100);  // 0, 1, 2 (let crea closure)\n}"
+      },
+      "explanation": "Closures permettono encapsulation. let in loop crea closure automatica."
+    },
+    {
+      "type": "text",
+      "title": "this Keyword (Advanced)",
+      "paragraphs": [
+        "<strong>Arrow functions NON hanno proprio this</strong> (ereditano da scope esterno)",
+        "<strong>Regular functions</strong> - this dipende da come sono chiamate",
+        "",
+        "<strong>4 regole per this:</strong>",
+        "1. <strong>Default binding:</strong> <code>this = window/global</code> (strict mode: undefined)",
+        "2. <strong>Implicit binding:</strong> <code>obj.method()</code> → this = obj",
+        "3. <strong>Explicit binding:</strong> <code>func.call(obj)</code> → this = obj",
+        "4. <strong>new binding:</strong> <code>new Func()</code> → this = nuovo oggetto",
+        "",
+        "<strong>Best practice moderna:</strong>",
+        "• Usa arrow functions per callbacks (no this problem)",
+        "• Usa regular functions per metodi oggetto",
+        "• Evita this se possibile (functional programming style)"
+      ],
+      "ironicClosing": "this in JavaScript: fonte infinita di bug. Arrow functions ti salvano la vita."
+    },
+    {
+      "type": "title",
+      "title": "Array & Oggetti",
+      "subtitle": "Strutture dati fondamentali",
+      "description": "Array methods moderni e object manipulation"
+    },
+    {
+      "type": "code",
+      "title": "💻 Array: Creazione & Metodi Base",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Creazione\nconst arr1 = [1, 2, 3];\nconst arr2 = new Array(5);  // [empty × 5]\nconst arr3 = Array.from('hello');  // ['h','e','l','l','o']\nconst arr4 = Array.of(1, 2, 3);    // [1, 2, 3]\n\n// Accesso\nconst first = arr1[0];  // 1\nconst last = arr1[arr1.length - 1];  // 3\nconst lastModern = arr1.at(-1);  // 3 (ES2022)\n\n// Modifica (mutanti)\nconst fruits = ['apple', 'banana'];\nfruits.push('orange');     // Aggiungi fine\nfruits.pop();              // Rimuovi fine\nfruits.unshift('mango');   // Aggiungi inizio\nfruits.shift();            // Rimuovi inizio\nfruits.splice(1, 1, 'kiwi');  // Rimuovi e inserisci\n\n// Verifica\nconsole.log(Array.isArray(fruits));  // true\nconsole.log(fruits.includes('apple'));  // true\nconsole.log(fruits.indexOf('banana'));  // 0 o -1"
+      },
+      "explanation": "Array JavaScript sono dinamici. push/pop per fine, shift/unshift per inizio."
+    },
+    {
+      "type": "code",
+      "title": "💻 Array: Map, Filter, Reduce",
+      "code": {
+        "language": "javascript",
+        "snippet": "const numbers = [1, 2, 3, 4, 5];\n\n// map - trasforma ogni elemento (ritorna nuovo array)\nconst doubled = numbers.map(n => n * 2);\n// [2, 4, 6, 8, 10]\n\n// filter - seleziona elementi (ritorna nuovo array)\nconst evens = numbers.filter(n => n % 2 === 0);\n// [2, 4]\n\n// reduce - riduce a singolo valore\nconst sum = numbers.reduce((acc, n) => acc + n, 0);\n// 15\n\nconst max = numbers.reduce((max, n) => n > max ? n : max);\n// 5\n\n// Chain (composizione)\nconst result = numbers\n  .filter(n => n % 2 === 0)  // [2, 4]\n  .map(n => n * 2)           // [4, 8]\n  .reduce((sum, n) => sum + n, 0);  // 12\n\n// find & findIndex\nconst found = numbers.find(n => n > 3);  // 4\nconst index = numbers.findIndex(n => n > 3);  // 3"
+      },
+      "explanation": "map/filter/reduce sono il cuore della programmazione funzionale in JS."
+    },
+    {
+      "type": "code",
+      "title": "💻 Array: Metodi Moderni",
+      "code": {
+        "language": "javascript",
+        "snippet": "const numbers = [1, 2, 3, 4, 5];\n\n// every & some\nconst allPositive = numbers.every(n => n > 0);  // true\nconst hasEven = numbers.some(n => n % 2 === 0);  // true\n\n// flat & flatMap (ES2019)\nconst nested = [1, [2, 3], [4, [5]]];\nconst flat = nested.flat();     // [1, 2, 3, 4, [5]]\nconst flatAll = nested.flat(2);  // [1, 2, 3, 4, 5]\n\nconst words = ['hello world', 'foo bar'];\nconst allWords = words.flatMap(s => s.split(' '));\n// ['hello', 'world', 'foo', 'bar']\n\n// sort (MUTA l'array!)\nconst sorted = [...numbers].sort((a, b) => b - a);  // [5,4,3,2,1]\n\n// Array.from con mapping\nconst range = Array.from({ length: 5 }, (_, i) => i + 1);\n// [1, 2, 3, 4, 5]\n\n// at() per indici negativi (ES2022)\nconst last = numbers.at(-1);  // 5\nconst secondLast = numbers.at(-2);  // 4"
+      },
+      "explanation": "flat/flatMap per array annidati, at() per accesso negativo. Molto comodi."
+    },
+    {
+      "type": "code",
+      "title": "💻 Objects: Creazione & Manipolazione",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Object literal\nconst user = {\n  name: 'Alice',\n  age: 25,\n  city: 'Milan',\n  greet() {  // Metodo shorthand\n    return `Hi, I'm ${this.name}`;\n  }\n};\n\n// Accesso proprietà\nconsole.log(user.name);        // Dot notation\nconsole.log(user['age']);      // Bracket notation\nconst key = 'city';\nconsole.log(user[key]);        // Dynamic key\n\n// Computed property names\nconst prop = 'score';\nconst obj = {\n  [prop]: 100,\n  ['total' + 'Count']: 50\n};\n\n// Property shorthand\nconst name = 'Bob';\nconst age = 30;\nconst person = { name, age };  // { name: 'Bob', age: 30 }\n\n// Destructuring\nconst { name: userName, age: userAge } = user;"
+      },
+      "explanation": "Object literal è la sintassi base. Shorthand properties sono moderne e pulite."
+    },
+    {
+      "type": "code",
+      "title": "💻 Object Methods (Static)",
+      "code": {
+        "language": "javascript",
+        "snippet": "const user = { name: 'Alice', age: 25, city: 'Milan' };\n\n// Object.keys/values/entries\nconst keys = Object.keys(user);      // ['name', 'age', 'city']\nconst values = Object.values(user);  // ['Alice', 25, 'Milan']\nconst entries = Object.entries(user);\n// [['name', 'Alice'], ['age', 25], ['city', 'Milan']]\n\n// Iterate\nfor (const [key, value] of Object.entries(user)) {\n  console.log(`${key}: ${value}`);\n}\n\n// Object.assign (shallow copy)\nconst copy = Object.assign({}, user);\nconst merged = Object.assign({}, user, { country: 'Italy' });\n\n// Spread (preferito, ES2018)\nconst copy2 = { ...user };\nconst updated = { ...user, age: 26 };\n\n// Object.freeze/seal\nconst frozen = Object.freeze(user);  // Immutabile\n// frozen.age = 30;  // ❌ Errore in strict mode\n\n// hasOwnProperty\nconsole.log(user.hasOwnProperty('name'));  // true"
+      },
+      "explanation": "Object.entries per iterare. Spread {...} per clonare/mergere. Preferito ad assign."
+    },
+    {
+      "type": "code",
+      "title": "💻 JSON: Serializzazione",
+      "code": {
+        "language": "javascript",
+        "snippet": "const user = {\n  name: 'Alice',\n  age: 25,\n  hobbies: ['coding', 'reading']\n};\n\n// Object → JSON string\nconst json = JSON.stringify(user);\n// '{\"name\":\"Alice\",\"age\":25,\"hobbies\":[\"coding\",\"reading\"]}'\n\n// Pretty print (indentation)\nconst pretty = JSON.stringify(user, null, 2);\n\n// JSON string → Object\nconst parsed = JSON.parse(json);\nconsole.log(parsed.name);  // 'Alice'\n\n// Error handling\ntry {\n  const invalid = JSON.parse('{ invalid json }');\n} catch (error) {\n  console.error('JSON parse error:', error.message);\n}\n\n// Replacer & Reviver\nconst filtered = JSON.stringify(user, ['name', 'age']);  // Solo name e age\nconst date = new Date();\nconst serialized = JSON.stringify({ date });  // Date → string\nconst revived = JSON.parse(serialized, (key, value) => {\n  return key === 'date' ? new Date(value) : value;\n});"
+      },
+      "explanation": "JSON.stringify/parse per serializzazione. Node.js 25 ha performance 2x migliori."
+    },
+    {
+      "type": "title",
+      "title": "Async & Promises",
+      "subtitle": "Callbacks, Promises, Async/Await",
+      "description": "Gestione asincrona moderna - Da callback hell a async/await"
+    },
+    {
+      "type": "text",
+      "title": "JavaScript Asincrono: Perché?",
+      "paragraphs": [
+        "<strong>Event Loop Single-Threaded</strong>",
+        "JavaScript esegue codice in un solo thread. Operazioni I/O (network, file) bloccanti fermerebbero tutto.",
+        "",
+        "<strong>Non-Blocking I/O</strong>",
+        "Node.js delega operazioni I/O al sistema operativo, continua esecuzione, riceve callback quando pronto.",
+        "",
+        "<strong>Evoluzione:</strong>",
+        "• <strong>Callbacks (2009):</strong> Funzioni passate come argomenti → callback hell",
+        "• <strong>Promises (ES6/2015):</strong> Oggetti che rappresentano completamento futuro → chainable",
+        "• <strong>Async/Await (ES2017):</strong> Syntax sugar su Promises → codice sincrono-like",
+        "",
+        "<strong>Oggi (2025):</strong> Async/await è standard. Promises quando serve controllo fine."
+      ],
+      "ironicClosing": "Event loop: magia che fa sembrare JavaScript multi-threaded. Spoiler: non lo è."
+    },
+    {
+      "type": "code",
+      "title": "💻 Callbacks: The Old Way",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Callback pattern (Node.js style: error-first)\nconst fs = require('fs');\n\nfs.readFile('file.txt', 'utf8', (err, data) => {\n  if (err) {\n    console.error('Error:', err);\n    return;\n  }\n  console.log(data);\n});\n\n// Callback Hell (pyramid of doom)\nfs.readFile('file1.txt', 'utf8', (err1, data1) => {\n  if (err1) return console.error(err1);\n  fs.readFile('file2.txt', 'utf8', (err2, data2) => {\n    if (err2) return console.error(err2);\n    fs.readFile('file3.txt', 'utf8', (err3, data3) => {\n      if (err3) return console.error(err3);\n      console.log(data1, data2, data3);  // 😱 Indentazione infernale\n    });\n  });\n});\n\n// Soluzione: Promises e async/await (slide seguenti)"
+      },
+      "explanation": "Callbacks funzionano ma creano callback hell. Promises risolvono il problema."
+    },
+    {
+      "type": "code",
+      "title": "💻 Promises: Creazione & Uso",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Promise: oggetto che rappresenta completamento futuro\nconst promise = new Promise((resolve, reject) => {\n  setTimeout(() => {\n    const success = true;\n    if (success) {\n      resolve('Done!');  // Promise fulfilled\n    } else {\n      reject('Error!');  // Promise rejected\n    }\n  }, 1000);\n});\n\n// Consumare Promise\npromise\n  .then(result => {\n    console.log(result);  // 'Done!'\n    return result.toUpperCase();\n  })\n  .then(upper => {\n    console.log(upper);  // 'DONE!'\n  })\n  .catch(error => {\n    console.error(error);\n  })\n  .finally(() => {\n    console.log('Always runs');\n  });\n\n// Stati Promise: pending → fulfilled/rejected"
+      },
+      "explanation": "Promise ha 3 stati: pending, fulfilled, rejected. then/catch per gestire."
+    },
+    {
+      "type": "code",
+      "title": "💻 Promise Chaining & Error Handling",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Promise chaining (evita callback hell)\nfetch('https://api.example.com/user/1')\n  .then(response => response.json())\n  .then(user => {\n    console.log(user.name);\n    return fetch(`https://api.example.com/posts?userId=${user.id}`);\n  })\n  .then(response => response.json())\n  .then(posts => {\n    console.log(`User has ${posts.length} posts`);\n  })\n  .catch(error => {\n    console.error('Error:', error);  // Cattura errori ovunque nella chain\n  });\n\n// Promise.all (parallelo)\nconst promises = [\n  fetch('/api/users'),\n  fetch('/api/posts'),\n  fetch('/api/comments')\n];\n\nPromise.all(promises)\n  .then(responses => Promise.all(responses.map(r => r.json())))\n  .then(([users, posts, comments]) => {\n    console.log(users, posts, comments);\n  });"
+      },
+      "explanation": "then() ritorna Promise, permette chaining. catch() cattura errori ovunque."
+    },
+    {
+      "type": "code",
+      "title": "💻 Promise Combinator Methods",
+      "code": {
+        "language": "javascript",
+        "snippet": "const p1 = Promise.resolve(1);\nconst p2 = Promise.resolve(2);\nconst p3 = Promise.reject('Error');\n\n// Promise.all - Tutte devono succeede (fail-fast)\nPromise.all([p1, p2])\n  .then(results => console.log(results));  // [1, 2]\n\nPromise.all([p1, p2, p3])\n  .catch(err => console.log(err));  // 'Error' (una fallisce, tutto fallisce)\n\n// Promise.allSettled - Aspetta tutte (ES2020)\nPromise.allSettled([p1, p2, p3])\n  .then(results => console.log(results));\n// [{status:'fulfilled',value:1}, {status:'fulfilled',value:2}, {status:'rejected',reason:'Error'}]\n\n// Promise.race - Prima che completa\nPromise.race([p1, p2])\n  .then(result => console.log(result));  // 1 (la più veloce)\n\n// Promise.any - Prima che succede (ES2021)\nPromise.any([p3, p1, p2])\n  .then(result => console.log(result));  // 1 (ignora rejected)"
+      },
+      "explanation": "all/allSettled/race/any per combinare Promises. allSettled è molto utile."
+    },
+    {
+      "type": "code",
+      "title": "💻 Async/Await: Modern Syntax",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Async function ritorna sempre Promise\nasync function fetchUser(id) {\n  const response = await fetch(`https://api.example.com/user/${id}`);\n  const user = await response.json();\n  return user;  // Wrapped in Promise automatically\n}\n\n// Uso (con await)\nasync function main() {\n  const user = await fetchUser(1);\n  console.log(user.name);\n}\n\n// Uso (con then)\nfetchUser(1).then(user => console.log(user.name));\n\n// Error handling con try/catch\nasync function fetchWithError() {\n  try {\n    const user = await fetchUser(1);\n    const posts = await fetchPosts(user.id);\n    return { user, posts };\n  } catch (error) {\n    console.error('Error:', error);\n    throw error;  // Re-throw se serve\n  }\n}\n\n// Parallelo con async/await\nconst [users, posts] = await Promise.all([\n  fetchUsers(),\n  fetchPosts()\n]);"
+      },
+      "explanation": "async/await rende codice asincrono leggibile come sincrono. Usa sempre try/catch."
+    },
+    {
+      "type": "code",
+      "title": "💻 Top-Level Await (ES2022)",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Prima di ES2022: wrap necessario\n(async () => {\n  const data = await fetch('/api/data');\n  console.log(data);\n})();\n\n// ES2022: top-level await in moduli ES\n// file: main.mjs\nconst response = await fetch('https://api.example.com/config');\nconst config = await response.json();\n\nexport default config;\n\n// import in altro file\nimport config from './main.mjs';  // Aspetta che config sia pronto\n\n// Utile per:\n// - Configurazione iniziale\n// - Dynamic imports condizionali\n// - Dependency injection\n\nif (condition) {\n  const module = await import('./module.mjs');\n  module.init();\n}\n\n// Node.js: require .mjs extension o \"type\": \"module\" in package.json"
+      },
+      "explanation": "Top-level await in moduli ES. No wrapper async function. Node.js 14+."
+    },
+    {
+      "type": "title",
+      "title": "ES6+ Features",
+      "subtitle": "Moduli, Classes, Symbols, Iterators",
+      "description": "Features moderne JavaScript da ES6 in poi"
+    },
+    {
+      "type": "code",
+      "title": "💻 ES Modules: Import/Export",
+      "code": {
+        "language": "javascript",
+        "snippet": "// file: math.js\nexport const PI = 3.14159;\nexport function add(a, b) {\n  return a + b;\n}\nexport class Calculator {\n  multiply(a, b) { return a * b; }\n}\n\n// Default export (uno per file)\nexport default function subtract(a, b) {\n  return a - b;\n}\n\n// file: main.js\n// Named imports\nimport { PI, add, Calculator } from './math.js';\n\n// Default import\nimport subtract from './math.js';\n\n// Import tutto\nimport * as Math from './math.js';\nconsole.log(Math.PI, Math.add(1, 2));\n\n// Rename\nimport { add as sum } from './math.js';\n\n// Dynamic import (ritorna Promise)\nconst module = await import('./math.js');"
+      },
+      "explanation": "ES modules sono standard. Node.js: .mjs o \"type\": \"module\" in package.json."
+    },
+    {
+      "type": "code",
+      "title": "💻 Classes (ES6)",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Class declaration\nclass Person {\n  // Constructor\n  constructor(name, age) {\n    this.name = name;\n    this.age = age;\n  }\n\n  // Method\n  greet() {\n    return `Hi, I'm ${this.name}, ${this.age} years old`;\n  }\n\n  // Getter\n  get info() {\n    return `${this.name} (${this.age})`;\n  }\n\n  // Setter\n  set info(value) {\n    const [name, age] = value.split(',');\n    this.name = name;\n    this.age = parseInt(age);\n  }\n\n  // Static method\n  static create(name, age) {\n    return new Person(name, age);\n  }\n}\n\nconst alice = new Person('Alice', 25);\nconsole.log(alice.greet());\nconsole.log(alice.info);  // Getter\nalice.info = 'Bob,30';    // Setter"
+      },
+      "explanation": "Classes sono syntax sugar su prototypes. Usa constructor, metodi, getter/setter."
+    },
+    {
+      "type": "code",
+      "title": "💻 Inheritance & Private Fields",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Inheritance\nclass Animal {\n  constructor(name) {\n    this.name = name;\n  }\n  speak() {\n    return `${this.name} makes a sound`;\n  }\n}\n\nclass Dog extends Animal {\n  constructor(name, breed) {\n    super(name);  // Chiama parent constructor\n    this.breed = breed;\n  }\n  speak() {  // Override\n    return `${this.name} barks`;\n  }\n}\n\nconst dog = new Dog('Rex', 'Labrador');\nconsole.log(dog.speak());  // 'Rex barks'\n\n// Private fields (ES2022)\nclass BankAccount {\n  #balance = 0;  // Private field\n\n  deposit(amount) {\n    this.#balance += amount;\n  }\n  getBalance() {\n    return this.#balance;\n  }\n}\n\nconst account = new BankAccount();\n// account.#balance;  // ❌ SyntaxError"
+      },
+      "explanation": "extends per ereditarietà, super per parent. # per private fields (ES2022)."
+    },
+    {
+      "type": "code",
+      "title": "💻 Symbols & Iterators",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Symbol: identificatore unico\nconst id1 = Symbol('id');\nconst id2 = Symbol('id');\nconsole.log(id1 === id2);  // false (ogni Symbol è unico)\n\n// Symbol come chiave oggetto (non enumerabile)\nconst user = {\n  name: 'Alice',\n  [id1]: 12345\n};\nconsole.log(user[id1]);  // 12345\nObject.keys(user);  // ['name'] (Symbol escluso)\n\n// Iterator protocol\nconst iterable = {\n  data: [1, 2, 3],\n  [Symbol.iterator]() {\n    let index = 0;\n    return {\n      next: () => {\n        if (index < this.data.length) {\n          return { value: this.data[index++], done: false };\n        }\n        return { done: true };\n      }\n    };\n  }\n};\n\nfor (const value of iterable) {\n  console.log(value);  // 1, 2, 3\n}"
+      },
+      "explanation": "Symbol per identificatori unici. Iterator protocol per oggetti iterabili."
+    },
+    {
+      "type": "code",
+      "title": "💻 Generators (ES6)",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Generator function (function*)\nfunction* numberGenerator() {\n  yield 1;\n  yield 2;\n  yield 3;\n}\n\nconst gen = numberGenerator();\nconsole.log(gen.next());  // { value: 1, done: false }\nconsole.log(gen.next());  // { value: 2, done: false }\nconsole.log(gen.next());  // { value: 3, done: false }\nconsole.log(gen.next());  // { value: undefined, done: true }\n\n// for...of con generator\nfor (const num of numberGenerator()) {\n  console.log(num);  // 1, 2, 3\n}\n\n// Infinite generator\nfunction* idGenerator() {\n  let id = 0;\n  while (true) {\n    yield id++;\n  }\n}\n\nconst ids = idGenerator();\nconsole.log(ids.next().value);  // 0\nconsole.log(ids.next().value);  // 1\n\n// Generator con parametri\nfunction* range(start, end) {\n  for (let i = start; i <= end; i++) {\n    yield i;\n  }\n}\n\nconst nums = [...range(1, 5)];  // [1,2,3,4,5]"
+      },
+      "explanation": "Generator pausano esecuzione con yield. Utili per lazy evaluation."
+    },
+    {
+      "type": "code",
+      "title": "💻 Proxy & Reflect (ES6)",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Proxy: intercetta operazioni su oggetti\nconst user = {\n  name: 'Alice',\n  age: 25\n};\n\nconst handler = {\n  get(target, prop) {\n    console.log(`Reading ${prop}`);\n    return target[prop];\n  },\n  set(target, prop, value) {\n    console.log(`Setting ${prop} to ${value}`);\n    if (prop === 'age' && typeof value !== 'number') {\n      throw new TypeError('Age must be a number');\n    }\n    target[prop] = value;\n    return true;\n  }\n};\n\nconst proxy = new Proxy(user, handler);\nconsole.log(proxy.name);  // Logs: Reading name, Output: Alice\nproxy.age = 26;           // Logs: Setting age to 26\n\n// Reflect: metodi che rispecchiano operazioni oggetto\nReflect.get(user, 'name');        // 'Alice'\nReflect.set(user, 'age', 27);     // true\nReflect.has(user, 'name');        // true\nReflect.deleteProperty(user, 'age');"
+      },
+      "explanation": "Proxy intercetta operazioni. Reflect fornisce API riflessive. Avanzato ma potente."
+    },
+    {
+      "type": "title",
+      "title": "Node.js Basics",
+      "subtitle": "Server-side JavaScript con Node.js",
+      "description": "Event loop, moduli core, globals, process"
+    },
+    {
+      "type": "text",
+      "title": "Cos'è Node.js?",
+      "paragraphs": [
+        "<strong>Node.js</strong> = JavaScript Runtime basato su V8 (engine Chrome)",
+        "",
+        "<strong>Non è:</strong>",
+        "• Un linguaggio (è JavaScript)",
+        "• Un framework (è un runtime)",
+        "• Solo per web server (è general purpose)",
+        "",
+        "<strong>È:</strong>",
+        "• Runtime JavaScript server-side",
+        "• Event-driven, non-blocking I/O",
+        "• Single-threaded con event loop",
+        "• Perfetto per I/O intensive (API, real-time, microservices)",
+        "• Non ottimale per CPU intensive (usa worker threads o altri linguaggi)",
+        "",
+        "<strong>Core features:</strong>",
+        "• File system access (fs)",
+        "• Network (http, https, net)",
+        "• Streams & Buffers",
+        "• Child processes",
+        "• Cluster mode"
+      ],
+      "ironicClosing": "Node.js: JavaScript ovunque. Browser developers che conquistano il backend."
+    },
+    {
+      "type": "code",
+      "title": "💻 Global Objects in Node.js",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Global object (non window!)\nconsole.log(global);  // Global namespace\n\n// __dirname & __filename (non disponibili in ES modules)\nconsole.log(__dirname);   // Directory corrente\nconsole.log(__filename);  // File corrente\n\n// In ES modules, usa import.meta\nimport { fileURLToPath } from 'url';\nimport { dirname } from 'path';\nconst __filename = fileURLToPath(import.meta.url);\nconst __dirname = dirname(__filename);\n\n// process - informazioni runtime\nconsole.log(process.version);       // 'v24.0.0'\nconsole.log(process.platform);      // 'darwin', 'linux', 'win32'\nconsole.log(process.cwd());         // Working directory\nconsole.log(process.argv);          // Argomenti CLI\nconsole.log(process.env.NODE_ENV);  // Env variables\n\n// Timers (stessi del browser)\nsetTimeout(() => console.log('Delayed'), 1000);\nsetInterval(() => console.log('Repeated'), 1000);\nsetImmediate(() => console.log('Immediate'));"
+      },
+      "explanation": "__dirname/__filename in CommonJS. import.meta in ES modules. process ovunque."
+    },
+    {
+      "type": "code",
+      "title": "💻 Process: Eventi & Exit",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Eventi process\nprocess.on('exit', (code) => {\n  console.log(`Process exit with code ${code}`);\n});\n\nprocess.on('uncaughtException', (error) => {\n  console.error('Uncaught Exception:', error);\n  process.exit(1);\n});\n\nprocess.on('unhandledRejection', (reason, promise) => {\n  console.error('Unhandled Rejection at:', promise, 'reason:', reason);\n  process.exit(1);\n});\n\n// SIGTERM/SIGINT (graceful shutdown)\nprocess.on('SIGTERM', () => {\n  console.log('SIGTERM received, closing server...');\n  server.close(() => {\n    process.exit(0);\n  });\n});\n\n// Exit codes\nprocess.exit(0);  // Success\nprocess.exit(1);  // Error\n\n// Stdin/stdout/stderr\nprocess.stdout.write('Hello\\n');\nprocess.stderr.write('Error\\n');"
+      },
+      "explanation": "Process events per gestire lifecycle. uncaughtException/unhandledRejection critici."
+    },
+    {
+      "type": "code",
+      "title": "💻 CommonJS vs ES Modules",
+      "code": {
+        "language": "javascript",
+        "snippet": "// ===== CommonJS (default Node.js) =====\n// export\nmodule.exports = {\n  add: (a, b) => a + b,\n  PI: 3.14\n};\n\n// import\nconst math = require('./math');\nconst { add } = require('./math');\n\n// ===== ES Modules (modern) =====\n// Abilitare: .mjs extension O \"type\": \"module\" in package.json\n\n// export (math.mjs)\nexport const PI = 3.14;\nexport function add(a, b) { return a + b; }\nexport default function subtract(a, b) { return a - b; }\n\n// import (main.mjs)\nimport subtract, { add, PI } from './math.mjs';\n\n// ===== Differenze =====\n// CommonJS: sincrono, require() ovunque, __dirname/__filename OK\n// ES Modules: asincrono, import solo top-level (o dynamic), import.meta"
+      },
+      "explanation": "CommonJS è legacy ma diffuso. ES modules sono futuro. Node.js 22+ supporta entrambi."
+    },
+    {
+      "type": "code",
+      "title": "💻 Core Modules: path, url, util",
+      "code": {
+        "language": "javascript",
+        "snippet": "// path - manipolazione percorsi\nimport path from 'path';\n\nconst file = '/users/docs/file.txt';\nconsole.log(path.basename(file));  // 'file.txt'\nconsole.log(path.dirname(file));   // '/users/docs'\nconsole.log(path.extname(file));   // '.txt'\n\nconst joined = path.join('/users', 'docs', 'file.txt');\nconst resolved = path.resolve('docs', 'file.txt');  // Assoluto\n\n// url - parsing URL\nimport { URL } from 'url';\n\nconst myUrl = new URL('https://example.com/path?query=1#hash');\nconsole.log(myUrl.hostname);   // 'example.com'\nconsole.log(myUrl.pathname);   // '/path'\nconsole.log(myUrl.search);     // '?query=1'\n\n// util - utilities varie\nimport util from 'util';\n\nconst obj = { name: 'Alice', nested: { age: 25 } };\nconsole.log(util.inspect(obj, { depth: null, colors: true }));\n\n// Promisify: callback → promise\nimport fs from 'fs';\nconst readFile = util.promisify(fs.readFile);\nconst data = await readFile('file.txt', 'utf8');"
+      },
+      "explanation": "path per filesystem, url per parsing, util per conversioni. Core modules essenziali."
+    },
+    {
+      "type": "code",
+      "title": "💻 Events: EventEmitter",
+      "code": {
+        "language": "javascript",
+        "snippet": "import { EventEmitter } from 'events';\n\n// Creare EventEmitter\nclass MyEmitter extends EventEmitter {}\nconst emitter = new MyEmitter();\n\n// Listener\nemitter.on('event', (arg) => {\n  console.log('Event occurred:', arg);\n});\n\n// One-time listener\nemitter.once('event', () => {\n  console.log('This runs only once');\n});\n\n// Emit event\nemitter.emit('event', 'Hello');\n\n// Remove listener\nconst callback = () => console.log('Callback');\nemitter.on('test', callback);\nemitter.off('test', callback);  // Remove\n\n// Error event (speciale)\nemitter.on('error', (err) => {\n  console.error('Error:', err);\n});\n\n// listenerCount\nconsole.log(emitter.listenerCount('event'));\n\n// Molti moduli Node.js estendono EventEmitter (http, streams, etc.)"
+      },
+      "explanation": "EventEmitter è pattern pub/sub di Node.js. Molti moduli core lo usano."
+    },
+    {
+      "type": "title",
+      "title": "NPM & Moduli",
+      "subtitle": "Package manager e gestione dipendenze",
+      "description": "npm, package.json, node_modules, versioning"
+    },
+    {
+      "type": "text",
+      "title": "NPM: Node Package Manager",
+      "paragraphs": [
+        "<strong>Cos'è npm?</strong>",
+        "• Package manager di default per Node.js",
+        "• Registry con 2.5+ milioni di packages",
+        "• CLI per installare, pubblicare, gestire dipendenze",
+        "",
+        "<strong>Alternative:</strong>",
+        "• <strong>Yarn</strong> (Facebook) - Più veloce, lockfile migliore",
+        "• <strong>pnpm</strong> (performant npm) - Storage efficiente, symbolic links",
+        "• <strong>Bun</strong> (2023+) - Runtime + package manager ultra-veloce",
+        "",
+        "<strong>package.json</strong> - Manifest del progetto:",
+        "• Dipendenze (dependencies, devDependencies)",
+        "• Scripts (npm run build, npm test)",
+        "• Metadata (name, version, author)",
+        "• Entry point (main, module)",
+        "",
+        "<strong>package-lock.json</strong> - Lockfile:",
+        "• Versioni esatte delle dipendenze",
+        "• Garantisce build riproducibili"
+      ],
+      "ironicClosing": "npm install: comando più usato dopo console.log. 2.5M packages e crescita."
+    },
+    {
+      "type": "code",
+      "title": "💻 NPM: Comandi Essenziali",
+      "code": {
+        "language": "bash",
+        "snippet": "# Inizializzare progetto\nnpm init                    # Wizard interattivo\nnpm init -y                 # Default (skip domande)\n\n# Installare packages\nnpm install express         # Dipendenza production\nnpm install -D jest         # Dev dependency\nnpm install lodash@4.17.21  # Versione specifica\nnpm install                 # Installa da package.json\n\n# Disinstallare\nnpm uninstall express\n\n# Update\nnpm update                  # Update minori\nnpm outdated                # Mostra outdated\nnpm install lodash@latest   # Latest version\n\n# Scripts (definiti in package.json)\nnpm run build\nnpm test                    # Shortcut per npm run test\nnpm start                   # Shortcut per npm run start\n\n# Global packages\nnpm install -g nodemon      # Globale\nnpm list -g --depth=0       # Lista globali"
+      },
+      "explanation": "npm install è base. -D per dev deps. Scripts in package.json automatizzano task."
+    },
+    {
+      "type": "code",
+      "title": "💻 package.json: Struttura",
+      "code": {
+        "language": "json",
+        "snippet": "{\n  \"name\": \"my-app\",\n  \"version\": \"1.0.0\",\n  \"description\": \"My awesome app\",\n  \"main\": \"index.js\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"start\": \"node index.js\",\n    \"dev\": \"nodemon index.js\",\n    \"build\": \"tsc\",\n    \"test\": \"jest\",\n    \"lint\": \"eslint .\"\n  },\n  \"dependencies\": {\n    \"express\": \"^4.18.0\",\n    \"dotenv\": \"~16.0.0\"\n  },\n  \"devDependencies\": {\n    \"nodemon\": \"^3.0.0\",\n    \"jest\": \"^29.0.0\",\n    \"eslint\": \"^8.0.0\"\n  },\n  \"engines\": {\n    \"node\": \">=24.0.0\"\n  },\n  \"author\": \"Your Name\",\n  \"license\": \"MIT\"\n}"
+      },
+      "explanation": "package.json è cuore del progetto. Scripts automatizzano. Engines specifica Node.js."
+    },
+    {
+      "type": "text",
+      "title": "Semantic Versioning (SemVer)",
+      "paragraphs": [
+        "<strong>Formato:</strong> <code>MAJOR.MINOR.PATCH</code> (es: <code>4.18.2</code>)",
+        "",
+        "<strong>Incrementi:</strong>",
+        "• <strong>MAJOR</strong> (4.x.x → 5.0.0): Breaking changes, incompatibile",
+        "• <strong>MINOR</strong> (4.18.x → 4.19.0): Nuove features, retro-compatibile",
+        "• <strong>PATCH</strong> (4.18.2 → 4.18.3): Bug fixes, nessun breaking",
+        "",
+        "<strong>Simboli versione in package.json:</strong>",
+        "• <code>4.18.2</code> - Esattamente 4.18.2",
+        "• <code>^4.18.2</code> - Minor updates OK (4.x.x, fino a 5.0.0)",
+        "• <code>~4.18.2</code> - Solo patch (4.18.x)",
+        "• <code>*</code> o <code>latest</code> - Ultima versione (pericoloso)",
+        "",
+        "<strong>Best practice:</strong> Usa <code>^</code> per bilanciare update e stabilità"
+      ],
+      "ironicClosing": "SemVer: teoria perfetta. Pratica: breaking changes anche in minor. Trust but verify."
+    },
+    {
+      "type": "code",
+      "title": "💻 Creare & Pubblicare Package",
+      "code": {
+        "language": "bash",
+        "snippet": "# 1. Creare account npm\nnpm adduser\n\n# 2. Preparare package.json\n# - name unico (scoped: @username/package)\n# - version (SemVer)\n# - main (entry point)\n# - files (cosa includere)\n\n# package.json esempio\n{\n  \"name\": \"@myusername/my-package\",\n  \"version\": \"1.0.0\",\n  \"main\": \"index.js\",\n  \"files\": [\"dist\", \"README.md\"],\n  \"keywords\": [\"utility\", \"helper\"],\n  \"repository\": \"github:user/repo\"\n}\n\n# 3. Test locale\nnpm link                    # Nella dir del package\nnpm link @myusername/my-package  # Nel progetto test\n\n# 4. Pubblicare\nnpm publish --access public  # Per scoped packages\nnpm version patch            # Bump version\nnpm publish                  # Update"
+      },
+      "explanation": "npm publish rende package disponibile a tutti. Scoped (@user/pkg) per namespacing."
+    },
+    {
+      "type": "title",
+      "title": "File System & I/O",
+      "subtitle": "Leggere e scrivere file con Node.js",
+      "description": "fs/promises, streams, buffer"
+    },
+    {
+      "type": "code",
+      "title": "💻 File System: Sync vs Async",
+      "code": {
+        "language": "javascript",
+        "snippet": "import fs from 'fs';\nimport fsPromises from 'fs/promises';\n\n// ===== Callback style (old) =====\nfs.readFile('file.txt', 'utf8', (err, data) => {\n  if (err) throw err;\n  console.log(data);\n});\n\n// ===== Synchronous (BLOCCA event loop - evitare) =====\ntry {\n  const data = fs.readFileSync('file.txt', 'utf8');\n  console.log(data);\n} catch (err) {\n  console.error(err);\n}\n\n// ===== Promise-based (MODERNO - preferito) =====\ntry {\n  const data = await fsPromises.readFile('file.txt', 'utf8');\n  console.log(data);\n} catch (err) {\n  console.error(err);\n}\n\n// Write file\nawait fsPromises.writeFile('output.txt', 'Hello Node.js', 'utf8');\n\n// Append\nawait fsPromises.appendFile('log.txt', 'New line\\n', 'utf8');"
+      },
+      "explanation": "fs/promises è moderno. Async sempre (non bloccare event loop). Sync solo per startup."
+    },
+    {
+      "type": "code",
+      "title": "💻 File System: Operazioni Comuni",
+      "code": {
+        "language": "javascript",
+        "snippet": "import fsPromises from 'fs/promises';\nimport path from 'path';\n\n// Verifica esistenza\ntry {\n  await fsPromises.access('file.txt');  // Esiste\n} catch {\n  console.log('File does not exist');\n}\n\n// Info file\nconst stats = await fsPromises.stat('file.txt');\nconsole.log(stats.size);         // Byte\nconsole.log(stats.isFile());     // true\nconsole.log(stats.isDirectory());  // false\n\n// Creare directory\nawait fsPromises.mkdir('newdir', { recursive: true });\n\n// Leggere directory\nconst files = await fsPromises.readdir('.');\nconsole.log(files);  // ['file1.txt', 'file2.txt', ...]\n\n// Rinominare/Spostare\nawait fsPromises.rename('old.txt', 'new.txt');\n\n// Eliminare\nawait fsPromises.unlink('file.txt');  // File\nawait fsPromises.rmdir('dir');        // Directory vuota\nawait fsPromises.rm('dir', { recursive: true });  // Dir + contenuti"
+      },
+      "explanation": "fs/promises ha tutte le operazioni filesystem. mkdir recursive crea parent dirs."
+    },
+    {
+      "type": "code",
+      "title": "💻 Streams: Grandi File Efficienti",
+      "code": {
+        "language": "javascript",
+        "snippet": "import fs from 'fs';\nimport { pipeline } from 'stream/promises';\nimport { createGzip } from 'zlib';\n\n// Read stream (non carica tutto in memoria)\nconst readStream = fs.createReadStream('large-file.txt', 'utf8');\n\nreadStream.on('data', (chunk) => {\n  console.log('Chunk:', chunk);\n});\n\nreadStream.on('end', () => {\n  console.log('Done reading');\n});\n\nreadStream.on('error', (err) => {\n  console.error('Error:', err);\n});\n\n// Write stream\nconst writeStream = fs.createWriteStream('output.txt');\nwriteStream.write('Hello ');\nwriteStream.write('World\\n');\nwriteStream.end();\n\n// Pipe: read → transform → write\nawait pipeline(\n  fs.createReadStream('input.txt'),\n  createGzip(),  // Comprimi\n  fs.createWriteStream('input.txt.gz')\n);\n\n// Streams sono memory-efficient per file grandi"
+      },
+      "explanation": "Streams per file grandi. pipeline() è API moderna. Memory-efficient."
+    },
+    {
+      "type": "code",
+      "title": "💻 Buffer: Binary Data",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Buffer: array di byte (binary data)\nconst buf1 = Buffer.from('Hello', 'utf8');\nconsole.log(buf1);  // <Buffer 48 65 6c 6c 6f>\n\n// Allocazione\nconst buf2 = Buffer.alloc(10);  // 10 byte zero-filled\nconst buf3 = Buffer.allocUnsafe(10);  // Più veloce, non inizializzato\n\n// Da array\nconst buf4 = Buffer.from([0x48, 0x65, 0x6c, 0x6c, 0x6f]);\n\n// Conversione\nconst str = buf1.toString('utf8');  // 'Hello'\nconst hex = buf1.toString('hex');   // '48656c6c6f'\nconst base64 = buf1.toString('base64');  // 'SGVsbG8='\n\n// Node.js 25: Uint8Array nativo per base64/hex (più veloce)\nconst arr = new Uint8Array([72, 101, 108, 108, 111]);\nconst b64 = arr.toBase64();  // Nativo in Node.js 25\nconst hexStr = arr.toHex();  // Nativo in Node.js 25\n\n// Operazioni\nconst concat = Buffer.concat([buf1, buf2]);\nconsole.log(buf1.length);  // 5 byte"
+      },
+      "explanation": "Buffer per dati binari. Node.js 25 ha Uint8Array.toBase64/toHex nativi."
+    },
+    {
+      "type": "title",
+      "title": "Node.js Moderno (2025)",
+      "subtitle": "Features recenti e best practices",
+      "description": "Novità Node.js 22-25, performance, security"
+    },
+    {
+      "type": "text",
+      "title": "🆕 Node.js 24 \"Krypton\" (LTS 2025)",
+      "paragraphs": [
+        "<strong>Performance Improvements</strong>",
+        "• Startup time ridotto del 15%",
+        "• HTTP/2 performance ottimizzate",
+        "• V8 aggiornato con nuove ottimizzazioni JIT",
+        "",
+        "<strong>Developer Experience</strong>",
+        "• Built-in TypeScript type stripping (sperimentale)",
+        "• Enhanced diagnostic reports",
+        "• Better error messages con stack traces leggibili",
+        "",
+        "<strong>Security</strong>",
+        "• Permission model migliorato",
+        "• Dependency updates automatici",
+        "• Vulnerabilità scan integrato",
+        "",
+        "<strong>APIs</strong>",
+        "• Web Crypto API completamente stabile",
+        "• Fetch API miglioramenti (request cloning)",
+        "• Test runner con coverage nativo"
+      ],
+      "ironicClosing": "Node.js 24: produzione-ready dal giorno 1. TypeScript stripping: game changer."
+    },
+    {
+      "type": "text",
+      "title": "🚀 Node.js 25 (Current 2025)",
+      "paragraphs": [
+        "<strong>V8 14.1 Engine</strong>",
+        "• JSON.stringify 2x più veloce (critical per API)",
+        "• Array iteration performance +30%",
+        "• RegExp compilation ottimizzata",
+        "",
+        "<strong>Built-in Optimizations</strong>",
+        "• Uint8Array base64/hex conversion nativa",
+        "• WebAssembly SIMD e multi-memory support",
+        "• Faster module resolution",
+        "",
+        "<strong>Experimental Features</strong>",
+        "• SQLite integration nativa",
+        "• Network inspection API",
+        "• Enhanced worker threads communication",
+        "",
+        "<strong>Quando usarlo:</strong>",
+        "• Sviluppo locale (testing nuove features)",
+        "• Progetti sperimentali",
+        "• Performance benchmarks",
+        "",
+        "<strong>Produzione:</strong> Aspetta LTS (Node.js 24 o 22)"
+      ],
+      "ironicClosing": "Node.js 25: bleeding edge. Per produzione, LTS. Per divertimento, Current."
+    },
+    {
+      "type": "code",
+      "title": "💻 Built-in Test Runner (Node.js 18+)",
+      "code": {
+        "language": "javascript",
+        "snippet": "// No Jest/Mocha needed! Built-in test runner\nimport { test, describe } from 'node:test';\nimport assert from 'node:assert';\n\n// Simple test\ntest('addition works', () => {\n  assert.strictEqual(1 + 1, 2);\n});\n\n// Async test\ntest('async operation', async () => {\n  const result = await fetch('https://api.example.com');\n  assert.ok(result.ok);\n});\n\n// Describe blocks (Node.js 20+)\ndescribe('Calculator', () => {\n  test('add', () => {\n    assert.strictEqual(add(2, 3), 5);\n  });\n\n  test('subtract', () => {\n    assert.strictEqual(subtract(5, 3), 2);\n  });\n});\n\n// Run: node --test\n// Coverage: node --test --experimental-test-coverage\n\n// Migliore di Jest? No. Sufficiente? Spesso sì."
+      },
+      "explanation": "Test runner built-in da Node.js 18. Coverage da 20. Zero dependencies."
+    },
+    {
+      "type": "code",
+      "title": "💻 Native Fetch API (Node.js 18+)",
+      "code": {
+        "language": "javascript",
+        "snippet": "// Fetch nativo! No axios/node-fetch needed\n\n// GET request\nconst response = await fetch('https://api.github.com/users/nodejs');\nconst data = await response.json();\nconsole.log(data.name);\n\n// POST request\nconst result = await fetch('https://api.example.com/users', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json',\n  },\n  body: JSON.stringify({ name: 'Alice', age: 25 })\n});\n\nif (!result.ok) {\n  throw new Error(`HTTP error! status: ${result.status}`);\n}\n\nconst user = await result.json();\n\n// Abort controller\nconst controller = new AbortController();\nconst signal = controller.signal;\n\nsetTimeout(() => controller.abort(), 5000);  // Timeout 5s\n\ntry {\n  const res = await fetch('https://slow-api.com', { signal });\n} catch (err) {\n  if (err.name === 'AbortError') {\n    console.log('Request aborted');\n  }\n}"
+      },
+      "explanation": "Fetch API nativa da Node.js 18. Stessa API del browser. No dependencies."
+    },
+    {
+      "type": "code",
+      "title": "💻 Permission Model (Node.js 20+)",
+      "code": {
+        "language": "bash",
+        "snippet": "# Permission model: controllo granulare accessi\n\n# Deny file system write\nnode --experimental-permission --allow-fs-read app.js\n\n# Deny network\nnode --experimental-permission --no-allow-net app.js\n\n# Allow specifici path\nnode --experimental-permission \\\n  --allow-fs-read=/data \\\n  --allow-fs-write=/logs \\\n  app.js\n\n# Allow specific hosts\nnode --experimental-permission \\\n  --allow-net=api.example.com:443 \\\n  app.js\n\n# In app.js, verificare permessi\nimport { permission } from 'node:process';\n\nif (permission.has('fs.read', '/data/config.json')) {\n  // Leggi file\n} else {\n  console.error('Permission denied');\n}\n\n# Security: limitare accessi per untrusted code"
+      },
+      "explanation": "Permission model limita accesso filesystem/network. Sicurezza per untrusted code."
+    },
+    {
+      "type": "code",
+      "title": "💻 Watch Mode (Node.js 18+)",
+      "code": {
+        "language": "bash",
+        "snippet": "# Watch mode nativo - auto-restart on file change\nnode --watch app.js\n\n# Watch con test\nnode --watch --test\n\n# Watch specifici file\nnode --watch-path=./src --watch-path=./lib app.js\n\n# Prima di Node.js 18: nodemon necessario\n# npm install -g nodemon\n# nodemon app.js\n\n# Ora: --watch built-in!\n# Risparmio: -1 dependency globale\n\n# package.json script\n{\n  \"scripts\": {\n    \"dev\": \"node --watch app.js\",\n    \"test:watch\": \"node --watch --test\"\n  }\n}\n\n# VS Code launch.json\n{\n  \"type\": \"node\",\n  \"request\": \"launch\",\n  \"name\": \"Watch\",\n  \"program\": \"${workspaceFolder}/app.js\",\n  \"runtimeArgs\": [\"--watch\"]\n}"
+      },
+      "explanation": "--watch built-in da Node.js 18. No nodemon needed. Dev experience migliorata."
+    },
+    {
+      "type": "title",
+      "title": "Best Practices 2025",
+      "subtitle": "Coding standards e patterns moderni",
+      "description": "ESLint, Prettier, TypeScript, security"
+    },
+    {
+      "type": "text",
+      "title": "✅ Best Practices JavaScript/Node.js",
+      "paragraphs": [
+        "<strong>1. Usa sempre strict mode</strong>",
+        "<code>'use strict';</code> o ES modules (strict by default)",
+        "",
+        "<strong>2. Preferisci const, poi let, mai var</strong>",
+        "const per default, let solo se riassegni, var è legacy",
+        "",
+        "<strong>3. Usa === invece di ==</strong>",
+        "Strict equality evita type coercion",
+        "",
+        "<strong>4. Arrow functions per callbacks</strong>",
+        "Più compatte, no this binding issues",
+        "",
+        "<strong>5. Async/await invece di callbacks</strong>",
+        "Codice più leggibile, evita callback hell",
+        "",
+        "<strong>6. Destructuring per chiarezza</strong>",
+        "<code>const { name, age } = user;</code>",
+        "",
+        "<strong>7. Template literals per stringhe</strong>",
+        "<code>`Hello ${name}`</code> invece di concatenazione",
+        "",
+        "<strong>8. Optional chaining & nullish coalescing</strong>",
+        "<code>user?.address?.street ?? 'Unknown'</code>"
+      ],
+      "ironicClosing": "Best practices: ignorale e debug per ore. Oppure seguile e vivi sereno."
+    },
+    {
+      "type": "text",
+      "title": "🔒 Security Best Practices",
+      "paragraphs": [
+        "<strong>1. Validare sempre input utente</strong>",
+        "• Sanitize input, usa librerie come validator.js",
+        "• Previeni injection (SQL, NoSQL, XSS)",
+        "",
+        "<strong>2. Environment variables per secrets</strong>",
+        "• Mai hardcode API keys, passwords nel codice",
+        "• Usa .env file (e .gitignore)",
+        "• dotenv o process.env",
+        "",
+        "<strong>3. Dependency security</strong>",
+        "• <code>npm audit</code> per vulnerabilità",
+        "• <code>npm audit fix</code> per patch",
+        "• Aggiorna regolarmente dipendenze",
+        "",
+        "<strong>4. HTTPS sempre in produzione</strong>",
+        "• Certificati SSL/TLS (Let's Encrypt gratis)",
+        "• Helmet.js per security headers",
+        "",
+        "<strong>5. Rate limiting & CORS</strong>",
+        "• express-rate-limit per limitare richieste",
+        "• CORS configurato correttamente",
+        "",
+        "<strong>6. Error handling sicuro</strong>",
+        "• Non esporre stack traces in produzione",
+        "• Log errori server-side, messaggio generico client"
+      ],
+      "ironicClosing": "Security: ignorala e finisci su HaveIBeenPwned. O implementala e dormi tranquillo."
+    },
+    {
+      "type": "code",
+      "title": "💻 TypeScript: Perché Usarlo",
+      "code": {
+        "language": "typescript",
+        "snippet": "// JavaScript\nfunction add(a, b) {\n  return a + b;\n}\nadd(5, '3');  // '53' - bug silenzioso\n\n// TypeScript\nfunction add(a: number, b: number): number {\n  return a + b;\n}\n// add(5, '3');  // ❌ Error: Argument of type 'string' is not assignable\n\n// Type inference\nconst user = {\n  name: 'Alice',\n  age: 25\n};\n// user.email;  // ❌ Error: Property 'email' does not exist\n\n// Interfaces\ninterface User {\n  name: string;\n  age: number;\n  email?: string;  // Optional\n}\n\nfunction greet(user: User) {\n  return `Hello, ${user.name}`;\n}\n\n// Generics\nfunction identity<T>(arg: T): T {\n  return arg;\n}\n\nconst num = identity<number>(5);\nconst str = identity<string>('hello');"
+      },
+      "explanation": "TypeScript cattura errori compile-time. Autocomplete migliore. Refactoring sicuro."
+    },
+    {
+      "type": "text",
+      "title": "🛠️ Tooling Essenziale 2025",
+      "paragraphs": [
+        "<strong>Linting & Formatting:</strong>",
+        "• <strong>ESLint</strong> - Linter JavaScript/TypeScript",
+        "• <strong>Prettier</strong> - Code formatter (opinionated)",
+        "• VS Code extensions per integrazione",
+        "",
+        "<strong>Build Tools:</strong>",
+        "• <strong>Vite</strong> - Dev server velocissimo, build optimized",
+        "• <strong>esbuild</strong> - Bundler/transpiler ultra-veloce",
+        "• <strong>Rollup</strong> - Per librerie (tree-shaking perfetto)",
+        "",
+        "<strong>Testing:</strong>",
+        "• <strong>Vitest</strong> - Test runner moderno (Vite-powered)",
+        "• <strong>Jest</strong> - Still solid (ma più lento)",
+        "• Node.js built-in test runner - Zero config",
+        "",
+        "<strong>Type Checking:</strong>",
+        "• <strong>TypeScript</strong> - Type safety",
+        "• <strong>JSDoc</strong> - Type hints in JavaScript",
+        "",
+        "<strong>Package Managers:</strong>",
+        "• <strong>pnpm</strong> - Veloce, efficiente (raccomandato)",
+        "• <strong>npm</strong> - Default, affidabile",
+        "• <strong>Bun</strong> - Fastest (ancora early)"
+      ],
+      "ironicClosing": "Tooling: JavaScript è caos. Tooling lo rende caos organizzato e produttivo."
+    }
+  ]
+}

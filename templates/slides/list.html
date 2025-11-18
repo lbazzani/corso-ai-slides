@@ -1,0 +1,12 @@
+<h2>{{title}}</h2>
+{{#if intro}}
+<p>{{intro}}</p>
+{{/if}}
+{{#if subtitle}}
+<p><strong>{{subtitle}}</strong></p>
+{{/if}}
+<ul class="slide-list">
+{{#each items}}
+  <li>{{this}}</li>
+{{/each}}
+</ul>

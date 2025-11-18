@@ -1,0 +1,1106 @@
+{
+  "title": "Next.js Fundamentals: The React Framework",
+  "description": "Da framework minimale (2016) a piattaforma full-stack (2025) - App Router, Server Components, e deployment production-ready",
+  "steps": [
+    {
+      "name": "Storia & Setup",
+      "slides": [0, 1, 2, 3, 4, 5]
+    },
+    {
+      "name": "App Router",
+      "slides": [6, 7, 8, 9, 10, 11]
+    },
+    {
+      "name": "Routing & Navigation",
+      "slides": [12, 13, 14, 15, 16, 17]
+    },
+    {
+      "name": "Server vs Client",
+      "slides": [18, 19, 20, 21, 22, 23]
+    },
+    {
+      "name": "Data Fetching",
+      "slides": [24, 25, 26, 27, 28, 29]
+    },
+    {
+      "name": "Server Actions",
+      "slides": [30, 31, 32, 33, 34]
+    },
+    {
+      "name": "Styling",
+      "slides": [35, 36, 37, 38, 39]
+    },
+    {
+      "name": "Performance",
+      "slides": [40, 41, 42, 43, 44, 45]
+    },
+    {
+      "name": "Metadata & SEO",
+      "slides": [46, 47, 48, 49]
+    },
+    {
+      "name": "Deployment",
+      "slides": [50, 51, 52, 53]
+    },
+    {
+      "name": "Next.js 16",
+      "slides": [54, 55, 56, 57, 58]
+    },
+    {
+      "name": "Best Practices",
+      "slides": [59, 60, 61]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Next.js Fundamentals",
+      "subtitle": "The React Framework for Production",
+      "description": "Da Vercel (2016) a Next.js 16 (2025) - Server Components, App Router, e full-stack magic",
+      "ironicClosing": "Next.js: React ma production-ready out-of-the-box. Magia nera o best practices? Entrambi."
+    },
+    {
+      "type": "text",
+      "title": "📜 La Storia di Next.js",
+      "paragraphs": [
+        "<strong>2016:</strong> Vercel (ex ZEIT) crea Next.js - \"React con SSR facile\"",
+        "<strong>2017:</strong> Next.js 3 - Dynamic imports, static exports",
+        "<strong>2018:</strong> Next.js 7 - DX improvements, Webpack 4",
+        "<strong>2019:</strong> Next.js 9 - API routes (backend nel frontend!), automatic static optimization",
+        "<strong>2020:</strong> Next.js 10 - Image optimization, i18n routing, Analytics",
+        "<strong>2021:</strong> Next.js 12 - Middleware, React 18, SWC compiler (Rust-based, 3x faster)",
+        "<strong>2022:</strong> Next.js 13 - <strong>App Router</strong> (rivoluzione), Turbopack beta, Server Components",
+        "<strong>2023:</strong> Next.js 14 - Server Actions stable, Partial Prerendering",
+        "<strong>2024:</strong> Next.js 15 - React 19, Turbopack stable per dev, async Request APIs",
+        "<strong>2025 (Ottobre):</strong> Next.js 16 - Cache Components, Turbopack stable production, React Compiler",
+        "",
+        "<strong>Oggi:</strong> Framework React più popolare. Usato da: TikTok, Twitch, Notion, Hulu, Nike"
+      ],
+      "ironicClosing": "Da 'React con SSR' a 'full-stack framework'. Ambitious creep fatto bene."
+    },
+    {
+      "type": "text",
+      "title": "🚀 Next.js 16 (2025) - Latest",
+      "paragraphs": [
+        "<strong>Cache Components (opt-in caching)</strong>",
+        "• Caching esplicito con Partial Pre-Rendering (PPR)",
+        "• use cache directive per controllo granulare",
+        "• Dynamic by default, cache solo quando serve",
+        "",
+        "<strong>Turbopack Stable (Production)</strong>",
+        "• Bundler di default per dev E production",
+        "• File system caching beta - startup ultraveloce",
+        "• Scritto in Rust, fino a 700x più veloce di Webpack",
+        "",
+        "<strong>React Compiler (Built-in)</strong>",
+        "• Automatic memoization - no più useMemo/useCallback manuali",
+        "• Ottimizzazioni compile-time per re-render",
+        "",
+        "<strong>Enhanced Routing</strong>",
+        "• Navigation ottimizzata, prefetching intelligente",
+        "• Nuove API: updateTag(), refresh(), revalidateTag()",
+        "",
+        "<strong>React 19.2</strong>",
+        "• View Transitions, useEffectEvent(), <Activity/> component"
+      ],
+      "ironicClosing": "Next.js 16: Turbopack ovunque, cache opt-in, React Compiler. Developer happiness level: max."
+    },
+    {
+      "type": "text",
+      "title": "Perché Next.js?",
+      "paragraphs": [
+        "<strong>React, ma meglio:</strong> Routing, SSR, SSG, ISR built-in (no config hell)",
+        "<strong>Full-stack:</strong> API routes, Server Actions, database queries direttamente in componenti",
+        "<strong>Performance:</strong> Image optimization, font optimization, code splitting automatico",
+        "<strong>SEO-friendly:</strong> Server-side rendering, metadata API, sitemap generation",
+        "<strong>Developer Experience:</strong> Fast Refresh, TypeScript first-class, error overlay incredibile",
+        "<strong>Deployment:</strong> Vercel (zero config), ma anche self-hosted ovunque",
+        "",
+        "<strong>Alternative (e perché Next.js vince):</strong>",
+        "• <strong>Create React App:</strong> Deprecato, Next.js è il successore ufficiale",
+        "• <strong>Remix:</strong> Ottimo, ma ecosystem Next.js è più grande",
+        "• <strong>Gatsby:</strong> Solo SSG, Next.js fa tutto (SSG + SSR + ISR)",
+        "",
+        "<strong>Casi d'uso:</strong> Landing pages, e-commerce, dashboard, blog, SaaS, tutto"
+      ],
+      "ironicClosing": "Next.js: il framework che fa sì che CRA sembri un giocattolo. RIP CRA, 2016-2023."
+    },
+    {
+      "type": "text",
+      "title": "Setup: Creare Progetto Next.js",
+      "paragraphs": [
+        "<strong>Prerequisiti:</strong>",
+        "• Node.js 18.18+ (LTS raccomandato)",
+        "• npm, pnpm, o yarn",
+        "",
+        "<strong>Create Next App (redesigned in v16):</strong>",
+        "<code>npx create-next-app@latest my-app</code>",
+        "",
+        "<strong>Opzioni durante setup:</strong>",
+        "• TypeScript? <strong>Yes</strong> (raccomandato)",
+        "• ESLint? <strong>Yes</strong>",
+        "• Tailwind CSS? <strong>Yes</strong> (molto popolare)",
+        "• src/ directory? <strong>No</strong> (preferenza personale)",
+        "• App Router? <strong>Yes</strong> (default, moderno)",
+        "• Turbopack? <strong>Yes</strong> (stable in v16)",
+        "",
+        "<strong>Avviare dev server:</strong>",
+        "<code>cd my-app</code>",
+        "<code>npm run dev</code>",
+        "Apri <code>http://localhost:3000</code>"
+      ],
+      "ironicClosing": "create-next-app: da zero a full-stack app in 30 secondi. Magia o tooling eccellente? Sì."
+    },
+    {
+      "type": "code",
+      "title": "💻 Struttura Progetto Next.js 16",
+      "code": {
+        "language": "plaintext",
+        "snippet": "my-app/\n├── app/                    # App Router (Next.js 13+)\n│   ├── layout.tsx         # Root layout (wrapper globale)\n│   ├── page.tsx           # Homepage (route: /)\n│   ├── globals.css        # CSS globale\n│   ├── about/\n│   │   └── page.tsx       # Route: /about\n│   ├── blog/\n│   │   ├── page.tsx       # Route: /blog\n│   │   └── [slug]/\n│   │       └── page.tsx   # Route dinamica: /blog/post-1\n│   └── api/\n│       └── users/\n│           └── route.ts   # API route: /api/users\n├── public/                # File statici (serviti da /)\n│   ├── images/\n│   └── favicon.ico\n├── components/            # Componenti riusabili\n│   ├── Header.tsx\n│   └── Footer.tsx\n├── lib/                   # Utilities, helpers\n│   └── db.ts\n├── next.config.mjs        # Configurazione Next.js\n├── package.json\n└── tsconfig.json"
+      },
+      "explanation": "app/ è cuore. Ogni folder = route. page.tsx = UI. layout.tsx = wrapper."
+    },
+    {
+      "type": "title",
+      "title": "App Router",
+      "subtitle": "Il nuovo modo di fare routing in Next.js",
+      "description": "Da Pages Router (legacy) ad App Router (moderno) - Server Components by default"
+    },
+    {
+      "type": "text",
+      "title": "App Router vs Pages Router",
+      "paragraphs": [
+        "<strong>Pages Router (legacy, Next.js ≤12):</strong>",
+        "• Directory: <code>pages/</code>",
+        "• File-based routing: <code>pages/about.tsx</code> → <code>/about</code>",
+        "• Client Components by default",
+        "• getServerSideProps, getStaticProps per data fetching",
+        "• Ancora supportato, ma non raccomandato per nuovi progetti",
+        "",
+        "<strong>App Router (moderno, Next.js 13+):</strong>",
+        "• Directory: <code>app/</code>",
+        "• Folder-based routing: <code>app/about/page.tsx</code> → <code>/about</code>",
+        "• <strong>Server Components by default</strong> (game changer)",
+        "• async/await direttamente nei componenti per data fetching",
+        "• Layouts, loading states, error boundaries built-in",
+        "• React 18+ features (Suspense, Streaming)",
+        "",
+        "<strong>Migrazione:</strong> Graduale. Puoi usare entrambi (ma non mescolare nella stessa route)"
+      ],
+      "ironicClosing": "Pages Router: comfort zone. App Router: future-proof. Scegli saggiamente (App Router)."
+    },
+    {
+      "type": "code",
+      "title": "💻 File Conventions nell'App Router",
+      "code": {
+        "language": "plaintext",
+        "snippet": "app/\n├── layout.tsx        # Layout condiviso (wrapper)\n├── page.tsx          # Pagina (UI della route)\n├── loading.tsx       # Loading UI (Suspense boundary)\n├── error.tsx         # Error UI (Error boundary)\n├── not-found.tsx     # 404 UI\n├── route.ts          # API route (GET, POST, etc.)\n└── template.tsx      # Template (re-monta ad ogni navigazione)\n\n# Esempi:\napp/\n├── layout.tsx        # Root layout (obbligatorio)\n├── page.tsx          # Homepage: /\n├── dashboard/\n│   ├── layout.tsx    # Layout per /dashboard/*\n│   ├── page.tsx      # /dashboard\n│   ├── loading.tsx   # Loading per /dashboard\n│   └── settings/\n│       └── page.tsx  # /dashboard/settings\n└── blog/\n    ├── [slug]/\n    │   └── page.tsx  # Dynamic: /blog/hello-world\n    └── [...slug]/\n        └── page.tsx  # Catch-all: /blog/a/b/c"
+      },
+      "explanation": "layout.tsx è sticky (non re-monta). page.tsx è route. File speciali per loading/error."
+    },
+    {
+      "type": "code",
+      "title": "💻 Root Layout (obbligatorio)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/layout.tsx\nimport './globals.css'\n\nexport const metadata = {\n  title: 'My Next.js App',\n  description: 'Built with Next.js 16',\n}\n\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <html lang=\"en\">\n      <body>\n        {/* Header globale */}\n        <header>\n          <nav>Navigation</nav>\n        </header>\n        \n        {/* Contenuto della pagina */}\n        <main>{children}</main>\n        \n        {/* Footer globale */}\n        <footer>\n          <p>&copy; 2025 My App</p>\n        </footer>\n      </body>\n    </html>\n  )\n}"
+      },
+      "explanation": "Root layout wrappa tutto. Deve avere <html> e <body>. Metadata per SEO."
+    },
+    {
+      "type": "code",
+      "title": "💻 Page Component",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/page.tsx (Homepage)\nexport default function HomePage() {\n  return (\n    <div>\n      <h1>Welcome to Next.js 16</h1>\n      <p>Server Component by default!</p>\n    </div>\n  )\n}\n\n// app/about/page.tsx\nexport default function AboutPage() {\n  return (\n    <div>\n      <h1>About Us</h1>\n      <p>This is the about page</p>\n    </div>\n  )\n}\n\n// app/blog/[slug]/page.tsx (Dynamic route)\ntype Props = {\n  params: { slug: string }\n  searchParams: { [key: string]: string | string[] | undefined }\n}\n\nexport default function BlogPost({ params, searchParams }: Props) {\n  return (\n    <div>\n      <h1>Blog Post: {params.slug}</h1>\n      <p>Search params: {JSON.stringify(searchParams)}</p>\n    </div>\n  )\n}"
+      },
+      "explanation": "page.tsx esporta default component. params per dynamic routes. searchParams per query."
+    },
+    {
+      "type": "code",
+      "title": "💻 Nested Layouts",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/dashboard/layout.tsx\nexport default function DashboardLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <div className=\"dashboard\">\n      {/* Sidebar solo per /dashboard/* */}\n      <aside className=\"sidebar\">\n        <nav>\n          <a href=\"/dashboard\">Home</a>\n          <a href=\"/dashboard/analytics\">Analytics</a>\n          <a href=\"/dashboard/settings\">Settings</a>\n        </nav>\n      </aside>\n      \n      {/* Contenuto */}\n      <div className=\"content\">\n        {children}\n      </div>\n    </div>\n  )\n}\n\n// Struttura renderizzata:\n// <RootLayout>\n//   <DashboardLayout>\n//     <DashboardPage />\n//   </DashboardLayout>\n// </RootLayout>"
+      },
+      "explanation": "Layouts nidificati. Sidebar persiste navigando in /dashboard/*. Performante."
+    },
+    {
+      "type": "code",
+      "title": "💻 Loading & Error States",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/dashboard/loading.tsx\nexport default function Loading() {\n  return (\n    <div className=\"loading-spinner\">\n      <p>Loading dashboard...</p>\n    </div>\n  )\n}\n\n// app/dashboard/error.tsx\n'use client' // Error components devono essere Client Components\n\nexport default function Error({\n  error,\n  reset,\n}: {\n  error: Error & { digest?: string }\n  reset: () => void\n}) {\n  return (\n    <div className=\"error\">\n      <h2>Something went wrong!</h2>\n      <p>{error.message}</p>\n      <button onClick={reset}>Try again</button>\n    </div>\n  )\n}\n\n// app/not-found.tsx\nexport default function NotFound() {\n  return (\n    <div>\n      <h1>404 - Page Not Found</h1>\n      <a href=\"/\">Go home</a>\n    </div>\n  )\n}"
+      },
+      "explanation": "loading.tsx per Suspense. error.tsx per Error Boundary. not-found.tsx per 404."
+    },
+    {
+      "type": "title",
+      "title": "Routing & Navigation",
+      "subtitle": "Dynamic routes, route groups, parallel routes",
+      "description": "Routing avanzato e navigazione client-side"
+    },
+    {
+      "type": "code",
+      "title": "💻 Dynamic Routes",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/blog/[slug]/page.tsx - Dynamic segment\ntype Props = {\n  params: { slug: string }\n}\n\nexport default function BlogPost({ params }: Props) {\n  return <h1>Post: {params.slug}</h1>\n}\n// Routes: /blog/hello → params.slug = 'hello'\n\n// app/shop/[category]/[product]/page.tsx - Multiple segments\ntype Props = {\n  params: { category: string; product: string }\n}\n\nexport default function Product({ params }: Props) {\n  return <h1>{params.category} - {params.product}</h1>\n}\n// Routes: /shop/electronics/laptop\n\n// app/docs/[...slug]/page.tsx - Catch-all\ntype Props = {\n  params: { slug: string[] }\n}\n\nexport default function Docs({ params }: Props) {\n  return <h1>Docs: {params.slug.join('/')}</h1>\n}\n// Routes: /docs/a/b/c → params.slug = ['a', 'b', 'c']"
+      },
+      "explanation": "[slug] = dynamic. [...slug] = catch-all. [[...slug]] = optional catch-all."
+    },
+    {
+      "type": "code",
+      "title": "💻 Route Groups & Private Folders",
+      "code": {
+        "language": "plaintext",
+        "snippet": "# Route Groups (parentesi) - non creano route\napp/\n├── (marketing)/       # Group (NO route)\n│   ├── layout.tsx    # Layout per marketing\n│   ├── about/\n│   │   └── page.tsx  # Route: /about (NO /marketing/about)\n│   └── contact/\n│       └── page.tsx  # Route: /contact\n└── (shop)/           # Diverso layout\n    ├── layout.tsx    # Layout per shop\n    ├── products/\n    │   └── page.tsx  # Route: /products\n    └── cart/\n        └── page.tsx  # Route: /cart\n\n# Private Folders (underscore) - esclusi dal routing\napp/\n├── _lib/             # Private (non accessibile via URL)\n│   └── utils.ts\n├── _components/      # Private components\n│   └── Button.tsx\n└── dashboard/\n    └── page.tsx      # Route: /dashboard (OK)\n\n# Usa route groups per layouts diversi senza cambiare URL"
+      },
+      "explanation": "(group) per organizzare senza URL. _private per escludere dal routing."
+    },
+    {
+      "type": "code",
+      "title": "💻 Navigation: Link & useRouter",
+      "code": {
+        "language": "typescript",
+        "snippet": "// Link component (preferito - prefetching automatico)\nimport Link from 'next/link'\n\nexport default function Nav() {\n  return (\n    <nav>\n      <Link href=\"/\">Home</Link>\n      <Link href=\"/about\">About</Link>\n      <Link href=\"/blog/hello-world\">Blog Post</Link>\n      \n      {/* Prefetch disabilitato */}\n      <Link href=\"/heavy-page\" prefetch={false}>\n        Heavy Page\n      </Link>\n      \n      {/* Dynamic */}\n      <Link href={`/user/${userId}`}>\n        User Profile\n      </Link>\n    </nav>\n  )\n}\n\n// useRouter (programmatic navigation)\n'use client'\nimport { useRouter } from 'next/navigation'\n\nexport default function LoginButton() {\n  const router = useRouter()\n  \n  const handleLogin = async () => {\n    await login()\n    router.push('/dashboard')  // Navigate\n    router.refresh()           // Refresh server data\n  }\n  \n  return <button onClick={handleLogin}>Login</button>\n}"
+      },
+      "explanation": "Link per navigation (prefetch auto). useRouter per programmatic. Client Component solo."
+    },
+    {
+      "type": "code",
+      "title": "💻 Parallel Routes & Intercepting",
+      "code": {
+        "language": "plaintext",
+        "snippet": "# Parallel Routes (@folder) - render multipli nella stessa route\napp/\n├── @team/            # Named slot\n│   └── page.tsx\n├── @analytics/       # Named slot\n│   └── page.tsx\n└── layout.tsx        # Riceve entrambi\n\n// app/layout.tsx\nexport default function Layout({\n  children,\n  team,      // @team slot\n  analytics, // @analytics slot\n}: {\n  children: React.ReactNode\n  team: React.ReactNode\n  analytics: React.ReactNode\n}) {\n  return (\n    <div>\n      {children}\n      <div className=\"sidebar\">\n        {team}\n        {analytics}\n      </div>\n    </div>\n  )\n}\n\n# Intercepting Routes (.) - modale pattern\napp/\n├── feed/\n│   └── page.tsx          # /feed\n└── photo/\n    ├── [id]/\n    │   └── page.tsx      # /photo/123 (full page)\n    └── (.)photo/\n        └── [id]/\n            └── page.tsx  # Intercept when navigating from /feed"
+      },
+      "explanation": "@slot per parallel routes. (.) per intercettare (es: modali). Avanzato ma potente."
+    },
+    {
+      "type": "code",
+      "title": "💻 Middleware",
+      "code": {
+        "language": "typescript",
+        "snippet": "// middleware.ts (root del progetto)\nimport { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\n\nexport function middleware(request: NextRequest) {\n  // Auth check\n  const token = request.cookies.get('token')\n  \n  if (!token && request.nextUrl.pathname.startsWith('/dashboard')) {\n    return NextResponse.redirect(new URL('/login', request.url))\n  }\n  \n  // Add custom header\n  const response = NextResponse.next()\n  response.headers.set('x-custom-header', 'value')\n  \n  // Rewrite (internal redirect)\n  if (request.nextUrl.pathname === '/old-path') {\n    return NextResponse.rewrite(new URL('/new-path', request.url))\n  }\n  \n  return response\n}\n\n// Matcher: specifica quali route processare\nexport const config = {\n  matcher: [\n    '/dashboard/:path*',  // Tutte le /dashboard/*\n    '/api/:path*',        // Tutte le API\n    '/((?!_next/static|_next/image|favicon.ico).*)',  // Escludi static\n  ],\n}"
+      },
+      "explanation": "Middleware esegue PRIMA del rendering. Auth, redirects, rewrites, headers."
+    },
+    {
+      "type": "code",
+      "title": "💻 generateStaticParams (SSG)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/blog/[slug]/page.tsx\ntype Post = { slug: string; title: string; content: string }\n\n// Genera static paths at build time\nexport async function generateStaticParams() {\n  const posts = await fetchPosts() // Fetch da DB/API\n  \n  return posts.map((post) => ({\n    slug: post.slug,\n  }))\n}\n// Build genera: /blog/post-1, /blog/post-2, etc.\n\ntype Props = {\n  params: { slug: string }\n}\n\nexport default async function BlogPost({ params }: Props) {\n  const post = await fetchPost(params.slug)\n  \n  return (\n    <article>\n      <h1>{post.title}</h1>\n      <div>{post.content}</div>\n    </article>\n  )\n}\n\n// Opzionale: genera metadata\nexport async function generateMetadata({ params }: Props) {\n  const post = await fetchPost(params.slug)\n  return {\n    title: post.title,\n  }\n}"
+      },
+      "explanation": "generateStaticParams per SSG. Build-time generation. SEO perfetto, ultra veloce."
+    },
+    {
+      "type": "title",
+      "title": "Server vs Client Components",
+      "subtitle": "Il paradigma chiave di Next.js App Router",
+      "description": "Server Components by default, Client Components quando serve"
+    },
+    {
+      "type": "text",
+      "title": "Server Components (default)",
+      "paragraphs": [
+        "<strong>Cosa sono:</strong>",
+        "• Componenti che renderizzano <strong>solo sul server</strong>",
+        "• Zero JavaScript inviato al client (bundle più piccolo)",
+        "• Accesso diretto a backend (database, filesystem, API)",
+        "",
+        "<strong>Caratteristiche:</strong>",
+        "• async/await direttamente nel component",
+        "• Fetch data senza API routes",
+        "• Secrets sicuri (API keys non esposte)",
+        "• NO hooks (useState, useEffect, etc.)",
+        "• NO event handlers (onClick, onChange)",
+        "• NO browser APIs (window, localStorage)",
+        "",
+        "<strong>Quando usare:</strong>",
+        "• Fetch data",
+        "• Backend logic",
+        "• Large dependencies (non affettano bundle client)",
+        "• Contenuto statico/dinamico senza interattività",
+        "",
+        "<strong>Default in App Router:</strong> Tutti i componenti sono Server Components a meno che 'use client'"
+      ],
+      "ironicClosing": "Server Components: zero JS al client. React ma senza React nel browser. Mind-blowing."
+    },
+    {
+      "type": "text",
+      "title": "Client Components",
+      "paragraphs": [
+        "<strong>Cosa sono:</strong>",
+        "• Componenti che renderizzano sul server E reidratano sul client",
+        "• JavaScript inviato al browser (bundle impact)",
+        "• Interattività, hooks, event handlers",
+        "",
+        "<strong>Come dichiararli:</strong>",
+        "• <code>'use client'</code> in cima al file",
+        "• Direttiva obbligatoria (esplicito > implicito)",
+        "",
+        "<strong>Caratteristiche:</strong>",
+        "• Hooks: useState, useEffect, useContext, etc.",
+        "• Event handlers: onClick, onChange, etc.",
+        "• Browser APIs: window, localStorage, etc.",
+        "• Third-party libraries con browser dependencies",
+        "",
+        "<strong>Quando usare:</strong>",
+        "• Interattività (forms, buttons, modals)",
+        "• State management (useState, Zustand, Redux)",
+        "• Effects (useEffect)",
+        "• Browser-only features",
+        "",
+        "<strong>Best practice:</strong> Usa Client Components il meno possibile. Leaf components."
+      ],
+      "ironicClosing": "Client Components: React classico. Server Components: React del futuro. Scegli saggiamente."
+    },
+    {
+      "type": "code",
+      "title": "💻 Server Component (default)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/posts/page.tsx\n// Server Component (NO 'use client')\nimport { db } from '@/lib/db'\n\n// async component - SOLO possibile in Server Components\nexport default async function PostsPage() {\n  // Direct database access (NO API route needed)\n  const posts = await db.post.findMany({\n    orderBy: { createdAt: 'desc' },\n  })\n  \n  return (\n    <div>\n      <h1>Blog Posts</h1>\n      <ul>\n        {posts.map((post) => (\n          <li key={post.id}>\n            <h2>{post.title}</h2>\n            <p>{post.excerpt}</p>\n          </li>\n        ))}\n      </ul>\n    </div>\n  )\n}\n\n// ✅ Vantaggi:\n// - Zero JS al client\n// - Database query direttamente nel component\n// - Secrets sicuri (DB credentials mai esposte)\n// - SEO perfetto (HTML completo al first load)"
+      },
+      "explanation": "Server Component: async, database access, zero JS client. Default nell'App Router."
+    },
+    {
+      "type": "code",
+      "title": "💻 Client Component",
+      "code": {
+        "language": "typescript",
+        "snippet": "// components/LikeButton.tsx\n'use client' // ⬅️ Direttiva obbligatoria\n\nimport { useState } from 'react'\n\ntype Props = {\n  postId: string\n  initialLikes: number\n}\n\nexport default function LikeButton({ postId, initialLikes }: Props) {\n  const [likes, setLikes] = useState(initialLikes)\n  const [isLiked, setIsLiked] = useState(false)\n  \n  const handleLike = async () => {\n    setIsLiked(!isLiked)\n    setLikes(isLiked ? likes - 1 : likes + 1)\n    \n    // Call API\n    await fetch(`/api/posts/${postId}/like`, {\n      method: 'POST',\n    })\n  }\n  \n  return (\n    <button onClick={handleLike}>\n      {isLiked ? '❤️' : '🤍'} {likes}\n    </button>\n  )\n}\n\n// ✅ Client Component perché:\n// - useState (hook)\n// - onClick (event handler)\n// - Interattività"
+      },
+      "explanation": "'use client' per interattività. useState, onClick, ecc. OK. JS inviato al browser."
+    },
+    {
+      "type": "code",
+      "title": "💻 Composition Pattern (Best Practice)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/posts/[id]/page.tsx (Server Component)\nimport LikeButton from '@/components/LikeButton' // Client Component\nimport { db } from '@/lib/db'\n\nexport default async function PostPage({ params }: { params: { id: string } }) {\n  // Server-side data fetching\n  const post = await db.post.findUnique({\n    where: { id: params.id },\n  })\n  \n  return (\n    <article>\n      {/* Server-rendered */}\n      <h1>{post.title}</h1>\n      <p>By {post.author} on {post.date}</p>\n      <div>{post.content}</div>\n      \n      {/* Client Component annidato */}\n      <LikeButton postId={post.id} initialLikes={post.likes} />\n    </article>\n  )\n}\n\n// ✅ Pattern:\n// - Server Component per data fetching e layout\n// - Client Component SOLO per parti interattive (leaf)\n// - Minimizza JS bundle (solo LikeButton va al client)\n\n// ❌ EVITA:\n// - 'use client' su page.tsx intera (troppo JS al client)"
+      },
+      "explanation": "Composition: Server Component wrappa Client. Minimizza bundle. Best practice chiave."
+    },
+    {
+      "type": "code",
+      "title": "💻 Passare Props: Server → Client",
+      "code": {
+        "language": "typescript",
+        "snippet": "// ✅ CORRECT: Serializable props\n// app/page.tsx (Server)\nimport ClientComponent from './ClientComponent'\n\nexport default async function Page() {\n  const data = await fetchData()\n  \n  return (\n    <ClientComponent\n      title={data.title}           // ✅ String\n      count={data.count}           // ✅ Number\n      isActive={data.isActive}     // ✅ Boolean\n      tags={data.tags}             // ✅ Array\n      metadata={data.metadata}     // ✅ Object (plain)\n    />\n  )\n}\n\n// ❌ WRONG: Non-serializable props\nexport default async function BadPage() {\n  return (\n    <ClientComponent\n      onClick={() => {}}           // ❌ Function (non-serializable)\n      date={new Date()}            // ❌ Date object\n      ref={myRef}                  // ❌ Ref\n    />\n  )\n}\n\n// ✅ Workaround per funzioni: definisci nel Client Component\n// components/ClientComponent.tsx\n'use client'\nexport default function ClientComponent({ title }: { title: string }) {\n  const handleClick = () => { /* ... */ } // Definita qui\n  return <button onClick={handleClick}>{title}</button>\n}"
+      },
+      "explanation": "Server → Client: solo props serializable (JSON). No functions, Date, refs."
+    },
+    {
+      "type": "text",
+      "title": "⚠️ Errori Comuni Server/Client",
+      "paragraphs": [
+        "<strong>1. Hook in Server Component</strong>",
+        "<code>useState</code> in component senza 'use client' → Error",
+        "Fix: Aggiungi 'use client' o sposta logica in Client Component",
+        "",
+        "<strong>2. async Client Component</strong>",
+        "async function in 'use client' component → Non supportato",
+        "Fix: Usa useEffect + fetch, o Server Component",
+        "",
+        "<strong>3. Import Client in Server senza props</strong>",
+        "Server Component importa Client → OK",
+        "Client Component importa Server → ❌ Error",
+        "",
+        "<strong>4. Database query in Client Component</strong>",
+        "Prisma/DB call in 'use client' → Fallirà (no backend access)",
+        "Fix: Sposta in Server Component o usa API route",
+        "",
+        "<strong>5. 'use client' troppo in alto</strong>",
+        "page.tsx intera con 'use client' → Bundle enorme",
+        "Fix: Solo leaf components interattivi con 'use client'"
+      ],
+      "ironicClosing": "Server/Client boundary: confonde all'inizio, naturale dopo. Come React Hooks nel 2019."
+    },
+    {
+      "type": "title",
+      "title": "Data Fetching",
+      "subtitle": "Fetch, cache, revalidate",
+      "description": "Strategie moderne per caricare dati in Next.js"
+    },
+    {
+      "type": "text",
+      "title": "Data Fetching in Next.js 16",
+      "paragraphs": [
+        "<strong>Server Components (preferito):</strong>",
+        "• async/await direttamente nel component",
+        "• fetch() nativo con cache integrata",
+        "• Direct database access (Prisma, Drizzle, etc.)",
+        "",
+        "<strong>Caching Strategy (Next.js 16 - opt-in):</strong>",
+        "• <strong>Default:</strong> Dynamic (no cache)",
+        "• <strong>use cache:</strong> Directive per caching esplicito",
+        "• <strong>Revalidation:</strong> Time-based o on-demand",
+        "",
+        "<strong>Strategie rendering:</strong>",
+        "• <strong>Static (SSG):</strong> Build-time, cache infinita",
+        "• <strong>Dynamic (SSR):</strong> Request-time, sempre fresh",
+        "• <strong>ISR:</strong> Static + revalidation periodica",
+        "• <strong>Streaming:</strong> Progressive rendering (Suspense)",
+        "",
+        "<strong>Client Components:</strong>",
+        "• useEffect + fetch (classico)",
+        "• SWR o React Query (raccomandato)",
+        "• Fetch API routes"
+      ],
+      "ironicClosing": "Data fetching in Next.js: da complicato a 'await fetch()'. Developer happiness."
+    },
+    {
+      "type": "code",
+      "title": "💻 Server Component: Direct Fetch",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/posts/page.tsx\nexport default async function PostsPage() {\n  // fetch con cache (Next.js 16 opt-in)\n  const res = await fetch('https://api.example.com/posts', {\n    next: { \n      revalidate: 3600, // ISR: revalidate ogni ora\n      tags: ['posts'],  // Tag per revalidation on-demand\n    }\n  })\n  const posts = await res.json()\n  \n  return (\n    <div>\n      {posts.map((post) => (\n        <article key={post.id}>\n          <h2>{post.title}</h2>\n        </article>\n      ))}\n    </div>\n  )\n}\n\n// Opzioni fetch:\n// { cache: 'force-cache' }        // Static (default pre-v16)\n// { cache: 'no-store' }           // Dynamic (no cache)\n// { next: { revalidate: 60 } }    // ISR (revalidate ogni 60s)\n// { next: { tags: ['products'] } } // Tag-based revalidation"
+      },
+      "explanation": "fetch() in Server Component. Options per caching. ISR con revalidate. Modern."
+    },
+    {
+      "type": "code",
+      "title": "💻 Database Access (Server Component)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// lib/db.ts (Prisma example)\nimport { PrismaClient } from '@prisma/client'\n\nconst globalForPrisma = global as unknown as { prisma: PrismaClient }\n\nexport const db = globalForPrisma.prisma || new PrismaClient()\n\nif (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db\n\n// app/users/page.tsx\nimport { db } from '@/lib/db'\n\nexport default async function UsersPage() {\n  // Direct database query (NO API route needed)\n  const users = await db.user.findMany({\n    select: {\n      id: true,\n      name: true,\n      email: true,\n    },\n    orderBy: {\n      createdAt: 'desc',\n    },\n  })\n  \n  return (\n    <div>\n      <h1>Users</h1>\n      <ul>\n        {users.map((user) => (\n          <li key={user.id}>{user.name} - {user.email}</li>\n        ))}\n      </ul>\n    </div>\n  )\n}"
+      },
+      "explanation": "Database direttamente in Server Component. No API route needed. Sicuro e veloce."
+    },
+    {
+      "type": "code",
+      "title": "💻 Parallel Data Fetching",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/dashboard/page.tsx\nexport default async function Dashboard() {\n  // ❌ Sequential (lento)\n  const user = await fetchUser()\n  const posts = await fetchPosts()     // Aspetta user\n  const comments = await fetchComments() // Aspetta posts\n  // Tempo totale: T1 + T2 + T3\n  \n  // ✅ Parallel (veloce)\n  const [user, posts, comments] = await Promise.all([\n    fetchUser(),\n    fetchPosts(),\n    fetchComments(),\n  ])\n  // Tempo totale: max(T1, T2, T3)\n  \n  return (\n    <div>\n      <UserProfile user={user} />\n      <PostsList posts={posts} />\n      <CommentsList comments={comments} />\n    </div>\n  )\n}\n\n// Helper functions\nasync function fetchUser() {\n  const res = await fetch('https://api.example.com/user')\n  return res.json()\n}\n\nasync function fetchPosts() {\n  const res = await fetch('https://api.example.com/posts')\n  return res.json()\n}"
+      },
+      "explanation": "Promise.all per parallel fetching. Molto più veloce. Best practice importante."
+    },
+    {
+      "type": "code",
+      "title": "💻 Streaming con Suspense",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/dashboard/page.tsx\nimport { Suspense } from 'react'\nimport SlowComponent from './SlowComponent'\nimport FastComponent from './FastComponent'\n\nexport default function Dashboard() {\n  return (\n    <div>\n      {/* Render subito */}\n      <h1>Dashboard</h1>\n      \n      {/* Fast component - render subito */}\n      <FastComponent />\n      \n      {/* Slow component - streaming */}\n      <Suspense fallback={<div>Loading slow data...</div>}>\n        <SlowComponent />\n      </Suspense>\n    </div>\n  )\n}\n\n// SlowComponent.tsx (Server Component)\nexport default async function SlowComponent() {\n  // Query lenta (3 secondi)\n  const data = await fetch('https://slow-api.com/data', {\n    cache: 'no-store',\n  })\n  const result = await data.json()\n  \n  return <div>{result.content}</div>\n}\n\n// ✅ Risultato:\n// 1. HTML inziale: <h1> + FastComponent + fallback\n// 2. Stream SlowComponent quando pronto\n// 3. User vede contenuto progressivamente (no blocking)"
+      },
+      "explanation": "Suspense + async Server Component = streaming. Progressive rendering. UX eccellente."
+    },
+    {
+      "type": "code",
+      "title": "💻 Client-Side Fetching (SWR)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// components/Posts.tsx\n'use client'\n\nimport useSWR from 'swr'\n\nconst fetcher = (url: string) => fetch(url).then((r) => r.json())\n\nexport default function Posts() {\n  const { data, error, isLoading } = useSWR(\n    '/api/posts',\n    fetcher,\n    {\n      revalidateOnFocus: true,    // Revalidate quando tab torna in focus\n      revalidateOnReconnect: true, // Revalidate quando riconnette\n      refreshInterval: 30000,      // Poll ogni 30s\n    }\n  )\n  \n  if (error) return <div>Failed to load</div>\n  if (isLoading) return <div>Loading...</div>\n  \n  return (\n    <ul>\n      {data.map((post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  )\n}\n\n// Alternative: React Query (TanStack Query)\n// import { useQuery } from '@tanstack/react-query'\n// const { data, isLoading } = useQuery({\n//   queryKey: ['posts'],\n//   queryFn: () => fetch('/api/posts').then(r => r.json())\n// })"
+      },
+      "explanation": "SWR per client-side fetching. Cache, revalidation, focus refetch. Molto comodo."
+    },
+    {
+      "type": "code",
+      "title": "💻 Revalidation: On-Demand",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/api/revalidate/route.ts\nimport { revalidatePath, revalidateTag } from 'next/cache'\nimport { NextRequest } from 'next/server'\n\nexport async function POST(request: NextRequest) {\n  const secret = request.nextUrl.searchParams.get('secret')\n  \n  // Verify secret\n  if (secret !== process.env.REVALIDATE_SECRET) {\n    return Response.json({ message: 'Invalid secret' }, { status: 401 })\n  }\n  \n  // Revalidate specific path\n  revalidatePath('/posts')\n  \n  // O revalidate by tag\n  revalidateTag('posts')\n  \n  return Response.json({ revalidated: true })\n}\n\n// Usage: chiamare da webhook (es: CMS update)\n// POST https://myapp.com/api/revalidate?secret=xxx\n\n// Server Action (alternativa)\nexport async function revalidatePost() {\n  'use server'\n  revalidateTag('posts')\n}\n\n// In component:\n// <form action={revalidatePost}>\n//   <button type=\"submit\">Refresh Posts</button>\n// </form>"
+      },
+      "explanation": "revalidatePath/Tag per on-demand revalidation. Webhook, server actions, API."
+    },
+    {
+      "type": "title",
+      "title": "Server Actions",
+      "subtitle": "Mutations senza API routes",
+      "description": "Forms, mutations, RPC-style functions server-side"
+    },
+    {
+      "type": "text",
+      "title": "Cosa sono le Server Actions?",
+      "paragraphs": [
+        "<strong>Server Actions (Next.js 14+ stable):</strong>",
+        "• Funzioni asincrone che eseguono sul server",
+        "• Chiamate da Client Components (forms, buttons)",
+        "• <strong>No API routes needed</strong> per mutations",
+        "• Built-in security (CSRF protection)",
+        "• Progressive enhancement (funzionano senza JS)",
+        "",
+        "<strong>Caratteristiche:</strong>",
+        "• Direttiva <code>'use server'</code> (file o funzione)",
+        "• async by default",
+        "• Return types serializable",
+        "• Automatic request deduplication",
+        "",
+        "<strong>Casi d'uso:</strong>",
+        "• Form submissions",
+        "• Database mutations (INSERT, UPDATE, DELETE)",
+        "• Revalidation dopo mutation",
+        "• File uploads",
+        "• Email sending",
+        "",
+        "<strong>Vantaggi:</strong>",
+        "• Meno boilerplate (no API routes)",
+        "• Type-safe (TypeScript end-to-end)",
+        "• Progressive enhancement"
+      ],
+      "ironicClosing": "Server Actions: RPC in React. Backend nel frontend. Confusing? Sì. Game-changing? Anche."
+    },
+    {
+      "type": "code",
+      "title": "💻 Server Action: Form Submission",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/actions.ts\n'use server' // ⬅️ Tutto il file è server-side\n\nimport { db } from '@/lib/db'\nimport { revalidatePath } from 'next/cache'\n\nexport async function createPost(formData: FormData) {\n  // Extract form data\n  const title = formData.get('title') as string\n  const content = formData.get('content') as string\n  \n  // Validation\n  if (!title || !content) {\n    return { error: 'Missing fields' }\n  }\n  \n  // Database mutation\n  const post = await db.post.create({\n    data: { title, content },\n  })\n  \n  // Revalidate cache\n  revalidatePath('/posts')\n  \n  return { success: true, post }\n}\n\n// app/posts/new/page.tsx\nimport { createPost } from '@/app/actions'\n\nexport default function NewPost() {\n  return (\n    <form action={createPost}>\n      <input name=\"title\" required />\n      <textarea name=\"content\" required />\n      <button type=\"submit\">Create Post</button>\n    </form>\n  )\n}"
+      },
+      "explanation": "'use server' per Server Actions. FormData auto-parsed. No API route needed."
+    },
+    {
+      "type": "code",
+      "title": "💻 Server Action: Con useFormState",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/actions.ts\n'use server'\nimport { db } from '@/lib/db'\n\nexport async function createUser(prevState: any, formData: FormData) {\n  const name = formData.get('name') as string\n  const email = formData.get('email') as string\n  \n  // Validation\n  if (!email.includes('@')) {\n    return { error: 'Invalid email' }\n  }\n  \n  try {\n    const user = await db.user.create({\n      data: { name, email },\n    })\n    return { success: true, user }\n  } catch (error) {\n    return { error: 'Failed to create user' }\n  }\n}\n\n// components/UserForm.tsx\n'use client'\nimport { useFormState } from 'react-dom'\nimport { createUser } from '@/app/actions'\n\nexport default function UserForm() {\n  const [state, formAction] = useFormState(createUser, null)\n  \n  return (\n    <form action={formAction}>\n      <input name=\"name\" required />\n      <input name=\"email\" type=\"email\" required />\n      <button type=\"submit\">Create User</button>\n      \n      {state?.error && <p className=\"error\">{state.error}</p>}\n      {state?.success && <p className=\"success\">User created!</p>}\n    </form>\n  )\n}"
+      },
+      "explanation": "useFormState per state management. Errori, successi, pending state."
+    },
+    {
+      "type": "code",
+      "title": "💻 Server Action: Inline",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/posts/[id]/page.tsx\nimport { db } from '@/lib/db'\nimport { revalidatePath } from 'next/cache'\n\nexport default async function PostPage({ params }: { params: { id: string } }) {\n  const post = await db.post.findUnique({ where: { id: params.id } })\n  \n  // Inline Server Action\n  async function deletePost() {\n    'use server' // ⬅️ Singola funzione server-side\n    \n    await db.post.delete({ where: { id: params.id } })\n    revalidatePath('/posts')\n    redirect('/posts')\n  }\n  \n  return (\n    <article>\n      <h1>{post.title}</h1>\n      <p>{post.content}</p>\n      \n      <form action={deletePost}>\n        <button type=\"submit\">Delete Post</button>\n      </form>\n    </article>\n  )\n}\n\n// ✅ Vantaggi inline:\n// - Closure su params (accesso a params.id)\n// - Collocazione logica (vicino al component)\n\n// ❌ Svantaggi:\n// - Non riusabile\n// - Testing più difficile"
+      },
+      "explanation": "Server Action inline con 'use server' nella funzione. Closure su scope esterno."
+    },
+    {
+      "type": "code",
+      "title": "💻 Server Action: Programmatic Call",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/actions.ts\n'use server'\nimport { db } from '@/lib/db'\n\nexport async function likePost(postId: string) {\n  const post = await db.post.update({\n    where: { id: postId },\n    data: { likes: { increment: 1 } },\n  })\n  return post.likes\n}\n\n// components/LikeButton.tsx\n'use client'\nimport { likePost } from '@/app/actions'\nimport { useState, useTransition } from 'react'\n\nexport default function LikeButton({ postId, initialLikes }: Props) {\n  const [likes, setLikes] = useState(initialLikes)\n  const [isPending, startTransition] = useTransition()\n  \n  const handleLike = () => {\n    startTransition(async () => {\n      const newLikes = await likePost(postId)\n      setLikes(newLikes)\n    })\n  }\n  \n  return (\n    <button onClick={handleLike} disabled={isPending}>\n      {isPending ? 'Liking...' : `❤️ ${likes}`}\n    </button>\n  )\n}\n\n// useTransition per UI feedback (isPending)\n// Server Action chiamata programmatically (non solo form)"
+      },
+      "explanation": "Server Actions chiamate da onClick. useTransition per pending state. Type-safe."
+    },
+    {
+      "type": "code",
+      "title": "💻 Server Action: Validation (Zod)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/actions.ts\n'use server'\nimport { z } from 'zod'\nimport { db } from '@/lib/db'\n\n// Schema validation\nconst createPostSchema = z.object({\n  title: z.string().min(3).max(100),\n  content: z.string().min(10),\n  published: z.boolean().default(false),\n})\n\nexport async function createPost(formData: FormData) {\n  // Parse and validate\n  const result = createPostSchema.safeParse({\n    title: formData.get('title'),\n    content: formData.get('content'),\n    published: formData.get('published') === 'on',\n  })\n  \n  // Validation errors\n  if (!result.success) {\n    return {\n      error: result.error.flatten().fieldErrors,\n    }\n  }\n  \n  // Type-safe data\n  const { title, content, published } = result.data\n  \n  // Create post\n  const post = await db.post.create({\n    data: { title, content, published },\n  })\n  \n  return { success: true, post }\n}\n\n// Zod garantisce type safety + validation runtime"
+      },
+      "explanation": "Zod per validation. safeParse per errori dettagliati. Type-safe dopo validation."
+    },
+    {
+      "type": "title",
+      "title": "Styling",
+      "subtitle": "CSS Modules, Tailwind, CSS-in-JS",
+      "description": "Tutte le opzioni di styling in Next.js"
+    },
+    {
+      "type": "text",
+      "title": "Opzioni di Styling in Next.js",
+      "paragraphs": [
+        "<strong>1. CSS Modules (built-in, raccomandato)</strong>",
+        "• File: <code>Component.module.css</code>",
+        "• Scoped automaticamente (no conflitti)",
+        "• Zero config, ottimizzato in production",
+        "",
+        "<strong>2. Tailwind CSS (più popolare)</strong>",
+        "• Utility-first CSS framework",
+        "• Setup automatico con create-next-app",
+        "• Purge automatico (solo classi usate in bundle)",
+        "",
+        "<strong>3. Global CSS</strong>",
+        "• File: <code>app/globals.css</code>",
+        "• Import solo in root layout",
+        "• Per reset, variabili, utilities globali",
+        "",
+        "<strong>4. CSS-in-JS (styled-components, emotion)</strong>",
+        "• Supporto, ma richiede 'use client'",
+        "• Performance hit (runtime styles)",
+        "• Meno raccomandato in App Router",
+        "",
+        "<strong>5. Sass/SCSS (built-in)</strong>",
+        "• <code>npm install sass</code>",
+        "• File: <code>.scss</code> o <code>.module.scss</code>"
+      ],
+      "ironicClosing": "Styling: CSS Modules per puristi, Tailwind per pragmatici. Scegli e vai avanti."
+    },
+    {
+      "type": "code",
+      "title": "💻 CSS Modules",
+      "code": {
+        "language": "typescript",
+        "snippet": "// components/Button.module.css\n.button {\n  padding: 12px 24px;\n  border-radius: 8px;\n  background: #0070f3;\n  color: white;\n  border: none;\n  cursor: pointer;\n}\n\n.button:hover {\n  background: #0051cc;\n}\n\n.primary {\n  background: #0070f3;\n}\n\n.secondary {\n  background: #6b7280;\n}\n\n// components/Button.tsx\nimport styles from './Button.module.css'\n\ntype Props = {\n  variant?: 'primary' | 'secondary'\n  children: React.ReactNode\n}\n\nexport default function Button({ variant = 'primary', children }: Props) {\n  return (\n    <button className={`${styles.button} ${styles[variant]}`}>\n      {children}\n    </button>\n  )\n}\n\n// Compiled: .button_abc123 (hash unico, no conflicts)"
+      },
+      "explanation": "CSS Modules: scoped, type-safe (con TypeScript), zero runtime. Solid choice."
+    },
+    {
+      "type": "code",
+      "title": "💻 Tailwind CSS",
+      "code": {
+        "language": "typescript",
+        "snippet": "// tailwind.config.ts (auto-generato)\nimport type { Config } from 'tailwindcss'\n\nconst config: Config = {\n  content: [\n    './app/**/*.{js,ts,jsx,tsx,mdx}',\n    './components/**/*.{js,ts,jsx,tsx,mdx}',\n  ],\n  theme: {\n    extend: {\n      colors: {\n        primary: '#0070f3',\n      },\n    },\n  },\n  plugins: [],\n}\nexport default config\n\n// components/Button.tsx\ntype Props = {\n  variant?: 'primary' | 'secondary'\n  children: React.ReactNode\n}\n\nexport default function Button({ variant = 'primary', children }: Props) {\n  const baseStyles = 'px-6 py-3 rounded-lg font-semibold'\n  const variants = {\n    primary: 'bg-blue-600 hover:bg-blue-700 text-white',\n    secondary: 'bg-gray-600 hover:bg-gray-700 text-white',\n  }\n  \n  return (\n    <button className={`${baseStyles} ${variants[variant]}`}>\n      {children}\n    </button>\n  )\n}"
+      },
+      "explanation": "Tailwind: utility classes. Purge automatico. Popolare, veloce da scrivere."
+    },
+    {
+      "type": "code",
+      "title": "💻 Global CSS & CSS Variables",
+      "code": {
+        "language": "css",
+        "snippet": "/* app/globals.css */\n@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n:root {\n  --primary-color: #0070f3;\n  --secondary-color: #6b7280;\n  --background: #ffffff;\n  --foreground: #000000;\n  --border-radius: 8px;\n}\n\n@media (prefers-color-scheme: dark) {\n  :root {\n    --background: #000000;\n    --foreground: #ffffff;\n  }\n}\n\n* {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0;\n}\n\nhtml,\nbody {\n  max-width: 100vw;\n  overflow-x: hidden;\n}\n\nbody {\n  color: var(--foreground);\n  background: var(--background);\n}\n\na {\n  color: inherit;\n  text-decoration: none;\n}"
+      },
+      "explanation": "globals.css per reset, variabili, dark mode. Import solo in root layout."
+    },
+    {
+      "type": "code",
+      "title": "💻 Styled Components (CSS-in-JS)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// lib/registry.tsx (required for App Router)\n'use client'\n\nimport React, { useState } from 'react'\nimport { useServerInsertedHTML } from 'next/navigation'\nimport { ServerStyleSheet, StyleSheetManager } from 'styled-components'\n\nexport default function StyledComponentsRegistry({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  const [styledComponentsStyleSheet] = useState(() => new ServerStyleSheet())\n  \n  useServerInsertedHTML(() => {\n    const styles = styledComponentsStyleSheet.getStyleElement()\n    styledComponentsStyleSheet.instance.clearTag()\n    return <>{styles}</>\n  })\n  \n  return (\n    <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>\n      {children}\n    </StyleSheetManager>\n  )\n}\n\n// components/Button.tsx\n'use client'\nimport styled from 'styled-components'\n\nconst StyledButton = styled.button`\n  padding: 12px 24px;\n  background: ${props => props.theme.primary};\n  color: white;\n  border: none;\n  border-radius: 8px;\n`\n\nexport default function Button({ children }) {\n  return <StyledButton>{children}</StyledButton>\n}"
+      },
+      "explanation": "Styled-components: richiede registry. 'use client' obbligatorio. Performance hit."
+    },
+    {
+      "type": "text",
+      "title": "Font Optimization",
+      "paragraphs": [
+        "<strong>next/font (built-in, raccomandato):</strong>",
+        "• Download automatico dei font a build-time",
+        "• Self-hosted (no richieste esterne a Google Fonts)",
+        "• Zero layout shift (size-adjust automatico)",
+        "• Subset automatico (solo caratteri usati)",
+        "",
+        "<strong>Google Fonts:</strong>",
+        "<code>import { Inter } from 'next/font/google'</code>",
+        "",
+        "<strong>Local Fonts:</strong>",
+        "<code>import localFont from 'next/font/local'</code>",
+        "",
+        "<strong>Vantaggi:</strong>",
+        "• Performance: no FOUT (Flash of Unstyled Text)",
+        "• Privacy: font self-hosted",
+        "• Automatic optimization",
+        "",
+        "<strong>CSS Variables:</strong>",
+        "Font esposto come CSS variable, usabile ovunque"
+      ],
+      "ironicClosing": "next/font: Google Fonts senza Google. Privacy e performance. Win-win."
+    },
+    {
+      "type": "title",
+      "title": "Performance",
+      "subtitle": "Image optimization, lazy loading, code splitting",
+      "description": "Best practices per app velocissime"
+    },
+    {
+      "type": "code",
+      "title": "💻 Image Optimization",
+      "code": {
+        "language": "typescript",
+        "snippet": "// next/image - Automatic optimization\nimport Image from 'next/image'\n\nexport default function ProductPage() {\n  return (\n    <div>\n      {/* Immagine esterna */}\n      <Image\n        src=\"https://example.com/photo.jpg\"\n        alt=\"Product\"\n        width={800}\n        height={600}\n        priority  // LCP image (above fold)\n      />\n      \n      {/* Immagine locale */}\n      <Image\n        src=\"/images/hero.jpg\"\n        alt=\"Hero\"\n        width={1200}\n        height={800}\n        quality={90}  // Default: 75\n        placeholder=\"blur\"  // Blur placeholder\n        blurDataURL=\"data:image/jpeg;base64,...\"\n      />\n      \n      {/* Fill (object-fit) */}\n      <div style={{ position: 'relative', width: '100%', height: '400px' }}>\n        <Image\n          src=\"/bg.jpg\"\n          alt=\"Background\"\n          fill\n          style={{ objectFit: 'cover' }}\n        />\n      </div>\n    </div>\n  )\n}\n\n// ✅ Ottimizzazioni automatiche:\n// - Resize, format (WebP/AVIF), quality\n// - Lazy loading (eccetto priority)\n// - Responsive images (srcset)"
+      },
+      "explanation": "next/image: ottimizzazione automatica. WebP/AVIF, lazy load, responsive. Essenziale."
+    },
+    {
+      "type": "code",
+      "title": "💻 Dynamic Imports & Code Splitting",
+      "code": {
+        "language": "typescript",
+        "snippet": "// Lazy load componente pesante\nimport dynamic from 'next/dynamic'\n\n// Con loading state\nconst HeavyChart = dynamic(() => import('@/components/HeavyChart'), {\n  loading: () => <p>Loading chart...</p>,\n  ssr: false, // Disabilita SSR per questo component (solo client)\n})\n\n// Con named export\nconst DynamicComponent = dynamic(\n  () => import('@/components/Dashboard').then((mod) => mod.Dashboard)\n)\n\nexport default function AnalyticsPage() {\n  return (\n    <div>\n      <h1>Analytics</h1>\n      {/* HeavyChart caricato solo quando necessario */}\n      <HeavyChart data={data} />\n    </div>\n  )\n}\n\n// Conditional import\nexport default function Page() {\n  const [showModal, setShowModal] = useState(false)\n  \n  const handleOpenModal = async () => {\n    const { Modal } = await import('@/components/Modal')\n    setShowModal(true)\n  }\n  \n  return <button onClick={handleOpenModal}>Open Modal</button>\n}"
+      },
+      "explanation": "dynamic() per lazy loading. Riduce bundle iniziale. ssr: false per client-only."
+    },
+    {
+      "type": "code",
+      "title": "💻 Metadata API (SEO)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/layout.tsx (static metadata)\nimport type { Metadata } from 'next'\n\nexport const metadata: Metadata = {\n  title: 'My Next.js App',\n  description: 'An awesome Next.js 16 application',\n  openGraph: {\n    title: 'My Next.js App',\n    description: 'An awesome Next.js 16 application',\n    images: ['/og-image.jpg'],\n  },\n}\n\n// app/blog/[slug]/page.tsx (dynamic metadata)\nexport async function generateMetadata(\n  { params }: { params: { slug: string } }\n): Promise<Metadata> {\n  const post = await fetchPost(params.slug)\n  \n  return {\n    title: post.title,\n    description: post.excerpt,\n    openGraph: {\n      title: post.title,\n      description: post.excerpt,\n      images: [post.coverImage],\n    },\n    twitter: {\n      card: 'summary_large_image',\n      title: post.title,\n      description: post.excerpt,\n      images: [post.coverImage],\n    },\n  }\n}"
+      },
+      "explanation": "Metadata API per SEO. Static o dynamic (generateMetadata). OG tags, Twitter cards."
+    },
+    {
+      "type": "code",
+      "title": "💻 Route Handlers (API Routes)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/api/posts/route.ts\nimport { NextRequest } from 'next/server'\nimport { db } from '@/lib/db'\n\n// GET /api/posts\nexport async function GET(request: NextRequest) {\n  const searchParams = request.nextUrl.searchParams\n  const page = searchParams.get('page') || '1'\n  \n  const posts = await db.post.findMany({\n    skip: (parseInt(page) - 1) * 10,\n    take: 10,\n  })\n  \n  return Response.json(posts)\n}\n\n// POST /api/posts\nexport async function POST(request: NextRequest) {\n  const body = await request.json()\n  \n  const post = await db.post.create({\n    data: body,\n  })\n  \n  return Response.json(post, { status: 201 })\n}\n\n// app/api/posts/[id]/route.ts\n// GET /api/posts/:id\nexport async function GET(\n  request: NextRequest,\n  { params }: { params: { id: string } }\n) {\n  const post = await db.post.findUnique({ where: { id: params.id } })\n  return Response.json(post)\n}"
+      },
+      "explanation": "Route handlers per API. GET, POST, PUT, DELETE. Web Standard Response."
+    },
+    {
+      "type": "code",
+      "title": "💻 Sitemap & Robots.txt",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/sitemap.ts\nimport { MetadataRoute } from 'next'\n\nexport default async function sitemap(): Promise<MetadataRoute.Sitemap> {\n  const posts = await fetchAllPosts()\n  \n  const postUrls = posts.map((post) => ({\n    url: `https://example.com/blog/${post.slug}`,\n    lastModified: post.updatedAt,\n    changeFrequency: 'weekly' as const,\n    priority: 0.8,\n  }))\n  \n  return [\n    {\n      url: 'https://example.com',\n      lastModified: new Date(),\n      changeFrequency: 'yearly',\n      priority: 1,\n    },\n    {\n      url: 'https://example.com/about',\n      lastModified: new Date(),\n      changeFrequency: 'monthly',\n      priority: 0.8,\n    },\n    ...postUrls,\n  ]\n}\n\n// app/robots.ts\nimport { MetadataRoute } from 'next'\n\nexport default function robots(): MetadataRoute.Robots {\n  return {\n    rules: {\n      userAgent: '*',\n      allow: '/',\n      disallow: '/private/',\n    },\n    sitemap: 'https://example.com/sitemap.xml',\n  }\n}"
+      },
+      "explanation": "sitemap.ts e robots.ts per SEO. Auto-generati, type-safe. Production-ready."
+    },
+    {
+      "type": "code",
+      "title": "💻 Analytics & Web Vitals",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/layout.tsx\nimport { Analytics } from '@vercel/analytics/react'\nimport { SpeedInsights } from '@vercel/speed-insights/next'\n\nexport default function RootLayout({ children }) {\n  return (\n    <html>\n      <body>\n        {children}\n        <Analytics />        {/* Vercel Analytics */}\n        <SpeedInsights />    {/* Speed Insights */}\n      </body>\n    </html>\n  )\n}\n\n// Custom Web Vitals reporting\n// app/web-vitals.tsx\n'use client'\n\nimport { useReportWebVitals } from 'next/web-vitals'\n\nexport function WebVitals() {\n  useReportWebVitals((metric) => {\n    // Log to console\n    console.log(metric)\n    \n    // Send to analytics\n    // window.gtag('event', metric.name, {\n    //   value: Math.round(metric.value),\n    //   metric_id: metric.id,\n    //   metric_value: metric.value,\n    //   metric_delta: metric.delta,\n    // })\n  })\n  \n  return null\n}"
+      },
+      "explanation": "Analytics built-in (Vercel). Web Vitals tracking. Performance monitoring."
+    },
+    {
+      "type": "title",
+      "title": "Metadata & SEO",
+      "subtitle": "Open Graph, Twitter Cards, JSON-LD",
+      "description": "SEO perfetto con Metadata API"
+    },
+    {
+      "type": "code",
+      "title": "💻 Metadata Completa",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/blog/[slug]/page.tsx\nimport type { Metadata } from 'next'\n\ntype Props = {\n  params: { slug: string }\n}\n\nexport async function generateMetadata({ params }: Props): Promise<Metadata> {\n  const post = await fetchPost(params.slug)\n  \n  return {\n    title: post.title,\n    description: post.excerpt,\n    authors: [{ name: post.author }],\n    keywords: post.tags,\n    \n    // Open Graph\n    openGraph: {\n      type: 'article',\n      title: post.title,\n      description: post.excerpt,\n      url: `https://example.com/blog/${post.slug}`,\n      images: [{\n        url: post.coverImage,\n        width: 1200,\n        height: 630,\n        alt: post.title,\n      }],\n      publishedTime: post.publishedAt,\n      authors: [post.author],\n    },\n    \n    // Twitter\n    twitter: {\n      card: 'summary_large_image',\n      title: post.title,\n      description: post.excerpt,\n      images: [post.coverImage],\n      creator: '@username',\n    },\n  }\n}"
+      },
+      "explanation": "Metadata completa: title, description, OG, Twitter. SEO + social sharing perfetti."
+    },
+    {
+      "type": "code",
+      "title": "💻 JSON-LD (Schema.org)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/blog/[slug]/page.tsx\nexport default async function BlogPost({ params }: Props) {\n  const post = await fetchPost(params.slug)\n  \n  const jsonLd = {\n    '@context': 'https://schema.org',\n    '@type': 'BlogPosting',\n    headline: post.title,\n    description: post.excerpt,\n    image: post.coverImage,\n    datePublished: post.publishedAt,\n    dateModified: post.updatedAt,\n    author: {\n      '@type': 'Person',\n      name: post.author,\n    },\n  }\n  \n  return (\n    <>\n      <script\n        type=\"application/ld+json\"\n        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}\n      />\n      \n      <article>\n        <h1>{post.title}</h1>\n        <div dangerouslySetInnerHTML={{ __html: post.content }} />\n      </article>\n    </>\n  )\n}\n\n// Rich snippets per Google Search (stelle, breadcrumb, FAQ, etc.)"
+      },
+      "explanation": "JSON-LD per structured data. Google rich snippets. SEO avanzato."
+    },
+    {
+      "type": "code",
+      "title": "💻 Canonical URLs & Alternate Languages",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/blog/[slug]/page.tsx\nimport type { Metadata } from 'next'\n\nexport async function generateMetadata({ params }: Props): Promise<Metadata> {\n  return {\n    title: 'My Post',\n    \n    // Canonical URL (evita duplicate content)\n    alternates: {\n      canonical: `https://example.com/blog/${params.slug}`,\n      \n      // Alternate languages (i18n)\n      languages: {\n        'en-US': `https://example.com/en/blog/${params.slug}`,\n        'it-IT': `https://example.com/it/blog/${params.slug}`,\n        'es-ES': `https://example.com/es/blog/${params.slug}`,\n      },\n    },\n    \n    // Robots directives\n    robots: {\n      index: true,\n      follow: true,\n      nocache: false,\n      googleBot: {\n        index: true,\n        follow: true,\n        'max-video-preview': -1,\n        'max-image-preview': 'large',\n        'max-snippet': -1,\n      },\n    },\n  }\n}"
+      },
+      "explanation": "Canonical per duplicate content. Alternate languages per i18n. Robots directives."
+    },
+    {
+      "type": "text",
+      "title": "SEO Best Practices Next.js",
+      "paragraphs": [
+        "<strong>1. Server Components per contenuto SEO</strong>",
+        "• HTML completo al first load",
+        "• Crawler vedono contenuto immediatamente",
+        "",
+        "<strong>2. Metadata API sempre</strong>",
+        "• generateMetadata per pagine dinamiche",
+        "• Open Graph + Twitter cards obbligatorie",
+        "",
+        "<strong>3. Semantic HTML</strong>",
+        "• <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;header&gt;</code>",
+        "• Heading hierarchy (h1 → h2 → h3)",
+        "",
+        "<strong>4. Image optimization</strong>",
+        "• next/image per tutti le immagini",
+        "• Alt text descrittivi",
+        "",
+        "<strong>5. Performance</strong>",
+        "• Core Web Vitals (LCP, FID, CLS)",
+        "• Lighthouse score > 90",
+        "",
+        "<strong>6. Sitemap + robots.txt</strong>",
+        "• sitemap.ts per crawling",
+        "• robots.ts per directives"
+      ],
+      "ironicClosing": "SEO Next.js: Server Components + Metadata API = Google loves you. Simple as that."
+    },
+    {
+      "type": "title",
+      "title": "Deployment",
+      "subtitle": "Vercel, self-hosted, Docker",
+      "description": "Da zero a production in 5 minuti"
+    },
+    {
+      "type": "text",
+      "title": "Opzioni di Deployment",
+      "paragraphs": [
+        "<strong>1. Vercel (raccomandato, zero-config)</strong>",
+        "• Push to git → auto-deploy",
+        "• Edge Functions, Analytics, Speed Insights built-in",
+        "• Preview deployments per ogni PR",
+        "• Free tier generoso",
+        "",
+        "<strong>2. Self-hosted (Node.js server)</strong>",
+        "• <code>next build</code> + <code>next start</code>",
+        "• Qualsiasi VPS (DigitalOcean, AWS EC2, etc.)",
+        "• PM2 o Docker per process management",
+        "",
+        "<strong>3. Static Export</strong>",
+        "• <code>next build</code> con <code>output: 'export'</code>",
+        "• Deploy su Netlify, Cloudflare Pages, S3",
+        "• Limitazioni: no Server Components, no API routes",
+        "",
+        "<strong>4. Docker</strong>",
+        "• Containerized deployment",
+        "• Kubernetes, AWS ECS, Google Cloud Run",
+        "",
+        "<strong>5. Edge (Cloudflare Workers, Deno Deploy)</strong>",
+        "• Ultra low latency",
+        "• Limitazioni runtime"
+      ],
+      "ironicClosing": "Deployment: Vercel per semplicità, self-hosted per controllo. Pick your poison."
+    },
+    {
+      "type": "code",
+      "title": "💻 Vercel Deployment",
+      "code": {
+        "language": "bash",
+        "snippet": "# 1. Installa Vercel CLI\nnpm i -g vercel\n\n# 2. Login\nvercel login\n\n# 3. Deploy\nvercel\n\n# 4. Production deploy\nvercel --prod\n\n# ===== O via Git (raccomandato) =====\n# 1. Push to GitHub/GitLab/Bitbucket\ngit push origin main\n\n# 2. Import su vercel.com\n# - Connetti repo\n# - Auto-detect Next.js\n# - Deploy!\n\n# ===== Environment Variables =====\n# vercel.com → Project Settings → Environment Variables\n# O via CLI:\nvercel env add DATABASE_URL\n\n# ===== Custom Domain =====\n# vercel.com → Project Settings → Domains\n# Add custom domain + DNS setup\n\n# ✅ Features Vercel:\n# - Preview deployments per PR\n# - Analytics\n# - Edge Functions\n# - Image Optimization\n# - Zero config"
+      },
+      "explanation": "Vercel: push git → deployed. Zero config. Preview per PR. Analytics built-in."
+    },
+    {
+      "type": "code",
+      "title": "💻 Self-Hosted (Node.js)",
+      "code": {
+        "language": "bash",
+        "snippet": "# 1. Build production\nnpm run build\n\n# 2. Start server\nnpm start\n# Server su http://localhost:3000\n\n# ===== Con PM2 (process manager) =====\nnpm install -g pm2\n\n# Start\npm2 start npm --name \"nextjs-app\" -- start\n\n# Status\npm2 status\n\n# Logs\npm2 logs nextjs-app\n\n# Restart\npm2 restart nextjs-app\n\n# Auto-restart on crash\npm2 startup\npm2 save\n\n# ===== Nginx Reverse Proxy =====\n# /etc/nginx/sites-available/myapp\nserver {\n  listen 80;\n  server_name example.com;\n\n  location / {\n    proxy_pass http://localhost:3000;\n    proxy_http_version 1.1;\n    proxy_set_header Upgrade $http_upgrade;\n    proxy_set_header Connection 'upgrade';\n    proxy_set_header Host $host;\n    proxy_cache_bypass $http_upgrade;\n  }\n}"
+      },
+      "explanation": "Self-hosted: build + start. PM2 per process management. Nginx per reverse proxy."
+    },
+    {
+      "type": "code",
+      "title": "💻 Docker Deployment",
+      "code": {
+        "language": "dockerfile",
+        "snippet": "# Dockerfile (multi-stage)\nFROM node:20-alpine AS base\n\n# Dependencies\nFROM base AS deps\nRUN apk add --no-cache libc6-compat\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\n\n# Builder\nFROM base AS builder\nWORKDIR /app\nCOPY --from=deps /app/node_modules ./node_modules\nCOPY . .\nRUN npm run build\n\n# Runner\nFROM base AS runner\nWORKDIR /app\nENV NODE_ENV production\n\nRUN addgroup --system --gid 1001 nodejs\nRUN adduser --system --uid 1001 nextjs\n\nCOPY --from=builder /app/public ./public\nCOPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./\nCOPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static\n\nUSER nextjs\nEXPOSE 3000\nENV PORT 3000\n\nCMD [\"node\", \"server.js\"]\n\n# docker build -t nextjs-app .\n# docker run -p 3000:3000 nextjs-app"
+      },
+      "explanation": "Docker: multi-stage build. Standalone output. Production-ready container."
+    },
+    {
+      "type": "code",
+      "title": "💻 Environment Variables",
+      "code": {
+        "language": "bash",
+        "snippet": "# .env.local (development, gitignored)\nDATABASE_URL=postgresql://...\nNEXT_PUBLIC_API_URL=http://localhost:3000/api\nSECRET_KEY=super-secret\n\n# .env.production (production)\nDATABASE_URL=postgresql://prod...\nNEXT_PUBLIC_API_URL=https://api.example.com\nSECRET_KEY=prod-secret\n\n# ===== Next.js conventions =====\n# NEXT_PUBLIC_* - Exposed to browser (build-time)\n# Other vars - Server-side only (runtime)\n\n// In code:\n// Server Component/API Route\nconst secret = process.env.SECRET_KEY // ✅ Server-only\n\n// Client Component\nconst apiUrl = process.env.NEXT_PUBLIC_API_URL // ✅ Exposed\n// const secret = process.env.SECRET_KEY // ❌ undefined (not exposed)\n\n# ===== Vercel =====\n# Add via dashboard o CLI\nvercel env add DATABASE_URL\n\n# ===== Docker =====\n# docker run -e DATABASE_URL=... nextjs-app\n\n# ===== Security =====\n# NEVER commit .env files (use .gitignore)\n# Use secret managers in production (AWS Secrets, Vault)"
+      },
+      "explanation": "NEXT_PUBLIC_* per client. Altri per server. .env.local gitignored. Security first."
+    },
+    {
+      "type": "title",
+      "title": "Next.js 16: Novità 2025",
+      "subtitle": "Cache Components, Turbopack, React Compiler",
+      "description": "Features cutting-edge di Next.js 16"
+    },
+    {
+      "type": "code",
+      "title": "💻 Cache Components (use cache)",
+      "code": {
+        "language": "typescript",
+        "snippet": "// app/products/page.tsx\n'use cache' // ⬅️ Opt-in caching (Next.js 16)\n\nimport { db } from '@/lib/db'\n\nexport default async function ProductsPage() {\n  // Questo component è cached con PPR\n  const products = await db.product.findMany()\n  \n  return (\n    <div>\n      {products.map((product) => (\n        <ProductCard key={product.id} product={product} />\n      ))}\n    </div>\n  )\n}\n\n// Fine-grained caching\nasync function fetchProducts() {\n  'use cache'\n  return await db.product.findMany()\n}\n\n// ✅ Next.js 16 philosophy:\n// - Dynamic by default (no cache)\n// - 'use cache' per opt-in\n// - Partial Pre-Rendering (PPR) per mix static/dynamic\n\n// ❌ Pre-Next.js 16:\n// - Static by default (cache implicita)\n// - { cache: 'no-store' } per opt-out\n// - Confusing per developers"
+      },
+      "explanation": "'use cache' directive per caching esplicito. PPR per static + dynamic mix."
+    },
+    {
+      "type": "text",
+      "title": "🚀 Turbopack Stable (Production)",
+      "paragraphs": [
+        "<strong>Cosa è Turbopack:</strong>",
+        "• Successor di Webpack, scritto in Rust",
+        "• Build tool ultra-veloce (fino a 700x più veloce)",
+        "• Incremental bundling (solo file cambiati)",
+        "",
+        "<strong>Next.js 16 - Stable Production:</strong>",
+        "• Default bundler per dev E production",
+        "• File system caching (beta) per startup velocissimo",
+        "• HMR (Hot Module Replacement) istantaneo",
+        "",
+        "<strong>Performance:</strong>",
+        "• Dev server startup: ~10x più veloce",
+        "• Hot reload: <50ms (vs 1-2s Webpack)",
+        "• Production build: ~5x più veloce",
+        "",
+        "<strong>Come usarlo:</strong>",
+        "• Next.js 16: enabled by default",
+        "• No config needed",
+        "",
+        "<strong>Opzionale (file system cache):</strong>",
+        "<code>next.config.mjs:</code>",
+        "<code>experimental: { turbo: { unstable_cache: true } }</code>"
+      ],
+      "ironicClosing": "Turbopack: Webpack ma in Rust e 700x più veloce. Rust hype justified."
+    },
+    {
+      "type": "text",
+      "title": "⚛️ React Compiler (Built-in)",
+      "paragraphs": [
+        "<strong>Cosa è React Compiler:</strong>",
+        "• Automatic memoization compile-time",
+        "• Elimina need per useMemo/useCallback manuali",
+        "• Ottimizza re-render automaticamente",
+        "",
+        "<strong>Next.js 16 Integration:</strong>",
+        "• Built-in, stable support",
+        "• Enable in next.config.mjs",
+        "",
+        "<strong>Vantaggi:</strong>",
+        "• Codice più pulito (no useMemo everywhere)",
+        "• Performance migliorate automaticamente",
+        "• Mental overhead ridotto",
+        "",
+        "<strong>Come abilitare:</strong>",
+        "<code>// next.config.mjs</code>",
+        "<code>export default {</code>",
+        "<code>  experimental: {</code>",
+        "<code>    reactCompiler: true,</code>",
+        "<code>  },</code>",
+        "<code>}</code>",
+        "",
+        "<strong>Effetto:</strong>",
+        "React Compiler analizza componenti e aggiunge memoization dove serve"
+      ],
+      "ironicClosing": "React Compiler: useMemo/useCallback obsoleti. Compiler fa il lavoro. Finally."
+    },
+    {
+      "type": "code",
+      "title": "💻 Enhanced Routing APIs",
+      "code": {
+        "language": "typescript",
+        "snippet": "// Next.js 16: Nuove cache APIs\nimport { updateTag, revalidateTag, refresh } from 'next/cache'\n\n// updateTag() - Update cache tag\nexport async function updateProduct(id: string) {\n  'use server'\n  \n  await db.product.update({ where: { id }, data: { ... } })\n  \n  // Update cache tag (nuovo in v16)\n  updateTag(`product-${id}`)\n}\n\n// revalidateTag() - Invalidate cache tag\nexport async function deleteProduct(id: string) {\n  'use server'\n  \n  await db.product.delete({ where: { id } })\n  revalidateTag(`product-${id}`)\n  revalidateTag('products') // Invalidate list\n}\n\n// refresh() - Force refresh current page\n'use client'\nimport { useRouter } from 'next/navigation'\n\nexport function RefreshButton() {\n  const router = useRouter()\n  \n  return (\n    <button onClick={() => router.refresh()}>\n      Refresh Data\n    </button>\n  )\n}\n\n// ✅ Fine-grained cache control\n// ✅ Predictable revalidation"
+      },
+      "explanation": "updateTag() per cache updates. revalidateTag() refined. refresh() per force reload."
+    },
+    {
+      "type": "text",
+      "title": "🔧 Build Adapters API (Alpha)",
+      "paragraphs": [
+        "<strong>Cosa sono Build Adapters:</strong>",
+        "• API per custom build integrations",
+        "• Hook into build process",
+        "• Custom output formats per deployment platforms",
+        "",
+        "<strong>Use cases:</strong>",
+        "• Deploy platform integrations (AWS, GCP, Azure)",
+        "• Custom build output (edge workers, lambda)",
+        "• Build process customization",
+        "",
+        "<strong>Status:</strong>",
+        "• Alpha in Next.js 16",
+        "• Experimental, API subject to change",
+        "",
+        "<strong>Esempio:</strong>",
+        "<code>// next.config.mjs</code>",
+        "<code>export default {</code>",
+        "<code>  experimental: {</code>",
+        "<code>    buildAdapter: 'aws-lambda',</code>",
+        "<code>  },</code>",
+        "<code>}</code>",
+        "",
+        "<strong>Futuro:</strong>",
+        "Community adapters per ogni platform"
+      ],
+      "ironicClosing": "Build Adapters: Next.js ovunque. Vercel, AWS, GCP, edge, toaster. Everywhere."
+    },
+    {
+      "type": "title",
+      "title": "Best Practices 2025",
+      "subtitle": "Patterns e anti-patterns moderni",
+      "description": "Come scrivere Next.js production-ready"
+    },
+    {
+      "type": "text",
+      "title": "✅ Best Practices Next.js 16",
+      "paragraphs": [
+        "<strong>1. Server Components by default</strong>",
+        "• 'use client' solo quando necessario (interattività, hooks)",
+        "• Composition pattern: Server wrappa Client",
+        "",
+        "<strong>2. Data fetching in Server Components</strong>",
+        "• async/await direttamente nel component",
+        "• No API routes per internal data (solo per third-party)",
+        "",
+        "<strong>3. Server Actions per mutations</strong>",
+        "• Forms, mutations, revalidation",
+        "• Type-safe, no API routes boilerplate",
+        "",
+        "<strong>4. Cache opt-in (Next.js 16)</strong>",
+        "• Dynamic by default",
+        "• 'use cache' esplicito dove serve",
+        "",
+        "<strong>5. Image optimization sempre</strong>",
+        "• next/image per ogni immagine",
+        "• priority per LCP images",
+        "",
+        "<strong>6. Metadata API sempre</strong>",
+        "• generateMetadata per dynamic pages",
+        "• OG tags + Twitter cards obbligatorie",
+        "",
+        "<strong>7. Error handling</strong>",
+        "• error.tsx per error boundaries",
+        "• loading.tsx per loading states",
+        "",
+        "<strong>8. TypeScript</strong>",
+        "• Type-safe end-to-end",
+        "• Strict mode enabled"
+      ],
+      "ironicClosing": "Best practices: segui queste e ship fast. Ignora e debug per settimane. Your call."
+    },
+    {
+      "type": "text",
+      "title": "❌ Anti-Patterns da Evitare",
+      "paragraphs": [
+        "<strong>1. 'use client' troppo in alto</strong>",
+        "❌ page.tsx intera con 'use client'",
+        "✅ Solo leaf components interattivi",
+        "",
+        "<strong>2. Fetch in Client Components (quando evitabile)</strong>",
+        "❌ useEffect + fetch per data loading",
+        "✅ Server Component async fetch (quando possibile)",
+        "",
+        "<strong>3. API routes per internal data</strong>",
+        "❌ Server Component → API route → Database",
+        "✅ Server Component → Database direttamente",
+        "",
+        "<strong>4. Mancanza di error boundaries</strong>",
+        "❌ No error.tsx (errori crashano app)",
+        "✅ error.tsx per gestione errori",
+        "",
+        "<strong>5. Immagini senza optimization</strong>",
+        "❌ <code>&lt;img src=...&gt;</code>",
+        "✅ <code>&lt;Image /&gt;</code> di next/image",
+        "",
+        "<strong>6. Secrets nel client</strong>",
+        "❌ <code>NEXT_PUBLIC_SECRET_KEY</code>",
+        "✅ Secrets solo server-side (no NEXT_PUBLIC)",
+        "",
+        "<strong>7. Large dependencies in Client Components</strong>",
+        "❌ Heavy library in 'use client' (bundle bloat)",
+        "✅ Dynamic import o Server Component"
+      ],
+      "ironicClosing": "Anti-patterns: conosci il nemico. Evita e prospera. Ship fast, debug less."
+    },
+    {
+      "type": "text",
+      "title": "🎯 Quando Usare Next.js",
+      "paragraphs": [
+        "<strong>✅ Perfect fit:</strong>",
+        "• Marketing websites (SEO critical)",
+        "• E-commerce (performance + SEO)",
+        "• Blogs, documentation sites",
+        "• SaaS applications",
+        "• Dashboards (mix static + dynamic)",
+        "• Any React app that needs SEO",
+        "",
+        "<strong>⚠️ Considerare alternative:</strong>",
+        "• Pure SPA senza SEO needs → Vite + React",
+        "• Real-time collaboration → WebSockets heavy (consider dedicated server)",
+        "• Electron apps → Electron + Vite",
+        "",
+        "<strong>❌ Non usare Next.js per:</strong>",
+        "• Mobile apps native (usa React Native)",
+        "• Pure static sites senza dynamic (usa Astro)",
+        "• Backend-only API (usa Express, Fastify)",
+        "",
+        "<strong>Regola generale:</strong>",
+        "Se hai React + serve SEO/performance → Next.js",
+        "Se hai React + no SEO needs → Vite potrebbe bastare",
+        "Se non hai React → considera altro"
+      ],
+      "ironicClosing": "Next.js: React framework definitivo per 90% use cases. Il restante 10%? Ci sono alternative."
+    }
+  ]
+}

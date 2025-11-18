@@ -1,0 +1,462 @@
+{
+  "title": "NumPy Fundamentals: Guida Completa",
+  "description": "Calcolo numerico e array multidimensionali - La base per Data Science",
+  "steps": [
+    {
+      "name": "Introduzione",
+      "slides": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "ndarray Basics",
+      "slides": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "Indexing & Slicing",
+      "slides": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "name": "Operazioni Array",
+      "slides": [
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "name": "Broadcasting",
+      "slides": [
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "name": "Funzioni Matematiche",
+      "slides": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    },
+    {
+      "name": "Aggregazioni",
+      "slides": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
+    },
+    {
+      "name": "Manipolazione Shape",
+      "slides": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    {
+      "name": "Linear Algebra",
+      "slides": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    },
+    {
+      "name": "Random & Statistics",
+      "slides": [
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    {
+      "name": "File I/O",
+      "slides": [
+        53,
+        54,
+        55,
+        56
+      ]
+    },
+    {
+      "name": "Performance Tips",
+      "slides": [
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    {
+      "name": "Best Practices",
+      "slides": [
+        61,
+        62
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "NumPy Fundamentals",
+      "subtitle": "La Guida Completa",
+      "description": "Calcolo numerico e array multidimensionali per Data Science",
+      "ironicClosing": "NumPy: perché fare math con liste Python è come guidare una Ferrari in prima."
+    },
+    {
+      "type": "text",
+      "title": "Perché NumPy?",
+      "paragraphs": [
+        "<strong>Performance:</strong> 10-100x più veloce delle liste Python",
+        "<strong>Memory:</strong> Array compatti, meno overhead",
+        "<strong>Vectorization:</strong> Operazioni su intere matrici",
+        "<strong>Standard:</strong> Base per Pandas, SciPy, scikit-learn, TensorFlow",
+        "<strong>C-optimized:</strong> Core scritto in C",
+        "",
+        "<strong>Creato da:</strong> Travis Oliphant nel 2005",
+        "<strong>Usato da:</strong> NASA, Google, Meta, tutti i data scientist",
+        "",
+        "<strong>Performance example:</strong>",
+        "• Python list sum: 100ms",
+        "• NumPy array sum: 1ms (100x faster!)"
+      ],
+      "ironicClosing": "NumPy: quando Python dice 'sono veloce' ma intende 'rispetto a Java'."
+    },
+    {
+      "type": "code",
+      "title": "💻 Setup & Import",
+      "code": {
+        "language": "python",
+        "snippet": "# Installazione\n# $ pip install numpy\n\n# Import (convenzione universale)\nimport numpy as np\n\n# Verifica versione\nprint(np.__version__)  # 1.26.0 o superiore\n\n# Performance comparison\nimport time\n\n# Python list\nstart = time.time()\npython_list = list(range(1000000))\nresult = sum([x**2 for x in python_list])\nprint(f\"Python: {time.time() - start:.4f}s\")\n\n# NumPy array\nstart = time.time()\nnp_array = np.arange(1000000)\nresult = np.sum(np_array**2)\nprint(f\"NumPy: {time.time() - start:.4f}s\")\n\n# NumPy è ~100x più veloce!"
+      },
+      "explanation": "import numpy as np è la convenzione standard. Performance incredibili."
+    },
+    {
+      "type": "title",
+      "title": "ndarray Basics",
+      "subtitle": "N-Dimensional Arrays",
+      "description": "La struttura dati fondamentale di NumPy"
+    },
+    {
+      "type": "code",
+      "title": "💻 Creare Arrays",
+      "code": {
+        "language": "python",
+        "snippet": "import numpy as np\n\n# Da lista\narr = np.array([1, 2, 3, 4, 5])\nprint(arr)  # [1 2 3 4 5]\n\n# 2D array (matrice)\nmatrix = np.array([[1, 2, 3], [4, 5, 6]])\nprint(matrix)\n# [[1 2 3]\n#  [4 5 6]]\n\n# 3D array\ntensor = np.array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])\n\n# Con tipo specifico\narr_float = np.array([1, 2, 3], dtype=np.float64)\narr_int = np.array([1.5, 2.7, 3.9], dtype=np.int32)\n\n# Attenzione: array omogenei!\n# np.array([1, 'two', 3])  # Converte tutto a string!"
+      },
+      "explanation": "np.array() crea ndarray. Tutti gli elementi stesso tipo (omogeneo)."
+    },
+    {
+      "type": "code",
+      "title": "💻 Array Generation Functions",
+      "code": {
+        "language": "python",
+        "snippet": "# Zeros\nzeros = np.zeros(5)  # [0. 0. 0. 0. 0.]\nzeros_2d = np.zeros((3, 4))  # 3x4 matrice di zeri\n\n# Ones\nones = np.ones(5)  # [1. 1. 1. 1. 1.]\nones_2d = np.ones((2, 3))  # 2x3 matrice di 1\n\n# Full (valore custom)\nfives = np.full(5, 5)  # [5 5 5 5 5]\n\n# Arange (come range)\narr = np.arange(0, 10, 2)  # [0 2 4 6 8]\n\n# Linspace (n valori equidistanziati)\nlinear = np.linspace(0, 1, 5)  # [0.   0.25 0.5  0.75 1.  ]\n\n# Identity matrix\neye = np.eye(3)  # 3x3 matrice identità\n\n# Empty (non inizializzato, veloce)\nempty = np.empty(5)  # Valori casuali dalla memoria"
+      },
+      "explanation": "Funzioni per creare array speciali. linspace per range float."
+    },
+    {
+      "type": "code",
+      "title": "💻 Array Attributes",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([[1, 2, 3], [4, 5, 6]])\n\nprint(arr.shape)   # (2, 3) - dimensioni\nprint(arr.ndim)    # 2 - numero dimensioni\nprint(arr.size)    # 6 - totale elementi\nprint(arr.dtype)   # int64 - tipo dati\nprint(arr.itemsize)  # 8 - byte per elemento\nprint(arr.nbytes)  # 48 - totale byte (size * itemsize)\n\n# Reshape\nreshaped = arr.reshape(3, 2)  # (3, 2)\nprint(reshaped)\n# [[1 2]\n#  [3 4]\n#  [5 6]]\n\n# Flatten\nflat = arr.flatten()  # [1 2 3 4 5 6]\n\n# T (transpose)\ntransposed = arr.T  # (3, 2)\nprint(transposed)"
+      },
+      "explanation": "shape, ndim, size per info array. reshape per cambiare forma."
+    },
+    {
+      "type": "code",
+      "title": "💻 Data Types (dtype)",
+      "code": {
+        "language": "python",
+        "snippet": "# Integer types\nint8 = np.array([1, 2, 3], dtype=np.int8)    # -128 to 127\nint16 = np.array([1, 2, 3], dtype=np.int16)  # -32768 to 32767\nint32 = np.array([1, 2, 3], dtype=np.int32)\nint64 = np.array([1, 2, 3], dtype=np.int64)  # default\n\n# Unsigned integers\nuint8 = np.array([1, 2, 3], dtype=np.uint8)  # 0 to 255\n\n# Float types\nfloat32 = np.array([1.0, 2.0], dtype=np.float32)\nfloat64 = np.array([1.0, 2.0], dtype=np.float64)  # default\n\n# Boolean\nbool_arr = np.array([True, False, True], dtype=np.bool_)\n\n# Conversion\narr_float = np.array([1, 2, 3])\narr_int = arr_float.astype(np.int32)\n\n# Memory saving\n# float64: 8 bytes/element\n# float32: 4 bytes/element (50% memory!)"
+      },
+      "explanation": "dtype specifica tipo. int8/16/32/64, float32/64, bool. astype() converte."
+    },
+    {
+      "type": "code",
+      "title": "💻 Copy vs View",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([1, 2, 3, 4, 5])\n\n# View (riferimento, no copia)\nview = arr[1:4]\nview[0] = 999\nprint(arr)  # [1 999 3 4 5] - MODIFICATO!\n\n# Copy (copia indipendente)\ncopy = arr[1:4].copy()\ncopy[0] = 777\nprint(arr)  # [1 999 3 4 5] - NON modificato\n\n# Check se view o copy\nprint(view.base is arr)  # True (è view)\nprint(copy.base is None)  # True (è copy)\n\n# Reshape è view!\nreshaped = arr.reshape(5, 1)\nreshaped[0] = 111\nprint(arr)  # [111 999 3 4 5] - MODIFICATO!\n\n# Best practice: esplicita copy() quando serve"
+      },
+      "explanation": "Slicing crea view (no copia). copy() per copia indipendente."
+    },
+    {
+      "type": "text",
+      "title": "ndarray: Recap",
+      "paragraphs": [
+        "<strong>Creazione:</strong>",
+        "• np.array([...]) da liste",
+        "• np.zeros, np.ones, np.full per array uniformi",
+        "• np.arange, np.linspace per range",
+        "• np.eye per identity matrix",
+        "",
+        "<strong>Attributi:</strong>",
+        "• .shape: dimensioni",
+        "• .ndim: numero dimensioni",
+        "• .size: totale elementi",
+        "• .dtype: tipo dati",
+        "",
+        "<strong>View vs Copy:</strong>",
+        "• Slicing = view (modifica originale!)",
+        "• .copy() per copia indipendente"
+      ],
+      "ironicClosing": "ndarray: N-dimensional array. Perché 1D è per principianti."
+    },
+    {
+      "type": "title",
+      "title": "Indexing & Slicing",
+      "subtitle": "Accesso Dati Avanzato",
+      "description": "Boolean indexing, fancy indexing, e slicing multidimensionale"
+    },
+    {
+      "type": "code",
+      "title": "💻 Basic Indexing",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([10, 20, 30, 40, 50])\n\n# Single element\nprint(arr[0])    # 10\nprint(arr[-1])   # 50\n\n# Slicing\nprint(arr[1:4])  # [20 30 40]\nprint(arr[::2])  # [10 30 50] (step 2)\nprint(arr[::-1]) # [50 40 30 20 10] (reverse)\n\n# 2D array\nmatrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nprint(matrix[0, 0])     # 1 (row 0, col 0)\nprint(matrix[1, 2])     # 6 (row 1, col 2)\nprint(matrix[0])        # [1 2 3] (entire row)\nprint(matrix[:, 0])     # [1 4 7] (entire column)\nprint(matrix[0:2, 1:3]) # [[2 3]\n                        #  [5 6]]"
+      },
+      "explanation": "Indexing 2D: [row, col]. Slicing su ogni dimensione."
+    },
+    {
+      "type": "code",
+      "title": "💻 Boolean Indexing",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])\n\n# Boolean mask\nmask = arr > 5\nprint(mask)  # [False False False False False True True True True True]\nprint(arr[mask])  # [6 7 8 9 10]\n\n# Inline\nprint(arr[arr > 5])  # [6 7 8 9 10]\nprint(arr[arr % 2 == 0])  # [2 4 6 8 10] (evens)\n\n# Multiple conditions\nprint(arr[(arr > 3) & (arr < 8)])  # [4 5 6 7]\nprint(arr[(arr < 3) | (arr > 8)])  # [1 2 9 10]\n\n# 2D boolean indexing\nmatrix = np.array([[1, 2], [3, 4], [5, 6]])\nprint(matrix[matrix > 3])  # [4 5 6] (flattened)\n\n# Modify with boolean indexing\narr[arr > 5] = 999\nprint(arr)  # [1 2 3 4 5 999 999 999 999 999]"
+      },
+      "explanation": "Boolean indexing: potentissimo per filtering. & per AND, | per OR."
+    },
+    {
+      "type": "code",
+      "title": "💻 Fancy Indexing",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([10, 20, 30, 40, 50])\n\n# Index array\nindices = [0, 2, 4]\nprint(arr[indices])  # [10 30 50]\n\n# Negative indices\nprint(arr[[0, -1, 2]])  # [10 50 30]\n\n# 2D fancy indexing\nmatrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nrows = [0, 2]\ncols = [1, 2]\nprint(matrix[rows, cols])  # [2 9] - (0,1) e (2,2)\n\n# Combination\nprint(matrix[[0, 2], :])  # Rows 0 e 2\n# [[1 2 3]\n#  [7 8 9]]\n\n# Advanced: ix_ for meshgrid\nrows = [0, 2]\ncols = [0, 2]\nprint(matrix[np.ix_(rows, cols)])\n# [[1 3]\n#  [7 9]]"
+      },
+      "explanation": "Fancy indexing: accesso con array di indici. Molto flessibile."
+    },
+    {
+      "type": "code",
+      "title": "💻 Where & Select",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([1, 2, 3, 4, 5])\n\n# where: restituisce indici\nindices = np.where(arr > 3)\nprint(indices)  # (array([3, 4]),)\nprint(arr[indices])  # [4 5]\n\n# where come ternary\nresult = np.where(arr > 3, 999, arr)\nprint(result)  # [1 2 3 999 999]\n\n# select (multi-condizioni)\ncondlist = [arr < 2, arr < 4, arr >= 4]\nchoicelist = ['small', 'medium', 'large']\nresult = np.select(condlist, choicelist, default='unknown')\nprint(result)  # ['small' 'medium' 'medium' 'large' 'large']\n\n# argmax, argmin (trova indici)\nprint(np.argmax(arr))  # 4 (indice valore max)\nprint(np.argmin(arr))  # 0 (indice valore min)"
+      },
+      "explanation": "where, select per conditional logic. argmax/argmin per trovare indici."
+    },
+    {
+      "type": "text",
+      "title": "Indexing Best Practices",
+      "paragraphs": [
+        "<strong>Boolean indexing:</strong> Più leggibile di loop",
+        "• arr[arr > 5] invece di [x for x in arr if x > 5]",
+        "• Molto più veloce (vectorized)",
+        "",
+        "<strong>Fancy indexing:</strong> Crea copy, non view",
+        "• arr[[0, 2, 4]] = copy",
+        "• arr[0:5:2] = view",
+        "",
+        "<strong>Performance:</strong>",
+        "• Boolean indexing: O(n)",
+        "• Fancy indexing: O(k) dove k = len(indices)",
+        "• Preferisci slicing quando possibile"
+      ],
+      "ironicClosing": "Indexing NumPy: quando filter() e map() non bastano più."
+    },
+    {
+      "type": "title",
+      "title": "Operazioni Array",
+      "subtitle": "Vectorization & Universal Functions",
+      "description": "Operazioni element-wise e broadcasting"
+    },
+    {
+      "type": "code",
+      "title": "💻 Arithmetic Operations",
+      "code": {
+        "language": "python",
+        "snippet": "a = np.array([1, 2, 3, 4])\nb = np.array([10, 20, 30, 40])\n\n# Element-wise operations\nprint(a + b)   # [11 22 33 44]\nprint(a - b)   # [-9 -18 -27 -36]\nprint(a * b)   # [10 40 90 160]\nprint(a / b)   # [0.1 0.1 0.1 0.1]\nprint(a ** 2)  # [1 4 9 16]\nprint(a % 2)   # [1 0 1 0]\n\n# Scalar operations\nprint(a + 10)  # [11 12 13 14]\nprint(a * 2)   # [2 4 6 8]\n\n# In-place operations\na += 10  # [11 12 13 14]\na *= 2   # [22 24 26 28]\n\n# Comparison (returns boolean array)\nprint(a > 20)  # [True True True True]\nprint(a == 24) # [False True False False]"
+      },
+      "explanation": "Tutte le operazioni sono element-wise. Molto più veloci dei loop Python."
+    },
+    {
+      "type": "code",
+      "title": "💻 Universal Functions (ufuncs)",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([1, 4, 9, 16, 25])\n\n# Math ufuncs\nprint(np.sqrt(arr))  # [1. 2. 3. 4. 5.]\nprint(np.square(arr))  # [1 16 81 256 625]\nprint(np.exp(arr))  # [e^1, e^4, ...]\nprint(np.log(arr))  # [0. 1.386 2.197 ...]\n\n# Trigonometric\nangles = np.array([0, np.pi/2, np.pi])\nprint(np.sin(angles))  # [0. 1. 0.]\nprint(np.cos(angles))  # [1. 0. -1.]\n\n# Rounding\nvals = np.array([1.2, 2.5, 3.7, 4.1])\nprint(np.round(vals))  # [1. 2. 4. 4.]\nprint(np.floor(vals))  # [1. 2. 3. 4.]\nprint(np.ceil(vals))   # [2. 3. 4. 5.]\n\n# Absolute\nprint(np.abs([-1, -2, 3]))  # [1 2 3]"
+      },
+      "explanation": "ufuncs: operano element-wise, ottimizzate in C. Velocissime."
+    },
+    {
+      "type": "code",
+      "title": "💻 Broadcasting",
+      "code": {
+        "language": "python",
+        "snippet": "# Broadcasting: operazioni tra array di shape diverse\na = np.array([[1, 2, 3],\n              [4, 5, 6]])  # (2, 3)\nb = np.array([10, 20, 30])  # (3,)\n\nprint(a + b)  # Broadcasting b a (2, 3)\n# [[11 22 33]\n#  [14 25 36]]\n\n# Scalar broadcasting\nprint(a * 10)  # (2, 3) * scalar\n\n# Column broadcast\nc = np.array([[10], [20]])  # (2, 1)\nprint(a + c)\n# [[11 12 13]\n#  [24 25 26]]\n\n# Rules:\n# 1. Se ndim diverso, prepend 1 alla shape più piccola\n# 2. Se shape[i] diversa, una deve essere 1\n# 3. Broadcast lungo dimensione 1"
+      },
+      "explanation": "Broadcasting: automatico quando shape compatibili. Evita loop!"
+    },
+    {
+      "type": "text",
+      "title": "Broadcasting Rules",
+      "paragraphs": [
+        "<strong>Broadcasting funziona quando:</strong>",
+        "• Una dimensione è 1",
+        "• Una dimensione è missing (prepend 1)",
+        "",
+        "<strong>Esempi compatibili:</strong>",
+        "• (3, 4) + (4,) → (3, 4) + (1, 4) → OK",
+        "• (3, 4) + (3, 1) → OK",
+        "• (3, 1) + (1, 4) → (3, 4)",
+        "",
+        "<strong>Non compatibili:</strong>",
+        "• (3, 4) + (3,) → (3, 4) + (1, 3) → ❌",
+        "• (3, 4) + (4, 3) → ❌",
+        "",
+        "<strong>Reshape per forzare:</strong>",
+        "• a.reshape(-1, 1) per column vector",
+        "• a.reshape(1, -1) per row vector"
+      ],
+      "ironicClosing": "Broadcasting: magia NumPy che evita 1000 loop annidati."
+    },
+    {
+      "type": "title",
+      "title": "Funzioni Matematiche",
+      "subtitle": "Math, Stats, Linear Algebra",
+      "description": "Toolkit matematico completo"
+    },
+    {
+      "type": "code",
+      "title": "💻 Aggregations",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([[1, 2, 3],\n                [4, 5, 6]])\n\n# Sum\nprint(np.sum(arr))      # 21 (totale)\nprint(np.sum(arr, axis=0))  # [5 7 9] (sum columns)\nprint(np.sum(arr, axis=1))  # [6 15] (sum rows)\n\n# Mean, Median, Std\nprint(np.mean(arr))     # 3.5\nprint(np.median(arr))   # 3.5\nprint(np.std(arr))      # 1.707...\nprint(np.var(arr))      # 2.916... (variance)\n\n# Min, Max\nprint(np.min(arr))      # 1\nprint(np.max(arr))      # 6\nprint(np.ptp(arr))      # 5 (peak-to-peak = max - min)\n\n# Percentiles\nprint(np.percentile(arr, 50))  # 3.5 (median)\nprint(np.percentile(arr, 25))  # 2.25 (Q1)"
+      },
+      "explanation": "Aggregations su intero array o lungo axis. axis=0: columns, axis=1: rows."
+    },
+    {
+      "type": "code",
+      "title": "💻 Cumulative & Products",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([1, 2, 3, 4, 5])\n\n# Cumulative sum\nprint(np.cumsum(arr))  # [1 3 6 10 15]\n\n# Cumulative product\nprint(np.cumprod(arr)) # [1 2 6 24 120]\n\n# Product (moltiplicazione)\nprint(np.prod(arr))    # 120 (1*2*3*4*5)\n\n# Diff (differenze consecutive)\nprint(np.diff(arr))    # [1 1 1 1]\n\n# Gradient (approssima derivata)\nprint(np.gradient(arr))  # [1. 1. 1. 1. 1.]\n\n# 2D cumsum\nmatrix = np.array([[1, 2], [3, 4]])\nprint(np.cumsum(matrix, axis=0))  # Column cumsum\n# [[1 2]\n#  [4 6]]\nprint(np.cumsum(matrix, axis=1))  # Row cumsum\n# [[1 3]\n#  [3 7]]"
+      },
+      "explanation": "cumsum, cumprod, diff per analisi serie temporali."
+    },
+    {
+      "type": "code",
+      "title": "💻 Manipolazione Shape",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.arange(12)  # [0 1 2 ... 11]\n\n# Reshape\nmatrix = arr.reshape(3, 4)\nprint(matrix.shape)  # (3, 4)\n\n# Reshape con -1 (auto-calcola)\nprint(arr.reshape(2, -1).shape)  # (2, 6)\nprint(arr.reshape(-1, 3).shape)  # (4, 3)\n\n# Flatten (ritorna copia)\nflat = matrix.flatten()\nprint(flat.shape)  # (12,)\n\n# Ravel (ritorna view se possibile)\nravel = matrix.ravel()\nravel[0] = 999\nprint(matrix[0, 0])  # 999 (modificato!)\n\n# Transpose\nprint(matrix.T.shape)  # (4, 3)\n\n# Expand dims\narr = np.array([1, 2, 3])\nprint(arr.shape)  # (3,)\nprint(np.expand_dims(arr, axis=0).shape)  # (1, 3)\nprint(np.expand_dims(arr, axis=1).shape)  # (3, 1)"
+      },
+      "explanation": "reshape, flatten, ravel, transpose per manipolare shape."
+    },
+    {
+      "type": "code",
+      "title": "💻 Stacking & Splitting",
+      "code": {
+        "language": "python",
+        "snippet": "a = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\n\n# Vertical stack (lungo rows)\nprint(np.vstack([a, b]))\n# [[1 2 3]\n#  [4 5 6]]\n\n# Horizontal stack (lungo columns)\nprint(np.hstack([a, b]))\n# [1 2 3 4 5 6]\n\n# Concatenate (generica)\nmatrix = np.array([[1, 2], [3, 4]])\nprint(np.concatenate([matrix, matrix], axis=0))  # Rows\n# [[1 2]\n#  [3 4]\n#  [1 2]\n#  [3 4]]\n\n# Split\narr = np.arange(9)\nprint(np.split(arr, 3))  # [array([0,1,2]), array([3,4,5]), array([6,7,8])]\n\n# Array_split (unequal)\nprint(np.array_split(arr, 4))  # Splits in 4 parti (anche se non divisibile)"
+      },
+      "explanation": "vstack, hstack, concatenate per combinare. split per dividere."
+    },
+    {
+      "type": "code",
+      "title": "💻 Linear Algebra",
+      "code": {
+        "language": "python",
+        "snippet": "# Dot product\na = np.array([1, 2, 3])\nb = np.array([4, 5, 6])\nprint(np.dot(a, b))  # 32 (1*4 + 2*5 + 3*6)\n\n# Matrix multiplication\nA = np.array([[1, 2], [3, 4]])\nB = np.array([[5, 6], [7, 8]])\nprint(A @ B)  # Python 3.5+ operator\n# [[19 22]\n#  [43 50]]\n\n# Transpose\nprint(A.T)\n\n# Determinant\nprint(np.linalg.det(A))  # -2.0\n\n# Inverse\nprint(np.linalg.inv(A))\n# [[-2.   1. ]\n#  [ 1.5 -0.5]]\n\n# Eigenvalues & eigenvectors\neigenvalues, eigenvectors = np.linalg.eig(A)\nprint(eigenvalues)  # [-0.37... 5.37...]"
+      },
+      "explanation": "np.linalg per algebra lineare. @ per matmul, dot per dot product."
+    },
+    {
+      "type": "code",
+      "title": "💻 Random Numbers",
+      "code": {
+        "language": "python",
+        "snippet": "# Random Generator (modern way)\nrng = np.random.default_rng(seed=42)\n\n# Random floats [0, 1)\nprint(rng.random(5))  # [0.77... 0.43... ...]\n\n# Random integers\nprint(rng.integers(0, 10, size=5))  # [6 3 7 4 6]\n\n# Normal distribution\nprint(rng.normal(loc=0, scale=1, size=5))  # mean=0, std=1\n\n# Choice (sampling)\narr = np.array(['a', 'b', 'c', 'd'])\nprint(rng.choice(arr, size=3))  # ['c' 'a' 'd']\n\n# Shuffle\narr = np.arange(10)\nrng.shuffle(arr)\nprint(arr)  # [3 7 1 9 ...] (in-place shuffle)\n\n# Legacy way (still works)\nnp.random.seed(42)\nprint(np.random.rand(5))  # Uniform [0,1)"
+      },
+      "explanation": "default_rng() raccomandato. Seed per reproducibilità."
+    },
+    {
+      "type": "code",
+      "title": "💻 File I/O",
+      "code": {
+        "language": "python",
+        "snippet": "arr = np.array([[1, 2, 3], [4, 5, 6]])\n\n# Save binary (.npy)\nnp.save('array.npy', arr)\nloaded = np.load('array.npy')\n\n# Save multiple arrays (.npz)\nnp.savez('arrays.npz', a=arr, b=arr*2)\ndata = np.load('arrays.npz')\nprint(data['a'])  # First array\nprint(data['b'])  # Second array\n\n# Save text (human readable)\nnp.savetxt('array.txt', arr, fmt='%d', delimiter=',')\nloaded_txt = np.loadtxt('array.txt', delimiter=',')\n\n# CSV\nnp.savetxt('data.csv', arr, delimiter=',', header='col1,col2,col3')\nloaded_csv = np.loadtxt('data.csv', delimiter=',', skiprows=1)\n\n# Best: use .npy for NumPy arrays (veloce, compatto)"
+      },
+      "explanation": ".npy per binario veloce, .txt/.csv per human-readable."
+    },
+    {
+      "type": "code",
+      "title": "💻 Performance Tips",
+      "code": {
+        "language": "python",
+        "snippet": "import time\n\n# ❌ LENTO: Python loop\nstart = time.time()\narr = list(range(1000000))\nresult = [x**2 for x in arr]\nprint(f\"Python loop: {time.time() - start:.4f}s\")\n\n# ✅ VELOCE: NumPy vectorized\nstart = time.time()\narr = np.arange(1000000)\nresult = arr ** 2\nprint(f\"NumPy vectorized: {time.time() - start:.4f}s\")\n\n# Tips:\n# 1. Usa ufuncs invece di loop\n# 2. Preallocate arrays quando possibile\n# 3. Evita append in loop (usa concatenate o preallocate)\n# 4. Boolean indexing > loop con if\n# 5. Broadcasting > reshape esplicito\n\n# Memory tips:\n# - Usa dtype appropriato (float32 vs float64)\n# - View invece di copy quando possibile\n# - np.memmap per arrays molto grandi"
+      },
+      "explanation": "Vectorization = 10-100x speedup. Evita loop Python quando possibile."
+    },
+    {
+      "type": "text",
+      "title": "NumPy Best Practices",
+      "paragraphs": [
+        "<strong>✅ DO:</strong>",
+        "• Vectorize: usa ufuncs e broadcasting",
+        "• Preallocate: np.zeros() meglio di append in loop",
+        "• Dtype appropriato: float32 per ML (metà memoria)",
+        "• View quando basta: slicing non crea copia",
+        "• Boolean indexing: più leggibile e veloce",
+        "",
+        "<strong>❌ DON'T:</strong>",
+        "• Loop su array grandi: usa vectorization",
+        "• Append ripetuti: preallocate o lista Python",
+        "• Copy inutili: check se serve davvero",
+        "• Float64 di default: considera float32",
+        "",
+        "<strong>Debug:</strong> shape, dtype, ndim per capire array"
+      ],
+      "ironicClosing": "NumPy: quando Python è troppo lento ma C è troppo complicato."
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

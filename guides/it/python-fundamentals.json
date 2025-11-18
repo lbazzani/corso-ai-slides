@@ -1,0 +1,1466 @@
+{
+  "title": "Python Fundamentals: Guida Completa",
+  "description": "Dalle basi alla programmazione avanzata - 100+ slide con esempi pratici",
+  "steps": [
+    {
+      "name": "Introduzione",
+      "slides": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Variabili & Tipi",
+      "slides": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "Operatori",
+      "slides": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "name": "Stringhe",
+      "slides": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "name": "Liste & Tuple",
+      "slides": [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    {
+      "name": "Dizionari & Set",
+      "slides": [
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    {
+      "name": "If/Elif/Else",
+      "slides": [
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    },
+    {
+      "name": "Cicli (For/While)",
+      "slides": [
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    {
+      "name": "Funzioni",
+      "slides": [
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72
+      ]
+    },
+    {
+      "name": "Comprehension",
+      "slides": [
+        73,
+        74,
+        75,
+        76,
+        77,
+        78
+      ]
+    },
+    {
+      "name": "File I/O",
+      "slides": [
+        79,
+        80,
+        81,
+        82,
+        83,
+        84
+      ]
+    },
+    {
+      "name": "Moduli",
+      "slides": [
+        85,
+        86,
+        87,
+        88,
+        89,
+        90
+      ]
+    },
+    {
+      "name": "OOP Basics",
+      "slides": [
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102
+      ]
+    },
+    {
+      "name": "Gestione Errori",
+      "slides": [
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110
+      ]
+    },
+    {
+      "name": "Best Practices",
+      "slides": [
+        111,
+        112,
+        113
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Python Fundamentals",
+      "subtitle": "La Guida Completa",
+      "description": "Dalle basi alla programmazione avanzata - 100+ esempi pratici",
+      "ironicClosing": "Python: il linguaggio che ti fa amare la programmazione. Anche il lunedì mattina."
+    },
+    {
+      "type": "text",
+      "title": "Perché Python?",
+      "paragraphs": [
+        "<strong>Semplicità:</strong> Sintassi leggibile, quasi inglese naturale",
+        "<strong>Versatilità:</strong> Web, Data Science, AI, automation, gaming, tutto",
+        "<strong>Popolarità:</strong> #1 linguaggio TIOBE index 2025, community enorme",
+        "<strong>Produttività:</strong> Scrivi meno codice, fai più cose",
+        "<strong>Librerie:</strong> 500,000+ packages su PyPI per qualsiasi uso",
+        "",
+        "<strong>Usato da:</strong> Google, Netflix, NASA, Instagram, Spotify, Dropbox"
+      ],
+      "ironicClosing": "Se non sai quale linguaggio imparare, impara Python. Funziona sempre."
+    },
+    {
+      "type": "text",
+      "title": "Setup: Cosa Serve",
+      "paragraphs": [
+        "<strong>1. Python installato:</strong> python.org/downloads (versione 3.11+)",
+        "<strong>2. Editor:</strong> VS Code (consigliato), PyCharm, o IDLE (incluso)",
+        "<strong>3. Terminal:</strong> Per eseguire i programmi",
+        "",
+        "<strong>Verifica installazione:</strong>",
+        "<code>python --version</code> oppure <code>python3 --version</code>",
+        "Output atteso: <code>Python 3.11.x</code> o superiore",
+        "",
+        "<strong>Primo programma:</strong>",
+        "<code>python</code> → apre la shell interattiva",
+        "<code>>>> print('Hello, Python!')</code>"
+      ],
+      "ironicClosing": "Se print('Hello World') funziona, sei pronto. Benvenuto in Python."
+    },
+    {
+      "type": "code",
+      "title": "💻 Variabili: Le Basi",
+      "code": {
+        "language": "python",
+        "snippet": "# Creare variabili (no dichiarazione tipo!)\nnome = \"Alice\"\neta = 25\naltezza = 1.65\nis_student = True\n\n# Python capisce automaticamente il tipo\nprint(type(nome))     # <class 'str'>\nprint(type(eta))      # <class 'int'>\nprint(type(altezza))  # <class 'float'>\nprint(type(is_student))  # <class 'bool'>\n\n# Riassegnazione (anche cambiando tipo)\neta = \"venticinque\"  # OK! Ora è string\nprint(type(eta))     # <class 'str'>"
+      },
+      "explanation": "Python è dinamicamente tipizzato. Il tipo si deduce dal valore."
+    },
+    {
+      "type": "code",
+      "title": "💻 Tipi di Dati Fondamentali",
+      "code": {
+        "language": "python",
+        "snippet": "# Numeri\nintero = 42\nfloat_num = 3.14\ncomplesso = 3 + 4j\n\n# Stringhe (immutabili)\nsingle = 'Python'\ndouble = \"Data Science\"\nmultiline = \"\"\"Questo è\nsu più righe\"\"\"\n\n# Booleani\nvero = True\nfalso = False\n\n# None (equivalente a null)\nvuoto = None\n\n# Conversioni\nx = int(\"100\")      # string → int\ny = float(42)       # int → float\nz = str(3.14)       # float → string"
+      },
+      "explanation": "6 tipi primitivi fondamentali. Conversioni con funzioni built-in."
+    },
+    {
+      "type": "code",
+      "title": "💻 Naming Conventions",
+      "code": {
+        "language": "python",
+        "snippet": "# Snake case (recommended for variables)\nfirst_name = \"Alice\"\ntotal_score = 100\n\n# UPPER_CASE per costanti\nMAX_SIZE = 1000\nPI = 3.14159\n\n# Nome significativi\n# ❌ BAD\nx = 10\na = \"test\"\n\n# ✅ GOOD\nuser_age = 10\nfile_name = \"test\"\n\n# Nomi riservati (NON usare)\n# class, def, if, while, for, True, False, None, etc."
+      },
+      "explanation": "Convenzioni PEP 8: snake_case per variabili, UPPER per costanti."
+    },
+    {
+      "type": "code",
+      "title": "💻 Multiple Assignment",
+      "code": {
+        "language": "python",
+        "snippet": "# Assegnamento multiplo\nx, y, z = 1, 2, 3\nprint(x, y, z)  # 1 2 3\n\n# Stesso valore a più variabili\na = b = c = 0\n\n# Unpacking\ncoordinate = (10, 20)\nx, y = coordinate  # x=10, y=20\n\n# Swap (scambio valori)\na, b = 5, 10\na, b = b, a  # a=10, b=5\nprint(a, b)  # 10 5\n\n# Unpacking con * (rest)\nnumeri = [1, 2, 3, 4, 5]\nprimo, *resto, ultimo = numeri\nprint(primo)   # 1\nprint(resto)   # [2, 3, 4]\nprint(ultimo)  # 5"
+      },
+      "explanation": "Python permette unpacking elegante. Molto usato."
+    },
+    {
+      "type": "text",
+      "title": "Type Hints (Python 3.5+)",
+      "paragraphs": [
+        "<strong>Optional ma consigliato</strong> per codice production",
+        "",
+        "<code>nome: str = \"Alice\"</code>",
+        "<code>eta: int = 25</code>",
+        "<code>altezza: float = 1.65</code>",
+        "",
+        "<strong>Vantaggi:</strong>",
+        "• Editor mostra autocomplete migliore",
+        "• Type checker (mypy) trova errori prima",
+        "• Documentazione auto-generata",
+        "",
+        "<strong>Non obbligatorio:</strong> Python non forza i tipi runtime"
+      ],
+      "ironicClosing": "Type hints: documentation che il computer capisce. Win-win."
+    },
+    {
+      "type": "code",
+      "title": "💻 Input & Output",
+      "code": {
+        "language": "python",
+        "snippet": "# Input dall'utente (sempre string)\nnome = input(\"Come ti chiami? \")\nprint(f\"Ciao, {nome}!\")\n\n# Conversione input\neta = int(input(\"Quanti anni hai? \"))\naltezza = float(input(\"Altezza in metri: \"))\n\n# Formattare output\nprint(f\"Nome: {nome}, Età: {eta}, Altezza: {altezza}m\")\n\n# Output multiplo\nprint(\"Valore 1:\", 10, \"Valore 2:\", 20, sep=\" | \")\nprint(\"Prima linea\", end=\" \")\nprint(\"Stessa linea\")"
+      },
+      "explanation": "input() ritorna sempre string. Convertire con int(), float(), ecc."
+    },
+    {
+      "type": "text",
+      "title": "⚠️ Errori Comuni con Variabili",
+      "paragraphs": [
+        "<strong>NameError:</strong> Variabile non definita",
+        "<code>print(x)  # NameError se x non esiste</code>",
+        "",
+        "<strong>TypeError:</strong> Operazione non supportata tra tipi",
+        "<code>\"10\" + 5  # TypeError, serve int(\"10\") + 5</code>",
+        "",
+        "<strong>ValueError:</strong> Conversione impossibile",
+        "<code>int(\"abc\")  # ValueError</code>",
+        "",
+        "<strong>Best practice:</strong> Inizializzare sempre le variabili prima dell'uso"
+      ],
+      "ironicClosing": "Python: amichevole ma non legge nel pensiero. Dichiara le cose."
+    },
+    {
+      "type": "title",
+      "title": "Operatori",
+      "subtitle": "Aritmetici, Confronto, Logici",
+      "description": "Tutti gli operatori Python con esempi pratici"
+    },
+    {
+      "type": "code",
+      "title": "💻 Operatori Aritmetici",
+      "code": {
+        "language": "python",
+        "snippet": "# Basic\na, b = 10, 3\nprint(a + b)   # 13 (addizione)\nprint(a - b)   # 7 (sottrazione)\nprint(a * b)   # 30 (moltiplicazione)\nprint(a / b)   # 3.333... (divisione float)\nprint(a // b)  # 3 (divisione intera)\nprint(a % b)   # 1 (modulo/resto)\nprint(a ** b)  # 1000 (potenza)\n\n# Precedenza (come matematica)\nrisultato = 2 + 3 * 4  # 14, non 20\ncon_parentesi = (2 + 3) * 4  # 20\n\n# Operatori composti\nx = 10\nx += 5   # x = x + 5 → 15\nx *= 2   # x = x * 2 → 30"
+      },
+      "explanation": "Operatori standard + divisione intera (//) e modulo (%)."
+    },
+    {
+      "type": "code",
+      "title": "💻 Operatori di Confronto",
+      "code": {
+        "language": "python",
+        "snippet": "# Uguaglianza e disuguaglianza\nprint(5 == 5)   # True\nprint(5 != 3)   # True\n\n# Maggiore/Minore\nprint(10 > 5)   # True\nprint(3 < 2)    # False\nprint(5 >= 5)   # True\nprint(4 <= 3)   # False\n\n# Confronto stringhe (lessicografico)\nprint(\"apple\" < \"banana\")  # True\nprint(\"Python\" == \"python\")  # False (case sensitive)\n\n# Confronto con None\nx = None\nprint(x is None)      # True (raccomandato)\nprint(x == None)      # True (funziona ma non idiomatico)"
+      },
+      "explanation": "Ritornano booleani. Usare 'is' per None, '==' per valori."
+    },
+    {
+      "type": "code",
+      "title": "💻 Operatori Logici",
+      "code": {
+        "language": "python",
+        "snippet": "# AND, OR, NOT\neta = 25\nha_patente = True\n\n# AND: entrambi True\ncan_drive = eta >= 18 and ha_patente  # True\n\n# OR: almeno uno True\nis_weekend = True\nis_holiday = False\ncan_rest = is_weekend or is_holiday  # True\n\n# NOT: inverte\nis_working = not can_rest  # False\n\n# Short-circuit evaluation\nx = 10\nif x > 0 and 100 / x > 5:  # Sicuro: prima controlla x > 0\n    print(\"OK\")\n\n# Chaining\nif 0 < x < 100:  # Python permette chaining!\n    print(\"x è tra 0 e 100\")"
+      },
+      "explanation": "and, or, not. Python supporta chaining (0 < x < 100)."
+    },
+    {
+      "type": "code",
+      "title": "💻 Operatori su Stringhe e Liste",
+      "code": {
+        "language": "python",
+        "snippet": "# Concatenazione\ngreeting = \"Hello\" + \" \" + \"World\"  # \"Hello World\"\n\n# Ripetizione\nline = \"-\" * 20  # \"--------------------\"\n\n# Membership (in/not in)\nfruits = [\"apple\", \"banana\", \"orange\"]\nprint(\"apple\" in fruits)      # True\nprint(\"grape\" not in fruits)  # True\n\n# Su stringhe\ntext = \"Python Programming\"\nprint(\"Py\" in text)    # True\nprint(\"Java\" in text)  # False\n\n# Identity (is/is not)\na = [1, 2, 3]\nb = a\nc = [1, 2, 3]\nprint(a is b)  # True (stesso oggetto)\nprint(a is c)  # False (oggetti diversi)\nprint(a == c)  # True (stesso valore)"
+      },
+      "explanation": "+ concatena, * ripete, in verifica appartenenza, is verifica identità."
+    },
+    {
+      "type": "code",
+      "title": "💻 Operatori Bitwise",
+      "code": {
+        "language": "python",
+        "snippet": "# Bitwise (operazioni su bit)\na = 60  # 0011 1100\nb = 13  # 0000 1101\n\nprint(a & b)   # 12 (AND)\nprint(a | b)   # 61 (OR)\nprint(a ^ b)   # 49 (XOR)\nprint(~a)      # -61 (NOT)\nprint(a << 2)  # 240 (shift left)\nprint(a >> 2)  # 15 (shift right)\n\n# Caso d'uso: flags\nREAD = 1   # 001\nWRITE = 2  # 010\nEXEC = 4   # 100\n\npermissions = READ | WRITE  # 011 (read + write)\ncan_read = permissions & READ  # True"
+      },
+      "explanation": "Operazioni bit-level. Utili per flags e operazioni a basso livello."
+    },
+    {
+      "type": "title",
+      "title": "Stringhe",
+      "subtitle": "Manipolazione Testo",
+      "description": "Metodi, formattazione, e operazioni su stringhe"
+    },
+    {
+      "type": "code",
+      "title": "💻 Creazione e Indicizzazione",
+      "code": {
+        "language": "python",
+        "snippet": "# Diverse notazioni\nsingle = 'Python'\ndouble = \"Data Science\"\nmultiline = \"\"\"Prima riga\nSeconda riga\nTerza riga\"\"\"\n\n# Indicizzazione (0-based)\ntext = \"Python\"\nprint(text[0])   # 'P'\nprint(text[-1])  # 'n' (ultimo)\nprint(text[-2])  # 'o' (penultimo)\n\n# Slicing [start:end:step]\nprint(text[0:3])   # 'Pyt' (0,1,2)\nprint(text[2:])    # 'thon' (da 2 in poi)\nprint(text[:4])    # 'Pyth' (fino a 4 escluso)\nprint(text[::2])   # 'Pto' (ogni 2 caratteri)\nprint(text[::-1])  # 'nohtyP' (inverso)"
+      },
+      "explanation": "Stringhe immutabili. Indicizzazione negativa parte dalla fine."
+    },
+    {
+      "type": "code",
+      "title": "💻 Metodi di Base",
+      "code": {
+        "language": "python",
+        "snippet": "text = \"  Python Programming  \"\n\n# Case\nprint(text.lower())       # tutto minuscolo\nprint(text.upper())       # tutto maiuscolo\nprint(text.capitalize())  # Prima lettera maiuscola\nprint(text.title())       # Ogni Parola Maiuscola\n\n# Rimozione spazi\nprint(text.strip())   # rimuove spazi inizio/fine\nprint(text.lstrip())  # solo a sinistra\nprint(text.rstrip())  # solo a destra\n\n# Ricerca\nprint(text.find(\"Prog\"))      # 9 (indice, -1 se non trovato)\nprint(text.index(\"Prog\"))     # 9 (ValueError se non trovato)\nprint(text.count(\"m\"))        # 2 (occorrenze)\nprint(text.startswith(\"  P\")) # True\nprint(text.endswith(\"g  \"))   # True"
+      },
+      "explanation": "Metodi immutabili: ritornano nuove stringhe, non modificano l'originale."
+    },
+    {
+      "type": "code",
+      "title": "💻 Sostituzione e Split",
+      "code": {
+        "language": "python",
+        "snippet": "text = \"Python is awesome\"\n\n# Replace\nprint(text.replace(\"awesome\", \"fantastic\"))\n# \"Python is fantastic\"\n\n# Split (string → list)\nwords = text.split()  # [\"Python\", \"is\", \"awesome\"]\ncsv = \"apple,banana,orange\"\nfruits = csv.split(\",\")  # [\"apple\", \"banana\", \"orange\"]\n\n# Join (list → string)\nwords = [\"Hello\", \"World\"]\nsentence = \" \".join(words)  # \"Hello World\"\npath = \"/\".join([\"home\", \"user\", \"docs\"])  # \"home/user/docs\"\n\n# Altre trasformazioni\nprint(\"123\".zfill(5))     # \"00123\" (padding zeri)\nprint(\"hello\".center(11)) # \"   hello   \""
+      },
+      "explanation": "split() separa stringhe, join() unisce liste. Molto usati."
+    },
+    {
+      "type": "code",
+      "title": "💻 Formattazione: f-strings",
+      "code": {
+        "language": "python",
+        "snippet": "# f-strings (Python 3.6+, RACCOMANDATO)\nnome = \"Alice\"\neta = 25\naltezza = 1.65\n\n# Base\nprint(f\"Nome: {nome}, Età: {eta}\")\n\n# Espressioni\nprint(f\"{nome} ha {eta * 12} mesi\")\n\n# Formattazione numeri\npi = 3.14159\nprint(f\"Pi: {pi:.2f}\")  # 3.14 (2 decimali)\nprint(f\"Pi: {pi:.4f}\")  # 3.1416 (4 decimali)\n\n# Padding e allineamento\nprint(f\"{nome:>10}\")  # \"     Alice\" (right)\nprint(f\"{nome:<10}\")  # \"Alice     \" (left)\nprint(f\"{nome:^10}\")  # \"  Alice   \" (center)\n\n# Numeri grandi\nnum = 1000000\nprint(f\"{num:,}\")  # \"1,000,000\""
+      },
+      "explanation": "f-strings: il metodo moderno. Leggibile ed efficiente."
+    },
+    {
+      "type": "code",
+      "title": "💻 Formattazione: Altri Metodi",
+      "code": {
+        "language": "python",
+        "snippet": "# format() (Python 2.7+)\nnome = \"Alice\"\neta = 25\nprint(\"Nome: {}, Età: {}\".format(nome, eta))\nprint(\"Nome: {0}, Età: {1}\".format(nome, eta))  # con indici\nprint(\"Nome: {n}, Età: {e}\".format(n=nome, e=eta))  # con nomi\n\n# % formatting (vecchio stile, legacy)\nprint(\"Nome: %s, Età: %d\" % (nome, eta))\nprint(\"Pi: %.2f\" % 3.14159)\n\n# Template strings (raramente usate)\nfrom string import Template\nt = Template(\"Nome: $nome, Età: $eta\")\nprint(t.substitute(nome=\"Bob\", eta=30))\n\n# Raccomandazione: usa f-strings per codice nuovo"
+      },
+      "explanation": "Altri metodi esistono ma f-strings sono preferibili per codice moderno."
+    },
+    {
+      "type": "code",
+      "title": "💻 Validazione e Check",
+      "code": {
+        "language": "python",
+        "snippet": "# Metodi di validazione\nprint(\"123\".isdigit())      # True\nprint(\"abc\".isalpha())      # True\nprint(\"abc123\".isalnum())   # True\nprint(\"   \".isspace())      # True\nprint(\"Hello\".islower())    # False\nprint(\"HELLO\".isupper())    # True\nprint(\"Hello World\".istitle())  # True\n\n# Caso d'uso pratico\nuser_input = input(\"Inserisci età: \")\nif user_input.isdigit():\n    eta = int(user_input)\n    print(f\"Età valida: {eta}\")\nelse:\n    print(\"Errore: inserire solo numeri\")\n\n# Check password\npassword = \"MyPass123\"\nhas_digit = any(c.isdigit() for c in password)\nhas_upper = any(c.isupper() for c in password)\nprint(f\"Password forte: {has_digit and has_upper}\")"
+      },
+      "explanation": "Metodi is* per validare contenuto stringhe. Molto utili."
+    },
+    {
+      "type": "code",
+      "title": "💻 Raw Strings e Escape",
+      "code": {
+        "language": "python",
+        "snippet": "# Escape sequences\nprint(\"Prima riga\\nSeconda riga\")  # newline\nprint(\"Tab\\tseparato\")              # tab\nprint(\"Quote: \\\"ciao\\\"\")             # quote\nprint(\"Backslash: \\\\\")               # backslash\n\n# Raw strings (r\"\") - ignorano escape\npath = r\"C:\\Users\\nome\\Desktop\"  # Windows path\nregex = r\"\\d+\\.\\d+\"              # regex pattern\n\nprint(path)   # C:\\Users\\nome\\Desktop (senza interpretare \\)\nprint(regex)  # \\d+\\.\\d+ (senza interpretare escape)\n\n# Confronto\nnormal = \"C:\\\\Users\\\\nome\"  # Serve doppio \\\\\nraw = r\"C:\\Users\\nome\"      # Più leggibile\nprint(normal == raw)  # True"
+      },
+      "explanation": "Raw strings (r'') per path e regex. Escape con backslash."
+    },
+    {
+      "type": "text",
+      "title": "String Tips & Best Practices",
+      "paragraphs": [
+        "<strong>1. Immutabilità:</strong> stringhe non modificabili",
+        "<code>s = 'hello'</code>",
+        "<code>s[0] = 'H'  # ❌ TypeError</code>",
+        "<code>s = s.capitalize()  # ✅ Crea nuova string</code>",
+        "",
+        "<strong>2. Performance:</strong> join() > concatenazione ripetuta",
+        "<code># ❌ Lento per molte stringhe</code>",
+        "<code>result = ''</code>",
+        "<code>for word in words: result += word</code>",
+        "<code># ✅ Veloce</code>",
+        "<code>result = ''.join(words)</code>",
+        "",
+        "<strong>3. Unicode:</strong> Python 3 supporta UTF-8 nativamente",
+        "<code>emoji = '🐍 Python è fantastico! 🚀'</code>"
+      ],
+      "ironicClosing": "Stringhe: immutabili come le decisioni del product manager. O forse no."
+    },
+    {
+      "type": "title",
+      "title": "Liste & Tuple",
+      "subtitle": "Collezioni Ordinate",
+      "description": "Liste mutabili e tuple immutabili: quando usare cosa"
+    },
+    {
+      "type": "code",
+      "title": "💻 Liste: Creazione e Accesso",
+      "code": {
+        "language": "python",
+        "snippet": "# Creazione\nnumeri = [1, 2, 3, 4, 5]\nmixed = [1, \"two\", 3.0, True, None]  # tipi misti OK\nempty = []\nfrom_range = list(range(5))  # [0, 1, 2, 3, 4]\n\n# Accesso (come stringhe)\nfruits = [\"apple\", \"banana\", \"cherry\"]\nprint(fruits[0])    # 'apple'\nprint(fruits[-1])   # 'cherry'\n\n# Slicing\nprint(fruits[0:2])  # ['apple', 'banana']\nprint(fruits[::-1]) # ['cherry', 'banana', 'apple'] (reverse)\n\n# Lunghezza\nprint(len(fruits))  # 3\n\n# Check membership\nprint(\"apple\" in fruits)  # True"
+      },
+      "explanation": "Liste: collezioni ordinate, mutabili, indicizzate. Molto versatili."
+    },
+    {
+      "type": "code",
+      "title": "💻 Modificare Liste",
+      "code": {
+        "language": "python",
+        "snippet": "fruits = [\"apple\", \"banana\", \"cherry\"]\n\n# Modifica elemento\nfruits[1] = \"blueberry\"\nprint(fruits)  # ['apple', 'blueberry', 'cherry']\n\n# Aggiungere\nfruits.append(\"date\")        # in fondo\nfruits.insert(1, \"avocado\")  # in posizione\nfruits.extend([\"fig\", \"grape\"])  # molteplici\n\n# Rimuovere\nfruits.remove(\"apple\")  # per valore (primo trovato)\nlast = fruits.pop()      # rimuove e ritorna ultimo\nfirst = fruits.pop(0)    # rimuove e ritorna primo\ndel fruits[1]            # rimuove per indice\nfruits.clear()           # svuota lista\n\nprint(fruits)  # []"
+      },
+      "explanation": "Liste mutabili: append, insert, remove, pop, del, clear."
+    },
+    {
+      "type": "code",
+      "title": "💻 Metodi Utili delle Liste",
+      "code": {
+        "language": "python",
+        "snippet": "numeri = [3, 1, 4, 1, 5, 9, 2, 6]\n\n# Sort (modifica in place)\nnumeri.sort()  # [1, 1, 2, 3, 4, 5, 6, 9]\nnumeri.sort(reverse=True)  # [9, 6, 5, 4, 3, 2, 1, 1]\n\n# sorted() (crea nuova lista)\noriginal = [3, 1, 4]\nsorted_list = sorted(original)  # [1, 3, 4]\nprint(original)  # [3, 1, 4] (inalterato)\n\n# Reverse\nnumeri.reverse()  # inverte in place\n\n# Count e index\nvalues = [1, 2, 3, 1, 2, 1]\nprint(values.count(1))  # 3 (occorrenze)\nprint(values.index(2))  # 1 (primo indice)\n\n# Copy\noriginal = [1, 2, 3]\nshallow_copy = original.copy()\ndeep_copy = original[:]"
+      },
+      "explanation": "sort() modifica, sorted() crea nuova. copy() per duplicare."
+    },
+    {
+      "type": "code",
+      "title": "💻 List Comprehension (Anteprima)",
+      "code": {
+        "language": "python",
+        "snippet": "# Tradizionale\nsquares = []\nfor x in range(10):\n    squares.append(x ** 2)\n\n# List comprehension (Pythonic!)\nsquares = [x ** 2 for x in range(10)]\nprint(squares)  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]\n\n# Con condizione\nevens = [x for x in range(20) if x % 2 == 0]\nprint(evens)  # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]\n\n# Su stringhe\nwords = [\"hello\", \"world\", \"python\"]\nupper = [w.upper() for w in words]\nprint(upper)  # ['HELLO', 'WORLD', 'PYTHON']\n\n# Nested\nmatrix = [[1, 2], [3, 4], [5, 6]]\nflat = [num for row in matrix for num in row]\nprint(flat)  # [1, 2, 3, 4, 5, 6]"
+      },
+      "explanation": "List comprehension: sintassi compatta per creare liste. Molto Pythonic."
+    },
+    {
+      "type": "code",
+      "title": "💻 Tuple: Immutabili",
+      "code": {
+        "language": "python",
+        "snippet": "# Creazione\npoint = (10, 20)\ncolors = (\"red\", \"green\", \"blue\")\nsingle = (42,)  # NOTA: virgola necessaria per tuple singola\nnot_tuple = (42)  # Questo è int, non tuple!\nempty = ()\n\n# Unpacking\nx, y = point\nprint(x, y)  # 10 20\n\n# Accesso (come liste)\nprint(colors[0])   # 'red'\nprint(colors[-1])  # 'blue'\n\n# IMMUTABILI\n# point[0] = 15  # ❌ TypeError: tuple non modificabili\n\n# Ma possono contenere oggetti mutabili\nt = ([1, 2], [3, 4])\nt[0].append(3)  # ✅ OK: modifica la lista dentro\nprint(t)  # ([1, 2, 3], [3, 4])"
+      },
+      "explanation": "Tuple: come liste ma immutabili. Usate per dati che non cambiano."
+    },
+    {
+      "type": "code",
+      "title": "💻 Quando Usare Liste vs Tuple",
+      "code": {
+        "language": "python",
+        "snippet": "# LISTE: dati che cambiano\nshopping_list = [\"milk\", \"bread\", \"eggs\"]\nshopping_list.append(\"butter\")  # OK, lista mutabile\n\n# TUPLE: dati fissi, strutturati\nperson = (\"Alice\", 25, \"alice@email.com\")\n# person[1] = 26  # ❌ Non puoi cambiare\n\n# TUPLE per return multipli (comune!)\ndef get_stats():\n    return (100, 85.5, 12)  # count, avg, min\n\ncount, avg, min_val = get_stats()\n\n# TUPLE come chiavi dizionario (liste no!)\nlocations = {\n    (40.7128, -74.0060): \"New York\",\n    (51.5074, -0.1278): \"London\"\n}\n\n# Performance: tuple più veloci e meno memoria"
+      },
+      "explanation": "Liste per dati mutabili, tuple per dati fissi o strutturati."
+    },
+    {
+      "type": "code",
+      "title": "💻 Named Tuples",
+      "code": {
+        "language": "python",
+        "snippet": "from collections import namedtuple\n\n# Definizione\nPoint = namedtuple('Point', ['x', 'y'])\nPerson = namedtuple('Person', ['name', 'age', 'email'])\n\n# Creazione\np = Point(10, 20)\nperson = Person(\"Alice\", 25, \"alice@email.com\")\n\n# Accesso per nome (leggibile!)\nprint(p.x, p.y)  # 10 20\nprint(person.name)  # Alice\n\n# Ancora tuple (immutabile)\n# person.age = 26  # ❌ AttributeError\n\n# Ma con accesso per indice\nprint(person[0])  # Alice\n\n# Unpacking funziona\nname, age, email = person\n\n# Meglio di tuple normali per leggibilità"
+      },
+      "explanation": "Named tuples: tuple con campi nominati. Best of both worlds."
+    },
+    {
+      "type": "code",
+      "title": "💻 Operazioni Comuni",
+      "code": {
+        "language": "python",
+        "snippet": "# Concatenazione\nlist1 = [1, 2, 3]\nlist2 = [4, 5, 6]\ncombined = list1 + list2  # [1, 2, 3, 4, 5, 6]\n\n# Ripetizione\nzeros = [0] * 5  # [0, 0, 0, 0, 0]\n\n# Min, Max, Sum\nnumeri = [3, 1, 4, 1, 5, 9]\nprint(min(numeri))  # 1\nprint(max(numeri))  # 9\nprint(sum(numeri))  # 23\n\n# All, Any\nvalues = [True, True, True]\nprint(all(values))  # True (tutti True)\n\nvalues = [False, True, False]\nprint(any(values))  # True (almeno uno True)\n\n# Enumerate\nfor i, fruit in enumerate([\"apple\", \"banana\"]):\n    print(f\"{i}: {fruit}\")\n# 0: apple\n# 1: banana"
+      },
+      "explanation": "Operazioni aggregate: min, max, sum, all, any, enumerate."
+    },
+    {
+      "type": "code",
+      "title": "💻 Liste Multidimensionali",
+      "code": {
+        "language": "python",
+        "snippet": "# Matrice 2D\nmatrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\n\n# Accesso\nprint(matrix[0][0])  # 1 (primo elemento)\nprint(matrix[1][2])  # 6 (riga 1, colonna 2)\n\n# Iterazione\nfor row in matrix:\n    for num in row:\n        print(num, end=\" \")\n    print()\n\n# Creazione dinamica (ATTENZIONE!)\n# ❌ SBAGLIATO\nwrong = [[0] * 3] * 3  # Crea 3 riferimenti alla STESSA lista!\nwrong[0][0] = 1\nprint(wrong)  # [[1, 0, 0], [1, 0, 0], [1, 0, 0]]\n\n# ✅ CORRETTO\ncorrect = [[0] * 3 for _ in range(3)]\ncorrect[0][0] = 1\nprint(correct)  # [[1, 0, 0], [0, 0, 0], [0, 0, 0]]"
+      },
+      "explanation": "Liste di liste per matrici. Attenzione alla creazione dinamica!"
+    },
+    {
+      "type": "text",
+      "title": "Liste vs Tuple: Recap",
+      "paragraphs": [
+        "<strong>LISTE []:</strong>",
+        "• Mutabili (modificabili)",
+        "• Usate per collezioni che cambiano",
+        "• Metodi: append, remove, sort, ecc.",
+        "• Syntax: numeri = [1, 2, 3]",
+        "",
+        "<strong>TUPLE ():</strong>",
+        "• Immutabili (fisse)",
+        "• Usate per dati strutturati/costanti",
+        "• Più veloci e meno memoria",
+        "• Possono essere chiavi di dizionari",
+        "• Syntax: point = (10, 20)",
+        "",
+        "<strong>Regola pratica:</strong> Se non devi modificare, usa tuple. Altrimenti lista."
+      ],
+      "ironicClosing": "Liste e tuple: come fidanzati e matrimonio. Uno è flessibile, l'altro... fisso."
+    },
+    {
+      "type": "title",
+      "title": "Dizionari & Set",
+      "subtitle": "Collezioni Non Ordinate",
+      "description": "Hash maps e insiemi per lookup veloci"
+    },
+    {
+      "type": "code",
+      "title": "💻 Dizionari: Creazione e Accesso",
+      "code": {
+        "language": "python",
+        "snippet": "# Creazione\nperson = {\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"city\": \"Milano\"\n}\n\n# Accesso\nprint(person[\"name\"])  # 'Alice'\nprint(person.get(\"age\"))  # 25\nprint(person.get(\"email\"))  # None (no KeyError!)\nprint(person.get(\"email\", \"N/A\"))  # 'N/A' (default)\n\n# Modifica\nperson[\"age\"] = 26  # update\nperson[\"email\"] = \"alice@email.com\"  # add\n\n# Rimozione\ndel person[\"city\"]\nemail = person.pop(\"email\")  # rimuove e ritorna\nperson.clear()  # svuota tutto"
+      },
+      "explanation": "Dizionari: coppie chiave-valore. Accesso O(1) medio."
+    },
+    {
+      "type": "code",
+      "title": "💻 Metodi dei Dizionari",
+      "code": {
+        "language": "python",
+        "snippet": "person = {\"name\": \"Alice\", \"age\": 25, \"city\": \"Milano\"}\n\n# Keys, Values, Items\nprint(person.keys())    # dict_keys(['name', 'age', 'city'])\nprint(person.values())  # dict_values(['Alice', 25, 'Milano'])\nprint(person.items())   # dict_items([('name', 'Alice'), ...])\n\n# Iterazione\nfor key in person:\n    print(key, person[key])\n\nfor key, value in person.items():\n    print(f\"{key}: {value}\")\n\n# Update (merge)\nperson.update({\"email\": \"alice@email.com\", \"age\": 26})\n\n# Check key\nif \"name\" in person:\n    print(\"Name exists\")\n\n# Copy\ncopy = person.copy()"
+      },
+      "explanation": "keys(), values(), items() per iterare. update() per merge."
+    },
+    {
+      "type": "code",
+      "title": "💻 Dictionary Comprehension",
+      "code": {
+        "language": "python",
+        "snippet": "# Da lista\nnumbers = [1, 2, 3, 4, 5]\nsquares = {x: x**2 for x in numbers}\nprint(squares)  # {1: 1, 2: 4, 3: 9, 4: 16, 5: 25}\n\n# Con condizione\nevens = {x: x**2 for x in range(10) if x % 2 == 0}\nprint(evens)  # {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}\n\n# Da due liste\nkeys = [\"a\", \"b\", \"c\"]\nvalues = [1, 2, 3]\ndict_zip = dict(zip(keys, values))\nprint(dict_zip)  # {'a': 1, 'b': 2, 'c': 3}\n\n# Invertire dizionario\noriginal = {\"a\": 1, \"b\": 2}\ninverted = {v: k for k, v in original.items()}\nprint(inverted)  # {1: 'a', 2: 'b'}"
+      },
+      "explanation": "Dict comprehension per creare dizionari dinamicamente."
+    },
+    {
+      "type": "code",
+      "title": "💻 Nested Dictionaries",
+      "code": {
+        "language": "python",
+        "snippet": "# Strutture complesse\nusers = {\n    \"user1\": {\n        \"name\": \"Alice\",\n        \"age\": 25,\n        \"skills\": [\"Python\", \"JavaScript\"]\n    },\n    \"user2\": {\n        \"name\": \"Bob\",\n        \"age\": 30,\n        \"skills\": [\"Java\", \"C++\"]\n    }\n}\n\n# Accesso nested\nprint(users[\"user1\"][\"name\"])  # 'Alice'\nprint(users[\"user2\"][\"skills\"][0])  # 'Java'\n\n# Iterazione nested\nfor user_id, user_data in users.items():\n    print(f\"{user_id}: {user_data['name']}\")\n    for skill in user_data['skills']:\n        print(f\"  - {skill}\")"
+      },
+      "explanation": "Dizionari possono contenere altri dizionari e liste."
+    },
+    {
+      "type": "code",
+      "title": "💻 Set: Insiemi Unici",
+      "code": {
+        "language": "python",
+        "snippet": "# Creazione\nfruits = {\"apple\", \"banana\", \"cherry\"}\nempty_set = set()  # {} crea dict vuoto!\nnumbers = set([1, 2, 2, 3, 3, 3])  # {1, 2, 3} (rimuove duplicati)\n\n# Add/Remove\nfruits.add(\"orange\")\nfruits.remove(\"apple\")  # KeyError se non esiste\nfruits.discard(\"grape\")  # No error se non esiste\n\n# Operazioni insiemistiche\na = {1, 2, 3, 4}\nb = {3, 4, 5, 6}\n\nprint(a | b)  # {1, 2, 3, 4, 5, 6} (union)\nprint(a & b)  # {3, 4} (intersection)\nprint(a - b)  # {1, 2} (difference)\nprint(a ^ b)  # {1, 2, 5, 6} (symmetric difference)"
+      },
+      "explanation": "Set: collezione non ordinata di elementi unici. Lookup O(1)."
+    },
+    {
+      "type": "code",
+      "title": "💻 Set: Casi d'Uso",
+      "code": {
+        "language": "python",
+        "snippet": "# Rimuovere duplicati\nnumbers = [1, 2, 2, 3, 3, 3, 4, 5, 5]\nunique = list(set(numbers))  # [1, 2, 3, 4, 5]\n\n# Check membership (veloce!)\nwhitelist = {\"alice\", \"bob\", \"charlie\"}  # O(1) lookup\nif \"alice\" in whitelist:  # Molto più veloce che liste\n    print(\"Allowed\")\n\n# Trovare comuni/differenze\nlist1 = [\"a\", \"b\", \"c\", \"d\"]\nlist2 = [\"c\", \"d\", \"e\", \"f\"]\n\ncommon = set(list1) & set(list2)  # {'c', 'd'}\nonly_in_1 = set(list1) - set(list2)  # {'a', 'b'}\n\n# Frozen set (immutabile)\nimmutable = frozenset([1, 2, 3])\n# immutable.add(4)  # ❌ AttributeError"
+      },
+      "explanation": "Set per unicità, membership test veloce, operazioni insiemistiche."
+    },
+    {
+      "type": "text",
+      "title": "Dict vs Set: Quando Usarli",
+      "paragraphs": [
+        "<strong>DIZIONARI {}:</strong>",
+        "• Coppie chiave-valore",
+        "• Accesso per chiave O(1)",
+        "• Usati per: configurazioni, cache, mapping",
+        "• person = {'name': 'Alice', 'age': 25}",
+        "",
+        "<strong>SET {}:</strong>",
+        "• Solo valori unici, no duplicati",
+        "• Membership test O(1)",
+        "• Operazioni insiemistiche (union, intersection)",
+        "• Usati per: rimuovere duplicati, whitelist/blacklist",
+        "• unique = {1, 2, 3}",
+        "",
+        "<strong>Performance:</strong> Entrambi usano hash table → molto veloci"
+      ],
+      "ironicClosing": "Dict e Set: quando liste e tuple non bastano più. Bentornati algoritmi 101."
+    },
+    {
+      "type": "title",
+      "title": "If/Elif/Else",
+      "subtitle": "Controllo del Flusso",
+      "description": "Decisioni e logica condizionale"
+    },
+    {
+      "type": "code",
+      "title": "💻 If Statement Base",
+      "code": {
+        "language": "python",
+        "snippet": "# If semplice\nage = 18\nif age >= 18:\n    print(\"Maggiorenne\")\n\n# If-else\nif age >= 18:\n    print(\"Maggiorenne\")\nelse:\n    print(\"Minorenne\")\n\n# If-elif-else\nscore = 85\nif score >= 90:\n    grade = \"A\"\nelif score >= 80:\n    grade = \"B\"\nelif score >= 70:\n    grade = \"C\"\nelif score >= 60:\n    grade = \"D\"\nelse:\n    grade = \"F\"\nprint(f\"Voto: {grade}\")"
+      },
+      "explanation": "if/elif/else per logica condizionale. Indentazione importante!"
+    },
+    {
+      "type": "code",
+      "title": "💻 Condizioni Complesse",
+      "code": {
+        "language": "python",
+        "snippet": "# AND/OR\nage = 25\nhas_license = True\n\nif age >= 18 and has_license:\n    print(\"Può guidare\")\n\n# Negazione\nif not has_license:\n    print(\"No patente\")\n\n# Chaining (Pythonic!)\nx = 50\nif 0 < x < 100:\n    print(\"x è tra 0 e 100\")\n\n# In/Not in\nfruits = [\"apple\", \"banana\"]\nif \"apple\" in fruits:\n    print(\"Trovato!\")\n\n# Multiple conditions\nif age >= 18 and (has_license or has_permit):\n    can_drive = True"
+      },
+      "explanation": "and, or, not per condizioni complesse. Chaining supportato!"
+    },
+    {
+      "type": "code",
+      "title": "💻 Ternary Operator",
+      "code": {
+        "language": "python",
+        "snippet": "# Ternary (espressione condizionale)\nage = 20\nstatus = \"Adulto\" if age >= 18 else \"Minorenne\"\nprint(status)  # 'Adulto'\n\n# Equivalente a:\nif age >= 18:\n    status = \"Adulto\"\nelse:\n    status = \"Minorenne\"\n\n# Casi d'uso\n# Max di due numeri\nmax_num = a if a > b else b\n\n# Default value\nname = user_input if user_input else \"Guest\"\n\n# Nested (sconsigliato, poco leggibile)\nresult = \"A\" if score >= 90 else \"B\" if score >= 80 else \"C\""
+      },
+      "explanation": "Ternary operator: valore1 if condizione else valore2. Compatto!"
+    },
+    {
+      "type": "code",
+      "title": "💻 Truthy e Falsy Values",
+      "code": {
+        "language": "python",
+        "snippet": "# Falsy values (valutano False)\nvalues = [False, None, 0, 0.0, \"\", [], {}, set()]\nfor v in values:\n    if not v:\n        print(f\"{v} è falsy\")\n\n# Truthy values (tutto il resto)\nif \"hello\":  # True\n    print(\"String non vuota è truthy\")\n\nif [1, 2, 3]:  # True\n    print(\"Lista non vuota è truthy\")\n\n# Pattern comune\nuser_input = input(\"Nome: \")\nif user_input:  # True se non stringa vuota\n    print(f\"Ciao, {user_input}\")\nelse:\n    print(\"Nome vuoto!\")\n\n# Default con or\nname = user_input or \"Guest\"  # 'Guest' se input vuoto"
+      },
+      "explanation": "Python ha falsy values. Tutto il resto è truthy."
+    },
+    {
+      "type": "code",
+      "title": "💻 Short-circuit Evaluation",
+      "code": {
+        "language": "python",
+        "snippet": "# AND short-circuit\nx = 0\nif x != 0 and 10 / x > 5:  # Non fa la divisione se x=0\n    print(\"OK\")\n\n# OR short-circuit\nresult = None\nif result or do_expensive_operation():  # Fa op solo se result falsy\n    pass\n\n# and ritorna primo falsy o ultimo valore\nprint(5 and 0 and 10)  # 0 (primo falsy)\nprint(5 and 7 and 10)  # 10 (ultimo)\n\n# or ritorna primo truthy o ultimo valore\nprint(0 or \"\" or 5)  # 5 (primo truthy)\nprint(0 or \"\" or None)  # None (ultimo)\n\n# Pattern: default value\nconfig = user_config or default_config\nname = input(\"Nome: \") or \"Guest\""
+      },
+      "explanation": "and/or fermano valutazione appena possibile. Utile per performance."
+    },
+    {
+      "type": "code",
+      "title": "💻 Match-Case (Python 3.10+)",
+      "code": {
+        "language": "python",
+        "snippet": "# Pattern matching (Python 3.10+)\ncommand = \"start\"\n\nmatch command:\n    case \"start\":\n        print(\"Starting...\")\n    case \"stop\":\n        print(\"Stopping...\")\n    case \"pause\":\n        print(\"Pausing...\")\n    case _:  # default\n        print(\"Unknown command\")\n\n# Con pattern\npoint = (0, 0)\n\nmatch point:\n    case (0, 0):\n        print(\"Origin\")\n    case (0, y):\n        print(f\"Y-axis at {y}\")\n    case (x, 0):\n        print(f\"X-axis at {x}\")\n    case (x, y):\n        print(f\"Point at {x},{y}\")"
+      },
+      "explanation": "match-case: switch moderno con pattern matching (Python 3.10+)."
+    },
+    {
+      "type": "code",
+      "title": "💻 Best Practices If/Else",
+      "code": {
+        "language": "python",
+        "snippet": "# ✅ GOOD: Positive check first\nif is_valid:\n    process_data()\nelse:\n    handle_error()\n\n# ❌ BAD: Negative check\nif not is_valid:\n    handle_error()\nelse:\n    process_data()\n\n# ✅ GOOD: Guard clauses (early return)\ndef process_user(user):\n    if not user:\n        return \"Error: No user\"\n    if not user.is_active:\n        return \"Error: Inactive\"\n    # ... processo principale\n    return \"Success\"\n\n# ✅ GOOD: Use 'in' for multiple checks\nif status in [\"active\", \"pending\", \"approved\"]:\n    process()\n\n# ❌ BAD\nif status == \"active\" or status == \"pending\" or status == \"approved\":\n    process()"
+      },
+      "explanation": "Guard clauses, positive checks, 'in' per multiple values."
+    },
+    {
+      "type": "text",
+      "title": "If/Elif/Else: Recap",
+      "paragraphs": [
+        "<strong>Sintassi Base:</strong>",
+        "<code>if condition: ...</code>",
+        "<code>elif other_condition: ...</code>",
+        "<code>else: ...</code>",
+        "",
+        "<strong>Operatori:</strong>",
+        "• Confronto: ==, !=, <, >, <=, >=",
+        "• Logici: and, or, not",
+        "• Membership: in, not in",
+        "• Identity: is, is not",
+        "",
+        "<strong>Tips:</strong>",
+        "• Falsy: False, None, 0, '', [], {}, set()",
+        "• Chaining: 0 < x < 100",
+        "• Ternary: val if cond else other",
+        "• Guard clauses per early return"
+      ],
+      "ironicClosing": "If/else: dove la vita del programma prende decisioni migliori della tua."
+    },
+    {
+      "type": "title",
+      "title": "Cicli (For/While)",
+      "subtitle": "Iterazione e Ripetizione",
+      "description": "Looping su collezioni e condizioni"
+    },
+    {
+      "type": "code",
+      "title": "💻 For Loop: Basi",
+      "code": {
+        "language": "python",
+        "snippet": "# Iterare su lista\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor fruit in fruits:\n    print(fruit)\n\n# Iterare su string\nfor char in \"Python\":\n    print(char)\n\n# Range (0 to n-1)\nfor i in range(5):\n    print(i)  # 0, 1, 2, 3, 4\n\n# Range con start/stop\nfor i in range(2, 8):\n    print(i)  # 2, 3, 4, 5, 6, 7\n\n# Range con step\nfor i in range(0, 10, 2):\n    print(i)  # 0, 2, 4, 6, 8\n\n# Range inverso\nfor i in range(10, 0, -1):\n    print(i)  # 10, 9, 8, ..., 1"
+      },
+      "explanation": "for loop per iterare su sequenze. range() per numeri."
+    },
+    {
+      "type": "code",
+      "title": "💻 For Loop: Enumerate & Zip",
+      "code": {
+        "language": "python",
+        "snippet": "# Enumerate (indice + valore)\nfruits = [\"apple\", \"banana\", \"cherry\"]\nfor i, fruit in enumerate(fruits):\n    print(f\"{i}: {fruit}\")\n# 0: apple\n# 1: banana\n# 2: cherry\n\n# Enumerate con start\nfor i, fruit in enumerate(fruits, start=1):\n    print(f\"{i}. {fruit}\")\n# 1. apple\n# 2. banana\n# 3. cherry\n\n# Zip (parallel iteration)\nnames = [\"Alice\", \"Bob\", \"Charlie\"]\nscores = [85, 92, 78]\n\nfor name, score in zip(names, scores):\n    print(f\"{name}: {score}\")\n# Alice: 85\n# Bob: 92\n# Charlie: 78"
+      },
+      "explanation": "enumerate() per indice+valore, zip() per iterare su multiple liste."
+    },
+    {
+      "type": "code",
+      "title": "💻 For Loop: Dict Iteration",
+      "code": {
+        "language": "python",
+        "snippet": "person = {\"name\": \"Alice\", \"age\": 25, \"city\": \"Milano\"}\n\n# Iterare su chiavi (default)\nfor key in person:\n    print(key)\n\n# Esplicito: keys()\nfor key in person.keys():\n    print(key, person[key])\n\n# Values\nfor value in person.values():\n    print(value)\n\n# Items (chiave + valore - RACCOMANDATO)\nfor key, value in person.items():\n    print(f\"{key}: {value}\")\n# name: Alice\n# age: 25\n# city: Milano"
+      },
+      "explanation": ".items() è il modo più comune per iterare su dizionari."
+    },
+    {
+      "type": "code",
+      "title": "💻 While Loop",
+      "code": {
+        "language": "python",
+        "snippet": "# While base\ncount = 0\nwhile count < 5:\n    print(count)\n    count += 1\n\n# Input loop\nwhile True:\n    user_input = input(\"Enter 'quit' to exit: \")\n    if user_input == \"quit\":\n        break\n    print(f\"You entered: {user_input}\")\n\n# Countdown\ntime = 10\nwhile time > 0:\n    print(f\"T-{time}...\")\n    time -= 1\nprint(\"Liftoff!\")\n\n# ATTENZIONE: Infinite loop!\n# while True:\n#     print(\"Forever...\")  # ❌ Non termina mai"
+      },
+      "explanation": "while loop per condizioni. Attenzione agli infinite loops!"
+    },
+    {
+      "type": "code",
+      "title": "💻 Break, Continue, Else",
+      "code": {
+        "language": "python",
+        "snippet": "# Break: esce dal loop\nfor i in range(10):\n    if i == 5:\n        break  # Esce quando i=5\n    print(i)  # 0, 1, 2, 3, 4\n\n# Continue: salta all'iterazione successiva\nfor i in range(10):\n    if i % 2 == 0:\n        continue  # Salta i pari\n    print(i)  # 1, 3, 5, 7, 9\n\n# Else (eseguito se loop completa normalmente)\nfor i in range(5):\n    print(i)\nelse:\n    print(\"Loop completato!\")  # Eseguito\n\n# Else NOT eseguito se break\nfor i in range(10):\n    if i == 5:\n        break\nelse:\n    print(\"Mai eseguito\")  # Non eseguito"
+      },
+      "explanation": "break esce, continue salta, else per loop completato."
+    },
+    {
+      "type": "code",
+      "title": "💻 Nested Loops",
+      "code": {
+        "language": "python",
+        "snippet": "# Loop annidati\nfor i in range(1, 4):\n    for j in range(1, 4):\n        print(f\"i={i}, j={j}\")\n\n# Tabella moltiplicazione\nfor i in range(1, 6):\n    for j in range(1, 6):\n        print(f\"{i}x{j}={i*j}\", end=\"\\t\")\n    print()  # newline\n\n# Matrice\nmatrix = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\n\nfor row in matrix:\n    for num in row:\n        print(num, end=\" \")\n    print()\n\n# Flattening con nested loop\nflat = []\nfor row in matrix:\n    for num in row:\n        flat.append(num)\nprint(flat)  # [1,2,3,4,5,6,7,8,9]"
+      },
+      "explanation": "Loop annidati per strutture 2D. Attenzione alla complessità O(n²)!"
+    },
+    {
+      "type": "code",
+      "title": "💻 Loop Best Practices",
+      "code": {
+        "language": "python",
+        "snippet": "# ✅ GOOD: Iterate directly\nfor fruit in fruits:\n    print(fruit)\n\n# ❌ BAD: Index access\nfor i in range(len(fruits)):\n    print(fruits[i])\n\n# ✅ GOOD: enumerate quando serve indice\nfor i, fruit in enumerate(fruits):\n    print(f\"{i}: {fruit}\")\n\n# ✅ GOOD: dict.items()\nfor key, value in person.items():\n    print(key, value)\n\n# ❌ BAD\nfor key in person:\n    value = person[key]\n    print(key, value)\n\n# ✅ GOOD: List comprehension (quando appropriato)\nsquares = [x**2 for x in range(10)]\n\n# ❌ BAD: Loop quando list comp basta\nsquares = []\nfor x in range(10):\n    squares.append(x**2)"
+      },
+      "explanation": "Iterate direttamente, usa enumerate/items, considera comprehension."
+    },
+    {
+      "type": "code",
+      "title": "💻 Loop Performance Tips",
+      "code": {
+        "language": "python",
+        "snippet": "# ❌ LENTO: Chiamata funzione in ogni iterazione\nfor i in range(len(my_list)):\n    process(my_list[i])\n\n# ✅ VELOCE\nfor item in my_list:\n    process(item)\n\n# ❌ LENTO: Cresce lista in loop\nresult = []\nfor i in range(1000000):\n    result.append(i ** 2)\n\n# ✅ VELOCE: List comprehension (C-optimized)\nresult = [i ** 2 for i in range(1000000)]\n\n# ❌ LENTO: Lookup in loop\nfor item in big_list:\n    if item in another_list:  # O(n) ogni volta\n        process(item)\n\n# ✅ VELOCE: Converti a set\nanother_set = set(another_list)\nfor item in big_list:\n    if item in another_set:  # O(1)\n        process(item)"
+      },
+      "explanation": "Evita lookup O(n) in loop, usa comprehension quando possibile."
+    },
+    {
+      "type": "code",
+      "title": "💻 Loop Patterns Comuni",
+      "code": {
+        "language": "python",
+        "snippet": "# Pattern: Trovare elemento\nfor item in items:\n    if item.matches(condition):\n        found = item\n        break\nelse:\n    found = None  # Non trovato\n\n# Pattern: Accumulatore\ntotal = 0\nfor num in numbers:\n    total += num\n\n# Pattern: Filtering\nresult = []\nfor item in items:\n    if item > 10:\n        result.append(item)\n\n# Pattern: Mapping\nresult = []\nfor item in items:\n    result.append(transform(item))\n\n# Pattern: Counter\ncount = 0\nfor item in items:\n    if condition(item):\n        count += 1"
+      },
+      "explanation": "Pattern comuni: find, accumulate, filter, map, count."
+    },
+    {
+      "type": "text",
+      "title": "For vs While: Quando Usarli",
+      "paragraphs": [
+        "<strong>FOR LOOP:</strong>",
+        "• Quando sai quante iterazioni serve",
+        "• Per iterare su collezioni (liste, dict, ecc.)",
+        "• Quando hai un range definito",
+        "• Il 90% dei casi → usa for",
+        "",
+        "<strong>WHILE LOOP:</strong>",
+        "• Quando la condizione di stop è dinamica",
+        "• Input loops (finché user non fa qualcosa)",
+        "• Retry logic con tentativi limitati",
+        "• Server loops (while running)",
+        "",
+        "<strong>Performance:</strong> for è generalmente più veloce di while"
+      ],
+      "ironicClosing": "For vs while: uno sa dove va, l'altro spera di arrivarci prima o poi."
+    },
+    {
+      "type": "title",
+      "title": "Funzioni",
+      "subtitle": "Modularità e Riuso",
+      "description": "Definire, chiamare, e organizzare codice riusabile"
+    },
+    {
+      "type": "code",
+      "title": "💻 Funzioni: Definizione Base",
+      "code": {
+        "language": "python",
+        "snippet": "# Funzione semplice\ndef greet():\n    print(\"Hello, World!\")\n\ngreet()  # Chiamata\n\n# Con parametri\ndef greet_person(name):\n    print(f\"Hello, {name}!\")\n\ngreet_person(\"Alice\")  # Hello, Alice!\n\n# Con return\ndef add(a, b):\n    return a + b\n\nresult = add(5, 3)  # 8\n\n# Multiple return values (tuple)\ndef get_stats(numbers):\n    return min(numbers), max(numbers), sum(numbers)\n\nmin_val, max_val, total = get_stats([1, 2, 3, 4, 5])"
+      },
+      "explanation": "def per definire, return per ritornare valori. Tuple per return multipli."
+    },
+    {
+      "type": "code",
+      "title": "💻 Parametri e Argomenti",
+      "code": {
+        "language": "python",
+        "snippet": "# Parametri di default\ndef greet(name=\"Guest\", greeting=\"Hello\"):\n    print(f\"{greeting}, {name}!\")\n\ngreet()  # Hello, Guest!\ngreet(\"Alice\")  # Hello, Alice!\ngreet(\"Bob\", \"Hi\")  # Hi, Bob!\n\n# Keyword arguments\ngreet(greeting=\"Ciao\", name=\"Alice\")  # Ciao, Alice!\n\n# Positional + keyword\ndef create_profile(name, age, city=\"Unknown\", country=\"IT\"):\n    return f\"{name}, {age}, {city}, {country}\"\n\nprofile = create_profile(\"Alice\", 25, country=\"US\")\n\n# IMPORTANTE: default dopo positional\n# def bad(a=1, b):  # ❌ SyntaxError\n#     pass"
+      },
+      "explanation": "Parametri default, keyword arguments. Default sempre dopo positional."
+    },
+    {
+      "type": "code",
+      "title": "💻 *args e **kwargs",
+      "code": {
+        "language": "python",
+        "snippet": "# *args: numero variabile di argomenti posizionali\ndef sum_all(*args):\n    return sum(args)\n\nprint(sum_all(1, 2, 3))  # 6\nprint(sum_all(1, 2, 3, 4, 5))  # 15\n\n# **kwargs: numero variabile di keyword arguments\ndef print_info(**kwargs):\n    for key, value in kwargs.items():\n        print(f\"{key}: {value}\")\n\nprint_info(name=\"Alice\", age=25, city=\"Milano\")\n\n# Insieme\ndef full_function(pos1, pos2, *args, kw1=\"default\", **kwargs):\n    print(f\"Positional: {pos1}, {pos2}\")\n    print(f\"Args: {args}\")\n    print(f\"Keyword: {kw1}\")\n    print(f\"Kwargs: {kwargs}\")\n\nfull_function(1, 2, 3, 4, kw1=\"val\", extra=\"data\")"
+      },
+      "explanation": "*args per args variabili, **kwargs per keyword args variabili."
+    },
+    {
+      "type": "code",
+      "title": "💻 Lambda Functions",
+      "code": {
+        "language": "python",
+        "snippet": "# Lambda: funzione anonima inline\nsquare = lambda x: x ** 2\nprint(square(5))  # 25\n\n# Equivalente a:\ndef square(x):\n    return x ** 2\n\n# Con map\nnumbers = [1, 2, 3, 4, 5]\nsquared = list(map(lambda x: x ** 2, numbers))\nprint(squared)  # [1, 4, 9, 16, 25]\n\n# Con filter\nevens = list(filter(lambda x: x % 2 == 0, numbers))\nprint(evens)  # [2, 4]\n\n# Con sorted\nusers = [{\"name\": \"Bob\", \"age\": 30}, {\"name\": \"Alice\", \"age\": 25}]\nsorted_users = sorted(users, key=lambda u: u[\"age\"])\nprint(sorted_users)  # Alice prima (25 < 30)"
+      },
+      "explanation": "Lambda per funzioni semplici inline. Utili con map, filter, sorted."
+    },
+    {
+      "type": "code",
+      "title": "💻 Type Hints",
+      "code": {
+        "language": "python",
+        "snippet": "# Type hints (Python 3.5+)\ndef greet(name: str) -> str:\n    return f\"Hello, {name}!\"\n\ndef add(a: int, b: int) -> int:\n    return a + b\n\ndef get_user(user_id: int) -> dict:\n    return {\"id\": user_id, \"name\": \"Alice\"}\n\n# Con default\ndef create_user(name: str, age: int = 25) -> dict:\n    return {\"name\": name, \"age\": age}\n\n# Optional (None possibile)\nfrom typing import Optional\n\ndef find_user(user_id: int) -> Optional[dict]:\n    if user_id > 0:\n        return {\"id\": user_id}\n    return None\n\n# List, Dict typing\nfrom typing import List, Dict\n\ndef process_items(items: List[str]) -> Dict[str, int]:\n    return {item: len(item) for item in items}"
+      },
+      "explanation": "Type hints per documentazione e type checking. Non obbligatori!"
+    },
+    {
+      "type": "code",
+      "title": "💻 Docstrings",
+      "code": {
+        "language": "python",
+        "snippet": "def calculate_bmi(weight: float, height: float) -> float:\n    \"\"\"Calcola il Body Mass Index.\n    \n    Args:\n        weight: Peso in kilogrammi\n        height: Altezza in metri\n    \n    Returns:\n        BMI calcolato come peso / altezza²\n    \n    Example:\n        >>> calculate_bmi(70, 1.75)\n        22.86\n    \"\"\"\n    return weight / (height ** 2)\n\n# Accesso docstring\nprint(calculate_bmi.__doc__)\n\n# help() mostra docstring\nhelp(calculate_bmi)\n\n# Single line docstring\ndef simple_function():\n    \"\"\"Fa qualcosa di semplice.\"\"\"\n    pass"
+      },
+      "explanation": "Docstrings per documentare funzioni. Triple quotes dopo def."
+    },
+    {
+      "type": "code",
+      "title": "💻 Scope e Closures",
+      "code": {
+        "language": "python",
+        "snippet": "# Scope: LEGB (Local, Enclosing, Global, Built-in)\nx = \"global\"\n\ndef outer():\n    x = \"enclosing\"\n    \n    def inner():\n        x = \"local\"\n        print(x)  # local\n    \n    inner()\n    print(x)  # enclosing\n\nouter()\nprint(x)  # global\n\n# Global keyword\ncount = 0\n\ndef increment():\n    global count\n    count += 1\n\nincrement()\nprint(count)  # 1\n\n# Closure\ndef make_multiplier(n):\n    def multiplier(x):\n        return x * n  # n da outer scope\n    return multiplier\n\ntimes_5 = make_multiplier(5)\nprint(times_5(3))  # 15"
+      },
+      "explanation": "Scope LEGB. global per modificare variabili globali. Closures catturano outer scope."
+    },
+    {
+      "type": "code",
+      "title": "💻 Decorators (Intro)",
+      "code": {
+        "language": "python",
+        "snippet": "# Decorator: funzione che modifica altra funzione\ndef uppercase_decorator(func):\n    def wrapper():\n        result = func()\n        return result.upper()\n    return wrapper\n\n@uppercase_decorator\ndef greet():\n    return \"hello, world!\"\n\nprint(greet())  # HELLO, WORLD!\n\n# Equivalente a:\n# greet = uppercase_decorator(greet)\n\n# Decorator con parametri\ndef repeat(times):\n    def decorator(func):\n        def wrapper(*args, **kwargs):\n            for _ in range(times):\n                result = func(*args, **kwargs)\n            return result\n        return wrapper\n    return decorator\n\n@repeat(3)\ndef say_hello():\n    print(\"Hello!\")\n\nsay_hello()  # Stampa 3 volte"
+      },
+      "explanation": "Decorators modificano funzioni. @decorator syntax. Avanzato!"
+    },
+    {
+      "type": "code",
+      "title": "💻 Recursion",
+      "code": {
+        "language": "python",
+        "snippet": "# Ricorsione: funzione che chiama se stessa\ndef factorial(n):\n    if n == 0 or n == 1:  # Base case\n        return 1\n    return n * factorial(n - 1)  # Recursive case\n\nprint(factorial(5))  # 120 (5*4*3*2*1)\n\n# Fibonacci\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\nprint(fibonacci(6))  # 8 (0,1,1,2,3,5,8)\n\n# ATTENZIONE: recursion depth limit\nimport sys\nprint(sys.getrecursionlimit())  # Default ~1000\n\n# Per deep recursion, preferire iterazione\ndef factorial_iterative(n):\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result"
+      },
+      "explanation": "Ricorsione: base case + recursive case. Limite stack depth ~1000."
+    },
+    {
+      "type": "code",
+      "title": "💻 Generatori (Yield)",
+      "code": {
+        "language": "python",
+        "snippet": "# Generator: funzione che usa yield\ndef count_up_to(n):\n    i = 1\n    while i <= n:\n        yield i\n        i += 1\n\n# Generator è lazy (valuta on-demand)\nfor num in count_up_to(5):\n    print(num)  # 1, 2, 3, 4, 5\n\n# Memory efficient per grandi sequenze\ndef read_large_file(file_path):\n    with open(file_path) as f:\n        for line in f:\n            yield line.strip()\n\n# Generator expression (come list comp)\nsquares = (x ** 2 for x in range(1000000))  # Lazy!\nprint(next(squares))  # 0\nprint(next(squares))  # 1\n\n# vs list comprehension\nsquares_list = [x ** 2 for x in range(1000000)]  # Tutto in memoria!"
+      },
+      "explanation": "yield per generatori lazy. Memory-efficient per grandi dataset."
+    },
+    {
+      "type": "code",
+      "title": "💻 Best Practices Funzioni",
+      "code": {
+        "language": "python",
+        "snippet": "# ✅ GOOD: Single Responsibility\ndef calculate_total(items):\n    return sum(item.price for item in items)\n\n# ❌ BAD: Multiple responsibilities\ndef calculate_and_save_total(items, db):\n    total = sum(item.price for item in items)\n    db.save(total)  # ❌ Fa due cose\n    return total\n\n# ✅ GOOD: Nome descrittivo\ndef calculate_user_total_score(user_id):\n    pass\n\n# ❌ BAD: Nome vago\ndef process(x):\n    pass\n\n# ✅ GOOD: Pochi parametri (max 3-4)\ndef create_user(name, email, age):\n    pass\n\n# ❌ BAD: Troppi parametri\ndef create_user(name, email, age, city, country, phone, address, zip):\n    pass  # Considera un dict o dataclass"
+      },
+      "explanation": "Single responsibility, nomi descrittivi, pochi parametri."
+    },
+    {
+      "type": "text",
+      "title": "Funzioni: Recap",
+      "paragraphs": [
+        "<strong>Definizione:</strong> def nome(params): ...",
+        "<strong>Return:</strong> Ritorna valori, tuple per multipli",
+        "<strong>Parametri:</strong> Positional, default, *args, **kwargs",
+        "<strong>Lambda:</strong> lambda x: x**2 (inline)",
+        "<strong>Type Hints:</strong> def add(a: int) -> int:",
+        "<strong>Scope:</strong> LEGB (Local, Enclosing, Global, Built-in)",
+        "<strong>Decorators:</strong> @decorator per modificare funzioni",
+        "<strong>Generators:</strong> yield per lazy evaluation",
+        "",
+        "<strong>Best Practice:</strong> Single responsibility, nomi chiari, max 3-4 params"
+      ],
+      "ironicClosing": "Funzioni: DRY (Don't Repeat Yourself). O fai copia-incolla come un vero pro."
+    },
+    {
+      "type": "title",
+      "title": "Comprehension",
+      "subtitle": "Sintassi Compatta",
+      "description": "List, dict, set comprehensions per codice conciso"
+    },
+    {
+      "type": "code",
+      "title": "💻 List Comprehension Avanzate",
+      "code": {
+        "language": "python",
+        "snippet": "# Base\nsquares = [x**2 for x in range(10)]\n\n# Con condizione (filter)\nevens = [x for x in range(20) if x % 2 == 0]\n\n# Con if-else (map)\nlabels = [\"even\" if x % 2 == 0 else \"odd\" for x in range(10)]\n\n# Nested comprehension\nmatrix = [[i*j for j in range(1, 6)] for i in range(1, 6)]\n# [[1,2,3,4,5], [2,4,6,8,10], ...]\n\n# Flatten nested list\nnested = [[1, 2], [3, 4], [5, 6]]\nflat = [num for row in nested for num in row]\n# [1, 2, 3, 4, 5, 6]\n\n# Con funzioni\nwords = [\"hello\", \"world\", \"python\"]\nupper = [w.upper() for w in words]\n# ['HELLO', 'WORLD', 'PYTHON']"
+      },
+      "explanation": "List comprehension: [expr for item in iterable if condition]"
+    },
+    {
+      "type": "code",
+      "title": "💻 Dict Comprehension Avanzate",
+      "code": {
+        "language": "python",
+        "snippet": "# Base\nsquares = {x: x**2 for x in range(6)}\n# {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25}\n\n# Con condizione\nevens = {x: x**2 for x in range(10) if x % 2 == 0}\n\n# Da due liste\nkeys = ['a', 'b', 'c']\nvalues = [1, 2, 3]\ndict_zip = {k: v for k, v in zip(keys, values)}\n# {'a': 1, 'b': 2, 'c': 3}\n\n# Invertire dict\noriginal = {'a': 1, 'b': 2, 'c': 3}\ninverted = {v: k for k, v in original.items()}\n# {1: 'a', 2: 'b', 3: 'c'}\n\n# String length mapping\nwords = ['apple', 'banana', 'cherry']\nlengths = {w: len(w) for w in words}\n# {'apple': 5, 'banana': 6, 'cherry': 6}"
+      },
+      "explanation": "Dict comprehension: {key: value for item in iterable if condition}"
+    },
+    {
+      "type": "code",
+      "title": "💻 Set Comprehension",
+      "code": {
+        "language": "python",
+        "snippet": "# Base\nsquares = {x**2 for x in range(10)}\n# {0, 1, 4, 9, 16, 25, 36, 49, 64, 81}\n\n# Rimuovere duplicati automaticamente\nnumbers = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]\nunique = {x for x in numbers}\n# {1, 2, 3, 4}\n\n# Con condizione\nevens = {x for x in range(20) if x % 2 == 0}\n\n# Da string\nletters = {char.lower() for char in \"Hello World\"}\n# {'h', 'e', 'l', 'o', ' ', 'w', 'r', 'd'}\n\n# Primi fattori\nfactors = {x for x in range(1, 21) if 20 % x == 0}\n# {1, 2, 4, 5, 10, 20}"
+      },
+      "explanation": "Set comprehension: {expr for item in iterable if condition}"
+    },
+    {
+      "type": "code",
+      "title": "💻 Generator Expressions",
+      "code": {
+        "language": "python",
+        "snippet": "# Generator expression (lazy)\nsquares_gen = (x**2 for x in range(1000000))  # Non carica tutto in memoria\nprint(next(squares_gen))  # 0\nprint(next(squares_gen))  # 1\n\n# vs List comprehension (eager)\nsquares_list = [x**2 for x in range(1000000)]  # Carica tutto!\n\n# Uso con sum, max, min\ntotal = sum(x**2 for x in range(1000))  # Memory efficient\n\n# Con any/all\nhas_even = any(x % 2 == 0 for x in range(10))  # True\nall_positive = all(x > 0 for x in [1, 2, 3, 4])  # True\n\n# Nested generator\nlines = (line.strip() for line in open('file.txt'))\nuppercase = (line.upper() for line in lines)"
+      },
+      "explanation": "Generator expressions: (expr for item in iterable). Lazy, memory-efficient."
+    },
+    {
+      "type": "code",
+      "title": "💻 Comprehension vs Loop Performance",
+      "code": {
+        "language": "python",
+        "snippet": "import timeit\n\n# List comprehension (VELOCE)\ndef with_comprehension():\n    return [x**2 for x in range(1000)]\n\n# Loop tradizionale (LENTO)\ndef with_loop():\n    result = []\n    for x in range(1000):\n        result.append(x**2)\n    return result\n\n# Test performance\ncomp_time = timeit.timeit(with_comprehension, number=10000)\nloop_time = timeit.timeit(with_loop, number=10000)\n\nprint(f\"Comprehension: {comp_time:.4f}s\")\nprint(f\"Loop: {loop_time:.4f}s\")\nprint(f\"Speedup: {loop_time/comp_time:.2f}x\")\n\n# Comprehension è ~2x più veloce (ottimizzato in C)"
+      },
+      "explanation": "Comprehensions sono ~2x più veloci dei loop equivalenti."
+    },
+    {
+      "type": "text",
+      "title": "Comprehension: Best Practices",
+      "paragraphs": [
+        "<strong>✅ USA comprehension quando:</strong>",
+        "• Trasformazione semplice (map/filter)",
+        "• Una sola operazione per elemento",
+        "• Il codice resta leggibile",
+        "",
+        "<strong>❌ NON usare comprehension quando:</strong>",
+        "• Logica complessa (usa loop esplicito)",
+        "• Side effects (print, modifiche esterne)",
+        "• Nested troppo profondo (>2 livelli)",
+        "",
+        "<strong>Readability:</strong>",
+        "✅ [x**2 for x in range(10)]",
+        "❌ [x**2 for x in range(10) if x % 2 == 0 if x > 5 if x != 8]",
+        "",
+        "<strong>Regola:</strong> Se supera 1 riga, usa loop esplicito"
+      ],
+      "ironicClosing": "Comprehension: quando vuoi sembrare smart. Ma non esagerare o nessuno capirà."
+    },
+    {
+      "type": "title",
+      "title": "File I/O",
+      "subtitle": "Leggere e Scrivere File",
+      "description": "Gestione file con context managers"
+    },
+    {
+      "type": "code",
+      "title": "💻 Leggere File",
+      "code": {
+        "language": "python",
+        "snippet": "# Read intero file\nwith open('file.txt', 'r') as f:\n    content = f.read()\n    print(content)\n\n# Read linea per linea\nwith open('file.txt', 'r') as f:\n    for line in f:\n        print(line.strip())  # strip() rimuove \\n\n\n# Read tutte le linee in lista\nwith open('file.txt', 'r') as f:\n    lines = f.readlines()  # ['line1\\n', 'line2\\n', ...]\n\n# Read specifica quantità\nwith open('file.txt', 'r') as f:\n    chunk = f.read(100)  # Primi 100 caratteri\n\n# Encoding (per caratteri speciali)\nwith open('file.txt', 'r', encoding='utf-8') as f:\n    content = f.read()"
+      },
+      "explanation": "with open() gestisce chiusura automatica. 'r' per read."
+    },
+    {
+      "type": "code",
+      "title": "💻 Scrivere File",
+      "code": {
+        "language": "python",
+        "snippet": "# Write (sovrascrive)\nwith open('output.txt', 'w') as f:\n    f.write(\"Hello, World!\\n\")\n    f.write(\"Second line\\n\")\n\n# Append (aggiunge in fondo)\nwith open('output.txt', 'a') as f:\n    f.write(\"Appended line\\n\")\n\n# Write lista di linee\nlines = [\"Line 1\\n\", \"Line 2\\n\", \"Line 3\\n\"]\nwith open('output.txt', 'w') as f:\n    f.writelines(lines)\n\n# Write con print\nwith open('output.txt', 'w') as f:\n    print(\"Hello, World!\", file=f)\n    print(\"Second line\", file=f)\n\n# Encoding\nwith open('output.txt', 'w', encoding='utf-8') as f:\n    f.write(\"Testo con àccenti e 🐍\")"
+      },
+      "explanation": "'w' sovrascrive, 'a' aggiunge. with gestisce chiusura automatica."
+    },
+    {
+      "type": "code",
+      "title": "💻 File Modes & Binary",
+      "code": {
+        "language": "python",
+        "snippet": "# Text modes\n# 'r' - read (default)\n# 'w' - write (sovrascrive)\n# 'a' - append\n# 'r+' - read + write\n# 'w+' - write + read (sovrascrive)\n# 'a+' - append + read\n\n# Binary mode (immagini, video, ecc.)\nwith open('image.png', 'rb') as f:  # read binary\n    data = f.read()\n\nwith open('copy.png', 'wb') as f:  # write binary\n    f.write(data)\n\n# Check se file esiste\nimport os\nif os.path.exists('file.txt'):\n    with open('file.txt', 'r') as f:\n        content = f.read()\n\n# Path operations\nfrom pathlib import Path\nfile = Path('data/file.txt')\nif file.exists():\n    content = file.read_text()"
+      },
+      "explanation": "Modes: r/w/a per text, rb/wb per binary. pathlib per path moderni."
+    },
+    {
+      "type": "code",
+      "title": "💻 JSON Files",
+      "code": {
+        "language": "python",
+        "snippet": "import json\n\n# Write JSON\ndata = {\n    \"name\": \"Alice\",\n    \"age\": 25,\n    \"skills\": [\"Python\", \"JavaScript\"]\n}\n\nwith open('data.json', 'w') as f:\n    json.dump(data, f, indent=2)  # indent per pretty print\n\n# Read JSON\nwith open('data.json', 'r') as f:\n    loaded_data = json.load(f)\n    print(loaded_data['name'])  # Alice\n\n# JSON string (senza file)\njson_string = json.dumps(data, indent=2)\ndata_back = json.loads(json_string)\n\n# JSON con encoding\nwith open('data.json', 'w', encoding='utf-8') as f:\n    json.dump(data, f, ensure_ascii=False, indent=2)"
+      },
+      "explanation": "json.dump() per scrivere, json.load() per leggere. indent per formattazione."
+    },
+    {
+      "type": "code",
+      "title": "💻 CSV Files",
+      "code": {
+        "language": "python",
+        "snippet": "import csv\n\n# Write CSV\ndata = [\n    ['Name', 'Age', 'City'],\n    ['Alice', 25, 'Milano'],\n    ['Bob', 30, 'Roma']\n]\n\nwith open('data.csv', 'w', newline='') as f:\n    writer = csv.writer(f)\n    writer.writerows(data)\n\n# Read CSV\nwith open('data.csv', 'r') as f:\n    reader = csv.reader(f)\n    for row in reader:\n        print(row)  # ['Name', 'Age', 'City'], ...\n\n# CSV con dict\ndata = [\n    {'name': 'Alice', 'age': 25},\n    {'name': 'Bob', 'age': 30}\n]\n\nwith open('data.csv', 'w', newline='') as f:\n    writer = csv.DictWriter(f, fieldnames=['name', 'age'])\n    writer.writeheader()\n    writer.writerows(data)"
+      },
+      "explanation": "csv.writer/reader per CSV. DictWriter per lavorare con dict."
+    },
+    {
+      "type": "text",
+      "title": "File I/O: Best Practices",
+      "paragraphs": [
+        "<strong>✅ SEMPRE usa 'with' statement:</strong>",
+        "• Chiude automaticamente il file",
+        "• Anche in caso di errori",
+        "• No memory leaks",
+        "",
+        "<strong>❌ MAI fare così:</strong>",
+        "<code>f = open('file.txt')  # ❌ No with!</code>",
+        "<code>content = f.read()</code>",
+        "<code>f.close()  # Potrebbe non essere eseguito</code>",
+        "",
+        "<strong>Tips:</strong>",
+        "• Specifica encoding='utf-8' per testi",
+        "• Usa pathlib.Path per path moderni",
+        "• json/csv modules per formati strutturati",
+        "• Controlla se file esiste prima di leggere"
+      ],
+      "ironicClosing": "File I/O: with statement salva vite. E file descriptor."
+    },
+    {
+      "type": "title",
+      "title": "Moduli",
+      "subtitle": "Organizzare Codice",
+      "description": "Import, packages, e struttura progetti"
+    },
+    {
+      "type": "code",
+      "title": "💻 Import Basics",
+      "code": {
+        "language": "python",
+        "snippet": "# Import modulo intero\nimport math\nprint(math.pi)  # 3.14159...\nprint(math.sqrt(16))  # 4.0\n\n# Import specifico\nfrom math import pi, sqrt\nprint(pi)  # Senza math.\nprint(sqrt(16))\n\n# Import con alias\nimport numpy as np  # Convenzione comune\nimport pandas as pd\n\n# Import tutto (SCONSIGLIATO)\nfrom math import *  # ❌ Inquina namespace\n\n# Import relativo (in package)\nfrom . import module  # Stesso package\nfrom .. import module  # Parent package\nfrom .submodule import function  # Submodule"
+      },
+      "explanation": "import per moduli. from...import per specifici. Alias con 'as'."
+    },
+    {
+      "type": "code",
+      "title": "💻 Creare Moduli",
+      "code": {
+        "language": "python",
+        "snippet": "# File: mymodule.py\n\"\"\"My custom module.\"\"\"\n\ndef greet(name):\n    return f\"Hello, {name}!\"\n\ndef calculate(a, b):\n    return a + b\n\n# Variabili modulo\nVERSION = \"1.0.0\"\nAUTHOR = \"Alice\"\n\n# Eseguito solo se run direttamente\nif __name__ == \"__main__\":\n    print(\"Running as main\")\n    print(greet(\"World\"))\n\n# File: main.py\nimport mymodule\n\nprint(mymodule.greet(\"Alice\"))\nprint(mymodule.VERSION)\n\n# Or\nfrom mymodule import greet, calculate\nprint(greet(\"Bob\"))"
+      },
+      "explanation": "File .py = modulo. if __name__ == '__main__' per codice eseguibile."
+    },
+    {
+      "type": "code",
+      "title": "💻 Packages",
+      "code": {
+        "language": "python",
+        "snippet": "# Struttura package\n# mypackage/\n#   __init__.py\n#   module1.py\n#   module2.py\n#   subpackage/\n#     __init__.py\n#     module3.py\n\n# File: mypackage/__init__.py\n\"\"\"My package.\"\"\"\nfrom .module1 import function1\nfrom .module2 import function2\n\n__version__ = \"1.0.0\"\n__all__ = ['function1', 'function2']  # Per from package import *\n\n# Uso\nimport mypackage\nmypackage.function1()\n\nfrom mypackage import function1, function2\nfrom mypackage.subpackage import module3\n\n# __init__.py rende directory un package"
+      },
+      "explanation": "__init__.py rende directory un package. Può contenere codice di inizializzazione."
+    },
+    {
+      "type": "code",
+      "title": "💻 Moduli Standard Utili",
+      "code": {
+        "language": "python",
+        "snippet": "# datetime\nfrom datetime import datetime, timedelta\nnow = datetime.now()\ntomorrow = now + timedelta(days=1)\n\n# random\nimport random\nrandom.randint(1, 10)  # Numero casuale 1-10\nrandom.choice(['a', 'b', 'c'])  # Elemento casuale\n\n# os (filesystem)\nimport os\nos.listdir('.')  # File in directory\nos.path.exists('file.txt')  # Check esistenza\n\n# pathlib (moderno)\nfrom pathlib import Path\npath = Path('data') / 'file.txt'\nif path.exists():\n    content = path.read_text()\n\n# collections\nfrom collections import Counter, defaultdict\ncounts = Counter(['a', 'b', 'a', 'c', 'a'])\n# Counter({'a': 3, 'b': 1, 'c': 1})"
+      },
+      "explanation": "Standard library ricchissima. datetime, random, os, pathlib, collections."
+    },
+    {
+      "type": "code",
+      "title": "💻 pip e Librerie Esterne",
+      "code": {
+        "language": "python",
+        "snippet": "# Installare librerie con pip\n# $ pip install requests\n# $ pip install numpy pandas matplotlib\n\n# requirements.txt\n# requests==2.28.0\n# numpy>=1.23.0\n# pandas==2.0.0\n\n# Installare da requirements\n# $ pip install -r requirements.txt\n\n# Virtual environment (RACCOMANDATO)\n# $ python -m venv venv\n# $ source venv/bin/activate  # Linux/Mac\n# $ venv\\Scripts\\activate  # Windows\n# $ pip install requests\n\n# Uso libreria esterna\nimport requests\n\nresponse = requests.get('https://api.github.com')\ndata = response.json()\nprint(data)"
+      },
+      "explanation": "pip per installare pacchetti. requirements.txt per dipendenze. venv per isolamento."
+    },
+    {
+      "type": "text",
+      "title": "Moduli: Best Practices",
+      "paragraphs": [
+        "<strong>Organizzazione:</strong>",
+        "• Un modulo = un file .py",
+        "• Un package = directory con __init__.py",
+        "• Nomi lowercase con underscore (my_module.py)",
+        "",
+        "<strong>Import:</strong>",
+        "• Import specifici > import *",
+        "• Alias comuni: numpy as np, pandas as pd",
+        "• Import all'inizio del file",
+        "",
+        "<strong>Virtual Environments:</strong>",
+        "• SEMPRE usa venv per progetti",
+        "• requirements.txt per dipendenze",
+        "• .gitignore per venv/ folder",
+        "",
+        "<strong>if __name__ == '__main__':</strong> per codice eseguibile"
+      ],
+      "ironicClosing": "Moduli: perché nessuno vuole 10,000 righe in un file. Tranne quel collega."
+    },
+    {
+      "type": "title",
+      "title": "OOP Basics",
+      "subtitle": "Programmazione Orientata agli Oggetti",
+      "description": "Classi, oggetti, ereditarietà e polimorfismo"
+    },
+    {
+      "type": "code",
+      "title": "💻 Classi: Basi",
+      "code": {
+        "language": "python",
+        "snippet": "# Definire classe\nclass Person:\n    def __init__(self, name, age):\n        self.name = name  # Attributi istanza\n        self.age = age\n    \n    def greet(self):  # Metodo\n        return f\"Hello, I'm {self.name}\"\n    \n    def birthday(self):\n        self.age += 1\n\n# Creare oggetti (istanze)\nalice = Person(\"Alice\", 25)\nbob = Person(\"Bob\", 30)\n\nprint(alice.greet())  # Hello, I'm Alice\nprint(alice.age)  # 25\nalice.birthday()\nprint(alice.age)  # 26"
+      },
+      "explanation": "class per definire. __init__ è il costruttore. self è l'istanza corrente."
+    },
+    {
+      "type": "code",
+      "title": "💻 Attributi e Metodi",
+      "code": {
+        "language": "python",
+        "snippet": "class Counter:\n    # Attributo di classe (condiviso)\n    count = 0\n    \n    def __init__(self, name):\n        self.name = name  # Attributo istanza\n        Counter.count += 1\n    \n    def get_count(self):\n        return Counter.count\n    \n    @classmethod  # Metodo di classe\n    def reset_count(cls):\n        cls.count = 0\n    \n    @staticmethod  # Metodo statico\n    def is_valid_name(name):\n        return len(name) > 0\n\nc1 = Counter(\"First\")\nc2 = Counter(\"Second\")\nprint(c1.get_count())  # 2\n\nCounter.reset_count()\nprint(Counter.is_valid_name(\"\"))  # False"
+      },
+      "explanation": "Attributi classe vs istanza. @classmethod e @staticmethod."
+    },
+    {
+      "type": "code",
+      "title": "💻 Ereditarietà",
+      "code": {
+        "language": "python",
+        "snippet": "# Classe base\nclass Animal:\n    def __init__(self, name):\n        self.name = name\n    \n    def speak(self):\n        return \"Some sound\"\n\n# Classe derivata\nclass Dog(Animal):\n    def __init__(self, name, breed):\n        super().__init__(name)  # Chiama __init__ del parent\n        self.breed = breed\n    \n    def speak(self):  # Override\n        return \"Woof!\"\n    \n    def fetch(self):\n        return f\"{self.name} fetches the ball\"\n\ndog = Dog(\"Buddy\", \"Golden Retriever\")\nprint(dog.speak())  # Woof!\nprint(dog.fetch())  # Buddy fetches the ball\nprint(isinstance(dog, Dog))  # True\nprint(isinstance(dog, Animal))  # True"
+      },
+      "explanation": "Ereditarietà con (ParentClass). super() per chiamare parent. Override."
+    },
+    {
+      "type": "code",
+      "title": "💻 Incapsulamento",
+      "code": {
+        "language": "python",
+        "snippet": "class BankAccount:\n    def __init__(self, balance):\n        self.__balance = balance  # Attributo privato (name mangling)\n    \n    def deposit(self, amount):\n        if amount > 0:\n            self.__balance += amount\n    \n    def withdraw(self, amount):\n        if 0 < amount <= self.__balance:\n            self.__balance -= amount\n            return True\n        return False\n    \n    def get_balance(self):  # Getter\n        return self.__balance\n\naccount = BankAccount(1000)\naccount.deposit(500)\nprint(account.get_balance())  # 1500\n\n# print(account.__balance)  # ❌ AttributeError\nprint(account._BankAccount__balance)  # 1500 (name mangling bypass)"
+      },
+      "explanation": "__ per attributi privati. _ per 'protected' (convenzione). Getter/setter."
+    },
+    {
+      "type": "code",
+      "title": "💻 Properties",
+      "code": {
+        "language": "python",
+        "snippet": "class Person:\n    def __init__(self, name, age):\n        self._name = name\n        self._age = age\n    \n    @property  # Getter\n    def name(self):\n        return self._name\n    \n    @property\n    def age(self):\n        return self._age\n    \n    @age.setter  # Setter\n    def age(self, value):\n        if value < 0:\n            raise ValueError(\"Age cannot be negative\")\n        self._age = value\n\nperson = Person(\"Alice\", 25)\nprint(person.name)  # Alice (chiamata get_name)\nperson.age = 26  # Chiama set_age\nprint(person.age)  # 26\n\n# person.age = -5  # ValueError"
+      },
+      "explanation": "@property per getter, @attr.setter per setter. Accesso come attributi."
+    },
+    {
+      "type": "code",
+      "title": "💻 Magic Methods",
+      "code": {
+        "language": "python",
+        "snippet": "class Point:\n    def __init__(self, x, y):\n        self.x = x\n        self.y = y\n    \n    def __str__(self):  # print(), str()\n        return f\"Point({self.x}, {self.y})\"\n    \n    def __repr__(self):  # repr(), debug\n        return f\"Point(x={self.x}, y={self.y})\"\n    \n    def __add__(self, other):  # +\n        return Point(self.x + other.x, self.y + other.y)\n    \n    def __eq__(self, other):  # ==\n        return self.x == other.x and self.y == other.y\n    \n    def __len__(self):  # len()\n        return int((self.x**2 + self.y**2)**0.5)\n\np1 = Point(1, 2)\np2 = Point(3, 4)\nprint(p1)  # Point(1, 2)\nprint(p1 + p2)  # Point(4, 6)\nprint(p1 == p2)  # False"
+      },
+      "explanation": "Magic methods: __str__, __repr__, __add__, __eq__, __len__, ecc."
+    },
+    {
+      "type": "code",
+      "title": "💻 Dataclasses (Python 3.7+)",
+      "code": {
+        "language": "python",
+        "snippet": "from dataclasses import dataclass, field\nfrom typing import List\n\n@dataclass\nclass Person:\n    name: str\n    age: int\n    email: str = \"unknown@email.com\"  # Default\n    skills: List[str] = field(default_factory=list)  # Mutable default\n    \n    def greet(self):\n        return f\"Hello, I'm {self.name}\"\n\n# Auto-genera __init__, __repr__, __eq__, ecc.\nalice = Person(\"Alice\", 25, skills=[\"Python\", \"JavaScript\"])\nprint(alice)  # Person(name='Alice', age=25, ...)\nprint(alice.greet())  # Hello, I'm Alice\n\nbob = Person(\"Bob\", 30)\nprint(alice == bob)  # False (auto __eq__)"
+      },
+      "explanation": "Dataclasses: auto-generano boilerplate. Perfetti per data containers."
+    },
+    {
+      "type": "code",
+      "title": "💻 Ereditarietà Multipla",
+      "code": {
+        "language": "python",
+        "snippet": "class Flyable:\n    def fly(self):\n        return \"Flying...\"\n\nclass Swimmable:\n    def swim(self):\n        return \"Swimming...\"\n\nclass Duck(Flyable, Swimmable):  # Multiple inheritance\n    def __init__(self, name):\n        self.name = name\n    \n    def quack(self):\n        return \"Quack!\"\n\nduck = Duck(\"Donald\")\nprint(duck.fly())  # Flying...\nprint(duck.swim())  # Swimming...\nprint(duck.quack())  # Quack!\n\n# MRO (Method Resolution Order)\nprint(Duck.__mro__)\n# (<class 'Duck'>, <class 'Flyable'>, <class 'Swimmable'>, ...)"
+      },
+      "explanation": "Python supporta ereditarietà multipla. MRO definisce ordine di risoluzione."
+    },
+    {
+      "type": "code",
+      "title": "💻 Abstract Classes",
+      "code": {
+        "language": "python",
+        "snippet": "from abc import ABC, abstractmethod\n\nclass Shape(ABC):  # Abstract Base Class\n    @abstractmethod\n    def area(self):\n        pass\n    \n    @abstractmethod\n    def perimeter(self):\n        pass\n\nclass Rectangle(Shape):\n    def __init__(self, width, height):\n        self.width = width\n        self.height = height\n    \n    def area(self):\n        return self.width * self.height\n    \n    def perimeter(self):\n        return 2 * (self.width + self.height)\n\n# shape = Shape()  # ❌ TypeError: Can't instantiate abstract class\nrect = Rectangle(5, 10)  # ✅ OK\nprint(rect.area())  # 50"
+      },
+      "explanation": "ABC per classi astratte. @abstractmethod forza implementazione in subclass."
+    },
+    {
+      "type": "code",
+      "title": "💻 Context Managers",
+      "code": {
+        "language": "python",
+        "snippet": "class FileManager:\n    def __init__(self, filename, mode):\n        self.filename = filename\n        self.mode = mode\n        self.file = None\n    \n    def __enter__(self):  # Chiamato all'entrata nel with\n        self.file = open(self.filename, self.mode)\n        return self.file\n    \n    def __exit__(self, exc_type, exc_val, exc_tb):  # Chiamato all'uscita\n        if self.file:\n            self.file.close()\n        # Return False per propagare exceptions\n        return False\n\n# Uso\nwith FileManager('test.txt', 'w') as f:\n    f.write('Hello, World!')\n# File chiuso automaticamente\n\n# Context manager con decorator\nfrom contextlib import contextmanager\n\n@contextmanager\ndef timer():\n    import time\n    start = time.time()\n    yield\n    print(f\"Elapsed: {time.time() - start:.2f}s\")"
+      },
+      "explanation": "__enter__/__exit__ per context managers. with statement."
+    },
+    {
+      "type": "code",
+      "title": "💻 OOP Best Practices",
+      "code": {
+        "language": "python",
+        "snippet": "# ✅ GOOD: Single Responsibility\nclass User:\n    def __init__(self, name, email):\n        self.name = name\n        self.email = email\n\nclass UserRepository:\n    def save(self, user):\n        pass  # Save to database\n\n# ❌ BAD: Too many responsibilities\nclass User:\n    def save_to_database(self):  # ❌ Non responsabilità di User\n        pass\n\n# ✅ GOOD: Composition over inheritance\nclass Engine:\n    def start(self):\n        return \"Engine started\"\n\nclass Car:\n    def __init__(self):\n        self.engine = Engine()  # Has-a relationship\n    \n    def start(self):\n        return self.engine.start()\n\n# ❌ BAD: Inheritance abuse\nclass Car(Engine):  # ❌ Car is-a Engine? No!"
+      },
+      "explanation": "Single responsibility. Composition over inheritance. Keep it simple."
+    },
+    {
+      "type": "text",
+      "title": "OOP: Recap",
+      "paragraphs": [
+        "<strong>Classi:</strong> class Name: ..., __init__ costruttore",
+        "<strong>Attributi:</strong> istanza (self.x) vs classe (Class.x)",
+        "<strong>Metodi:</strong> instance, @classmethod, @staticmethod",
+        "<strong>Ereditarietà:</strong> class Child(Parent), super()",
+        "<strong>Incapsulamento:</strong> _ protected, __ private",
+        "<strong>Properties:</strong> @property per getter/setter eleganti",
+        "<strong>Magic methods:</strong> __str__, __add__, __eq__, ecc.",
+        "<strong>Dataclasses:</strong> @dataclass per auto-boilerplate",
+        "<strong>ABC:</strong> Abstract Base Classes per interfacce",
+        "",
+        "<strong>Best Practice:</strong> Single responsibility, composition over inheritance"
+      ],
+      "ironicClosing": "OOP: perché scrivere 100 righe quando ne bastano 10. Ah no, aspetta..."
+    },
+    {
+      "type": "title",
+      "title": "Gestione Errori",
+      "subtitle": "Try/Except e Exceptions",
+      "description": "Gestire errori gracefully senza crash"
+    },
+    {
+      "type": "code",
+      "title": "💻 Try/Except Basics",
+      "code": {
+        "language": "python",
+        "snippet": "# Try/Except base\ntry:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero!\")\n    result = None\n\n# Multiple exceptions\ntry:\n    value = int(input(\"Enter number: \"))\n    result = 10 / value\nexcept ValueError:\n    print(\"Invalid number\")\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")\n\n# Catch multiple in one\ntry:\n    # ...\nexcept (ValueError, ZeroDivisionError) as e:\n    print(f\"Error: {e}\")\n\n# Catch all (SCONSIGLIATO)\ntry:\n    # ...\nexcept Exception as e:  # Catches most errors\n    print(f\"Error: {e}\")"
+      },
+      "explanation": "try/except per gestire errori. Catch specifici > Exception generica."
+    },
+    {
+      "type": "code",
+      "title": "💻 Try/Except/Else/Finally",
+      "code": {
+        "language": "python",
+        "snippet": "# Else: eseguito se NO exception\ntry:\n    value = int(input(\"Enter number: \"))\nexcept ValueError:\n    print(\"Invalid number\")\nelse:\n    print(f\"You entered: {value}\")  # Solo se successo\n\n# Finally: SEMPRE eseguito\nfile = None\ntry:\n    file = open('data.txt', 'r')\n    content = file.read()\nexcept FileNotFoundError:\n    print(\"File not found\")\nfinally:\n    if file:\n        file.close()  # Sempre eseguito\n\n# Tutto insieme\ntry:\n    result = risky_operation()\nexcept SomeError:\n    handle_error()\nelse:\n    print(\"Success!\")  # Solo se no error\nfinally:\n    cleanup()  # Sempre"
+      },
+      "explanation": "else per codice post-try. finally per cleanup SEMPRE eseguito."
+    },
+    {
+      "type": "code",
+      "title": "💻 Raise Exceptions",
+      "code": {
+        "language": "python",
+        "snippet": "# Raise exception\ndef divide(a, b):\n    if b == 0:\n        raise ValueError(\"Divisor cannot be zero\")\n    return a / b\n\ntry:\n    result = divide(10, 0)\nexcept ValueError as e:\n    print(e)  # Divisor cannot be zero\n\n# Re-raise\ntry:\n    risky_operation()\nexcept SomeError:\n    log_error()\n    raise  # Re-raise la stessa exception\n\n# Raise from (chaining)\ntry:\n    original_operation()\nexcept OriginalError as e:\n    raise NewError(\"Failed\") from e  # Mantiene traceback originale"
+      },
+      "explanation": "raise per lanciare exceptions. raise da solo re-raise. from per chaining."
+    },
+    {
+      "type": "code",
+      "title": "💻 Custom Exceptions",
+      "code": {
+        "language": "python",
+        "snippet": "# Custom exception\nclass InvalidAgeError(Exception):\n    \"\"\"Raised when age is invalid.\"\"\"\n    pass\n\nclass User:\n    def __init__(self, name, age):\n        if age < 0 or age > 150:\n            raise InvalidAgeError(f\"Invalid age: {age}\")\n        self.name = name\n        self.age = age\n\ntry:\n    user = User(\"Alice\", -5)\nexcept InvalidAgeError as e:\n    print(e)  # Invalid age: -5\n\n# Exception con attributi\nclass ValidationError(Exception):\n    def __init__(self, field, message):\n        self.field = field\n        self.message = message\n        super().__init__(f\"{field}: {message}\")\n\nraise ValidationError(\"email\", \"Invalid format\")"
+      },
+      "explanation": "Custom exceptions: class CustomError(Exception). Ereditano da Exception."
+    },
+    {
+      "type": "code",
+      "title": "💻 Common Built-in Exceptions",
+      "code": {
+        "language": "python",
+        "snippet": "# ValueError: valore inappropriato\nint(\"abc\")  # ValueError\n\n# TypeError: tipo sbagliato\n\"hello\" + 5  # TypeError\n\n# KeyError: chiave non esiste\nd = {\"a\": 1}\nd[\"b\"]  # KeyError\n\n# IndexError: indice fuori range\nlist = [1, 2, 3]\nlist[10]  # IndexError\n\n# FileNotFoundError\nopen('nonexistent.txt')  # FileNotFoundError\n\n# ZeroDivisionError\n10 / 0  # ZeroDivisionError\n\n# AttributeError: attributo non esiste\nobj.nonexistent_attr  # AttributeError\n\n# ImportError/ModuleNotFoundError\nimport nonexistent_module  # ModuleNotFoundError"
+      },
+      "explanation": "Built-in exceptions comuni. Ognuna per tipo specifico di errore."
+    },
+    {
+      "type": "code",
+      "title": "💻 Context Manager per Errors",
+      "code": {
+        "language": "python",
+        "snippet": "# Suppress exceptions\nfrom contextlib import suppress\n\n# Invece di:\ntry:\n    os.remove('file.txt')\nexcept FileNotFoundError:\n    pass\n\n# Più elegante:\nwith suppress(FileNotFoundError):\n    os.remove('file.txt')\n\n# Assert per debugging\ndef calculate_average(numbers):\n    assert len(numbers) > 0, \"List cannot be empty\"\n    return sum(numbers) / len(numbers)\n\n# calculate_average([])  # AssertionError\n\n# NOTA: assert disabilitato con python -O\n# NON usare per validazione input utente!"
+      },
+      "explanation": "suppress() per ignorare exceptions specifiche. assert per debug."
+    },
+    {
+      "type": "code",
+      "title": "💻 Logging Errors",
+      "code": {
+        "language": "python",
+        "snippet": "import logging\n\nlogging.basicConfig(level=logging.INFO)\n\ntry:\n    result = risky_operation()\nexcept Exception as e:\n    logging.error(f\"Operation failed: {e}\", exc_info=True)  # Include traceback\n    # Non fare solo: print(e)  # ❌ Non loggato\n\n# Traceback per debugging\nimport traceback\n\ntry:\n    buggy_function()\nexcept Exception:\n    traceback.print_exc()  # Stampa full traceback\n    # Or\n    error_message = traceback.format_exc()  # String\n    log_to_file(error_message)\n\n# Best practice: log e re-raise\ntry:\n    critical_operation()\nexcept Exception as e:\n    logging.error(f\"Critical error: {e}\")\n    raise  # Re-raise per upper layers"
+      },
+      "explanation": "logging per errori production. traceback per debug. Log e re-raise."
+    },
+    {
+      "type": "text",
+      "title": "Gestione Errori: Best Practices",
+      "paragraphs": [
+        "<strong>✅ DO:</strong>",
+        "• Catch exceptions specifiche",
+        "• Use with statement per resource management",
+        "• Log errors con logging module",
+        "• Fail fast: non nascondere errori critici",
+        "• Custom exceptions per domain logic",
+        "",
+        "<strong>❌ DON'T:</strong>",
+        "• except Exception: pass  # Silent failures",
+        "• except: ... senza tipo (catcha anche KeyboardInterrupt!)",
+        "• Usare exceptions per control flow normale",
+        "• Catch troppo ampio (ValueError quando aspetti int)",
+        "",
+        "<strong>Rule:</strong> Catch solo ciò che puoi gestire. Propaga il resto."
+      ],
+      "ironicClosing": "Try/except: perché il codice fallisce. Sempre. Prepàrati."
+    },
+    {
+      "type": "title",
+      "title": "Best Practices",
+      "subtitle": "Codice Python Professionale",
+      "description": "PEP 8, idiomi, e convenzioni"
+    },
+    {
+      "type": "text",
+      "title": "PEP 8 Style Guide",
+      "paragraphs": [
+        "<strong>Naming:</strong>",
+        "• snake_case: variabili, funzioni, moduli",
+        "• PascalCase: classi",
+        "• UPPER_CASE: costanti",
+        "• _private: convenzione (non forzato)",
+        "• __dunder__: magic methods",
+        "",
+        "<strong>Indentazione:</strong> 4 spazi (NO tab)",
+        "<strong>Line length:</strong> Max 79 caratteri",
+        "<strong>Imports:</strong> Top of file, grouped (stdlib, 3rd party, local)",
+        "<strong>Whitespace:</strong> Spazi attorno operatori",
+        "",
+        "<strong>Esempio:</strong>",
+        "<code>def calculate_total(items: List[Item]) -> float:</code>",
+        "<code>    \"\"\"Calculate total price.\"\"\"</code>",
+        "<code>    return sum(item.price for item in items)</code>"
+      ],
+      "ironicClosing": "PEP 8: perché Python senza stile è come pizza senza mozzarella."
+    },
+    {
+      "type": "code",
+      "title": "💻 Python Idioms",
+      "code": {
+        "language": "python",
+        "snippet": "# ✅ Pythonic\nif item in my_list:\n    process(item)\n\nfor i, item in enumerate(items):\n    print(f\"{i}: {item}\")\n\nresult = [x**2 for x in range(10)]\n\nwith open('file.txt') as f:\n    content = f.read()\n\n# ❌ Non-Pythonic\nif my_list.count(item) > 0:  # Usa 'in'\n    process(item)\n\nfor i in range(len(items)):  # Usa enumerate\n    print(f\"{i}: {items[i]}\")\n\nresult = []\nfor x in range(10):  # Usa comprehension\n    result.append(x**2)\n\nf = open('file.txt')  # Usa with\ncontent = f.read()\nf.close()"
+      },
+      "explanation": "Python idioms: in, enumerate, comprehensions, with. Scrivi Pythonic!"
+    },
+    {
+      "type": "text",
+      "title": "Tools & Workflow",
+      "paragraphs": [
+        "<strong>Linting & Formatting:</strong>",
+        "• black: formatter automatico (opinionated)",
+        "• flake8: linter (PEP 8 checks)",
+        "• pylint: linter avanzato",
+        "• mypy: type checker",
+        "",
+        "<strong>Testing:</strong>",
+        "• pytest: framework testing moderno",
+        "• unittest: stdlib (più verboso)",
+        "• coverage: test coverage reports",
+        "",
+        "<strong>Virtual Environments:</strong>",
+        "• venv: stdlib, raccomandato",
+        "• virtualenv: alternativa",
+        "• pipenv: gestione deps + venv",
+        "• poetry: package manager moderno",
+        "",
+        "<strong>IDE:</strong> VS Code (Python extension), PyCharm, Jupyter"
+      ],
+      "ironicClosing": "Tools: perché scrivere codice perfetto è difficile. Lascia fare al computer."
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

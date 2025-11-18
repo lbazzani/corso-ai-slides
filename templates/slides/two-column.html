@@ -1,0 +1,18 @@
+<h2>{{title}}</h2>
+<div class="two-column">
+  <div class="column">
+    <h3>{{leftColumn.title}}</h3>
+    {{#each leftColumn.items}}
+    <p>{{this}}</p>
+    {{/each}}
+  </div>
+  <div class="column">
+    <h3>{{rightColumn.title}}</h3>
+    {{#each rightColumn.items}}
+    <p>{{this}}</p>
+    {{/each}}
+  </div>
+</div>
+{{#if note}}
+<p class="mt-4">{{note}}</p>
+{{/if}}

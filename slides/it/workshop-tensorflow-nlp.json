@@ -1,0 +1,557 @@
+{
+  "number": 10,
+  "title": "Workshop: Intent Classification con TensorFlow",
+  "description": "Classificatore di intenti per customer support con Keras - Da query utente a categoria automatica",
+  "steps": [
+    {
+      "name": "Setup Progetto",
+      "slides": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "name": "Dataset & Preprocessing",
+      "slides": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "name": "Modello & Training",
+      "slides": [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "name": "Testing & Deploy",
+      "slides": [
+        29,
+        30,
+        31,
+        32,
+        33
+      ]
+    },
+    {
+      "name": "Debug & Next",
+      "slides": [
+        34,
+        35,
+        36,
+        37
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Workshop TensorFlow + NLP",
+      "subtitle": "Intent Classifier per Customer Support",
+      "description": "Classificazione automatica di richieste utente con Keras Sequential API",
+      "ironicClosing": "Laptop pronto. TensorFlow installato. Let's go."
+    },
+    {
+      "type": "text",
+      "title": "Cosa Costruiremo",
+      "paragraphs": [
+        "<strong>Un classificatore che analizza richieste di customer support e le categorizza automaticamente per smistamento o risposta automatica.</strong>",
+        "",
+        "• <strong>Dataset:</strong> Customer support intents (7 categorie comuni)",
+        "• <strong>Modello:</strong> Embeddings + LSTM + Dense (Keras Sequential)",
+        "• <strong>Task:</strong> Multi-class classification (7 intents)",
+        "• <strong>Output:</strong> API Flask che classifica richieste in tempo reale",
+        "• <strong>Tempo:</strong> ~90 minuti (training 5-10 min su CPU)"
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Requisiti",
+      "subtitle": "Cosa serve prima di iniziare",
+      "paragraphs": [
+        "• Python 3.8+ installato",
+        "• pip o conda funzionante",
+        "• 4GB RAM minimo (8GB consigliati)",
+        "• 2GB spazio disco per modelli",
+        "• Connessione internet per download TensorFlow",
+        "• Editor di codice (VS Code, PyCharm, etc.)"
+      ],
+      "ironicClosing": "Requisiti più leggeri del workshop PyTorch. TensorFlow è efficiente."
+    },
+    {
+      "type": "code",
+      "title": "Step 1: Setup Ambiente",
+      "subtitle": "Crea cartella e virtual environment",
+      "code": {
+        "language": "bash",
+        "snippet": "# Crea cartella progetto\nmkdir intent-classifier-tf\ncd intent-classifier-tf\n\n# Crea virtual environment\npython -m venv venv\n\n# Attiva venv\n# Su Linux/Mac:\nsource venv/bin/activate\n# Su Windows:\n# venv\\Scripts\\activate\n\n# Verifica\nwhich python  # Deve puntare a venv/bin/python"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 2: Installa Dipendenze",
+      "subtitle": "TensorFlow, Flask, scikit-learn",
+      "code": {
+        "language": "bash",
+        "snippet": "# Installa TensorFlow (CPU version)\npip install tensorflow\n\n# Utility per preprocessing e metriche\npip install scikit-learn numpy pandas\n\n# Flask per API (opzionale, lo faremo dopo)\npip install flask\n\n# Verifica installazione\npython -c \"import tensorflow as tf; print(f'TensorFlow {tf.__version__}')\"\npython -c \"import numpy as np; print(f'NumPy {np.__version__}')\""
+      }
+    },
+    {
+      "type": "text",
+      "title": "TensorFlow + Keras: Che Cos'è?",
+      "subtitle": "La libreria più popolare per Deep Learning",
+      "paragraphs": [
+        "<strong>TensorFlow</strong> è la libreria open-source di Google per machine learning.",
+        "",
+        "<strong>Keras</strong> è l'API high-level di TensorFlow (integrata dal 2019):",
+        "• Interfaccia semplice e intuitiva",
+        "• Sequential API: costruisci modelli layer-by-layer come Lego",
+        "• Functional API: per architetture complesse",
+        "• Training e inference con poche righe",
+        "",
+        "<strong>Perché Keras?</strong>",
+        "PyTorch è flessibile ma verboso. Keras è <em>\"batteries included\"</em>: tutto pronto out-of-the-box."
+      ],
+      "ironicClosing": "Keras: quando vuoi deep learning senza scrivere boilerplate per 3 ore."
+    },
+    {
+      "type": "text",
+      "title": "Architettura del Progetto",
+      "subtitle": "File che creeremo",
+      "paragraphs": [
+        "• <strong>data.py</strong> - Dataset di training (embedded nel codice)",
+        "• <strong>train.py</strong> - Script per training del modello",
+        "• <strong>inference.py</strong> - Script CLI per testare classificazione",
+        "• <strong>api.py</strong> - API Flask per deployment (opzionale)",
+        "• <strong>intent_model/</strong> - Cartella con modello salvato (generata automaticamente)"
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Intents: Le 7 Categorie",
+      "subtitle": "Customer support use case reale",
+      "paragraphs": [
+        "<strong>Il modello classificherà richieste di customer support in 7 categorie comuni:</strong>",
+        "",
+        "• <strong>order_status</strong> - \"Dov'è il mio ordine?\"",
+        "• <strong>return_refund</strong> - \"Voglio un rimborso\"",
+        "• <strong>product_info</strong> - \"Questo prodotto ha la garanzia?\"",
+        "• <strong>technical_support</strong> - \"L'app non si apre\"",
+        "• <strong>shipping_info</strong> - \"Quanto costa la spedizione?\"",
+        "• <strong>account_issue</strong> - \"Non riesco ad accedere\"",
+        "• <strong>complaint</strong> - \"Prodotto difettoso, sono deluso\""
+      ]
+    },
+    {
+      "type": "code",
+      "title": "Step 3: Crea data.py (Parte 1)",
+      "subtitle": "Dataset di training embedded",
+      "code": {
+        "language": "python",
+        "snippet": "# data.py\n# Dataset semplificato per training rapido\n\ntraining_data = [\n    # order_status\n    (\"Where is my order?\", \"order_status\"),\n    (\"I haven't received my package yet\", \"order_status\"),\n    (\"Track my shipment\", \"order_status\"),\n    (\"When will my order arrive?\", \"order_status\"),\n    (\"Order tracking number\", \"order_status\"),\n    (\"Delivery status update\", \"order_status\"),\n    (\"My order is late\", \"order_status\"),\n    (\"Has my package shipped?\", \"order_status\"),\n    \n    # return_refund\n    (\"I want to return this product\", \"return_refund\"),\n    (\"How do I get a refund?\", \"return_refund\"),\n    (\"Return policy information\", \"return_refund\"),\n    (\"Cancel my order and refund\", \"return_refund\"),\n    (\"I'm not satisfied, want money back\", \"return_refund\"),\n    (\"Refund request\", \"return_refund\"),\n    (\"Return shipping label\", \"return_refund\"),"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 3: Crea data.py (Parte 2)",
+      "subtitle": "Continua con altre categorie",
+      "code": {
+        "language": "python",
+        "snippet": "    # product_info\n    (\"Does this come with warranty?\", \"product_info\"),\n    (\"What are the product specifications?\", \"product_info\"),\n    (\"Is this item in stock?\", \"product_info\"),\n    (\"Product dimensions and weight\", \"product_info\"),\n    (\"Tell me more about this product\", \"product_info\"),\n    (\"What colors are available?\", \"product_info\"),\n    \n    # technical_support\n    (\"The app is not working\", \"technical_support\"),\n    (\"I can't login to my account\", \"technical_support\"),\n    (\"Error message when I try to checkout\", \"technical_support\"),\n    (\"Website is not loading\", \"technical_support\"),\n    (\"Payment failed\", \"technical_support\"),\n    (\"Bug in the mobile app\", \"technical_support\"),"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 3: Crea data.py (Parte 3)",
+      "subtitle": "Ultime categorie + funzioni utility",
+      "code": {
+        "language": "python",
+        "snippet": "    # shipping_info\n    (\"How much is shipping?\", \"shipping_info\"),\n    (\"Do you ship internationally?\", \"shipping_info\"),\n    (\"Shipping options available\", \"shipping_info\"),\n    (\"Free shipping threshold\", \"shipping_info\"),\n    \n    # account_issue\n    (\"I forgot my password\", \"account_issue\"),\n    (\"Can't access my account\", \"account_issue\"),\n    (\"Update my email address\", \"account_issue\"),\n    \n    # complaint\n    (\"This product is defective\", \"complaint\"),\n    (\"Very disappointed with quality\", \"complaint\"),\n    (\"Poor customer service\", \"complaint\"),\n]\n\ndef get_training_data():\n    texts = [item[0] for item in training_data]\n    labels = [item[1] for item in training_data]\n    return texts, labels"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Dataset: Note Importanti",
+      "paragraphs": [
+        "<strong>Questo è un dataset minimal per didattica. In produzione useresti migliaia di esempi per categoria.</strong>",
+        "",
+        "• 45 esempi totali (~6-7 per categoria)",
+        "• Sufficiente per imparare pattern base",
+        "• Training velocissimo (5 minuti su CPU)",
+        "• Accuracy attesa: 70-85% (buona per dataset tiny)",
+        "• In produzione: 500-5000 esempi per intent",
+        "• Alternative: USA datasets pubblici come CLINC150 o BANKING77"
+      ],
+      "ironicClosing": "45 esempi. In produzione ne servirebbero 5000. Ma impariamo i concetti, non costruiamo Siri."
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Import",
+      "subtitle": "Parte 1/9: Importiamo le librerie",
+      "code": {
+        "language": "python",
+        "snippet": "# train.py\nimport numpy as np\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras.preprocessing.text import Tokenizer\nfrom tensorflow.keras.preprocessing.sequence import pad_sequences\nfrom sklearn.preprocessing import LabelEncoder\nfrom sklearn.model_selection import train_test_split\nfrom data import get_training_data\nimport pickle"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Load Dataset",
+      "subtitle": "Parte 2/9: Carica i dati",
+      "code": {
+        "language": "python",
+        "snippet": "# Carica dati\nprint(\"Caricamento dataset...\")\ntexts, labels = get_training_data()\nprint(f\"Samples: {len(texts)}, Intents: {len(set(labels))}\")"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Encode Labels",
+      "subtitle": "Parte 3/9: Converti label in numeri",
+      "code": {
+        "language": "python",
+        "snippet": "# Encode labels\nlabel_encoder = LabelEncoder()\nlabels_encoded = label_encoder.fit_transform(labels)\nnum_classes = len(label_encoder.classes_)\n\nprint(f\"Classi: {label_encoder.classes_}\")\nprint(f\"Encoded: {labels_encoded[:5]}\")"
+      }
+    },
+    {
+      "type": "text",
+      "title": "LabelEncoder: Che Cos'è?",
+      "subtitle": "Da stringhe a numeri",
+      "paragraphs": [
+        "<strong>LabelEncoder</strong> converte label testuali in numeri interi.",
+        "",
+        "<strong>Perché serve?</strong>",
+        "Le reti neurali lavorano con numeri, non stringhe.",
+        "",
+        "<strong>Esempio:</strong>",
+        "• \"order_status\" → 0",
+        "• \"return_refund\" → 1",
+        "• \"product_info\" → 2",
+        "• ...",
+        "",
+        "<strong>Importante:</strong> Salva il LabelEncoder con il modello! Serve in inference per decodificare le predizioni (0 → \"order_status\")."
+      ],
+      "ironicClosing": "Computer: 'order_status'? Non capisco. Dimmi '0' e parliamo la stessa lingua."
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Tokenization",
+      "subtitle": "Parte 4/9: Converti testo in sequenze numeriche",
+      "code": {
+        "language": "python",
+        "snippet": "# Tokenization\nmax_words = 1000\nmax_len = 20\n\ntokenizer = Tokenizer(num_words=max_words, oov_token=\"<OOV>\")\ntokenizer.fit_on_texts(texts)\nsequences = tokenizer.texts_to_sequences(texts)\n\nprint(f\"Vocabulary size: {len(tokenizer.word_index)}\")\nprint(f\"Esempio sequenza: {sequences[0]}\")"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Tokenization: Da Testo a Numeri",
+      "subtitle": "Come i computer leggono il testo",
+      "paragraphs": [
+        "<strong>Tokenizer</strong> crea un vocabolario e converte parole in ID numerici.",
+        "",
+        "<strong>Processo:</strong>",
+        "1. <strong>fit_on_texts()</strong> → Analizza il corpus e crea dizionario {parola: ID}",
+        "2. <strong>texts_to_sequences()</strong> → Converte frasi in liste di ID",
+        "",
+        "<strong>Esempio:</strong>",
+        "• Testo: \"Where is my order?\"",
+        "• Sequenza: [12, 5, 8, 42]",
+        "",
+        "<strong>oov_token=\"<OOV>\"</strong> gestisce parole sconosciute (Out Of Vocabulary).",
+        "Se in inference vedi \"pizza\", il tokenizer usa <OOV> invece di crashare."
+      ],
+      "ironicClosing": "Tokenizer: il traduttore universale che converte Shakespeare in [42, 17, 3, 91]."
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Padding",
+      "subtitle": "Parte 5/9: Rendi tutte le sequenze della stessa lunghezza",
+      "code": {
+        "language": "python",
+        "snippet": "# Padding\npadded_sequences = pad_sequences(\n    sequences, \n    maxlen=max_len, \n    padding='post', \n    truncating='post'\n)\n\nprint(f\"Sequence length: {max_len}\")\nprint(f\"Shape: {padded_sequences.shape}\")"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Padding: Perché Serve?",
+      "subtitle": "Allineare sequenze di lunghezze diverse",
+      "paragraphs": [
+        "<strong>Problema:</strong> Le frasi hanno lunghezze diverse.",
+        "• \"Help\" → [42]",
+        "• \"Where is my order?\" → [12, 5, 8, 91]",
+        "• \"I want to return this broken product now\" → [3, 7, 2, 15, 8, 22, 44, 55]",
+        "",
+        "<strong>Soluzione: Padding</strong>",
+        "Aggiungi zeri (0) per portare tutte le sequenze a lunghezza fissa:",
+        "• [42] → [42, 0, 0, 0, 0, ..., 0] (lunghezza 20)",
+        "• [12, 5, 8, 91] → [12, 5, 8, 91, 0, 0, ..., 0]",
+        "",
+        "<strong>padding='post'</strong> → zeri DOPO la sequenza (migliore per LSTM)",
+        "<strong>truncating='post'</strong> → se troppo lunga, taglia dalla fine"
+      ],
+      "ironicClosing": "Padding: come mettere cuscini in una scatola perché tutto stia al suo posto."
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Train/Test Split",
+      "subtitle": "Parte 6/9: Dividi i dati",
+      "code": {
+        "language": "python",
+        "snippet": "# Split train/test (80/20)\nX_train, X_test, y_train, y_test = train_test_split(\n    padded_sequences, \n    labels_encoded, \n    test_size=0.2, \n    random_state=42\n)\n\nprint(f\"Train: {len(X_train)}, Test: {len(X_test)}\")"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Train/Test Split: Perché?",
+      "subtitle": "Evita overfitting e valuta performance reali",
+      "paragraphs": [
+        "<strong>Split 80/20:</strong> 80% training, 20% validation",
+        "",
+        "<strong>Perché non usare tutto per training?</strong>",
+        "Il modello potrebbe \"memorizzare\" invece di imparare pattern generali (overfitting).",
+        "",
+        "<strong>Test set</strong> simula dati mai visti prima:",
+        "• Se accuracy train=99% ma test=60% → Overfitting!",
+        "• Se train=85% e test=80% → Buon bilanciamento",
+        "",
+        "<strong>random_state=42</strong> rende lo split riproducibile (stesso split ogni volta)."
+      ],
+      "ironicClosing": "Test set: il momento della verità. Il modello sa davvero o ha solo imparato a memoria?"
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Costruisci Modello",
+      "subtitle": "Parte 7/9: Architettura Keras Sequential",
+      "code": {
+        "language": "python",
+        "snippet": "# Costruisci modello\nprint(\"\\nCostruzione modello...\")\nmodel = keras.Sequential([\n    keras.layers.Embedding(input_dim=max_words, output_dim=64, input_length=max_len),\n    keras.layers.LSTM(64, return_sequences=False),\n    keras.layers.Dropout(0.5),\n    keras.layers.Dense(32, activation='relu'),\n    keras.layers.Dense(num_classes, activation='softmax')\n])\n\nmodel.summary()"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Embedding Layer: Che Cos'è?",
+      "subtitle": "Da ID a vettori densi",
+      "paragraphs": [
+        "<strong>Embedding(1000, 64)</strong> converte ogni parola in un vettore di 64 numeri.",
+        "",
+        "<strong>Perché serve?</strong>",
+        "Gli ID sono arbitrari: 42 (\"pizza\") non è \"più grande\" di 12 (\"where\").",
+        "Gli embeddings catturano <em>significato semantico</em>:",
+        "• Parole simili → vettori vicini",
+        "• \"order\" e \"package\" avranno embeddings simili",
+        "",
+        "<strong>Parametri:</strong>",
+        "• input_dim=1000 → Vocabolario di 1000 parole",
+        "• output_dim=64 → Ogni parola diventa vettore 64D",
+        "• Totale: 1000 × 64 = 64k parametri da imparare"
+      ],
+      "ironicClosing": "Embeddings: Word2Vec fatto in casa, allenato insieme al resto del modello."
+    },
+    {
+      "type": "text",
+      "title": "LSTM: Long Short-Term Memory",
+      "subtitle": "La memoria del testo",
+      "paragraphs": [
+        "<strong>LSTM</strong> è una rete neurale ricorrente (RNN) che ricorda il contesto.",
+        "",
+        "<strong>Perché serve per il testo?</strong>",
+        "Le parole hanno ordine e contesto:",
+        "• \"not bad\" ≠ \"bad\"",
+        "• \"want refund\" vs \"don't want refund\"",
+        "",
+        "<strong>Come funziona:</strong>",
+        "Legge la sequenza parola per parola, mantenendo una \"memoria\" del contesto visto finora.",
+        "",
+        "<strong>LSTM(64, return_sequences=False):</strong>",
+        "• 64 unità = dimensione della memoria interna",
+        "• return_sequences=False → restituisce solo l'ultimo output (classificazione)"
+      ],
+      "ironicClosing": "LSTM: come avere un assistente che ricorda tutto ciò che hai detto finora. Spaventoso ma utile."
+    },
+    {
+      "type": "text",
+      "title": "Dropout: Previene Overfitting",
+      "subtitle": "Spegne neuroni casuali durante training",
+      "paragraphs": [
+        "<strong>Dropout(0.5)</strong> spegne random il 50% dei neuroni durante training.",
+        "",
+        "<strong>Perché?</strong>",
+        "Forza il modello a non dipendere troppo da singoli neuroni → generalizza meglio.",
+        "",
+        "<strong>Analogia:</strong>",
+        "Come studiare senza sottolineare tutto. Se evidenzi tutto, non hai capito niente.",
+        "Il dropout forza il modello a \"capire\" invece di memorizzare.",
+        "",
+        "<strong>Importante:</strong> Dropout si disattiva automaticamente durante inference."
+      ],
+      "ironicClosing": "Dropout: distruggi per costruire meglio. Filosofia zen applicata al deep learning."
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Compila Modello",
+      "subtitle": "Parte 8/9: Configurazione training",
+      "code": {
+        "language": "python",
+        "snippet": "# Compila modello\nmodel.compile(\n    optimizer='adam',\n    loss='sparse_categorical_crossentropy',\n    metrics=['accuracy']\n)"
+      }
+    },
+    {
+      "type": "text",
+      "title": "sparse_categorical_crossentropy: Che Cos'è?",
+      "subtitle": "La loss function per classificazione multi-classe",
+      "paragraphs": [
+        "<strong>sparse_categorical_crossentropy</strong> è la funzione di perdita per classificazione multi-classe quando le label sono INTERI (non one-hot).",
+        "",
+        "<strong>Differenza:</strong>",
+        "• <strong>sparse_</strong> → label come interi: [0, 1, 2, ...]",
+        "• <strong>categorical_</strong> (senza sparse) → label one-hot: [[1,0,0], [0,1,0], ...]",
+        "",
+        "<strong>Perché sparse è meglio?</strong>",
+        "Usa meno memoria. Con 7 classi:",
+        "• sparse: [2] (1 numero)",
+        "• one-hot: [0, 0, 1, 0, 0, 0, 0] (7 numeri)",
+        "",
+        "<strong>optimizer='adam'</strong> → algoritmo di ottimizzazione (quasi sempre la scelta giusta)"
+      ],
+      "ironicClosing": "sparse_categorical_crossentropy: il nome più lungo del deep learning per dire 'usa numeri invece di vettori'."
+    },
+    {
+      "type": "code",
+      "title": "Step 4: train.py - Training",
+      "subtitle": "Parte 9/9: Allena e salva il modello",
+      "code": {
+        "language": "python",
+        "snippet": "# Training\nprint(\"\\n=== INIZIO TRAINING ===\")\nhistory = model.fit(\n    X_train, y_train,\n    epochs=50,\n    batch_size=8,\n    validation_data=(X_test, y_test),\n    verbose=1\n)\n\n# Valutazione\nprint(\"\\n=== VALUTAZIONE ===\")\ntest_loss, test_acc = model.evaluate(X_test, y_test, verbose=0)\nprint(f\"Test Accuracy: {test_acc:.2%}\")\nprint(f\"Test Loss: {test_loss:.4f}\")\n\n# Salva modello e artifacts\nmodel.save('intent_model')\nwith open('intent_model/tokenizer.pkl', 'wb') as f:\n    pickle.dump(tokenizer, f)\nwith open('intent_model/label_encoder.pkl', 'wb') as f:\n    pickle.dump(label_encoder, f)\n\nprint(\"\\n✓ Modello salvato in ./intent_model\")"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Codice Completo: train.py",
+      "subtitle": "Script completo per riferimento",
+      "code": {
+        "language": "python",
+        "snippet": "# train.py - Script completo\nimport numpy as np\nimport tensorflow as tf\nfrom tensorflow import keras\nfrom tensorflow.keras.preprocessing.text import Tokenizer\nfrom tensorflow.keras.preprocessing.sequence import pad_sequences\nfrom sklearn.preprocessing import LabelEncoder\nfrom sklearn.model_selection import train_test_split\nfrom data import get_training_data\nimport pickle\n\n# Load data\nprint(\"Caricamento dataset...\")\ntexts, labels = get_training_data()\nprint(f\"Samples: {len(texts)}, Intents: {len(set(labels))}\")\n\n# Encode labels\nlabel_encoder = LabelEncoder()\nlabels_encoded = label_encoder.fit_transform(labels)\nnum_classes = len(label_encoder.classes_)\n\n# Tokenization\nmax_words = 1000\nmax_len = 20\ntokenizer = Tokenizer(num_words=max_words, oov_token=\"<OOV>\")\ntokenizer.fit_on_texts(texts)\nsequences = tokenizer.texts_to_sequences(texts)\npadded_sequences = pad_sequences(sequences, maxlen=max_len, padding='post', truncating='post')\n\n# Split\nX_train, X_test, y_train, y_test = train_test_split(padded_sequences, labels_encoded, test_size=0.2, random_state=42)\n\n# Model\nmodel = keras.Sequential([\n    keras.layers.Embedding(input_dim=max_words, output_dim=64, input_length=max_len),\n    keras.layers.LSTM(64, return_sequences=False),\n    keras.layers.Dropout(0.5),\n    keras.layers.Dense(32, activation='relu'),\n    keras.layers.Dense(num_classes, activation='softmax')\n])\n\nmodel.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])\n\n# Train\nhistory = model.fit(X_train, y_train, epochs=50, batch_size=8, validation_data=(X_test, y_test), verbose=1)\n\n# Evaluate\ntest_loss, test_acc = model.evaluate(X_test, y_test, verbose=0)\nprint(f\"\\nTest Accuracy: {test_acc:.2%}\")\n\n# Save\nmodel.save('intent_model')\nwith open('intent_model/tokenizer.pkl', 'wb') as f:\n    pickle.dump(tokenizer, f)\nwith open('intent_model/label_encoder.pkl', 'wb') as f:\n    pickle.dump(label_encoder, f)\n\nprint(\"✓ Modello salvato\")"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 5: Esegui Training",
+      "subtitle": "Avvia training (5-10 minuti)",
+      "code": {
+        "language": "bash",
+        "snippet": "# Assicurati che venv sia attivo e data.py esista\npython train.py\n\n# Output atteso:\n# Caricamento dataset...\n# Samples: 45, Intents: 7\n# Vocabulary size: ~150\n# Train: 36, Test: 9\n# \n# Model: \"sequential\"\n# Total params: ~120,000\n# \n# === INIZIO TRAINING ===\n# Epoch 1/50: loss: 1.95 - accuracy: 0.22 - val_accuracy: 0.33\n# ...\n# Epoch 50/50: loss: 0.12 - accuracy: 0.97 - val_accuracy: 0.78\n# \n# Test Accuracy: 75-85%\n# ✓ Modello salvato"
+      },
+      "ironicClosing": "5-10 minuti su CPU. Il tempo di un caffè. Torna e troverai un modello NLP production-ready."
+    },
+    {
+      "type": "code",
+      "title": "Step 6: Crea inference.py",
+      "subtitle": "Script per classificare nuove query",
+      "code": {
+        "language": "python",
+        "snippet": "# inference.py\nimport tensorflow as tf\nimport pickle\nimport numpy as np\nfrom tensorflow.keras.preprocessing.sequence import pad_sequences\n\n# Carica modello e artifacts\nprint(\"Caricamento modello...\")\nmodel = tf.keras.models.load_model('intent_model')\n\nwith open('intent_model/tokenizer.pkl', 'rb') as f:\n    tokenizer = pickle.load(f)\n\nwith open('intent_model/label_encoder.pkl', 'rb') as f:\n    label_encoder = pickle.load(f)\n\nmax_len = 20  # Deve essere lo stesso di train.py\n\nprint(\"✓ Modello caricato\\n\")"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 6: inference.py (Parte 2)",
+      "subtitle": "Funzione di predizione + main loop",
+      "code": {
+        "language": "python",
+        "snippet": "def predict_intent(text):\n    # Preprocessa\n    sequence = tokenizer.texts_to_sequences([text])\n    padded = pad_sequences(sequence, maxlen=max_len, padding='post')\n    \n    # Predizione\n    prediction = model.predict(padded, verbose=0)\n    predicted_class = np.argmax(prediction, axis=1)[0]\n    confidence = prediction[0][predicted_class]\n    \n    intent = label_encoder.inverse_transform([predicted_class])[0]\n    return intent, confidence\n\n# Main loop\nif __name__ == \"__main__\":\n    print(\"=== Intent Classifier ===\")\n    print(\"Scrivi una richiesta (o 'quit' per uscire)\\n\")\n    \n    while True:\n        text = input(\"Query: \")\n        if text.lower() in ['quit', 'exit', 'q']:\n            break\n        if text.strip():\n            intent, conf = predict_intent(text)\n            print(f\"→ {intent} (confidence: {conf:.2%})\\n\")"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 7: Testa il Modello",
+      "subtitle": "Prova con query di esempio",
+      "code": {
+        "language": "bash",
+        "snippet": "python inference.py\n\n# Esempi da provare:\n\n# Query: \"Where is my package?\"\n# → order_status (confidence: 85%)\n\n# Query: \"I want my money back\"\n# → return_refund (confidence: 78%)\n\n# Query: \"The website is broken\"\n# → technical_support (confidence: 82%)\n\n# Query: \"This product sucks\"\n# → complaint (confidence: 72%)\n\n# Query: \"How much for international shipping?\"\n# → shipping_info (confidence: 68%)"
+      },
+      "ironicClosing": "Magia. Scrivi una frase, ottieni un intent. 50 righe di codice. Deep learning democratizzato."
+    },
+    {
+      "type": "code",
+      "title": "Bonus: API Flask (Opzionale)",
+      "subtitle": "Deploy come REST API",
+      "code": {
+        "language": "python",
+        "snippet": "# api.py\nfrom flask import Flask, request, jsonify\nimport tensorflow as tf\nimport pickle\nimport numpy as np\nfrom tensorflow.keras.preprocessing.sequence import pad_sequences\n\napp = Flask(__name__)\n\n# Carica modello all'avvio\nmodel = tf.keras.models.load_model('intent_model')\nwith open('intent_model/tokenizer.pkl', 'rb') as f:\n    tokenizer = pickle.load(f)\nwith open('intent_model/label_encoder.pkl', 'rb') as f:\n    label_encoder = pickle.load(f)\n\n@app.route('/classify', methods=['POST'])\ndef classify():\n    data = request.json\n    text = data.get('text', '')\n    \n    sequence = tokenizer.texts_to_sequences([text])\n    padded = pad_sequences(sequence, maxlen=20, padding='post')\n    prediction = model.predict(padded, verbose=0)\n    \n    predicted_class = np.argmax(prediction)\n    intent = label_encoder.inverse_transform([predicted_class])[0]\n    confidence = float(prediction[0][predicted_class])\n    \n    return jsonify({'intent': intent, 'confidence': confidence})\n\nif __name__ == '__main__':\n    app.run(debug=True, port=5000)"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Troubleshooting: Errori Comuni",
+      "subtitle": "Problemi frequenti e soluzioni",
+      "paragraphs": [
+        "• <strong>ImportError: No module named 'tensorflow'</strong> → pip install tensorflow",
+        "• <strong>Low accuracy (<60%)</strong> → Aumenta epochs (da 50 a 100) o aggiungi più dati",
+        "• <strong>Model not found</strong> → Verifica che train.py abbia completato",
+        "• <strong>Pickle error loading tokenizer</strong> → Reinstalla: pip install --upgrade scikit-learn",
+        "• <strong>OOM error</strong> → Riduci batch_size da 8 a 4",
+        "• <strong>ValueError dimension mismatch</strong> → max_len deve essere uguale in train e inference"
+      ]
+    },
+    {
+      "type": "code",
+      "title": "Debug: Verifica Setup",
+      "subtitle": "Test installazione dipendenze",
+      "code": {
+        "language": "python",
+        "snippet": "# test_setup.py\nimport sys\nprint(f\"Python: {sys.version}\\n\")\n\ntry:\n    import tensorflow as tf\n    print(f\"✓ TensorFlow {tf.__version__}\")\n    print(f\"  GPU available: {len(tf.config.list_physical_devices('GPU')) > 0}\")\nexcept ImportError:\n    print(\"✗ TensorFlow non installato\")\n\ntry:\n    import numpy as np\n    print(f\"✓ NumPy {np.__version__}\")\nexcept ImportError:\n    print(\"✗ NumPy non installato\")\n\ntry:\n    import sklearn\n    print(f\"✓ scikit-learn {sklearn.__version__}\")\nexcept ImportError:\n    print(\"✗ scikit-learn non installato\")\n\nprint(\"\\n Tutto OK? Crea data.py e poi esegui train.py\")"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Next Steps: Cosa Fare Dopo",
+      "subtitle": "Espandi il progetto",
+      "paragraphs": [
+        "• <strong>Dataset più grande:</strong> Usa CLINC150 (150 intents, 23k examples)",
+        "• <strong>Deploy API Flask</strong> su cloud (Heroku, Railway, Render)",
+        "• <strong>Aggiungi confidence threshold</strong> per fallback (se <70% → escalate to human)",
+        "• <strong>Multi-language:</strong> Training su dataset italiano/multilingua",
+        "• <strong>A/B testing:</strong> Confronta LSTM vs GRU vs Transformer",
+        "• <strong>Monitoring:</strong> Log intents classificati per miglioramento continuo"
+      ]
+    },
+    {
+      "type": "summary",
+      "title": "Recap: Workshop TensorFlow NLP",
+      "items": [
+        "Setup: Virtual env + TensorFlow + scikit-learn",
+        "Dataset: 45 esempi custom (7 intents customer support)",
+        "Preprocessing: Tokenizer + Padding + LabelEncoder",
+        "Modello: Embedding(64) + LSTM(64) + Dropout + Dense (Keras Sequential)",
+        "Training: 50 epoche, ~5-10 minuti, accuracy 75-85%",
+        "Inference: Script CLI + opzionalmente API Flask",
+        "File creati: data.py, train.py (~60 righe), inference.py (~30 righe)"
+      ],
+      "ironicClosing": "Ecco. Hai costruito un sistema di NLP production-ready con Keras in 90 righe. TensorFlow rende facile ciò che sembra difficile."
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

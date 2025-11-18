@@ -1,0 +1,26 @@
+{
+  "it": {
+    "lang": "it",
+    "courseTitle": "Corso AI - Generativa, Agentica ed Energia",
+    "authorBio": "Consulente indipendente specializzato in cloud infrastructure, AI generativa e soluzioni enterprise con oltre 20 anni di esperienza nella leadership tecnologica.",
+    "chaptersTitle": "📖 Capitoli del Corso",
+    "chaptersIntro": "Un percorso completo attraverso la storia, le tecnologie e le applicazioni pratiche dell'Intelligenza Artificiale. Dalla nascita dell'AI negli anni '50 fino agli LLM moderni, passando per Python, embeddings, RAG e sistemi agentici. Con esempi di codice, casi d'uso reali e workshop hands-on.",
+    "guidesTitle": "📚 Guide Tecniche",
+    "guidesIntro": "Guide pratiche step-by-step per padroneggiare le tecnologie fondamentali.",
+    "allRightsReserved": "Tutti i diritti riservati.",
+    "updatedMaterial": "Materiale didattico aggiornato a fine 2025",
+    "slides": "slide"
+  },
+  "en": {
+    "lang": "en",
+    "courseTitle": "AI Course - Generative, Agentic and Energy",
+    "authorBio": "Independent consultant specialized in cloud infrastructure, generative AI and enterprise solutions with over 20 years of experience in technology leadership.",
+    "chaptersTitle": "📖 Course Chapters",
+    "chaptersIntro": "A complete journey through the history, technologies and practical applications of Artificial Intelligence. From the birth of AI in the 1950s to modern LLMs, through Python, embeddings, RAG and agentic systems. With code examples, real use cases and hands-on workshops.",
+    "guidesTitle": "📚 Technical Guides",
+    "guidesIntro": "Practical step-by-step guides to master fundamental technologies.",
+    "allRightsReserved": "All rights reserved.",
+    "updatedMaterial": "Educational material updated to late 2025",
+    "slides": "slides"
+  }
+}

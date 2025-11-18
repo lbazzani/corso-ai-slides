@@ -1,0 +1,649 @@
+{
+  "number": 2,
+  "title": "AI Agentica: From Chatbot to Autonomy",
+  "description": "Frameworks, platforms, architectures, and the future of AI agents",
+  "steps": [
+    {
+      "name": "Introduction",
+      "slides": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Features",
+      "slides": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "Use Cases",
+      "slides": [
+        8,
+        9
+      ]
+    },
+    {
+      "name": "Open Source Framework",
+      "slides": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "name": "Hyperscaler",
+      "slides": [
+        17,
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "name": "Agentic RAG",
+      "slides": [
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    },
+    {
+      "name": "Trend 2026",
+      "slides": [
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "name": "Best Practices",
+      "slides": [
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "name": "Conclusions",
+      "slides": [
+        33
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "AI Agentica",
+      "subtitle": "The Era of Autonomous Agents",
+      "description": "When LLMs stop chatting and start <strong>doing</strong>"
+    },
+    {
+      "type": "text",
+      "title": "What Are AI Agents?",
+      "paragraphs": [
+        "No longer just <strong>answering</strong> questions",
+        "But <strong>acting</strong> independently to achieve goals",
+        "",
+        "They plan, reason, use tools, remember.",
+        "",
+        "<em>The difference between an assistant and a colleague</em>"
+      ],
+      "citations": [
+        {
+          "text": "AI agents capaci di reasoning, planning, memory e tool use",
+          "source": "MarkTechPost - Definitive Guide AI Agents",
+          "url": "https://www.marktechpost.com/2025/07/19/the-definitive-guide-to-ai-agents-architectures-frameworks-and-real-world-applications-2025/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "The Boom of 2025",
+      "intro": "<strong>Gartner predicts:</strong>",
+      "metrics": [
+        {
+          "value": "33%",
+          "label": "delle enterprise app avranno agentic AI entro 2028 (era <1% nel 2024)"
+        },
+        {
+          "value": "5-10%",
+          "label": "della spesa tech nei prossimi 3-5 anni"
+        }
+      ],
+      "ironicClosing": "It's not hype. It's infrastructure.",
+      "citations": [
+        {
+          "text": "33% enterprise software con agentic AI entro 2028, da <1% nel 2024",
+          "source": "Medium - Agentic AI 2025",
+          "url": "https://medium.com/@iamanraghuvanshi/agentic-ai-3-top-ai-agent-frameworks-in-2025-langchain-autogen-crewai-beyond-2fc3388e7dec"
+        },
+        {
+          "text": "5-10% spesa tech nei prossimi 3-5 anni per agent platforms",
+          "source": "Bain - Foundation for Agentic AI",
+          "url": "https://www.bain.com/insights/building-the-foundation-for-agentic-ai-technology-report-2025/"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Le 4 Caratteristiche Chiave",
+      "items": [
+        "<strong>Reasoning</strong> - Reasoning and decisions",
+        "<strong>Planning</strong> - Decomposition of multi-step problems",
+        "<strong>Memory</strong> - Context and persistent learning",
+        "<strong>Tool Use</strong> - Interaction with APIs, databases, systems"
+      ],
+      "ironicClosing": "Insieme creano un ciclo virtuoso di miglioramento continuo",
+      "citations": [
+        {
+          "text": "Le 4 capacità chiave: reasoning, planning, memory, tool use",
+          "source": "Medium - Anatomy of AI Agent",
+          "url": "https://medium.com/@arunseetharaman/the-anatomy-of-an-ai-agent-planning-memory-and-tool-use-20c59985197c"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Reasoning",
+      "paragraphs": [
+        "How the agent <strong>interprets</strong> and <strong>decides</strong>",
+        "",
+        "Techniques:",
+        "<strong>ReAct</strong> - Reasoning + Acting",
+        "<strong>Chain-of-Thought (CoT)</strong> - Step-by-step thinking",
+        "<strong>Tree-of-Thoughts</strong> - Explore alternatives"
+      ],
+      "ironicClosing": "La differenza tra \"rispondi\" e \"pensa poi rispondi\""
+    },
+    {
+      "type": "text",
+      "title": "Planning",
+      "paragraphs": [
+        "What separates an agent from a chatbot?",
+        "",
+        "Ability to <strong>think N steps ahead</strong>",
+        "Decomposition of complex tasks",
+        "Creating a roadmap towards objectives"
+      ],
+      "ironicClosing": "Non-reactive. Proactive.",
+      "citations": [
+        {
+          "text": "Planning separa agents da chatbot reattivi - pensare passi avanti",
+          "source": "Digital Thought Disruption",
+          "url": "https://digitalthoughtdisruption.com/2025/08/05/ai-agent-memory-reasoning/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Memory",
+      "paragraphs": [
+        "<strong>Short-term</strong>: Current session context",
+        "<strong>Long-term</strong>: Cross-session persistence",
+        "",
+        "Allows you to build user profiles",
+        "Learn from past experiences",
+        "Improve over time"
+      ],
+      "ironicClosing": "Finally, an AI that remembers you!",
+      "citations": [
+        {
+          "text": "Memory: short-term per sessione, long-term cross-session per profili",
+          "source": "MarkTechPost - Memory-Powered Agentic AI",
+          "url": "https://www.marktechpost.com/2025/11/15/how-to-build-memory-powered-agentic-ai-that-learns-continuously-through-episodic-experiences-and-semantic-patterns-for-long-term-autonomy/"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Tool Use",
+      "intro": "From conversation to <strong>action</strong>",
+      "items": [
+        "Read/write files",
+        "Query database",
+        "API Calls",
+        "Send email",
+        "Run code"
+      ],
+      "ironicClosing": "Tool = superpower of the agent"
+    },
+    {
+      "type": "text",
+      "title": "Real Use Cases: Customer Support",
+      "paragraphs": [
+        "<strong>Problem:</strong> Repetitive tickets, long response times",
+        "",
+        "<strong>Agent Solution:</strong>",
+        "• Analyze ticket → classify priority",
+        "• Search in knowledge base (RAG)",
+        "• Proposes solution or escalation",
+        "• Automatically update CRM",
+        "",
+        "<strong>Result:</strong> 70% of tickets resolved automatically, response time -80%"
+      ],
+      "ironicClosing": "The agent that works 24/7 without coffee or complaints."
+    },
+    {
+      "type": "text",
+      "title": "Real Use Cases: Research Assistant",
+      "paragraphs": [
+        "<strong>Problem:</strong> Competitive analysis requires days of manual work",
+        "",
+        "<strong>Multi-Agent Solution:</strong>",
+        "• <strong>Researcher Agent:</strong> Scrape web, search for news, analyze reports",
+        "• <strong>Analyst Agent:</strong> Extracts insights, compares data",
+        "• <strong>Writer Agent:</strong> Generates executive summary reports",
+        "",
+        "<strong>Result:</strong> Complete report in 2 hours vs 3 days"
+      ],
+      "ironicClosing": "3 agents doing the work of a junior team. The future is here."
+    },
+    {
+      "type": "title",
+      "title": "Open Source Framework",
+      "subtitle": "The Big 4",
+      "description": "LangChain • LangGraph • CrewAI • AutoGen",
+      "ironicClosing": "Chosen by over 10,000 developers"
+    },
+    {
+      "type": "text",
+      "title": "LangChain",
+      "paragraphs": [
+        "The <strong>pioneer</strong> of the agentic world",
+        "",
+        "Modular approach with chains",
+        "Integrate LLM + tools + memory + API",
+        "Over <strong>10,000 developers</strong>",
+        "",
+        "<strong>When to use it:</strong> RAG, chatbot, text-based pipeline"
+      ],
+      "ironicClosing": "The framework that made the entire concept popular",
+      "citations": [
+        {
+          "text": "LangChain: 10,000+ sviluppatori, framework modulare per chains",
+          "source": "Medium - Top AI Agent Frameworks",
+          "url": "https://medium.com/@iamanraghuvanshi/agentic-ai-3-top-ai-agent-frameworks-in-2025-langchain-autogen-crewai-beyond-2fc3388e7dec"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "LangGraph",
+      "paragraphs": [
+        "LangChain <strong>but with superpowers</strong>",
+        "",
+        "Workflow as <strong>stateful graphs</strong>",
+        "Task = nodes, transitions = edges",
+        "Supports non-linear cycles and workflows",
+        "",
+        "<strong>When to use it:</strong> Complex multi-step processes, state management"
+      ],
+      "ironicClosing": "When chains are no longer enough",
+      "citations": [
+        {
+          "text": "LangGraph: grafi stateful con task come nodi, workflow ciclici",
+          "source": "Nuvi - LangGraph vs CrewAI",
+          "url": "https://www.nuvi.dev/blog/ai-agent-framework-comparison-langgraph-crewai-openai-swarm"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "CrewAI",
+      "paragraphs": [
+        "<strong>Role-based orchestration</strong>",
+        "",
+        "Agent teams that collaborate (\"crews\")",
+        "Intuitive abstractions - easy to get started",
+        "Supports code-based and no-code",
+        "",
+        "<strong>When to use it:</strong> Multi-agent, research, business intelligence"
+      ],
+      "ironicClosing": "AutoGen gives you the bricks, CrewAI gives you the crew.",
+      "citations": [
+        {
+          "text": "CrewAI: orchestrazione role-based con team di agent collaborativi",
+          "source": "Shakudo - Top 9 AI Agent Frameworks",
+          "url": "https://www.shakudo.io/blog/top-9-ai-agent-frameworks"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "AutoGen (Microsoft)",
+      "paragraphs": [
+        "Automated <strong>multi-agent systems</strong>",
+        "",
+        "Generate agents with minimal coding",
+        "Agents that collaborate autonomously",
+        "Growing quickly in 2025",
+        "",
+        "<strong>When to use it:</strong> Automation, code generation"
+      ],
+      "ironicClosing": "Microsoft is serious about agents.",
+      "citations": [
+        {
+          "text": "AutoGen: Microsoft framework per multi-agent automation",
+          "source": "Intuz - Best AI Agent Frameworks",
+          "url": "https://www.intuz.com/blog/best-ai-agent-frameworks"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "Example: Agent with LangGraph",
+      "code": {
+        "language": "python",
+        "snippet": "from langgraph.graph import StateGraph\nfrom langchain_openai import ChatOpenAI\n\n# Define agent state\nclass AgentState(TypedDict):\n    messages: list\n    next_action: str\n\n# Create workflow\nworkflow = StateGraph(AgentState)\n\n# Add nodes\nworkflow.add_node(\"planner\", planning_node)\nworkflow.add_node(\"executor\", execution_node)\nworkflow.add_node(\"validator\", validation_node)\n\n# Add edges\nworkflow.add_edge(\"planner\", \"executor\")\nworkflow.add_conditional_edges(\n    \"executor\",\n    should_continue,\n    {\"continue\": \"validator\", \"end\": END}\n)\n\napp = workflow.compile()"
+      },
+      "explanation": "Cyclic workflow with validation"
+    },
+    {
+      "type": "code",
+      "title": "Example: Multi-Agent with CrewAI",
+      "code": {
+        "language": "python",
+        "snippet": "from crewai import Agent, Task, Crew\n\n# Define agents\nresearcher = Agent(\n    role=\"Researcher\",\n    goal=\"Find latest AI trends\",\n    backstory=\"Expert in AI research\",\n    tools=[search_tool, scraper_tool]\n)\n\nwriter = Agent(\n    role=\"Writer\",\n    goal=\"Write engaging content\",\n    backstory=\"Tech writer specialist\",\n    tools=[writing_tool]\n)\n\n# Define tasks\nresearch_task = Task(\n    description=\"Research AI agents 2025\",\n    agent=researcher\n)\n\nwrite_task = Task(\n    description=\"Write article from research\",\n    agent=writer\n)\n\n# Create crew\ncrew = Crew(\n    agents=[researcher, writer],\n    tasks=[research_task, write_task],\n    verbose=True\n)\n\nresult = crew.kickoff()"
+      }
+    },
+    {
+      "type": "data",
+      "title": "Hyperscaler Platforms",
+      "intro": "<strong>AWS • Azure • Google</strong> - The three giants of the cloud",
+      "metrics": [
+        {
+          "value": "65%",
+          "label": "del mercato globale"
+        },
+        {
+          "value": "+27% YoY",
+          "label": "spesa clienti"
+        }
+      ],
+      "ironicClosing": "When enterprise infrastructure meets AI",
+      "citations": [
+        {
+          "text": "Hyperscaler 65% mercato, +27% YoY spesa clienti",
+          "source": "Channel Insider - Cloud Spending",
+          "url": "https://www.channelinsider.com/infrastructure/canalys-cloud-hyperscaler-report-sept-2025/"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "AWS Bedrock",
+      "intro": "<strong>AgentCore</strong> launched October 2025",
+      "items": [
+        "Managed agent builder enterprise-grade",
+        "Action groups + built-in knowledge bases",
+        "Native guardrails and observability",
+        "CloudWatch integration"
+      ],
+      "ironicClosing": "AWS doing AWS: everything managed, everything tracked.",
+      "citations": [
+        {
+          "text": "AWS AgentCore lanciato Ottobre 2025 con managed workspace",
+          "source": "Simeon Lobo - Shipping AI Agents",
+          "url": "https://simeonlobo.medium.com/shipping-ai-agents-in-august-2025-across-aws-azure-gcp-be4ad1a32c39"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Azure AI Foundry",
+      "intro": "<strong>Microsoft Agent Framework</strong> (October 2025)",
+      "items": [
+        "Open-source SDK for multi-agent",
+        "MCP server + Agent2Agent (A2A) protocol",
+        "Azure Monitor + Application Insights",
+        "Managed service in AI Foundry"
+      ],
+      "ironicClosing": "Microsoft brings agents to the enterprise (and does it well)",
+      "citations": [
+        {
+          "text": "Azure Agent Framework lanciato Ottobre 2025, MCP + A2A protocol",
+          "source": "Simeon Lobo - Shipping AI Agents",
+          "url": "https://simeonlobo.medium.com/shipping-ai-agents-in-august-2025-across-aws-azure-gcp-be4ad1a32c39"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Google Vertex AI",
+      "intro": "<strong>Agent Builder</strong> powered by Gemini",
+      "items": [
+        "Reasoning agents at scale",
+        "Native multi-step workflows",
+        "Integration with business data",
+        "Google Orchestration APIs"
+      ],
+      "ironicClosing": "When you have Gemini 2.0, why not make it an agent?",
+      "citations": [
+        {
+          "text": "Vertex AI Agent Builder con Gemini per reasoning agents at scale",
+          "source": "Ardor - Cloud Platforms for Agents",
+          "url": "https://ardor.cloud/blog/cloud-platforms-for-ai-agents-a-comparison-guide"
+        }
+      ]
+    },
+    {
+      "type": "two-column",
+      "title": "Which One to Choose?",
+      "leftColumn": {
+        "title": "Open Source",
+        "items": [
+          "<strong>Pros:</strong> Flexibility, control, community",
+          "<strong>Cons:</strong> Self-managed, manual scaling",
+          "<strong>Best for:</strong> Startups, R&D, custom use cases"
+        ]
+      },
+      "rightColumn": {
+        "title": "Hyperscaler",
+        "items": [
+          "<strong>Pros:</strong> Managed, scalable, enterprise-ready",
+          "<strong>Cons:</strong> Vendor lock-in, cost",
+          "<strong>Best for:</strong> Enterprise, production, compliance"
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "title": "Agentic RAG",
+      "subtitle": "RAG + Autonomy = Magic",
+      "paragraphs": [
+        "No more passive retrieve-and-answer",
+        "But <strong>intelligent</strong> orchestration of retrieval"
+      ],
+      "ironicClosing": "The RAG that decides how, when, and where to search",
+      "citations": [
+        {
+          "text": "Agentic RAG: orchestrazione autonoma con reasoning dinamico",
+          "source": "Weaviate - What is Agentic RAG",
+          "url": "https://weaviate.io/blog/what-is-agentic-rag"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Agentic RAG Architecture",
+      "items": [
+        "<strong>Query Analysis Agent</strong> - Parsing intent and strategy",
+        "<strong>Retrieval Orchestration Agent</strong> - Manages multiple mechanisms",
+        "<strong>Relevance Assessment Agent</strong> - Assesses retrieved content",
+        "<strong>Response Synthesis Agent</strong> - Combines information and resolves conflicts"
+      ],
+      "ironicClosing": "5 agents working together for a perfect response",
+      "citations": [
+        {
+          "text": "Agentic RAG: 5 componenti critici per orchestrazione intelligente",
+          "source": "RAG About It - Enterprise Agentic RAG",
+          "url": "https://ragaboutit.com/how-to-build-enterprise-grade-agentic-rag-systems-the-complete-technical-implementation-guide-for-2025/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Pattern: ReAct for RAG",
+      "subtitle": "<strong>Reasoning + Acting</strong> in loop",
+      "paragraphs": [
+        "1. <strong>Thought</strong>: \"What should I do?\"",
+        "2. <strong>Action</strong>: Retrieve from knowledge base",
+        "3. <strong>Observation</strong>: Evaluate results",
+        "4. <strong>Repeat</strong>: If needed, iterate"
+      ],
+      "ironicClosing": "The RAG that thinks before retrieving",
+      "citations": [
+        {
+          "text": "ReAct pattern: reasoning-action loop per RAG dinamico",
+          "source": "Medium - Agent Orchestration",
+          "url": "https://medium.com/@akankshasinha247/agent-orchestration-when-to-use-langchain-langgraph-autogen-or-build-an-agentic-rag-system-cc298f785ea4"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Multi-Agent Systems",
+      "paragraphs": [
+        "<strong>Message Passing</strong>: Agents communicate via JSON",
+        "<strong>Orchestrator</strong>: Coordinates scheduling and task allocation",
+        "<strong>LangGraph</strong>: Each agent = node with its own state"
+      ],
+      "ironicClosing": "Not one, but a team of specialized agents.",
+      "citations": [
+        {
+          "text": "Multi-agent: message passing, orchestrator, coordination patterns",
+          "source": "Softude - Multi-Agent with Agentic RAG",
+          "url": "https://www.softude.com/blog/how-to-build-multi-agent-systems-agentic-rag/"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "Example: Agentic RAG",
+      "code": {
+        "language": "python",
+        "snippet": "from langchain.agents import create_react_agent\nfrom langchain.tools import Tool\nfrom langchain_openai import ChatOpenAI\n\n# Define retrieval tool\nretrieval_tool = Tool(\n    name=\"knowledge_base\",\n    func=vector_store.similarity_search,\n    description=\"Search company knowledge base\"\n)\n\n# Define web search tool\nweb_tool = Tool(\n    name=\"web_search\",\n    func=search_api.search,\n    description=\"Search the web for current info\"\n)\n\n# Create ReAct agent\nagent = create_react_agent(\n    llm=ChatOpenAI(model=\"gpt-4\"),\n    tools=[retrieval_tool, web_tool],\n    prompt=react_prompt\n)\n\n# Agent decides autonomously which tool to use\nresult = agent.invoke({\n    \"input\": \"What are our Q4 2025 sales projections?\"\n})"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Trend 2026: Voice Agents",
+      "paragraphs": [
+        "Speech + Agentic Reasoning",
+        "<strong>Conversational</strong> interaction",
+        "Task execution via voice"
+      ],
+      "ironicClosing": "\"Alexa that uses ChatGPT\" but done right",
+      "citations": [
+        {
+          "text": "2026 trend: voice agents con speech + agentic reasoning",
+          "source": "MarkTechPost - AI Agent Trends",
+          "url": "https://www.marktechpost.com/2025/08/10/ai-agent-trends-of-2025-a-transformative-landscape/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Trend 2026: Agent Collaboration",
+      "paragraphs": [
+        "OpenAI Agents SDK (launched 2025) - focus on handoffs",
+        "Google Agent Development Kit (ADK)",
+        "",
+        "Agents passing tasks to each other",
+        "Specialization + Coordination"
+      ],
+      "ironicClosing": "The future is multi-agent. Always.",
+      "citations": [
+        {
+          "text": "OpenAI Agents SDK e Google ADK per multi-agent collaboration nel 2026",
+          "source": "Softude - Multi-Agent Systems",
+          "url": "https://www.softude.com/blog/how-to-build-multi-agent-systems-agentic-rag/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Trend 2026: Production-Ready",
+      "metrics": [
+        {
+          "value": "31%",
+          "label": "AI use cases in production (era 15% nel 2024)"
+        }
+      ],
+      "paragraphs": [
+        "No more prototypes",
+        "Agent in production with observability",
+        "Guardrails and compliance"
+      ],
+      "ironicClosing": "From experiment to critical infrastructure",
+      "citations": [
+        {
+          "text": "Production AI use cases a 31% vs 15% nel 2024",
+          "source": "CloudOptimo - Bedrock vs Vertex vs Azure",
+          "url": "https://www.cloudoptimo.com/blog/amazon-bedrock-vs-azure-openai-vs-google-vertex-ai-an-in-depth-analysis/"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Best Practices",
+      "items": [
+        "<strong>Start small</strong>: One agent, one task",
+        "<strong>Add memory gradually</strong>: Short-term first, long-term later",
+        "<strong>Tool use = power + risk</strong>: Validate everything",
+        "<strong>Observability first</strong>: Tracing end-to-end",
+        "<strong>Test failure modes</strong>: The agents make mistakes"
+      ]
+    },
+    {
+      "type": "text",
+      "title": "The Right Choice",
+      "paragraphs": [
+        "<strong>Prototype?</strong> → LangChain/CrewAI",
+        "<strong>Complex workflows?</strong> → LangGraph",
+        "<strong>Multi-agent orchestration?</strong> → AutoGen/CrewAI",
+        "<strong>Enterprise production?</strong> → Hyperscaler (AWS/Azure/GCP)",
+        "<strong>Agentic RAG?</strong> → LangGraph + vector DB"
+      ],
+      "ironicClosing": "There is no one-size-fits-all. There is the right fit."
+    },
+    {
+      "type": "text",
+      "title": "The Future Is Agentic",
+      "paragraphs": [
+        "Collaborative <strong>agents</strong>",
+        "<strong>Persistent</strong> memory",
+        "<strong>Advanced</strong> reasoning",
+        "Human-in-the-loop <strong>when needed</strong>"
+      ],
+      "ironicClosing": "2025-2028: the transition from chatbot to digital workforce"
+    },
+    {
+      "type": "summary",
+      "title": "Summary",
+      "items": [
+        "4 pillars: Reasoning, Planning, Memory, Tool Use",
+        "Framework: LangChain, LangGraph, CrewAI, AutoGen",
+        "Hyperscaler: AWS, Azure, Google - all with agent platforms",
+        "Agentic RAG = future of retrieval",
+        "Multi-agent = standard, non eccezione"
+      ],
+      "ironicClosing": "2026 will be the year when agents become mainstream. Get ready."
+    }
+  ],
+  "lastTranslated": "2025-11-18",
+  "sourceLanguage": "en"
+}

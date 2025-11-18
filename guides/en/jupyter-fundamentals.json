@@ -1,0 +1,1014 @@
+{
+  "title": "Jupyter Notebook Fundamentals",
+  "description": "From IPython (2001) to JupyterLab 4 (2025) - The interactive environment for Data Science, scientific research, and executable documentation",
+  "steps": [
+    {
+      "name": "History & Setup",
+      "slides": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "Interface",
+      "slides": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "name": "Cells & Markdown",
+      "slides": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "name": "Magic Commands",
+      "slides": [
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "name": "Views",
+      "slides": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "name": "Kernel & Languages",
+      "slides": [
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "name": "JupyterLab",
+      "slides": [
+        33,
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    {
+      "name": "Alternative Cloud",
+      "slides": [
+        38,
+        39,
+        40,
+        41
+      ]
+    },
+    {
+      "name": "Extensions & Widgets",
+      "slides": [
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    {
+      "name": "Export & Share",
+      "slides": [
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "name": "Best Practices",
+      "slides": [
+        50,
+        51,
+        52
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Jupyter Notebook",
+      "subtitle": "Interactive Computing & Literate Programming",
+      "description": "From IPython (2001) to JupyterLab 4 (2025) - Code, documentation, and visualizations in a single document",
+      "ironicClosing": "Jupyter: where code and prose meet. Excel for data scientists? More or less."
+    },
+    {
+      "type": "text",
+      "title": "📜 The History of Jupyter",
+      "paragraphs": [
+        "<strong>2001:</strong> IPython (Fernando Pérez) - Enhanced interactive Python shell",
+        "<strong>2011:</strong> IPython Notebook - Web-based notebook (precursor to Jupyter)",
+        "<strong>2014:</strong> Project Jupyter - Spin-off from IPython, multiple languages",
+        "<strong>Name:</strong> Ju(lia) + Pyt(hon) + R = Jupyter (3 core languages)",
+        "<strong>2015:</strong> Jupyter Notebook 4.0 - First official release",
+        "<strong>2018:</strong> JupyterLab 1.0 - Next-generation UI, IDE-like",
+        "<strong>2021:</strong> JupyterLab 3.0 - Extensions manager, Real-time collaboration",
+        "<strong>2023:</strong> Notebook 7.0 - Based on JupyterLab architecture (unification)",
+        "<strong>2024:</strong> JupyterLab 4.0 - Performance, UI improvements, accessibility",
+        "<strong>2025:</strong> JupyterLab 4.4.10, Notebook 7.4.7 - Latest stable",
+        "",
+        "<strong>Today:</strong> De-facto standard for Data Science, Machine Learning, scientific research",
+        "<strong>Used by:</strong> Netflix, NASA, Bloomberg, Google, CERN, universities worldwide"
+      ],
+      "ironicClosing": "From Python shell to global platform. IPython: 'hold my beer, I'll change science'."
+    },
+    {
+      "type": "text",
+      "title": "🚀 Jupyter 2025: Current Versions",
+      "paragraphs": [
+        "<strong>JupyterLab 4.4.10 (Latest Stable) ⭐ RECOMMENDED</strong>",
+        "• IDE-like interface with tabs, split view, file browser",
+        "• Rich extensions ecosystem",
+        "• Real-time collaboration (like Google Docs)",
+        "• Integrated debugger, Terminal, Code console",
+        "• Optimized performance, accessibility improvements",
+        "",
+        "<strong>Jupyter Notebook 7.4.7 (Classic, modernized)</strong>",
+        "• Single-document interface (simpler)",
+        "• Based on JupyterLab architecture (from v7)",
+        "• Compatibility with old laptops",
+        "• Perfect for beginners or simple use",
+        "",
+        "<strong>⚠️ Deprecated:</strong>",
+        "• JupyterLab 1.x, 3.x - No longer supported (expired June 2025)",
+        "• Notebook 6.x - Migrate to 7.x",
+        "",
+        "<strong>Recommendation:</strong> JupyterLab 4 for serious use, Notebook 7 for simplicity"
+      ],
+      "ironicClosing": "JupyterLab vs Notebook: IDE vs text editor. Both valid, choose your fighter."
+    },
+    {
+      "type": "text",
+      "title": "Why Jupyter?",
+      "paragraphs": [
+        "<strong>Literate Programming:</strong> Code + documentation + visualizations in a single document",
+        "<strong>Interactivity:</strong> Run code cell by cell, see results immediately",
+        "<strong>Reproducibility:</strong> Notebook = reproducible research (code + data + output)",
+        "<strong>Views:</strong> Inline, interactive, updatable charts",
+        "<strong>Data exploration:</strong> Test code, experiment, iterate quickly",
+        "<strong>Multi-language:</strong> Python, R, Julia, JavaScript, SQL, +40 kernels",
+        "<strong>Sharing:</strong> .ipynb format, nbviewer, GitHub rendering, export PDF/HTML",
+        "",
+        "<strong>Use cases:</strong>",
+        "• Data Science, Machine Learning, Data Analysis",
+        "• Scientific research, reproducible papers",
+        "• Teaching (programming courses, statistics)",
+        "• Prototyping, algorithm exploration",
+        "• Executable technical documentation"
+      ],
+      "ironicClosing": "Jupyter: PowerPoint that runs code. Or Word with superpowers. Choose your metaphor."
+    },
+    {
+      "type": "text",
+      "title": "Setup: Install Jupyter",
+      "paragraphs": [
+        "<strong>Prerequisites:</strong>",
+        "• Python 3.8+ (recommended 3.11+)",
+        "• pip or conda package manager",
+        "",
+        "<strong>Opzione 1: pip (standard)</strong>",
+        "<code>pip install notebook</code> → Classic Jupyter Notebook",
+        "<code>pip install jupyterlab</code> → JupyterLab (recommended)",
+        "",
+        "<strong>Option 2: conda (Anaconda/Miniconda)</strong>",
+        "<code>conda install -c conda-forge jupyterlab</code>",
+        "",
+        "<strong>Start Jupyter:</strong>",
+        "<code>jupyter notebook</code> → Classic Notebook",
+        "<code>jupyter lab</code> → JupyterLab",
+        "The browser automatically opens at <code>http://localhost:8888</code>",
+        "",
+        "<strong>Installation verification:</strong>",
+        "<code>jupyter --version</code>",
+        "<code>jupyter lab --version</code>"
+      ],
+      "ironicClosing": "Installation: one command. Startup: one command. Productivity: endless hours wasted making pretty charts."
+    },
+    {
+      "type": "code",
+      "title": "💻 Quick Start: First Notebook",
+      "code": {
+        "language": "bash",
+        "snippet": "# Installazione\npip install jupyterlab\n\n# Avviare JupyterLab\njupyter lab\n\n# O Notebook classic\njupyter notebook\n\n# Avvia su porta specifica\njupyter lab --port=8889\n\n# Avvia senza aprire browser\njupyter lab --no-browser\n\n# Avvia in directory specifica\ncd /path/to/project\njupyter lab\n\n# ===== Creare primo notebook =====\n# 1. Click \"New\" → \"Notebook\"\n# 2. Scegli kernel (Python 3)\n# 3. Prima cella:\nprint(\"Hello, Jupyter!\")\n\n# 4. Esegui: Shift+Enter\n# Output: Hello, Jupyter!\n\n# Salvare: Cmd+S (Mac) o Ctrl+S (Win/Linux)\n# File salvato come: Untitled.ipynb"
+      },
+      "explanation": "jupyter lab to start. Shift+Enter to execute cells. .ipynb is the format."
+    },
+    {
+      "type": "title",
+      "title": "Jupyter Interface",
+      "subtitle": "Cells, toolbar, kernel, shortcuts",
+      "description": "Navigating and using the Jupyter interface effectively"
+    },
+    {
+      "type": "text",
+      "title": "Anatomy of a Notebook",
+      "paragraphs": [
+        "<strong>.ipynb file (JSON):</strong>",
+        "• JSON format that contains cells, output, metadata",
+        "• Versionable with git (but watch out for the outputs)",
+        "• Rendered by GitHub, GitLab, nbviewer",
+        "",
+        "<strong>Kernel:</strong>",
+        "• Process Python (or another language) that executes code",
+        "• Persistent state between cells (variables, imports)",
+        "• Restart kernel = reset everything",
+        "",
+        "<strong>Cells:</strong>",
+        "• <strong>Code cells:</strong> Executable code",
+        "• <strong>Markdown cells:</strong> Formatted text, LaTeX",
+        "• <strong>Raw cells:</strong> Unprocessed text (rare)",
+        "",
+        "<strong>Toolbar:</strong>",
+        "• Save, Insert, Cut, Copy, Paste cells",
+        "• Run, Stop, Restart kernel",
+        "• Cell type selector",
+        "",
+        "<strong>Ways:</strong>",
+        "• <strong>Edit mode (green):</strong> Editing current cell",
+        "• <strong>Command mode (blue):</strong> Notebook navigation"
+      ],
+      "ironicClosing": "Kernel: the brain. Cells: the neurons. You: the confused neuroscientist debugging."
+    },
+    {
+      "type": "code",
+      "title": "💻 Essential Keyboard Shortcuts",
+      "code": {
+        "language": "plaintext",
+        "snippet": "# ===== COMMAND MODE (blu, ESC per attivare) =====\nA          # Insert cell Above\nB          # Insert cell Below\nDD         # Delete cell (D due volte)\nZ          # Undo delete\nM          # Converti a Markdown\nY          # Converti a Code\nC          # Copy cell\nV          # Paste cell below\nX          # Cut cell\n\nShift+Up/Down    # Seleziona celle multiple\nShift+M          # Merge celle selezionate\n\n# Esecuzione\nShift+Enter      # Run cell, seleziona next\nCtrl+Enter       # Run cell, rimani su corrente\nAlt+Enter        # Run cell, insert below\n\n# ===== EDIT MODE (verde, ENTER per attivare) =====\nTab              # Autocomplete o indent\nShift+Tab        # Tooltip/documentation\nCtrl+]           # Indent\nCtrl+[           # Dedent\nCmd+/            # Toggle comment (Mac)\nCtrl+/           # Toggle comment (Win/Linux)\n\n# ===== GLOBAL =====\nCmd+S / Ctrl+S   # Save notebook\nESC              # Command mode\nENTER            # Edit mode\nH                # Help (mostra tutti shortcuts)"
+      },
+      "explanation": "Shift+Enter to execute. A/B to insert cells. M/Y for type. H for help."
+    },
+    {
+      "type": "code",
+      "title": "💻 Kernel Management",
+      "code": {
+        "language": "python",
+        "snippet": "# Kernel mantiene stato tra celle\n\n# Cella 1\nx = 10\ny = 20\n\n# Cella 2 (eseguita dopo)\nprint(x + y)  # Output: 30 (x e y esistono!)\n\n# Cella 3\nimport numpy as np\narr = np.array([1, 2, 3])\n\n# Cella 4 (eseguita dopo)\nprint(arr * 2)  # Output: [2 4 6] (numpy importato)\n\n# ===== Comandi Kernel =====\n# Toolbar → Kernel → Restart\n# Toolbar → Kernel → Restart & Clear Output\n# Toolbar → Kernel → Restart & Run All\n\n# ⚠️ Ordine esecuzione conta!\n# Se esegui celle fuori ordine, stato può essere inconsistente\n\n# Best practice:\n# - Restart & Run All periodicamente (verifica tutto funziona)\n# - Numeri [1], [2], [3] a sinistra = ordine esecuzione"
+      },
+      "explanation": "Kernel = persistent state. Restart to reset. Execution order matters!"
+    },
+    {
+      "type": "code",
+      "title": "💻 Output & Display",
+      "code": {
+        "language": "python",
+        "snippet": "# Output automatico (ultima espressione)\nx = 5\ny = 10\nx + y  # Output: 15\n\n# Print esplicito\nprint(\"Risultato:\", x + y)\nprint(\"Altro output\")\n# Output:\n# Risultato: 15\n# Altro output\n\n# Multiple outputs\nfrom IPython.display import display\n\nx = 10\ndisplay(x)\ndisplay(x * 2)\ndisplay(x * 3)\n# Output: 10, 20, 30 (tutti visibili)\n\n# Rich display\nfrom IPython.display import HTML, Markdown, Image, Video\n\n# HTML\ndisplay(HTML('<h1>Hello Jupyter</h1>'))\n\n# Markdown\ndisplay(Markdown('**Bold** and *italic*'))\n\n# Image\ndisplay(Image('path/to/image.png'))\n\n# Video\ndisplay(Video('path/to/video.mp4'))\n\n# LaTeX\nfrom IPython.display import Math\ndisplay(Math(r'\\frac{1}{2} \\sum_{i=1}^n x_i^2'))"
+      },
+      "explanation": "Last auto-displayed expression. display() for multiple. Rich display for HTML/images."
+    },
+    {
+      "type": "code",
+      "title": "💻 Autocomplete & Help",
+      "code": {
+        "language": "python",
+        "snippet": "import numpy as np\n\n# ===== AUTOCOMPLETE (Tab) =====\n# Scrivi: np.ar<TAB>\n# Mostra: array, arange, arccos, arcsin, ...\n\n# Metodi oggetto\narr = np.array([1, 2, 3])\n# Scrivi: arr.<TAB>\n# Mostra: shape, dtype, mean, sum, ...\n\n# ===== DOCUMENTATION (Shift+Tab) =====\n# Cursore su funzione, Shift+Tab\nnp.array()  # Shift+Tab → mostra docstring\n\n# Shift+Tab x 2 volte → expanded doc\n# Shift+Tab x 4 volte → doc in pane separato\n\n# ===== HELP (?  e ??) =====\nnp.array?   # Mostra docstring (equivalente a help())\nnp.array??  # Mostra source code (se disponibile)\n\n# Help su oggetto\narr = np.array([1, 2, 3])\narr?  # Info su arr\n\n# ===== dir() per esplorare =====\ndir(np)  # Lista tutti attributi/metodi di numpy\n\n# ===== type() e isinstance() =====\ntype(arr)  # <class 'numpy.ndarray'>\nisinstance(arr, np.ndarray)  # True"
+      },
+      "explanation": "Tab for autocomplete. Shift+Tab for docs. ? for help. ?? for source."
+    },
+    {
+      "type": "text",
+      "title": "⚠️ Common Beginner Mistakes",
+      "paragraphs": [
+        "<strong>1. Execute cells out of order</strong>",
+        "Problem: Undefined variable, missing imports",
+        "Fix: Restart & Run All to verify",
+        "",
+        "<strong>2. Forgetting to execute cells</strong>",
+        "Code written but not executed → variables do not exist",
+        "Fix: Shift+Enter to execute each cell",
+        "",
+        "<strong>3. Blocked kernel (* on the left)</strong>",
+        "Cell in infinite execution (loop, slow operation)",
+        "Fix: Toolbar → Stop (black square)",
+        "",
+        "<strong>4. Huge output that slows down the notebook</strong>",
+        "Print of giant arrays, loop that prints thousands of lines",
+        "Fix: Clear output, limit print, use head()/tail()",
+        "",
+        "<strong>5. Do not save (Cmd+S)</strong>",
+        "Jupyter autosaves, but it's better to save manually.",
+        "",
+        "<strong>6. Versioning .ipynb with output</strong>",
+        "Output makes diff git unreadable",
+        "Fix: Clear output before commit, or use nbstripout"
+      ],
+      "ironicClosing": "Jupyter: 'cell [*]' means 'go grab a coffee'. Or 'you have an infinite loop'."
+    },
+    {
+      "type": "title",
+      "title": "Celle & Markdown",
+      "subtitle": "Documentation, LaTeX, formatting",
+      "description": "Create readable and professional notebooks"
+    },
+    {
+      "type": "code",
+      "title": "💻 Markdown Basics",
+      "code": {
+        "language": "markdown",
+        "snippet": "# Heading 1\n## Heading 2\n### Heading 3\n\n**Bold text**\n*Italic text*\n~~Strikethrough~~\n\n- Bullet list\n- Item 2\n  - Nested item\n\n1. Numbered list\n2. Item 2\n3. Item 3\n\n[Link text](https://example.com)\n\n![Image alt text](path/to/image.png)\n\n`Inline code`\n\n```python\n# Code block\ndef hello():\n    print(\"Hello\")\n```\n\n> Blockquote\n> Multiple lines\n\n---\nHorizontal rule\n\n| Column 1 | Column 2 | Column 3 |\n|----------|----------|----------|\n| Value 1  | Value 2  | Value 3  |\n| Value 4  | Value 5  | Value 6  |"
+      },
+      "explanation": "Markdown for documentation. # for headings, ** for bold, - for lists."
+    },
+    {
+      "type": "code",
+      "title": "💻 LaTeX for Mathematics",
+      "code": {
+        "language": "markdown",
+        "snippet": "<!-- Inline math con $ $ -->\nLa formula di Eulero: $e^{i\\pi} + 1 = 0$\n\nPitagora: $a^2 + b^2 = c^2$\n\n<!-- Display math con $$ $$ -->\nGradiente discesa:\n$$\n\\theta_{t+1} = \\theta_t - \\alpha \\nabla J(\\theta_t)\n$$\n\nRegressione lineare:\n$$\ny = \\beta_0 + \\beta_1 x_1 + \\beta_2 x_2 + \\epsilon\n$$\n\nNormal distribution:\n$$\nf(x | \\mu, \\sigma^2) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}} e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}}\n$$\n\nMatrice:\n$$\n\\begin{bmatrix}\na & b \\\\\nc & d\n\\end{bmatrix}\n$$\n\nSommatoria:\n$$\n\\sum_{i=1}^{n} x_i = x_1 + x_2 + \\cdots + x_n\n$$\n\nIntegrale:\n$$\n\\int_{a}^{b} f(x) dx\n$$"
+      },
+      "explanation": "LaTeX for formulas. $ inline, $$ display. Standard LaTeX syntax."
+    },
+    {
+      "type": "code",
+      "title": "💻 HTML & Styling in Markdown",
+      "code": {
+        "language": "markdown",
+        "snippet": "<!-- HTML inline -->\n<span style=\"color: red; font-weight: bold;\">Testo rosso e grassetto</span>\n\n<div style=\"background-color: #f0f0f0; padding: 10px; border-radius: 5px;\">\n💡 <strong>Nota:</strong> Questo è un box informativo\n</div>\n\n<!-- Alert boxes -->\n<div style=\"background-color: #fff3cd; border-left: 4px solid #ffc107; padding: 10px;\">\n⚠️ <strong>Attenzione:</strong> Operazione potenzialmente lenta\n</div>\n\n<div style=\"background-color: #d4edda; border-left: 4px solid #28a745; padding: 10px;\">\n✅ <strong>Successo:</strong> Operazione completata\n</div>\n\n<!-- Immagini con dimensioni -->\n<img src=\"plot.png\" width=\"500\" alt=\"Plot risultati\">\n\n<!-- Tabelle complesse -->\n<table>\n  <thead>\n    <tr>\n      <th>Model</th>\n      <th>Accuracy</th>\n      <th>F1-Score</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Random Forest</td>\n      <td>0.92</td>\n      <td>0.89</td>\n    </tr>\n  </tbody>\n</table>"
+      },
+      "explanation": "HTML for advanced styling. Colored boxes, alerts, custom formatting."
+    },
+    {
+      "type": "code",
+      "title": "💻 Professional Notebook Structure",
+      "code": {
+        "language": "markdown",
+        "snippet": "# Titolo Analisi: Predizione Prezzi Case\n\n**Autore:** Nome Cognome  \n**Data:** 2025-11-18  \n**Versione:** 1.0\n\n---\n\n## 📋 Table of Contents\n1. [Introduzione](#intro)\n2. [Dataset](#dataset)\n3. [Analisi Esplorativa](#eda)\n4. [Feature Engineering](#features)\n5. [Modeling](#modeling)\n6. [Risultati](#results)\n7. [Conclusioni](#conclusions)\n\n---\n\n## 1. Introduzione {#intro}\n\n### Obiettivo\nPredire il prezzo di vendita delle case basandosi su features come...\n\n### Metodologia\n- Dataset: Kaggle House Prices\n- Modelli: Linear Regression, Random Forest, XGBoost\n- Metrica: RMSE\n\n---\n\n## 2. Dataset {#dataset}\n\n### Source\n...\n\n<!-- Poi celle code con pandas.read_csv(), df.head(), etc. -->"
+      },
+      "explanation": "Professional structure: Title, TOC, sections, markdown + alternating code."
+    },
+    {
+      "type": "code",
+      "title": "💻 Emojis & Icons for Readability",
+      "code": {
+        "language": "markdown",
+        "snippet": "# 📊 Data Analysis Workflow\n\n## 📥 1. Data Loading\n- ✅ Load CSV\n- ✅ Check shape\n- ✅ Inspect dtypes\n\n## 🔍 2. Exploratory Data Analysis\n- 📈 Distribution plots\n- 🔗 Correlation matrix\n- 🗺️ Geographic visualization\n\n## 🛠️ 3. Data Preprocessing\n- 🧹 Handle missing values\n- 🔢 Encode categoricals\n- 📏 Scale features\n\n## 🤖 4. Modeling\n- 🌲 Random Forest\n- 🚀 XGBoost\n- 🧠 Neural Network\n\n## 📊 5. Results\n- ✅ Best model: XGBoost\n- 📈 RMSE: 0.12\n- ⭐ Feature importance\n\n## 💡 Key Insights\n- 🏠 Square footage è il predictor più importante\n- 📍 Location è cruciale\n- ⚠️ Outliers influenzano molto il modello\n\n## ⚠️ Limitations\n## 🚀 Next Steps\n## 📚 References"
+      },
+      "explanation": "Emojis for scanability. Icons make sections immediately recognizable."
+    },
+    {
+      "type": "text",
+      "title": "Best Practices Markdown",
+      "paragraphs": [
+        "<strong>1. Use hierarchical headings</strong>",
+        "# for main title, ## for sections, ### for subsections",
+        "",
+        "<strong>2. TOC for long notebooks</strong>",
+        "Table of contents with internal links (#anchors)",
+        "",
+        "<strong>3. Separate code and markdown</strong>",
+        "Markdown to explain, code to execute (no code in markdown cells)",
+        "",
+        "<strong>4. Emojis in moderation</strong>",
+        "Useful for scanability, but don't overdo it (professionalism)",
+        "",
+        "<strong>5. Alert boxes for warnings</strong>",
+        "Highlight important information with colored boxes.",
+        "",
+        "<strong>6. LaTeX for complex formulas</strong>",
+        "Readable, standard, publication-ready",
+        "",
+        "<strong>7. Comment complex code</strong>",
+        "Markdown cells before complex code to explain logic",
+        "",
+        "<strong>8. Versioning info</strong>",
+        "Author, date, version in the header"
+      ],
+      "ironicClosing": "Markdown: makes your notebooks look professional. Even if the code is a disaster."
+    },
+    {
+      "type": "title",
+      "title": "Magic Commands",
+      "subtitle": "IPython magic for superpowers",
+      "description": "Line magics (%) and cell magics (%%) for productivity"
+    },
+    {
+      "type": "code",
+      "title": "💻 Line Magics (%)",
+      "code": {
+        "language": "python",
+        "snippet": "# ===== TIMING =====\n%time sum(range(1000000))  # Tempo singola esecuzione\n%timeit sum(range(1000000))  # Media multiple esecuzioni (più accurato)\n\n# ===== WORKING DIRECTORY =====\n%pwd  # Print working directory\n%cd /path/to/directory  # Change directory\n%ls   # List files\n\n# ===== SHELL COMMANDS (!) =====\n!pip install pandas  # Esegui comando shell\n!ls -la              # List files dettagliato\n!git status          # Git commands\n\n# Cattura output\nfiles = !ls\nprint(files)  # Lista file\n\n# ===== ENVIRONMENT =====\n%env  # Mostra env variables\n%env MY_VAR=value  # Set env variable\n\n# ===== HISTORY =====\n%history  # Mostra history comandi\n%history -n 1-5  # Mostra comandi 1-5\n\n# ===== RUN SCRIPT =====\n%run script.py  # Esegui script Python\n%run -i script.py  # Run in current namespace\n\n# ===== LOAD CODE =====\n%load script.py  # Carica script in cella (non esegue)"
+      },
+      "explanation": "Line magics: % prefix. %time, %timeit, !shell, %run. Very useful."
+    },
+    {
+      "type": "code",
+      "title": "💻 Cell Magics (%%)",
+      "code": {
+        "language": "python",
+        "snippet": "# ===== %%time / %%timeit =====\n# Time intera cella\n%%time\nimport numpy as np\narr = np.random.randn(1000000)\nresult = arr.mean()\n\n%%timeit\n# Average time su multiple runs\nimport numpy as np\narr = np.random.randn(1000)\nresult = arr.mean()\n\n# ===== %%writefile =====\n# Scrive contenuto cella in file\n%%writefile script.py\ndef hello():\n    print(\"Hello from script!\")\n\nif __name__ == '__main__':\n    hello()\n\n# ===== %%bash =====\n# Esegui comandi bash\n%%bash\necho \"Hello from bash\"\nls -la\npwd\n\n# ===== %%html =====\n# Render HTML\n%%html\n<h1 style=\"color: blue;\">HTML Header</h1>\n<p>Paragraph text</p>\n\n# ===== %%javascript =====\n# Esegui JavaScript\n%%javascript\nalert('Hello from JavaScript!');\n\n# ===== %%latex =====\n# Render LaTeX\n%%latex\n\\begin{align}\nx &= y + z \\\\\na &= b + c\n\\end{align}"
+      },
+      "explanation": "Cell magics: %% prefix. Entire cell. %%time, %%writefile, %%bash, %%html."
+    },
+    {
+      "type": "code",
+      "title": "💻 Debug & Profiling",
+      "code": {
+        "language": "python",
+        "snippet": "# ===== %debug =====\n# Dopo eccezione, entra in debugger\ndef buggy_function():\n    x = 10\n    y = 0\n    return x / y  # ZeroDivisionError\n\nbuggy_function()\n%debug  # Entra in pdb debugger interattivo\n\n# ===== %pdb =====\n# Auto-debug su eccezioni\n%pdb on   # Abilita auto-debug\n%pdb off  # Disabilita\n\n# ===== %prun =====\n# Profiler (quali funzioni più lente)\n%prun slow_function()\n\n# ===== %%prun =====\n%%prun\n# Profile intera cella\nimport numpy as np\nfor i in range(100):\n    arr = np.random.randn(10000)\n    result = arr.mean()\n\n# ===== %lprun (line profiler, serve line_profiler package) =====\n%load_ext line_profiler\n%lprun -f function_name function_name(args)\n\n# ===== %memit (memory profiler) =====\n%load_ext memory_profiler\n%memit arr = np.random.randn(1000000)"
+      },
+      "explanation": "%debug for debugging. %prun for profiling. %memit for memory usage."
+    },
+    {
+      "type": "code",
+      "title": "💻 Matplotlib Integration",
+      "code": {
+        "language": "python",
+        "snippet": "# ===== %matplotlib inline =====\n# Grafici inline nel notebook (default)\n%matplotlib inline\nimport matplotlib.pyplot as plt\n\nplt.plot([1, 2, 3, 4])\nplt.ylabel('values')\nplt.show()\n\n# ===== %matplotlib notebook =====\n# Grafici interattivi (zoom, pan)\n%matplotlib notebook\nplt.plot([1, 2, 3, 4])\nplt.show()\n\n# ===== %matplotlib widget =====\n# Grafici interattivi moderni (ipympl)\n# pip install ipympl\n%matplotlib widget\nplt.plot([1, 2, 3, 4])\nplt.show()\n\n# ===== %config InlineBackend =====\n# Configura backend inline\n%config InlineBackend.figure_format = 'retina'  # High-res su Retina\n%config InlineBackend.figure_format = 'svg'     # SVG (scalable)\n%config InlineBackend.figure_format = 'png'     # PNG (default)\n\n# Resolution\n%config InlineBackend.rc = {'figure.dpi': 150}"
+      },
+      "explanation": "%matplotlib inline for static plots. %matplotlib widget for interactive ones."
+    },
+    {
+      "type": "code",
+      "title": "💻 Useful Magic Commands",
+      "code": {
+        "language": "python",
+        "snippet": "# ===== %who / %whos =====\n%who      # Lista variabili correnti\n%who int  # Solo variabili tipo int\n%whos     # Dettagli (type, data/info)\n\n# ===== %reset =====\n%reset    # Clear tutte le variabili (chiede conferma)\n%reset -f # Force reset (no conferma)\n\n# ===== %xdel =====\nx = [1, 2, 3] * 1000000  # Large object\n%xdel x  # Delete + garbage collect\n\n# ===== %quickref =====\n%quickref  # Quick reference IPython\n\n# ===== %lsmagic =====\n%lsmagic  # Lista tutti magic commands disponibili\n\n# ===== %notebook =====\n%notebook filename.ipynb  # Export sessione a notebook\n\n# ===== %recall =====\n%recall 5  # Richiama output cella 5\n\n# ===== %rerun =====\n%rerun 5  # Re-esegui cella 5\n\n# ===== %macro =====\n%macro name 1-5  # Crea macro da celle 1-5\nname  # Esegui macro"
+      },
+      "explanation": "%who to see variables. %reset to clear. %lsmagic for a complete list."
+    },
+    {
+      "type": "title",
+      "title": "Views",
+      "subtitle": "Matplotlib, Seaborn, Plotly, Altair",
+      "description": "Static and Interactive Graphs in Jupyter"
+    },
+    {
+      "type": "code",
+      "title": "💻 Matplotlib: Basics",
+      "code": {
+        "language": "python",
+        "snippet": "%matplotlib inline\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Line plot\nx = np.linspace(0, 10, 100)\ny = np.sin(x)\n\nplt.figure(figsize=(10, 6))\nplt.plot(x, y, label='sin(x)', linewidth=2)\nplt.plot(x, np.cos(x), label='cos(x)', linewidth=2, linestyle='--')\nplt.xlabel('x')\nplt.ylabel('y')\nplt.title('Trigonometric Functions')\nplt.legend()\nplt.grid(True, alpha=0.3)\nplt.show()\n\n# Scatter plot\nx = np.random.randn(100)\ny = np.random.randn(100)\ncolors = np.random.rand(100)\n\nplt.figure(figsize=(8, 6))\nplt.scatter(x, y, c=colors, s=50, alpha=0.6, cmap='viridis')\nplt.colorbar()\nplt.xlabel('X')\nplt.ylabel('Y')\nplt.title('Scatter Plot')\nplt.show()\n\n# Subplots\nfig, axes = plt.subplots(2, 2, figsize=(12, 10))\naxes[0, 0].plot(x, y)\naxes[0, 1].hist(x, bins=20)\naxes[1, 0].scatter(x, y)\naxes[1, 1].bar([1, 2, 3], [10, 20, 15])\nplt.tight_layout()\nplt.show()"
+      },
+      "explanation": "Matplotlib: base library. plot(), scatter(), hist(), subplots(). Very flexible."
+    },
+    {
+      "type": "code",
+      "title": "💻 Seaborn: Statistical Plots",
+      "code": {
+        "language": "python",
+        "snippet": "import seaborn as sns\nimport pandas as pd\nimport numpy as np\n\n# Set style\nsns.set_style('whitegrid')\nsns.set_palette('husl')\n\n# Sample data\ntips = sns.load_dataset('tips')\n\n# Distribution plot\nplt.figure(figsize=(10, 6))\nsns.histplot(tips['total_bill'], kde=True, bins=30)\nplt.title('Distribution of Total Bill')\nplt.show()\n\n# Box plot\nplt.figure(figsize=(10, 6))\nsns.boxplot(x='day', y='total_bill', hue='sex', data=tips)\nplt.title('Total Bill by Day and Sex')\nplt.show()\n\n# Violin plot\nplt.figure(figsize=(10, 6))\nsns.violinplot(x='day', y='total_bill', data=tips)\nplt.show()\n\n# Correlation heatmap\niris = sns.load_dataset('iris')\ncorr = iris.corr(numeric_only=True)\nplt.figure(figsize=(8, 6))\nsns.heatmap(corr, annot=True, cmap='coolwarm', center=0)\nplt.title('Correlation Matrix')\nplt.show()\n\n# Pairplot\nsns.pairplot(iris, hue='species')\nplt.show()"
+      },
+      "explanation": "Seaborn: high-level interface. Statistical plots. histplot, boxplot, heatmap."
+    },
+    {
+      "type": "code",
+      "title": "💻 Plotly: Interactive Plots",
+      "code": {
+        "language": "python",
+        "snippet": "import plotly.express as px\nimport plotly.graph_objects as go\nimport pandas as pd\nimport numpy as np\n\n# Scatter plot interattivo\ndf = px.data.iris()\nfig = px.scatter(\n    df, \n    x='sepal_width', \n    y='sepal_length',\n    color='species',\n    size='petal_length',\n    hover_data=['petal_width'],\n    title='Iris Dataset'\n)\nfig.show()\n\n# Line plot con range slider\ndates = pd.date_range('2024-01-01', periods=100)\nvalues = np.cumsum(np.random.randn(100))\n\nfig = go.Figure()\nfig.add_trace(go.Scatter(x=dates, y=values, mode='lines'))\nfig.update_xaxes(rangeslider_visible=True)\nfig.update_layout(title='Time Series with Range Slider')\nfig.show()\n\n# 3D Scatter\nfig = px.scatter_3d(\n    df,\n    x='sepal_length',\n    y='sepal_width',\n    z='petal_length',\n    color='species'\n)\nfig.show()\n\n# Heatmap interattiva\nz = np.random.randn(20, 20)\nfig = go.Figure(data=go.Heatmap(z=z, colorscale='Viridis'))\nfig.show()"
+      },
+      "explanation": "Plotly: interactive plots. Zoom, pan, hover tooltips. Great for exploration."
+    },
+    {
+      "type": "code",
+      "title": "💻 Pandas Plotting",
+      "code": {
+        "language": "python",
+        "snippet": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Sample DataFrame\ndf = pd.DataFrame({\n    'A': np.random.randn(100).cumsum(),\n    'B': np.random.randn(100).cumsum(),\n    'C': np.random.randn(100).cumsum()\n})\n\n# Line plot\ndf.plot(figsize=(12, 6), title='Time Series')\nplt.show()\n\n# Multiple plots\nfig, axes = plt.subplots(2, 2, figsize=(12, 10))\n\ndf.plot(ax=axes[0, 0], title='Line Plot')\ndf.plot.hist(ax=axes[0, 1], bins=20, alpha=0.7, title='Histogram')\ndf.plot.box(ax=axes[1, 0], title='Box Plot')\ndf.plot.scatter(x='A', y='B', ax=axes[1, 1], title='Scatter')\n\nplt.tight_layout()\nplt.show()\n\n# Bar plot\ndf_bar = pd.DataFrame({\n    'Category': ['A', 'B', 'C', 'D'],\n    'Values': [23, 45, 56, 78]\n})\n\ndf_bar.plot.bar(x='Category', y='Values', figsize=(8, 6))\nplt.show()\n\n# Area plot\ndf.plot.area(figsize=(12, 6), alpha=0.5)\nplt.show()"
+      },
+      "explanation": "Pandas .plot(): convenient plotting. df.plot(), df.plot.hist(), df.plot.scatter()."
+    },
+    {
+      "type": "code",
+      "title": "💻 Altair: Declarative Visualization",
+      "code": {
+        "language": "python",
+        "snippet": "import altair as alt\nimport pandas as pd\n\n# Load data\nsource = alt.load_dataset('cars')\n\n# Scatter plot\nchart = alt.Chart(source).mark_circle(size=60).encode(\n    x='Horsepower',\n    y='Miles_per_Gallon',\n    color='Origin',\n    tooltip=['Name', 'Origin', 'Horsepower', 'Miles_per_Gallon']\n).interactive()\n\nchart\n\n# Bar chart con sorting\nbars = alt.Chart(source).mark_bar().encode(\n    x=alt.X('Origin:N', sort='-y'),\n    y='count()',\n    color='Origin'\n)\n\nbars\n\n# Line chart con selection\nselection = alt.selection_multi(fields=['Origin'])\n\nlines = alt.Chart(source).mark_line().encode(\n    x='Year:T',\n    y='mean(Acceleration)',\n    color='Origin',\n    opacity=alt.condition(selection, alt.value(1), alt.value(0.2))\n).add_selection(selection)\n\nlines\n\n# Concatenate plots\nalt.vconcat(\n    chart,\n    bars\n)"
+      },
+      "explanation": "Altair: declarative, interactive. Grammar of graphics. Elegant API."
+    },
+    {
+      "type": "text",
+      "title": "Best Practices Visualizations",
+      "paragraphs": [
+        "<strong>1. Choose the right library for the use case</strong>",
+        "• Matplotlib: Maximum flexibility, publication-quality",
+        "• Seaborn: Statistical plots, beautiful defaults",
+        "• Plotly: Interactivity, dashboards",
+        "• Altair: Grammar of graphics, elegance",
+        "",
+        "<strong>2. Appropriate figure size</strong>",
+        "<code>plt.figure(figsize=(12, 6))</code> for readability",
+        "",
+        "<strong>3. Labels, titles, legends always</strong>",
+        "xlabel, ylabel, title, legend for context",
+        "",
+        "<strong>4. Accessible Colors</strong>",
+        "Colorblind-friendly palettes (viridis, colorblind safe)",
+        "",
+        "<strong>5. High DPI for presentation</strong>",
+        "<code>plt.savefig('plot.png', dpi=300)</code>",
+        "",
+        "<strong>6. Interactive for exploration</strong>",
+        "Plotly/Altair for data exploration, Matplotlib for final visualization.",
+        "",
+        "<strong>7. Subplots for comparison</strong>",
+        "Multiple plots side-by-side for comparisons",
+        "",
+        "<strong>8. Clear output before commit</strong>",
+        "Embedded plots make notebooks heavy."
+      ],
+      "ironicClosing": "Views: 80% of the time choosing colors. 20% plotting data. Priorities."
+    },
+    {
+      "type": "title",
+      "title": "Kernel & Languages",
+      "subtitle": "Python, R, Julia, SQL, JavaScript",
+      "description": "Jupyter supports 40+ languages via kernels"
+    },
+    {
+      "type": "text",
+      "title": "Jupyter Kernel Ecosystem",
+      "paragraphs": [
+        "<strong>What is a Kernel:</strong>",
+        "• Program that executes code written in the cells",
+        "• Separate kernel for each language",
+        "• Communication via Jupyter protocol (ZeroMQ)",
+        "",
+        "<strong>Popular kernels:</strong>",
+        "• <strong>IPython:</strong> Python (default, most popular)",
+        "• <strong>IRkernel:</strong> R language",
+        "• <strong>IJulia:</strong> Julia language",
+        "• <strong>JavaScript/TypeScript:</strong> Node.js kernel",
+        "• <strong>C++:</strong> Xeus-cling kernel",
+        "• <strong>SQL:</strong> xeus-sql, ipython-sql",
+        "• <strong>Bash:</strong> Bash kernel",
+        "",
+        "<strong>40+ kernels available:</strong>",
+        "Scala, Java, Go, Rust, Ruby, PHP, Octave, MATLAB, ...",
+        "",
+        "<strong>Switch kernel:</strong>",
+        "Kernel menu → Change kernel → Select language",
+        "",
+        "<strong>One notebook = one kernel</strong>",
+        "You can't mix Python and R in the same notebook (use magic %%R)"
+      ],
+      "ironicClosing": "Jupyter: polyglot paradise. Python, R, Julia, SQL... now we just need COBOL. Wait..."
+    },
+    {
+      "type": "code",
+      "title": "💻 R Kernel (IRkernel)",
+      "code": {
+        "language": "r",
+        "snippet": "# Installazione IRkernel\n# In R console:\ninstall.packages('IRkernel')\nIRkernel::installspec()  # Install kernel spec\n\n# ===== Poi crea notebook R =====\n# New → R\n\n# R code in Jupyter\nlibrary(ggplot2)\n\n# Data\ndata(mtcars)\n\n# Plot\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(aes(color = factor(cyl)), size = 3) +\n  geom_smooth(method = 'lm', se = FALSE) +\n  labs(title = 'MPG vs Weight',\n       x = 'Weight (1000 lbs)',\n       y = 'Miles per Gallon',\n       color = 'Cylinders') +\n  theme_minimal()\n\n# Summary statistics\nsummary(mtcars)\n\n# Linear model\nmodel <- lm(mpg ~ wt + hp, data = mtcars)\nsummary(model)"
+      },
+      "explanation": "IRkernel for R. Install R packages, then ggplot2, dplyr, etc. work."
+    },
+    {
+      "type": "code",
+      "title": "💻 SQL in Jupyter (ipython-sql)",
+      "code": {
+        "language": "python",
+        "snippet": "# Installazione\n# pip install ipython-sql sqlalchemy\n\n# Load extension\n%load_ext sql\n\n# Connect to database\n%sql sqlite:///mydatabase.db\n\n# O PostgreSQL\n# %sql postgresql://user:password@localhost/dbname\n\n# SQL query (line magic)\n%sql SELECT * FROM users LIMIT 5\n\n# SQL query (cell magic)\n%%sql\nSELECT \n    country,\n    COUNT(*) as user_count,\n    AVG(age) as avg_age\nFROM users\nGROUP BY country\nORDER BY user_count DESC\nLIMIT 10\n\n# Salva risultato in DataFrame\nresult = %sql SELECT * FROM users WHERE age > 25\ndf = result.DataFrame()\n\n# Usa variabili Python in SQL\nmin_age = 30\n%sql SELECT * FROM users WHERE age > :min_age\n\n# Pandas → SQL\nimport pandas as pd\ndf = pd.DataFrame({'name': ['Alice', 'Bob'], 'age': [25, 30]})\ndf.to_sql('new_table', engine, if_exists='replace')"
+      },
+      "explanation": "ipython-sql for SQL. %sql line magic, %%sql cell magic. Pandas integration."
+    },
+    {
+      "type": "code",
+      "title": "💻 Multi-language Magics",
+      "code": {
+        "language": "python",
+        "snippet": "# Python notebook, ma esegui R code\n%load_ext rpy2.ipython\n\n# R code in Python notebook\n%%R\nlibrary(ggplot2)\ndata(mtcars)\nggplot(mtcars, aes(x=wt, y=mpg)) + geom_point()\n\n# Pass data Python → R\nimport pandas as pd\ndf = pd.DataFrame({'x': [1, 2, 3], 'y': [4, 5, 6]})\n\n%%R -i df\n# df ora disponibile in R\nprint(df)\nplot(df$x, df$y)\n\n# Pass data R → Python\n%%R -o result\nresult <- data.frame(a=1:5, b=6:10)\n\n# result ora in Python\nprint(result)  # pandas DataFrame\n\n# ===== Bash =====\n%%bash\necho \"Hello from bash\"\nls -la\n\n# ===== JavaScript =====\n%%javascript\nconsole.log('Hello from JavaScript');\nalert('Jupyter supports JS!');\n\n# ===== HTML =====\n%%html\n<h1>Custom HTML</h1>\n<button onclick=\"alert('Clicked!')\">Click me</button>"
+      },
+      "explanation": "rpy2 for R in Python notebook. -i input, -o output. %%bash, %%js, %%html."
+    },
+    {
+      "type": "title",
+      "title": "JupyterLab",
+      "subtitle": "Next-generation Jupyter interface",
+      "description": "IDE-like, extensions, multi-document, debugging"
+    },
+    {
+      "type": "text",
+      "title": "JupyterLab vs Classic Notebook",
+      "paragraphs": [
+        "<strong>Jupyter Notebook Classic:</strong>",
+        "• Single-document interface",
+        "• One notebook at a time (one tab)",
+        "• Simple, minimal UI",
+        "• Perfect for beginners or simple tasks",
+        "",
+        "<strong>JupyterLab (recommended):</strong>",
+        "• Multi-document interface (tab, split view)",
+        "• Integrated file browser",
+        "• Terminal, Code console, Built-in text editor",
+        "• Visual debugger (breakpoints, step-through)",
+        "• Extensions ecosystem (git, toc, inspector variables)",
+        "• Drag & drop cells between notebooks",
+        "• Output in separate panels",
+        "• Real-time collaboration (like Google Docs)",
+        "",
+        "<strong>Notebook 7.x (modernized):</strong>",
+        "• Classic UI, but JupyterLab architecture",
+        "• Backward compatible with Notebook 6.x",
+        "• Improved performance",
+        "",
+        "<strong>When to use:</strong>",
+        "• JupyterLab: Serious Data Science, complex projects",
+        "• Notebook: Teaching, demo, simple use"
+      ],
+      "ironicClosing": "Notebook: text editor. JupyterLab: IDE. Both great, choose based on complexity."
+    },
+    {
+      "type": "code",
+      "title": "💻 JupyterLab Features",
+      "code": {
+        "language": "bash",
+        "snippet": "# Avvia JupyterLab\njupyter lab\n\n# ===== Features principali =====\n\n# 1. FILE BROWSER (sidebar sinistra)\n# - Navigate directories\n# - Create, rename, delete files\n# - Drag & drop upload\n\n# 2. MULTI-DOCUMENT\n# - Multiple notebooks in tabs\n# - Split view (drag tab a lato)\n# - Arrange layout custom\n\n# 3. TERMINAL\n# File → New → Terminal\n# Full bash terminal in browser\n\n# 4. TEXT EDITOR\n# Edit .py, .md, .json, etc.\n# Syntax highlighting\n\n# 5. CODE CONSOLE\n# Connected to notebook kernel\n# Test code senza creare celle\n\n# 6. OUTPUT VIEWS\n# Right-click output → Create New View\n# Output in pannello separato\n\n# 7. TABLE OF CONTENTS\n# View → Show Table of Contents\n# Navigazione headings markdown\n\n# 8. DEBUGGER\n# View → Debugger\n# Set breakpoints, step through code"
+      },
+      "explanation": "JupyterLab: file browser, terminal, editor, console. Multi-tab, split view."
+    },
+    {
+      "type": "code",
+      "title": "💻 JupyterLab Debugger",
+      "code": {
+        "language": "python",
+        "snippet": "# Abilitare debugger in JupyterLab\n# View → Debugger (attiva sidebar destra)\n\n# In cella code:\ndef calculate_sum(numbers):\n    total = 0\n    for num in numbers:\n        total += num  # Set breakpoint qui (click numero linea)\n    return total\n\nresult = calculate_sum([1, 2, 3, 4, 5])\nprint(result)\n\n# ===== Debugger controls =====\n# - Set breakpoint: Click line number (red dot)\n# - Continue: Resume execution\n# - Step Over: Execute current line\n# - Step Into: Enter function call\n# - Step Out: Exit current function\n\n# ===== Inspect variables =====\n# Debugger sidebar mostra:\n# - Variables panel: Vedi valori correnti\n# - Callstack: Function call history\n# - Breakpoints: Lista breakpoints attivi\n# - Source: Code con highlight\n\n# ===== IPython debugger (alternativa) =====\n# Magic command per debugging\nimport pdb\n\ndef buggy_function():\n    x = 10\n    pdb.set_trace()  # Breakpoint\n    y = x / 0  # Error\n    return y\n\nbuggy_function()"
+      },
+      "explanation": "Visual debugger in JupyterLab. Breakpoints, step-through, inspect variables."
+    },
+    {
+      "type": "code",
+      "title": "💻 JupyterLab Extensions",
+      "code": {
+        "language": "bash",
+        "snippet": "# ===== Extension Manager (GUI) =====\n# Settings → Enable Extension Manager\n# Sidebar → Extensions (puzzle icon)\n# Search, install, enable extensions\n\n# ===== Popular Extensions =====\n\n# 1. jupyterlab-git\npip install jupyterlab-git\n# Git integration (commit, push, pull, diff)\n\n# 2. jupyterlab-toc\npip install jupyterlab-toc\n# Table of contents navigabile\n\n# 3. jupyterlab-execute-time\npip install jupyterlab-execute-time\n# Mostra execution time per cella\n\n# 4. jupyterlab-system-monitor\npip install jupyterlab-system-monitor\n# CPU/Memory usage monitor\n\n# 5. jupyterlab-lsp (Language Server Protocol)\npip install jupyterlab-lsp\npip install python-lsp-server\n# Autocomplete avanzato, linting, go-to-definition\n\n# 6. jupyterlab-drawio\npip install jupyterlab-drawio\n# Diagrammi integrati (flowcharts, UML)\n\n# 7. jupyterlab-variableInspector\npip install lckr-jupyterlab-variableinspector\n# Inspect variables tipo RStudio\n\n# Lista extensions installate\njupyter labextension list"
+      },
+      "explanation": "Extensions: git, TOC, execute-time, LSP. Extension Manager in GUI."
+    },
+    {
+      "type": "code",
+      "title": "💻 JupyterLab Shortcuts",
+      "code": {
+        "language": "plaintext",
+        "snippet": "# ===== FILE & LAUNCHER =====\nCmd+Shift+L / Ctrl+Shift+L    # Open Launcher\nCmd+S / Ctrl+S                # Save\nCmd+Shift+S / Ctrl+Shift+S    # Save As\nCmd+W / Ctrl+W                # Close tab\n\n# ===== SIDEBAR =====\nCmd+B / Ctrl+B                # Toggle left sidebar\nCmd+Shift+B / Ctrl+Shift+B    # Toggle right sidebar (debugger)\n\n# ===== TABS & LAYOUT =====\nCmd+Shift+[ / Ctrl+Shift+[    # Previous tab\nCmd+Shift+] / Ctrl+Shift+]    # Next tab\nCmd+K Cmd+← / Ctrl+K Ctrl+←   # Split left\nCmd+K Cmd+→ / Ctrl+K Ctrl+→   # Split right\n\n# ===== COMMAND PALETTE =====\nCmd+Shift+C / Ctrl+Shift+C    # Open command palette\n# Search e execute commands\n\n# ===== NOTEBOOK (stessi di classic) =====\nShift+Enter                   # Run cell\nA                             # Insert above\nB                             # Insert below\nDD                            # Delete cell\n\n# ===== TERMINAL =====\nFile → New → Terminal         # New terminal\nCmd+K Cmd+Shift+T             # New terminal (shortcut)"
+      },
+      "explanation": "Cmd+Shift+C for command palette. Cmd+B to toggle sidebar. Very customizable."
+    },
+    {
+      "type": "title",
+      "title": "Alternative Cloud",
+      "subtitle": "Google Colab, Kaggle, Databricks",
+      "description": "Jupyter in the cloud, zero setup, free GPU"
+    },
+    {
+      "type": "text",
+      "title": "Google Colab",
+      "paragraphs": [
+        "<strong>What it is:</strong> Jupyter Notebook hosted by Google, free of charge",
+        "",
+        "<strong>✅ Pro:</strong>",
+        "• Zero setup (browser-based)",
+        "• Free GPU/TPU (limited hours)",
+        "• Google Drive integration",
+        "• Easy sharing (like Google Docs)",
+        "• Pre-installed libraries (TensorFlow, PyTorch, scikit-learn)",
+        "",
+        "<strong>❌ Cons:</strong>",
+        "• Session timeout (inactivity → disconnect)",
+        "• Limited storage",
+        "• Variable performance (shared resources)",
+        "• Less flexibility vs local",
+        "",
+        "<strong>Perfect for:</strong>",
+        "• Machine Learning (GPU required)",
+        "• Teaching, workshop",
+        "• Quick prototyping",
+        "• No local resources",
+        "",
+        "<strong>URL:</strong> colab.research.google.com",
+        "",
+        "<strong>Pro tips:</strong>",
+        "• Colab Pro ($10/mo) - GPU priority, longer runtime",
+        "• Mount Google Drive for persistence",
+        "• Periodically download checkpoint models"
+      ],
+      "ironicClosing": "Colab: free GPU. Catch: session timeout just when you're about to finish training. Classic."
+    },
+    {
+      "type": "code",
+      "title": "💻 Google Colab Specifics",
+      "code": {
+        "language": "python",
+        "snippet": "# ===== GPU/TPU =====\n# Runtime → Change runtime type → GPU/TPU\n\n# Verifica GPU\nimport torch\nprint(torch.cuda.is_available())  # True se GPU disponibile\nprint(torch.cuda.get_device_name(0))  # Nome GPU\n\n# ===== Mount Google Drive =====\nfrom google.colab import drive\ndrive.mount('/content/drive')\n# Ora accedi: /content/drive/MyDrive/...\n\n# ===== Upload file =====\nfrom google.colab import files\nuploaded = files.upload()  # File picker\n\n# ===== Download file =====\nfiles.download('myfile.csv')\n\n# ===== Install packages =====\n!pip install package-name\n# Packages installati persistono per sessione corrente\n\n# ===== Forms (UI widgets) =====\n#@title Parameters { display-mode: \"form\" }\nlearning_rate = 0.001 #@param {type:\"number\"}\nmodel_name = \"ResNet50\" #@param [\"ResNet50\", \"VGG16\", \"MobileNet\"]\nuse_pretrained = True #@param {type:\"boolean\"}\n\nprint(f\"LR: {learning_rate}, Model: {model_name}\")\n\n# ===== Sistema info =====\n!nvidia-smi  # GPU info\n!cat /proc/cpuinfo  # CPU info\n!free -h  # RAM info"
+      },
+      "explanation": "Colab: mount Drive, upload/download, GPU check, forms for UI. Magic commands."
+    },
+    {
+      "type": "text",
+      "title": "Kaggle Notebooks",
+      "paragraphs": [
+        "<strong>What it is:</strong> Jupyter hosted by Kaggle, focus on Data Science competitions",
+        "",
+        "<strong>✅ Pro:</strong>",
+        "• Free GPU/TPU (30h/week GPU, 20h/week TPU)",
+        "• Integrated datasets (Kaggle datasets)",
+        "• Competitions integration",
+        "• Public notebooks (learning resource)",
+        "• Pre-installed DS libraries",
+        "",
+        "<strong>❌ Cons:</strong>",
+        "• Weekly GPU limits",
+        "• No internet access (security, Kaggle solo datasets)",
+        "• Less popular than Colab",
+        "",
+        "<strong>Perfect for:</strong>",
+        "• Kaggle competitions",
+        "• Learning from public notebooks",
+        "• Dataset exploration",
+        "",
+        "<strong>URL:</strong> kaggle.com/code",
+        "",
+        "<strong>Difference vs Colab:</strong>",
+        "• Kaggle: More GPU hours, no internet",
+        "• Colab: Internet access, Google ecosystem"
+      ],
+      "ironicClosing": "Kaggle: Colab but for competitions. No internet = security. Or paranoia. Both."
+    },
+    {
+      "type": "text",
+      "title": "Other Alternatives",
+      "paragraphs": [
+        "<strong>Databricks Community Edition:</strong>",
+        "• Spark-based notebooks",
+        "• Big Data focus",
+        "• Collaborative, production-ready",
+        "• Limited free tier",
+        "",
+        "<strong>VS Code + Jupyter Extension:</strong>",
+        "• Native Jupyter support in VS Code",
+        "• Variable explorer, integrated debugger",
+        "• Native Git integration",
+        "• Preferred by many developers",
+        "",
+        "<strong>Azure Notebooks (deprecated → Azure ML):</strong>",
+        "• Migrated to Azure Machine Learning",
+        "• Cloud compute, MLOps integration",
+        "",
+        "<strong>Deepnote:</strong>",
+        "• Collaborative notebooks (team focus)",
+        "• Real-time collaboration",
+        "• Integration with data sources",
+        "• Freemium",
+        "",
+        "<strong>Observable:</strong>",
+        "• JavaScript notebooks",
+        "• Reactive programming",
+        "• D3.js visualizations",
+        "• Web-first"
+      ],
+      "ironicClosing": "Alternative: too many. The Jupyter ecosystem is a buffet. Choose your base flavors."
+    },
+    {
+      "type": "title",
+      "title": "Extensions & Widgets",
+      "subtitle": "ipywidgets, voilà, nbextensions",
+      "description": "Interactivity and custom UI in notebooks"
+    },
+    {
+      "type": "code",
+      "title": "💻 ipywidgets: Interattiva UI",
+      "code": {
+        "language": "python",
+        "snippet": "import ipywidgets as widgets\nfrom IPython.display import display\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n# Slider\nslider = widgets.IntSlider(\n    value=50,\n    min=0,\n    max=100,\n    step=1,\n    description='Value:'\n)\ndisplay(slider)\n\n# Button\nbutton = widgets.Button(description='Click me!')\ndef on_button_click(b):\n    print('Button clicked!')\nbutton.on_click(on_button_click)\ndisplay(button)\n\n# Dropdown\ndropdown = widgets.Dropdown(\n    options=['Option 1', 'Option 2', 'Option 3'],\n    value='Option 1',\n    description='Select:'\n)\ndisplay(dropdown)\n\n# Interactive plot\n@widgets.interact(freq=(1, 10, 0.5), amplitude=(0.1, 2, 0.1))\ndef plot_sine(freq=1, amplitude=1):\n    x = np.linspace(0, 4*np.pi, 100)\n    y = amplitude * np.sin(freq * x)\n    plt.figure(figsize=(10, 4))\n    plt.plot(x, y)\n    plt.ylim(-2, 2)\n    plt.grid(True)\n    plt.show()\n\n# Multiple widgets\nslider1 = widgets.FloatSlider(value=1, min=0, max=5, description='A:')\nslider2 = widgets.FloatSlider(value=1, min=0, max=5, description='B:')\noutput = widgets.interactive_output(\n    lambda a, b: print(f'Sum: {a+b}'),\n    {'a': slider1, 'b': slider2}\n)\ndisplay(widgets.VBox([slider1, slider2, output]))"
+      },
+      "explanation": "ipywidgets for interactivity. Sliders, buttons, dropdowns. @interact decorator."
+    },
+    {
+      "type": "code",
+      "title": "💻 Voilà: Notebook → Web App",
+      "code": {
+        "language": "bash",
+        "snippet": "# Installazione\npip install voila\n\n# Converti notebook in web app (hide code)\nvoila mynotebook.ipynb\n\n# Apre browser su http://localhost:8866\n# Mostra solo output e widgets (no code cells)\n\n# Serve directory\nvoila notebooks/\n\n# Template custom\nvoila mynotebook.ipynb --template=dark\n\n# Deploy su Heroku/Binder\n# Voilà può essere hostato come web app\n\n# ===== Esempio notebook per Voilà =====\n# mynotebook.ipynb\nimport ipywidgets as widgets\nimport pandas as pd\nimport plotly.express as px\n\n# Load data\ndf = pd.read_csv('data.csv')\n\n# Dropdown filter\ncategory = widgets.Dropdown(\n    options=df['category'].unique(),\n    description='Category:'\n)\n\n# Interactive plot\ndef update_plot(cat):\n    filtered = df[df['category'] == cat]\n    fig = px.bar(filtered, x='name', y='value')\n    fig.show()\n\nwidgets.interactive(update_plot, cat=category)\n\n# Voilà rende questo un dashboard interattivo"
+      },
+      "explanation": "Here you go: notebook → web app. Hide code, show widgets. Deploy dashboards."
+    },
+    {
+      "type": "code",
+      "title": "💻 Jupyter Notebook Extensions",
+      "code": {
+        "language": "bash",
+        "snippet": "# Installazione nbextensions (Notebook classic)\npip install jupyter_contrib_nbextensions\njupyter contrib nbextension install --user\n\n# Enable configurator\njupyter nbextensions_configurator enable --user\n\n# Avvia notebook → Nbextensions tab\n# GUI per enable/disable extensions\n\n# ===== Popular extensions =====\n\n# 1. Table of Contents (TOC)\n# Auto-genera TOC da markdown headings\n\n# 2. ExecuteTime\n# Mostra execution time sotto ogni cella\n\n# 3. Variable Inspector\n# Inspector variabili (tipo RStudio)\n\n# 4. Collapsible Headings\n# Collapse/expand sezioni markdown\n\n# 5. Code Folding\n# Fold code blocks\n\n# 6. Hinterland\n# Autocomplete automatico (no Tab)\n\n# 7. Scratchpad\n# Temporary cell per test\n\n# 8. Snippets Menu\n# Template code snippets\n\n# Enable extension via CLI\njupyter nbextension enable toc2/main\n\n# Disable\njupyter nbextension disable toc2/main"
+      },
+      "explanation": "nbextensions for classic Notebook. TOC, ExecuteTime, Variable Inspector. GUI."
+    },
+    {
+      "type": "code",
+      "title": "💻 Custom Styling & Themes",
+      "code": {
+        "language": "bash",
+        "snippet": "# ===== JupyterLab Themes =====\n# Settings → Theme → Dark/Light\n\n# Install custom themes\npip install jupyterlab-night\npip install theme-darcula\n\n# Rebuild JupyterLab\njupyter lab build\n\n# ===== Notebook Classic Themes =====\npip install jupyterthemes\n\n# List themes\njt -l\n\n# Apply theme\njt -t chesterish  # Dark theme\njt -t grade3     # Light theme\njt -t onedork    # Atom One Dark\n\n# Customize\njt -t monokai -f fira -fs 11 -nf ptsans -nfs 11 -T -N\n# -f: font\n# -fs: font size\n# -T: toolbar\n# -N: name & logo\n\n# Reset to default\njt -r\n\n# ===== Custom CSS =====\n# Create: ~/.jupyter/custom/custom.css\n.CodeMirror {\n    font-family: 'Fira Code', monospace;\n    font-size: 14px;\n}\n\n.rendered_html h1 {\n    color: #2c3e50;\n}"
+      },
+      "explanation": "jupyterthemes for styling. Dark/light themes. Custom CSS for full control."
+    },
+    {
+      "type": "title",
+      "title": "Export & Share",
+      "subtitle": "nbconvert, HTML, PDF, slides",
+      "description": "Share notebooks with the world"
+    },
+    {
+      "type": "code",
+      "title": "💻 nbconvert: Export Formats",
+      "code": {
+        "language": "bash",
+        "snippet": "# nbconvert built-in con Jupyter\n\n# ===== HTML (static) =====\njupyter nbconvert --to html notebook.ipynb\n# Output: notebook.html\n\n# HTML senza code (solo output)\njupyter nbconvert --to html --no-input notebook.ipynb\n\n# ===== PDF =====\njupyter nbconvert --to pdf notebook.ipynb\n# Richiede: LaTeX (MikTeX su Win, MacTeX su Mac)\n\n# ===== Markdown =====\njupyter nbconvert --to markdown notebook.ipynb\n# Output: notebook.md + images/\n\n# ===== Python script =====\njupyter nbconvert --to python notebook.ipynb\n# Output: notebook.py (solo code cells)\n\n# ===== LaTeX =====\njupyter nbconvert --to latex notebook.ipynb\n\n# ===== Slides (reveal.js) =====\njupyter nbconvert --to slides notebook.ipynb\n# Output: notebook.slides.html\n\n# Serve slides\njupyter nbconvert --to slides notebook.ipynb --post serve\n# Apre browser con presentazione\n\n# ===== Custom template =====\njupyter nbconvert --to html --template lab notebook.ipynb\n\n# ===== Execute before export =====\njupyter nbconvert --to html --execute notebook.ipynb"
+      },
+      "explanation": "nbconvert: HTML, PDF, Markdown, Python, Slides. --no-input to hide code."
+    },
+    {
+      "type": "code",
+      "title": "💻 Slides with RISE",
+      "code": {
+        "language": "bash",
+        "snippet": "# RISE: Reveal.js presentation in Jupyter\npip install RISE\n\n# ===== Configurare slide types =====\n# Per ogni cella, toolbar → View → Cell Toolbar → Slideshow\n\n# Slide types:\n# - Slide: Main slide\n# - Sub-Slide: Sub-slide (down arrow)\n# - Fragment: Appear incrementally\n# - Skip: Hidden in presentation\n# - Notes: Speaker notes\n\n# ===== Avviare presentazione =====\n# In JupyterLab/Notebook: Alt+R (o button \"Enter/Exit RISE\")\n\n# Navigazione:\n# - Space/→: Next\n# - Shift+Space/←: Previous\n# - ↑/↓: Sub-slides\n# - Esc: Overview mode\n\n# ===== Export slides =====\njupyter nbconvert --to slides notebook.ipynb --post serve\n\n# ===== Tips =====\n# - Code cells eseguono live in presentation\n# - Interactive widgets funzionano\n# - Use markdown per title slides\n# - Use fragments per progressive reveal"
+      },
+      "explanation": "RISE for live presentations. Based on Reveal.js. Code runs during the talk."
+    },
+    {
+      "type": "code",
+      "title": "💻 Sharing: nbviewer & GitHub",
+      "code": {
+        "language": "bash",
+        "snippet": "# ===== GitHub =====\n# GitHub renderizza .ipynb automaticamente\ngit add notebook.ipynb\ngit commit -m \"Add analysis notebook\"\ngit push\n\n# View su: github.com/user/repo/blob/main/notebook.ipynb\n\n# ⚠️ Best practice:\n# - Clear output prima di commit (file size)\n# - O commit con output per condivisione\n\n# Clear output\njupyter nbconvert --clear-output --inplace notebook.ipynb\n\n# ===== nbviewer =====\n# nbviewer.jupyter.org rende notebook da URL\n\n# 1. Upload notebook su GitHub/Gist\n# 2. Copia URL\n# 3. Vai a nbviewer.jupyter.org\n# 4. Paste URL\n# 5. Share link nbviewer\n\n# Direct link:\n# https://nbviewer.jupyter.org/github/user/repo/blob/main/notebook.ipynb\n\n# ===== Binder =====\n# mybinder.org - Interactive notebooks da GitHub\n\n# 1. Push notebook + requirements.txt a GitHub\n# 2. Vai a mybinder.org\n# 3. Paste repo URL\n# 4. Launch → Interactive notebook in cloud\n# 5. Share binder link\n\n# requirements.txt example:\nnumpy==1.24.0\npandas==2.0.0\nmatplotlib==3.7.0"
+      },
+      "explanation": "GitHub renders notebooks. nbviewer for sharing. Binder for interactive."
+    },
+    {
+      "type": "text",
+      "title": "Best Practices Sharing",
+      "paragraphs": [
+        "<strong>1. Clear output for version control</strong>",
+        "Output renders git diff unreadable",
+        "<code>jupyter nbconvert --clear-output --inplace *.ipynb</code>",
+        "",
+        "<strong>2. nbstripout per git automation</strong>",
+        "<code>pip install nbstripout</code>",
+        "<code>nbstripout --install</code> (auto-strip on commit)",
+        "",
+        "<strong>3. Include requirements.txt</strong>",
+        "For reproducibility, list dependencies",
+        "",
+        "<strong>4. README with instructions</strong>",
+        "How to run notebooks, where to find data",
+        "",
+        "<strong>5. Data not in git (if large)</strong>",
+        "Download link or script to fetch data",
+        "",
+        "<strong>6. Restart & Run All before sharing</strong>",
+        "Check everything is executed correctly",
+        "",
+        "<strong>7. Markdown documentation</strong>",
+        "Explain what the notebook does, assumptions, results.",
+        "",
+        "<strong>8. PDF Export for Non-Technical Users</strong>",
+        "PDF is universal, no setup needed."
+      ],
+      "ironicClosing": "Sharing: Clear output of 500MB git repo. Choose wisely. nbstripout is your friend."
+    },
+    {
+      "type": "title",
+      "title": "Best Practices",
+      "subtitle": "Organization, reproducibility, performance",
+      "description": "How to write production-quality notebooks"
+    },
+    {
+      "type": "text",
+      "title": "✅ Best Practices Jupyter",
+      "paragraphs": [
+        "<strong>1. Clear notebook structure</strong>",
+        "• Header with title, author, date",
+        "• Table of contents for long notebooks",
+        "• Logical sections with markdown headings",
+        "",
+        "<strong>2. Restart & Run All periodically</strong>",
+        "• Verify linear execution (no out-of-order dependencies)",
+        "• Before commit/share, ALWAYS restart & run all",
+        "",
+        "<strong>3. Import at the beginning</strong>",
+        "• All imports in the first cell (convention)",
+        "• Easy to see dependencies",
+        "",
+        "<strong>4. One operation per cell</strong>",
+        "• Granular cells (load data, clean data, plot, etc.)",
+        "• Easy debugging and re-running",
+        "",
+        "<strong>5. Comments and markdown</strong>",
+        "• Markdown to explain logic",
+        "• Comments in the code for details",
+        "",
+        "<strong>6. Versioning with git</strong>",
+        "• .ipynb in git (with nbstripout)",
+        "• .gitignore for data/, models/, __pycache__",
+        "",
+        "<strong>7. Naming conventions</strong>",
+        "• Notebook: <code>01_data_loading.ipynb</code> (numbered)",
+        "• Variables: snake_case",
+        "",
+        "<strong>8. Functions for reusable code</strong>",
+        "• Extract logic in functions",
+        "• Or rather: imported .py modules"
+      ],
+      "ironicClosing": "Best practices: ignore and spend hours debugging an inconsistent notebook. Or follow them and live peacefully."
+    },
+    {
+      "type": "text",
+      "title": "⚠️ Anti-Patterns to Avoid",
+      "paragraphs": [
+        "<strong>1. Execute cells out of order</strong>",
+        "❌ Jumping between cells creates inconsistent state",
+        "✅ Execute sequentially, restart & run all to verify",
+        "",
+        "<strong>2. Giant notebooks (1000+ cells)</strong>",
+        "❌ Unmaintainable, slow",
+        "✅ Split into multiple notebooks or refactor into .py",
+        "",
+        "<strong>3. No documentation</strong>",
+        "❌ Code-only notebook, no explanation",
+        "✅ Markdown cells for context",
+        "",
+        "<strong>4. Print debugging everywhere</strong>",
+        "❌ <code>print()</code> everywhere, huge output",
+        "✅ Use debugger, logging, or assert",
+        "",
+        "<strong>5. Hardcoded paths</strong>",
+        "❌ <code>df = pd.read_csv('/Users/me/data.csv')</code>",
+        "✅ Relative paths or config file",
+        "",
+        "<strong>6. No error handling</strong>",
+        "❌ Crash on unexpected input",
+        "✅ try/except, validation",
+        "",
+        "<strong>7. Magic numbers</strong>",
+        "❌ <code>threshold = 0.83427</code> (why?)",
+        "✅ Named constants with comment",
+        "",
+        "<strong>8. Notebook as script</strong>",
+        "❌ Pure execution, no exploration/analysis",
+        "✅ Use a .py script instead (notebook is for exploration)"
+      ],
+      "ironicClosing": "Anti-patterns: a fast track to tech debt. Notebook becomes legacy code that no one touches."
+    },
+    {
+      "type": "text",
+      "title": "🎯 When to Use Jupyter",
+      "paragraphs": [
+        "<strong>✅ Perfect fit:</strong>",
+        "• Data exploration & analysis",
+        "• Prototipazione di modelli ML",
+        "• Research, scientific computing",
+        "• Teaching, tutorials, demos",
+        "• Reporting (code + results + viz)",
+        "• Executable documentation",
+        "",
+        "<strong>⚠️ Consider alternatives:</strong>",
+        "• Production pipelines → .py scripts + orchestration",
+        "• Large codebases → Proper IDE (VS Code, PyCharm)",
+        "• Web apps → Framework (Flask, FastAPI, Streamlit)",
+        "• Real-time processing → Scripts/daemons",
+        "",
+        "<strong>❌ Do not use Jupyter for:</strong>",
+        "• Production deployments (orchestrator instead)",
+        "• Complex OOP projects (better IDE)",
+        "• CI/CD pipelines (scripts)",
+        "• Long-running processes (timeout issues)",
+        "",
+        "<strong>Hybrid approach (best):</strong>",
+        "• Jupyter for exploration & prototyping",
+        "• Refactor mature code into .py modules",
+        "• Import modules in notebook",
+        "• Production: scripts Python standard"
+      ],
+      "ironicClosing": "Jupyter: great for exploration. Horrible for production. Know the boundaries, thrive."
+    }
+  ],
+  "sourceLanguage": "en",
+  "lastTranslated": "2025-11-18"
+}

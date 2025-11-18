@@ -1,0 +1,612 @@
+{
+  "number": 9,
+  "title": "Workshop: Sentiment Analysis con PyTorch",
+  "description": "Fine-tuning di DistilBERT con HuggingFace Transformers - Analisi sentiment recensioni",
+  "steps": [
+    {
+      "name": "Setup Progetto",
+      "slides": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "Dataset & Preprocessing",
+      "slides": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "Modello & Training",
+      "slides": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "name": "Testing & Inference",
+      "slides": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "name": "Debug & Next",
+      "slides": [
+        26,
+        27,
+        28,
+        29
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Workshop PyTorch + NLP",
+      "subtitle": "Sentiment Analysis con HuggingFace Transformers",
+      "description": "Fine-tuning di DistilBERT per classificare recensioni (positivo/negativo)",
+      "ironicClosing": "Laptop acceso. PyTorch installato. Via."
+    },
+    {
+      "type": "text",
+      "title": "Cosa Costruiremo",
+      "paragraphs": [
+        "<strong>Un classificatore di sentiment che analizza recensioni di prodotti/film e determina se sono positive o negative.</strong>",
+        "",
+        "• <strong>Dataset:</strong> IMDB Movie Reviews (25k training samples)",
+        "• <strong>Modello:</strong> DistilBERT pre-trained (66M parametri)",
+        "• <strong>Task:</strong> Binary classification (positive/negative)",
+        "• <strong>Output:</strong> Script CLI che classifica nuove recensioni",
+        "• <strong>Tempo:</strong> ~90 minuti (training 10-15 min su CPU)"
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Requisiti",
+      "subtitle": "Cosa serve prima di iniziare",
+      "paragraphs": [
+        "• Python 3.8+ installato",
+        "• pip o conda funzionante",
+        "• 8GB RAM minimo (16GB consigliati)",
+        "• 10GB spazio disco per modelli e dataset",
+        "• Connessione internet per download modelli",
+        "• Editor di codice (VS Code, PyCharm, etc.)"
+      ],
+      "ironicClosing": "Se hai solo 4GB RAM, prepara il caffè. Sarà lungo."
+    },
+    {
+      "type": "code",
+      "title": "Step 1: Setup Ambiente",
+      "subtitle": "Crea cartella e virtual environment",
+      "code": {
+        "language": "bash",
+        "snippet": "# Crea cartella progetto\nmkdir sentiment-pytorch\ncd sentiment-pytorch\n\n# Crea virtual environment\npython -m venv venv\n\n# Attiva venv\n# Su Linux/Mac:\nsource venv/bin/activate\n# Su Windows:\n# venv\\Scripts\\activate\n\n# Verifica\nwhich python  # Deve puntare a venv/bin/python"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Step 2: Installa Dipendenze",
+      "subtitle": "PyTorch, Transformers, Datasets",
+      "code": {
+        "language": "bash",
+        "snippet": "# Installa PyTorch (CPU version)\npip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu\n\n# Installa HuggingFace libraries\npip install transformers datasets accelerate\n\n# Utility per progress bar\npip install tqdm\n\n# Verifica installazione\npython -c \"import torch; print(f'PyTorch {torch.__version__}')\"\npython -c \"import transformers; print(f'Transformers {transformers.__version__}')\""
+      }
+    },
+    {
+      "type": "text",
+      "title": "Architettura del Progetto",
+      "subtitle": "File che creeremo",
+      "paragraphs": [
+        "• <strong>train.py</strong> - Script per fine-tuning del modello",
+        "• <strong>inference.py</strong> - Script per classificare nuove recensioni",
+        "• <strong>requirements.txt</strong> - Dipendenze (opzionale)",
+        "• <strong>models/</strong> - Cartella con modello salvato (generata automaticamente)",
+        "",
+        "<strong>Filosofia:</strong> Tutto embedded nel codice per semplicità. Zero config files, zero YAML, zero headaches."
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Dataset: IMDB Reviews",
+      "subtitle": "25,000 recensioni di film etichettate",
+      "paragraphs": [
+        "<strong>Useremo il dataset IMDB Movie Reviews dalla libreria HuggingFace datasets.</strong>",
+        "",
+        "• 25,000 recensioni per training",
+        "• 25,000 recensioni per test",
+        "• Labels: 0 (negative), 1 (positive)",
+        "• Download automatico (800MB circa)",
+        "• Pre-tokenizzato e pronto all'uso",
+        "",
+        "<strong>Esempio recensione:</strong>",
+        "\"This movie was absolutely fantastic! Best I've seen this year.\" → Positive"
+      ],
+      "ironicClosing": "Grazie HuggingFace per farci evitare web scraping e pulizia dati."
+    },
+    {
+      "type": "text",
+      "title": "Che Cos'è DistilBERT?",
+      "subtitle": "Il modello che useremo",
+      "paragraphs": [
+        "<strong>DistilBERT = versione 'distillata' (compressa) di BERT</strong>",
+        "",
+        "• <strong>BERT:</strong> 110M parametri, lento",
+        "• <strong>DistilBERT:</strong> 66M parametri, 60% più veloce",
+        "• <strong>Performance:</strong> 97% della qualità di BERT",
+        "",
+        "<strong>Come funziona 'distillation'?</strong>",
+        "Il modello piccolo impara a imitare il modello grande. Come un'apprendista che copia il maestro.",
+        "",
+        "<strong>Perché usarlo?</strong> Training più veloce, meno RAM, stessa accuratezza."
+      ],
+      "ironicClosing": "DistilBERT: tutto il sapore, metà delle calorie."
+    },
+    {
+      "type": "text",
+      "title": "Fine-Tuning: Che Significa?",
+      "subtitle": "Concetto chiave del workshop",
+      "paragraphs": [
+        "<strong>Pre-training:</strong> DistilBERT è già stato addestrato su miliardi di parole (Wikipedia, libri, etc.). Sa 'capire' l'inglese.",
+        "",
+        "<strong>Fine-tuning:</strong> Ora lo adattiamo al task specifico di sentiment analysis.",
+        "",
+        "<strong>Analogia:</strong>",
+        "• Pre-training = Laurea in Lettere (comprendi il linguaggio)",
+        "• Fine-tuning = Master in Film Criticism (specializzazione)",
+        "",
+        "<strong>Vantaggio:</strong> Invece di partire da zero, partiamo da un modello che già 'capisce'. Ci servono pochi esempi!"
+      ],
+      "ironicClosing": "Transfer learning: riusare invece di rifare. Software engineering 101."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 1: Import",
+      "subtitle": "Le librerie che useremo",
+      "code": {
+        "language": "python",
+        "snippet": "# train.py\nimport torch\nfrom transformers import DistilBertTokenizer, DistilBertForSequenceClassification\nfrom transformers import Trainer, TrainingArguments\nfrom datasets import load_dataset"
+      },
+      "explanation": "torch = PyTorch core | transformers = HuggingFace (modelli pre-trained) | datasets = caricamento dati"
+    },
+    {
+      "type": "text",
+      "title": "Spiegazione: load_dataset",
+      "subtitle": "Magia HuggingFace per caricare dati",
+      "paragraphs": [
+        "<strong>load_dataset(\"imdb\")</strong> fa 3 cose:",
+        "",
+        "1. <strong>Download:</strong> Scarica il dataset da HuggingFace Hub (se non l'hai già)",
+        "2. <strong>Cache:</strong> Lo salva in ~/.cache/ per riuso futuro",
+        "3. <strong>Parsing:</strong> Lo carica in memoria come oggetto Dataset",
+        "",
+        "<strong>Struttura del dataset:</strong>",
+        "• dataset[\"train\"] = 25k esempi di training",
+        "• dataset[\"test\"] = 25k esempi di test",
+        "• Ogni esempio: {\"text\": \"...\", \"label\": 0 o 1}",
+        "",
+        "<strong>Tip:</strong> Puoi usare .select(range(N)) per prendere solo primi N esempi."
+      ],
+      "ironicClosing": "load_dataset: perché scaricare e parsare CSV è roba da 2010."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 2: Carica Dataset",
+      "code": {
+        "language": "python",
+        "snippet": "# Carica dataset IMDB\nprint(\"Caricamento dataset IMDB...\")\ndataset = load_dataset(\"imdb\")\n\n# Prendi solo un subset per velocizzare (opzionale)\ntrain_dataset = dataset[\"train\"].shuffle(seed=42).select(range(1000))\ntest_dataset = dataset[\"test\"].shuffle(seed=42).select(range(200))\n\nprint(f\"Training samples: {len(train_dataset)}\")\nprint(f\"Test samples: {len(test_dataset)}\")"
+      },
+      "explanation": "Usiamo 1000 esempi per training veloce. In produzione: usa tutti i 25k!"
+    },
+    {
+      "type": "text",
+      "title": "Perché Shuffle?",
+      "subtitle": ".shuffle(seed=42) - Non è casuale",
+      "paragraphs": [
+        "<strong>.shuffle(seed=42)</strong> mescola gli esempi in ordine 'casuale' ma riproducibile.",
+        "",
+        "<strong>Perché shuffliamo?</strong>",
+        "I dataset sono spesso ordinati (es: tutti i negativi prima, poi i positivi). Il modello imparerebbe male senza shuffle.",
+        "",
+        "<strong>Perché seed=42?</strong>",
+        "• seed = 'seme' per generatore random",
+        "• Stesso seed = stesso ordine casuale ogni volta",
+        "• Esperimenti riproducibili!",
+        "",
+        "<strong>42:</strong> Risposta alla domanda fondamentale sull'universo (Guida Galattica per Autostoppisti)."
+      ],
+      "ironicClosing": "seed=42: quando vuoi essere casuale ma anche deterministico."
+    },
+    {
+      "type": "text",
+      "title": "Tokenization: Da Testo a Numeri",
+      "subtitle": "I computer non capiscono parole, solo numeri",
+      "paragraphs": [
+        "<strong>Problema:</strong> DistilBERT lavora con numeri, non parole.",
+        "",
+        "<strong>Tokenization:</strong> Convertire testo in sequenze di numeri.",
+        "",
+        "<strong>Esempio:</strong>",
+        "\"This movie is great!\" →",
+        "[101, 2023, 3185, 2003, 2307, 999, 102]",
+        "",
+        "<strong>Tokenizer di DistilBERT:</strong>",
+        "• Divide testo in 'tokens' (subwords)",
+        "• Ogni token ha un ID numerico",
+        "• Vocabolario: 30k tokens",
+        "",
+        "<strong>Subwords:</strong> \"unbelievable\" → [\"un\", \"##believ\", \"##able\"]"
+      ],
+      "ironicClosing": "Tokenization: perché 'A' non è uguale a 65 per i computer."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 3: Tokenizer Setup",
+      "code": {
+        "language": "python",
+        "snippet": "# Carica tokenizer\nprint(\"Caricamento tokenizer...\")\ntokenizer = DistilBertTokenizer.from_pretrained(\"distilbert-base-uncased\")"
+      },
+      "explanation": "from_pretrained: scarica il tokenizer addestrato con DistilBERT. 'uncased' = ignora maiuscole/minuscole."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 4: Funzione Tokenization",
+      "code": {
+        "language": "python",
+        "snippet": "# Funzione di tokenization\ndef tokenize_function(examples):\n    return tokenizer(\n        examples[\"text\"],\n        padding=\"max_length\",\n        truncation=True,\n        max_length=512\n    )"
+      },
+      "explanation": "padding='max_length': aggiungi zeros per arrivare a 512 tokens | truncation=True: taglia se supera 512"
+    },
+    {
+      "type": "text",
+      "title": "Padding e Truncation Spiegati",
+      "subtitle": "Tutti gli input devono avere stessa lunghezza",
+      "paragraphs": [
+        "<strong>Problema:</strong> Le recensioni hanno lunghezze diverse (10 parole vs 500 parole).",
+        "",
+        "<strong>Soluzione:</strong>",
+        "• <strong>max_length=512:</strong> Lunghezza fissa di 512 tokens",
+        "• <strong>truncation=True:</strong> Taglia recensioni più lunghe",
+        "• <strong>padding='max_length':</strong> Aggiungi [PAD] tokens alle recensioni corte",
+        "",
+        "<strong>Esempio:</strong>",
+        "• Recensione corta (50 tokens) → aggiungi 462 [PAD]",
+        "• Recensione lunga (600 tokens) → taglia a 512",
+        "",
+        "<strong>Perché 512?</strong> Limite di BERT/DistilBERT. Context window."
+      ],
+      "ironicClosing": "Padding: come mettere cuscini in una scatola per riempire gli spazi."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 5: Applica Tokenization",
+      "code": {
+        "language": "python",
+        "snippet": "# Tokenizza dataset\nprint(\"Tokenizzazione...\")\ntrain_dataset = train_dataset.map(tokenize_function, batched=True)\ntest_dataset = test_dataset.map(tokenize_function, batched=True)\n\n# Prepara per PyTorch\ntrain_dataset.set_format(\"torch\", columns=[\"input_ids\", \"attention_mask\", \"label\"])\ntest_dataset.set_format(\"torch\", columns=[\"input_ids\", \"attention_mask\", \"label\"])"
+      },
+      "explanation": ".map(): applica funzione a tutti gli esempi | set_format('torch'): converti in tensori PyTorch"
+    },
+    {
+      "type": "text",
+      "title": "Attention Mask: Ignora il Padding",
+      "subtitle": "Come dire al modello 'questa parte è fake'",
+      "paragraphs": [
+        "<strong>Attention mask:</strong> Array di 0 e 1 che indica quali tokens sono reali e quali sono padding.",
+        "",
+        "<strong>Esempio:</strong>",
+        "• Testo: \"Great movie\" [PAD] [PAD] [PAD] ...",
+        "• input_ids: [2307, 3185, 0, 0, 0, ...]",
+        "• attention_mask: [1, 1, 0, 0, 0, ...]",
+        "",
+        "<strong>Durante training:</strong> Il modello ignora i tokens con mask=0.",
+        "",
+        "<strong>Perché serve?</strong> Senza mask, il modello imparerebbe da padding (rumore inutile)."
+      ],
+      "ironicClosing": "Attention mask: 'Guarda qui, non là.' Molto zen."
+    },
+    {
+      "type": "text",
+      "title": "Carichiamo il Modello Pre-Trained",
+      "subtitle": "DistilBERT con classificatore finale",
+      "paragraphs": [
+        "<strong>DistilBertForSequenceClassification:</strong> DistilBERT + layer finale per classificazione.",
+        "",
+        "<strong>Architettura:</strong>",
+        "• Input: [512 tokens]",
+        "• DistilBERT: trasforma in embeddings contestuali [512, 768]",
+        "• Pooling: prende [CLS] token (primo) → [768]",
+        "• Dense: [768] → [2] (positive/negative)",
+        "• Softmax: [2] → probabilità [0.2, 0.8]",
+        "",
+        "<strong>num_labels=2:</strong> Binary classification (positive, negative).",
+        "",
+        "<strong>from_pretrained:</strong> Scarica pesi pre-trained da HuggingFace Hub."
+      ],
+      "ironicClosing": "DistilBERT: 6 mesi di training su GPU cluster. Tu: 1 riga di codice."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 6: Carica Modello",
+      "code": {
+        "language": "python",
+        "snippet": "# Carica modello pre-trained\nprint(\"Caricamento modello DistilBERT...\")\nmodel = DistilBertForSequenceClassification.from_pretrained(\n    \"distilbert-base-uncased\",\n    num_labels=2  # binary classification\n)"
+      },
+      "explanation": "from_pretrained: scarica ~260MB di pesi. num_labels=2: positive/negative."
+    },
+    {
+      "type": "text",
+      "title": "TrainingArguments: Configurazione Training",
+      "subtitle": "Tutti gli iperparametri in un unico posto",
+      "paragraphs": [
+        "<strong>TrainingArguments:</strong> Oggetto che contiene tutte le impostazioni di training.",
+        "",
+        "<strong>Parametri chiave:</strong>",
+        "• <strong>output_dir:</strong> Dove salvare checkpoints",
+        "• <strong>learning_rate:</strong> Quanto veloce impara (2e-5 = 0.00002)",
+        "• <strong>batch_size:</strong> Quanti esempi per iterazione (8)",
+        "• <strong>num_train_epochs:</strong> Quante volte vedere tutto il dataset (3)",
+        "• <strong>eval_strategy:</strong> Quando valutare ('epoch' = ogni epoca)",
+        "",
+        "<strong>Learning rate:</strong> Troppo alto = divergenza. Troppo basso = lentissimo.",
+        "2e-5 è il valore standard per BERT/DistilBERT."
+      ],
+      "ironicClosing": "Iperparametri: l'arte di cercare aghi nel pagliaio con metodo scientifico."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 7: Training Arguments",
+      "code": {
+        "language": "python",
+        "snippet": "# Training arguments\ntraining_args = TrainingArguments(\n    output_dir=\"./results\",\n    eval_strategy=\"epoch\",\n    learning_rate=2e-5,\n    per_device_train_batch_size=8,\n    per_device_eval_batch_size=8,\n    num_train_epochs=3,\n    weight_decay=0.01,\n    logging_dir=\"./logs\",\n    logging_steps=50,\n    save_strategy=\"epoch\"\n)"
+      },
+      "explanation": "2e-5 = learning rate standard. batch_size=8: buon compromesso RAM/velocità. 3 epoche: di solito sufficiente."
+    },
+    {
+      "type": "text",
+      "title": "Trainer: La Magia HuggingFace",
+      "subtitle": "Training loop automatico",
+      "paragraphs": [
+        "<strong>Trainer:</strong> Classe che gestisce tutto il training loop per te.",
+        "",
+        "<strong>Cosa fa automaticamente:</strong>",
+        "• Forward pass (predizione)",
+        "• Calcolo loss",
+        "• Backward pass (gradients)",
+        "• Aggiornamento pesi (optimizer)",
+        "• Valutazione",
+        "• Salvataggio checkpoints",
+        "• Progress bar",
+        "",
+        "<strong>Senza Trainer:</strong> Dovresti scrivere ~100 righe di codice per fare tutto manualmente.",
+        "",
+        "<strong>Con Trainer:</strong> trainer.train(). Done."
+      ],
+      "ironicClosing": "Trainer: perché scrivere boilerplate è per i masochisti."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 8: Crea Trainer e Avvia Training",
+      "code": {
+        "language": "python",
+        "snippet": "# Crea Trainer\ntrainer = Trainer(\n    model=model,\n    args=training_args,\n    train_dataset=train_dataset,\n    eval_dataset=test_dataset,\n)\n\n# Avvia training\nprint(\"\\n=== INIZIO TRAINING ===\")\ntrainer.train()\n\n# Valuta performance\nprint(\"\\n=== VALUTAZIONE ===\")\nresults = trainer.evaluate()\nprint(f\"Accuracy: {results['eval_accuracy']:.2%}\")\nprint(f\"Loss: {results['eval_loss']:.4f}\")"
+      },
+      "explanation": "trainer.train(): fa tutto il lavoro. trainer.evaluate(): testa su test set."
+    },
+    {
+      "type": "code",
+      "title": "train.py - Parte 9: Salva Modello",
+      "code": {
+        "language": "python",
+        "snippet": "# Salva modello\nprint(\"\\nSalvataggio modello...\")\nmodel.save_pretrained(\"./sentiment-model\")\ntokenizer.save_pretrained(\"./sentiment-model\")\nprint(\"✓ Modello salvato in ./sentiment-model\")"
+      },
+      "explanation": "save_pretrained: salva pesi modello + config. Anche tokenizer va salvato!"
+    },
+    {
+      "type": "code",
+      "title": "train.py - CODICE COMPLETO",
+      "subtitle": "Tutto insieme (copia-incolla ready)",
+      "code": {
+        "language": "python",
+        "snippet": "# train.py - File Completo\nimport torch\nfrom transformers import DistilBertTokenizer, DistilBertForSequenceClassification\nfrom transformers import Trainer, TrainingArguments\nfrom datasets import load_dataset\n\n# Carica dataset\nprint(\"Caricamento dataset IMDB...\")\ndataset = load_dataset(\"imdb\")\ntrain_dataset = dataset[\"train\"].shuffle(seed=42).select(range(1000))\ntest_dataset = dataset[\"test\"].shuffle(seed=42).select(range(200))\nprint(f\"Training: {len(train_dataset)}, Test: {len(test_dataset)}\")\n\n# Tokenization\nprint(\"Caricamento tokenizer...\")\ntokenizer = DistilBertTokenizer.from_pretrained(\"distilbert-base-uncased\")\n\ndef tokenize_function(examples):\n    return tokenizer(examples[\"text\"], padding=\"max_length\", truncation=True, max_length=512)\n\nprint(\"Tokenizzazione...\")\ntrain_dataset = train_dataset.map(tokenize_function, batched=True)\ntest_dataset = test_dataset.map(tokenize_function, batched=True)\ntrain_dataset.set_format(\"torch\", columns=[\"input_ids\", \"attention_mask\", \"label\"])\ntest_dataset.set_format(\"torch\", columns=[\"input_ids\", \"attention_mask\", \"label\"])\n\n# Modello\nprint(\"Caricamento modello...\")\nmodel = DistilBertForSequenceClassification.from_pretrained(\"distilbert-base-uncased\", num_labels=2)\n\n# Training arguments\ntraining_args = TrainingArguments(\n    output_dir=\"./results\", eval_strategy=\"epoch\", learning_rate=2e-5,\n    per_device_train_batch_size=8, per_device_eval_batch_size=8,\n    num_train_epochs=3, weight_decay=0.01, save_strategy=\"epoch\"\n)\n\n# Trainer\ntrainer = Trainer(model=model, args=training_args, train_dataset=train_dataset, eval_dataset=test_dataset)\n\n# Train & Evaluate\nprint(\"\\n=== TRAINING ===\")\ntrainer.train()\nprint(\"\\n=== VALUTAZIONE ===\")\nresults = trainer.evaluate()\nprint(f\"Accuracy: {results['eval_accuracy']:.2%}, Loss: {results['eval_loss']:.4f}\")\n\n# Save\nmodel.save_pretrained(\"./sentiment-model\")\ntokenizer.save_pretrained(\"./sentiment-model\")\nprint(\"✓ Modello salvato\")"
+      }
+    },
+    {
+      "type": "code",
+      "title": "Esegui Training",
+      "subtitle": "Avvia il fine-tuning (10-15 minuti)",
+      "code": {
+        "language": "bash",
+        "snippet": "python train.py\n\n# Output atteso:\n# Caricamento dataset IMDB...\n# Training: 1000, Test: 200\n# Caricamento tokenizer...\n# Tokenizzazione...\n# Caricamento modello...\n# \n# === TRAINING ===\n# Epoch 1/3: 100%|████████| 125/125 [02:15<00:00]\n# Epoch 2/3: 100%|████████| 125/125 [02:12<00:00]\n# Epoch 3/3: 100%|████████| 125/125 [02:14<00:00]\n# \n# === VALUTAZIONE ===\n# Accuracy: 87.5%, Loss: 0.3421\n# ✓ Modello salvato"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Cosa Succede Durante Training",
+      "subtitle": "Dietro le quinte",
+      "paragraphs": [
+        "<strong>Per ogni epoca (3 totali):</strong>",
+        "",
+        "1. <strong>Forward pass:</strong> Passa tutti gli esempi nel modello",
+        "2. <strong>Calcola loss:</strong> Quanto sbaglia? (cross-entropy)",
+        "3. <strong>Backward pass:</strong> Calcola gradients (derivate)",
+        "4. <strong>Update weights:</strong> Migliora i pesi del modello",
+        "5. <strong>Valuta:</strong> Testa su test set",
+        "",
+        "<strong>Epoca 1:</strong> Loss alto, accuracy ~60-70%",
+        "<strong>Epoca 2:</strong> Loss scende, accuracy ~80-85%",
+        "<strong>Epoca 3:</strong> Convergenza, accuracy ~85-92%",
+        "",
+        "<strong>Tempo:</strong> ~2 minuti per epoca su CPU decente."
+      ],
+      "ironicClosing": "Deep learning: iterare fino alla convergenza. O fino a esaurire la pazienza."
+    },
+    {
+      "type": "code",
+      "title": "inference.py - Parte 1: Carica Modello",
+      "subtitle": "Load del modello fine-tuned",
+      "code": {
+        "language": "python",
+        "snippet": "# inference.py\nimport torch\nfrom transformers import DistilBertTokenizer, DistilBertForSequenceClassification\n\n# Carica modello fine-tuned\nprint(\"Caricamento modello...\")\nmodel = DistilBertForSequenceClassification.from_pretrained(\"./sentiment-model\")\ntokenizer = DistilBertTokenizer.from_pretrained(\"./sentiment-model\")\nmodel.eval()  # Modalità valutazione (disabilita dropout)"
+      },
+      "explanation": "from_pretrained('./sentiment-model'): carica il tuo modello fine-tuned. model.eval(): importante per inference!"
+    },
+    {
+      "type": "text",
+      "title": "model.eval(): Perché Serve?",
+      "subtitle": "Training mode vs Evaluation mode",
+      "paragraphs": [
+        "<strong>model.eval():</strong> Switcha il modello in 'evaluation mode'.",
+        "",
+        "<strong>Differenze:</strong>",
+        "• <strong>Dropout:</strong> Disabilitato (training: random neurons spenti, eval: tutti attivi)",
+        "• <strong>Batch Norm:</strong> Usa running statistics invece di batch statistics",
+        "",
+        "<strong>Senza .eval():</strong> Risultati inconsistenti (cambiano a ogni run) perché dropout è random.",
+        "",
+        "<strong>Con .eval():</strong> Risultati deterministici e migliori.",
+        "",
+        "<strong>Nota:</strong> model.train() fa l'opposto (per training)."
+      ],
+      "ironicClosing": "model.eval(): perché i random neuron blackouts vanno bene per training, non per produzione."
+    },
+    {
+      "type": "code",
+      "title": "inference.py - Parte 2: Funzione Predizione",
+      "code": {
+        "language": "python",
+        "snippet": "def predict_sentiment(text):\n    # Tokenizza input\n    inputs = tokenizer(\n        text,\n        return_tensors=\"pt\",\n        truncation=True,\n        max_length=512\n    )\n    \n    # Predizione (no gradients)\n    with torch.no_grad():\n        outputs = model(**inputs)\n        logits = outputs.logits\n        prediction = torch.argmax(logits, dim=-1).item()\n    \n    # Converti in label\n    sentiment = \"POSITIVE\" if prediction == 1 else \"NEGATIVE\"\n    confidence = torch.softmax(logits, dim=-1)[0][prediction].item()\n    \n    return sentiment, confidence"
+      },
+      "explanation": "torch.no_grad(): disabilita gradient computation (più veloce). argmax: trova classe con probabilità max."
+    },
+    {
+      "type": "text",
+      "title": "torch.no_grad(): Risparmia Memoria",
+      "subtitle": "Inference senza calcolare gradients",
+      "paragraphs": [
+        "<strong>with torch.no_grad():</strong> Context manager che disabilita gradient computation.",
+        "",
+        "<strong>Perché serve?</strong>",
+        "• Durante training: servono gradients per backprop",
+        "• Durante inference: NON servono gradients",
+        "",
+        "<strong>Benefici:</strong>",
+        "• <strong>Memoria:</strong> ~50% meno RAM usage",
+        "• <strong>Velocità:</strong> ~20-30% più veloce",
+        "",
+        "<strong>Come funziona:</strong> PyTorch normalmente traccia tutte le operazioni per autograd. no_grad() disabilita questo tracking.",
+        "",
+        "<strong>Senza no_grad():</strong> Funziona lo stesso, ma spreca RAM e tempo."
+      ],
+      "ironicClosing": "torch.no_grad(): come cancellare la cronologia del browser. Più leggero."
+    },
+    {
+      "type": "code",
+      "title": "inference.py - Parte 3: Main Loop",
+      "code": {
+        "language": "python",
+        "snippet": "# Main loop interattivo\nif __name__ == \"__main__\":\n    print(\"\\n=== Sentiment Analyzer ===\")\n    print(\"Scrivi una recensione (o 'quit' per uscire)\\n\")\n    \n    while True:\n        text = input(\"Recensione: \")\n        \n        if text.lower() in ['quit', 'exit', 'q']:\n            break\n        \n        if not text.strip():\n            continue\n        \n        sentiment, confidence = predict_sentiment(text)\n        print(f\"→ {sentiment} (confidence: {confidence:.2%})\\n\")\n    \n    print(\"Arrivederci!\")"
+      },
+      "explanation": "Loop infinito che legge input utente e classifica sentiment. Ctrl+C per uscire."
+    },
+    {
+      "type": "code",
+      "title": "Testa il Modello",
+      "subtitle": "Prova con recensioni di esempio",
+      "code": {
+        "language": "bash",
+        "snippet": "python inference.py\n\n# Esempi da provare:\n\nRecensione: This movie was absolutely amazing!\n→ POSITIVE (confidence: 96.4%)\n\nRecensione: Terrible waste of time. Boring plot.\n→ NEGATIVE (confidence: 94.2%)\n\nRecensione: It was okay, nothing special.\n→ NEGATIVE (confidence: 62.1%)\n\nRecensione: Best film I've seen this year!\n→ POSITIVE (confidence: 98.7%)"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Challenge: Migliora il Modello",
+      "subtitle": "Esperimenti da fare in autonomia",
+      "paragraphs": [
+        "• <strong>Più dati:</strong> Usa 5000 o tutti i 25k esempi (accuracy +5-10%)",
+        "• <strong>Più epoche:</strong> Prova 5-10 epoche invece di 3",
+        "• <strong>Learning rate:</strong> Sperimenta con 1e-5 o 5e-5",
+        "• <strong>Modello più grande:</strong> 'bert-base-uncased' (110M params)",
+        "• <strong>Early stopping:</strong> Ferma quando validation loss smette di scendere",
+        "• <strong>3-class:</strong> Aggiungi categoria 'neutral'",
+        "• <strong>Italiano:</strong> Fine-tune su recensioni italiane",
+        "• <strong>Deploy:</strong> FastAPI + Docker per API production-ready"
+      ],
+      "ironicClosing": "Deep learning: l'arte di girare manopole fino a che funziona meglio."
+    },
+    {
+      "type": "text",
+      "title": "Troubleshooting: Errori Comuni",
+      "subtitle": "Problemi frequenti e soluzioni",
+      "paragraphs": [
+        "• <strong>ImportError: No module named 'transformers'</strong> → pip install transformers",
+        "• <strong>CUDA out of memory</strong> → Riduci batch_size da 8 a 4 o 2",
+        "• <strong>ModuleNotFoundError: 'distilbert'</strong> → pip install --upgrade transformers",
+        "• <strong>Slow training (>30 min)</strong> → Riduci samples o usa GPU",
+        "• <strong>Low accuracy (<70%)</strong> → Aumenta epoche o training samples",
+        "• <strong>Model not found</strong> → Verifica path './sentiment-model'",
+        "• <strong>RuntimeError: expected scalar type Float</strong> → set_format('torch') mancante"
+      ]
+    },
+    {
+      "type": "code",
+      "title": "Debug: Verifica Setup",
+      "subtitle": "Test rapido dipendenze",
+      "code": {
+        "language": "python",
+        "snippet": "# test_setup.py\nimport sys\nprint(f\"Python: {sys.version}\\n\")\n\ntry:\n    import torch\n    print(f\"✓ PyTorch {torch.__version__}\")\n    print(f\"  CUDA: {torch.cuda.is_available()}\")\nexcept ImportError:\n    print(\"✗ PyTorch NON installato\")\n\ntry:\n    import transformers\n    print(f\"✓ Transformers {transformers.__version__}\")\nexcept ImportError:\n    print(\"✗ Transformers NON installato\")\n\ntry:\n    import datasets\n    print(f\"✓ Datasets {datasets.__version__}\")\nexcept ImportError:\n    print(\"✗ Datasets NON installato\")\n\nprint(\"\\nTutto OK? → python train.py\")"
+      }
+    },
+    {
+      "type": "text",
+      "title": "Next Steps: Espandi il Progetto",
+      "subtitle": "Idee per andare oltre",
+      "paragraphs": [
+        "• <strong>API REST:</strong> FastAPI + Pydantic per endpoint /predict",
+        "• <strong>Web UI:</strong> Gradio per demo interattiva (3 righe di codice!)",
+        "• <strong>Batch inference:</strong> Classifica 1000+ recensioni in parallelo",
+        "• <strong>Multi-language:</strong> 'bert-base-multilingual' per italiano",
+        "• <strong>Explain predictions:</strong> LIME o SHAP per interpretability",
+        "• <strong>Continuous training:</strong> Retrain su nuovo feedback",
+        "• <strong>A/B testing:</strong> Confronta DistilBERT vs RoBERTa vs GPT-2",
+        "• <strong>Production:</strong> ONNX Runtime per inference 3x più veloce"
+      ],
+      "ironicClosing": "Il journey da Jupyter notebook a produzione è lungo. Ma è quello che separa hobby da career."
+    },
+    {
+      "type": "summary",
+      "title": "Recap: Workshop PyTorch NLP",
+      "items": [
+        "✓ Setup: venv + PyTorch + HuggingFace Transformers",
+        "✓ Dataset: IMDB 25k reviews (subset 1000 per velocità)",
+        "✓ Tokenization: DistilBertTokenizer con padding e truncation",
+        "✓ Modello: DistilBERT pre-trained → fine-tuned su sentiment",
+        "✓ Training: 3 epoche, batch_size=8, lr=2e-5, accuracy 85-92%",
+        "✓ Inference: CLI interattivo per classificare nuove recensioni",
+        "✓ File: train.py (~50 righe), inference.py (~35 righe)",
+        "✓ Concetti: Transfer learning, fine-tuning, attention mask, tokenization"
+      ],
+      "ironicClosing": "70 righe di codice. State-of-the-art NLP. 2025 è bellissimo."
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

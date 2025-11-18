@@ -1,0 +1,633 @@
+{
+  "number": 4,
+  "title": "AI ed Energia: La Sfida del Secolo",
+  "description": "Datacenter, consumi, rinnovabili e il futuro nucleare",
+  "steps": [
+    {
+      "name": "Introduzione",
+      "slides": [
+        0
+      ]
+    },
+    {
+      "name": "Investimenti Datacenter",
+      "slides": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Consumi Energetici",
+      "slides": [
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "Mix Energetico",
+      "slides": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "Ritorno del Nucleare",
+      "slides": [
+        11,
+        12
+      ]
+    },
+    {
+      "name": "Fusione Nucleare",
+      "slides": [
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "name": "Sostenibilità",
+      "slides": [
+        16,
+        17
+      ]
+    },
+    {
+      "name": "Futuro",
+      "slides": [
+        18,
+        19
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "AI ed Energia",
+      "subtitle": "La Sfida del Secolo",
+      "description": "Quanto costa l'AI in elettroni? E come alimenteremo il futuro?",
+      "ironicClosing": "Quando l'intelligenza artificiale ha bisogno di energia molto naturale"
+    },
+    {
+      "type": "data",
+      "title": "Il Boom degli Investimenti Datacenter 2025",
+      "intro": "<strong>I Big 4 Hyperscaler (Amazon, Microsoft, Google, Meta)</strong>",
+      "metrics": [
+        {
+          "value": "$325 miliardi",
+          "label": "CapEx totale 2025 (infrastructure)"
+        },
+        {
+          "value": "$100 miliardi",
+          "label": "AWS investment plan 2025"
+        },
+        {
+          "value": "$80 miliardi",
+          "label": "Microsoft AI datacenter (fiscal 2025)"
+        },
+        {
+          "value": "$75 miliardi",
+          "label": "Google AI infrastructure 2025"
+        }
+      ],
+      "ironicClosing": "Quando i datacenter costano più del PIL di alcuni paesi",
+      "citations": [
+        {
+          "text": "Four big hyperscalers spending around $325 billion on infrastructure CapEx in 2025",
+          "source": "DataCenters.com - Mega Projects",
+          "url": "https://www.datacenters.com/news/130-billion-in-the-cloud-the-5-data-center-mega-projects-reshaping-2025"
+        },
+        {
+          "text": "AWS plans $100B investment in 2025, Microsoft $80B AI datacenters",
+          "source": "Cloud Wars - AWS CapEx",
+          "url": "https://cloudwars.com/cloud-wars-minute/aws-blows-past-microsoft-and-google-capex-plans-100b-in-2025/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "I Mega-Progetti Globali",
+      "paragraphs": [
+        "<strong>Meta:</strong> CapEx guidance $70-72 miliardi 2025",
+        "<strong>Amazon:</strong> Aumentato forecast a $125 miliardi",
+        "<strong>Google (Alphabet):</strong> CapEx boost a $91-93 miliardi",
+        "",
+        "<strong>Scala:</strong> 13x rispetto agli investimenti del 2015"
+      ],
+      "ironicClosing": "L'AI non gira su thin air, gira su miliardi di dollari in cemento e chip",
+      "citations": [
+        {
+          "text": "Tech megacaps plan to spend more than $300 billion in 2025 as AI race intensifies",
+          "source": "CNBC - Tech AI Spending",
+          "url": "https://www.cnbc.com/2025/02/08/tech-megacaps-to-spend-more-than-300-billion-in-2025-to-win-in-ai.html"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Medio Oriente: La Nuova Frontiera",
+      "metrics": [
+        {
+          "value": "$5.3 miliardi",
+          "label": "AWS Saudi Arabia region (completamento 2026)"
+        },
+        {
+          "value": "$2.1 miliardi",
+          "label": "Microsoft Saudi cloud infrastructure"
+        },
+        {
+          "value": "$5 miliardi",
+          "label": "NEOM DataVolt datacenter (1.5 GW capacity)"
+        },
+        {
+          "value": "1 gigawatt",
+          "label": "OpenAI Stargate UAE (Abu Dhabi)"
+        }
+      ],
+      "ironicClosing": "Il petrolio finanzia i datacenter che consumeranno... più petrolio (per ora)",
+      "citations": [
+        {
+          "text": "AWS announces $5.3B Saudi Arabia infrastructure region, completion 2026",
+          "source": "BlackRidge Research - Saudi Datacenters",
+          "url": "https://www.blackridgeresearch.com/blog/latest-list-of-top-largest-biggest-data-center-projects-in-saudi-arabia-ksa"
+        },
+        {
+          "text": "NEOM DataVolt $5B investment for 1.5 GW sustainable datacenter, OpenAI Stargate UAE 1GW",
+          "source": "Next Platform - Abu Dhabi",
+          "url": "https://www.nextplatform.com/2025/05/23/openai-datacenters-follow-the-money-to-abu-dhabi/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Consumo Energetico Datacenter: I Numeri",
+      "intro": "<strong>Previsioni IEA (International Energy Agency)</strong>",
+      "metrics": [
+        {
+          "value": "415 TWh",
+          "label": "Consumo datacenter globale 2024 (1.5% elettricità mondiale)"
+        },
+        {
+          "value": "945 TWh",
+          "label": "Previsione 2030 (quasi 3% elettricità mondiale)"
+        },
+        {
+          "value": "+15% annuo",
+          "label": "Crescita consumo 2024-2030"
+        },
+        {
+          "value": "+130%",
+          "label": "Incremento USA entro 2030 (+240 TWh)"
+        }
+      ],
+      "ironicClosing": "Nel 2030 i datacenter consumeranno come il Giappone. Tutto l'anno. Ogni anno.",
+      "citations": [
+        {
+          "text": "Data centers consumed 415 TWh in 2024, IEA projects 945 TWh by 2030",
+          "source": "IEA - Global Energy Review 2025",
+          "url": "https://www.iea.org/reports/global-energy-review-2025/key-findings"
+        },
+        {
+          "text": "Datacenter electricity growing 15% annually, US consumption up 130% by 2030",
+          "source": "DataCenter Dynamics - IEA Report",
+          "url": "https://www.datacenterdynamics.com/en/news/iea-data-center-energy-consumption-set-to-double-by-2030-to-945twh/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Il Costo del Training: GPT-4",
+      "metrics": [
+        {
+          "value": "$100 milioni",
+          "label": "Costo training GPT-4"
+        },
+        {
+          "value": "50 GWh",
+          "label": "Energia consumata (alimenta San Francisco per 3 giorni)"
+        },
+        {
+          "value": "25,000",
+          "label": "Nvidia A100 GPUs utilizzate"
+        },
+        {
+          "value": "90-100 giorni",
+          "label": "Durata training"
+        }
+      ],
+      "paragraphs": [
+        "<strong>40x</strong> il consumo di GPT-3"
+      ],
+      "ironicClosing": "San Francisco al buio per 3 giorni, ma almeno ChatGPT sa scrivere poesie",
+      "citations": [
+        {
+          "text": "GPT-4 training cost $100M, consumed 50 GWh, used 25K A100 GPUs for 90-100 days",
+          "source": "Team-GPT - Training Cost Analysis",
+          "url": "https://team-gpt.com/blog/how-much-did-it-cost-to-train-gpt-4"
+        },
+        {
+          "text": "GPT-4 consumed 51,773-62,319 MWh, over 40x GPT-3 consumption",
+          "source": "MIT Technology Review - AI Energy",
+          "url": "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Il Costo dell'Inference: Per Query",
+      "intro": "Quanto consuma una domanda a ChatGPT?",
+      "metrics": [
+        {
+          "value": "0.3 Wh",
+          "label": "GPT-4o query tipica (secondo OpenAI)"
+        },
+        {
+          "value": "2.9 Wh",
+          "label": "ChatGPT request (Electric Power Research Institute)"
+        },
+        {
+          "value": "2.5-40 Wh",
+          "label": "Query complesse con input lunghi"
+        },
+        {
+          "value": "10x",
+          "label": "vs. Google search tradizionale (0.3 Wh)"
+        }
+      ],
+      "ironicClosing": "Ogni volta che chiedi a ChatGPT di scrivere un'email, una lampadina piange",
+      "citations": [
+        {
+          "text": "GPT-4o consumes ~0.3 watt-hours per typical query, 2.5-40 Wh for complex queries",
+          "source": "Epoch AI - ChatGPT Energy Use",
+          "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use"
+        },
+        {
+          "text": "ChatGPT uses 10x more electricity than traditional Google search",
+          "source": "IEEE Spectrum - AI Energy Use",
+          "url": "https://spectrum.ieee.org/ai-energy-use"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Training vs Inference: Chi Vince?",
+      "metrics": [
+        {
+          "value": "15 TWh",
+          "label": "Tutte le query AI generative nel 2025"
+        },
+        {
+          "value": "347 TWh",
+          "label": "Previsione 2030"
+        },
+        {
+          "value": "24%",
+          "label": "Server AI sul totale energia datacenter (2024)"
+        },
+        {
+          "value": "35-50%",
+          "label": "Previsione AI workload sul totale datacenter (2030)"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Il vincitore:</strong> Inference. La crescita futura sarà guidata dall'uso, non dal training"
+      ],
+      "ironicClosing": "Addestrare un modello costa tanto. Usarlo miliardi di volte al giorno costa di più.",
+      "citations": [
+        {
+          "text": "All generative AI queries consume 15 TWh in 2025, will use 347 TWh by 2030",
+          "source": "Schneider Electric Report",
+          "url": "https://www.datacenters.com/news/top-data-center-growth-regions-in-2025"
+        },
+        {
+          "text": "AI servers 24% of datacenter energy 2024, projected 35-50% by 2030",
+          "source": "IEA - Energy and AI",
+          "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Mix Energetico USA: Datacenter 2024-2025",
+      "metrics": [
+        {
+          "value": "40%+",
+          "label": "Natural gas"
+        },
+        {
+          "value": "24%",
+          "label": "Renewables (wind, solar)"
+        },
+        {
+          "value": "20%",
+          "label": "Nuclear"
+        },
+        {
+          "value": "15%",
+          "label": "Coal"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Contratti carbon-free:</strong> 90% globali firmati in USA",
+        "Di cui: 78% renewables, 22% nuclear"
+      ],
+      "ironicClosing": "L'AI ama parlare di sostenibilità. Mentre brucia gas naturale.",
+      "citations": [
+        {
+          "text": "US datacenters: 40%+ natural gas, 24% renewables, 20% nuclear, 15% coal (2024)",
+          "source": "Pew Research - Datacenter Energy",
+          "url": "https://www.pewresearch.org/short-reads/2025/10/24/what-we-know-about-energy-use-at-us-data-centers-amid-the-ai-boom/"
+        },
+        {
+          "text": "US hosts 90% of hyperscaler carbon-free contracts: 78% renewables, 22% nuclear",
+          "source": "TechCrunch - Renewable Energy",
+          "url": "https://techcrunch.com/2025/11/16/how-much-of-the-ai-data-center-boom-will-be-powered-by-renewable-energy/"
+        }
+      ]
+    },
+    {
+      "type": "comparison",
+      "title": "Mix Energetico: USA vs Europa",
+      "items": [
+        {
+          "rank": "🇺🇸",
+          "name": "USA (2024)",
+          "description": "Natural gas 40%, Renewables 23%, Nuclear 18%, Coal 16%"
+        },
+        {
+          "rank": "🇪🇺",
+          "name": "Europa (2024)",
+          "description": "Renewables 50%, Nuclear 23%, Natural gas 16%, Coal 11%"
+        }
+      ],
+      "note": "Europa: metà dell'elettricità da rinnovabili. USA: ancora dipendente da fossili.",
+      "ironicClosing": "L'AI europea è più green. Ma gira su server americani.",
+      "citations": [
+        {
+          "text": "EU renewables 50% of electricity supply, nuclear 23%, gas 16%, coal 11%",
+          "source": "IEA - Global Energy Review",
+          "url": "https://www.iea.org/reports/global-energy-review-2025/electricity"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Crescita Rinnovabili nei Datacenter",
+      "metrics": [
+        {
+          "value": "27%",
+          "label": "Quota rinnovabili nei datacenter (2025)"
+        },
+        {
+          "value": "50%",
+          "label": "Previsione 2030"
+        },
+        {
+          "value": "90%+",
+          "label": "Progetti grid in attesa: solar, battery, wind"
+        },
+        {
+          "value": "+84%",
+          "label": "Crescita power generation renewables entro 2030"
+        }
+      ],
+      "ironicClosing": "Solar e wind si deployano veloce. Il problema è la notte e i giorni senza vento.",
+      "citations": [
+        {
+          "text": "Renewables 27% of datacenter electricity, projected 50% by 2030",
+          "source": "IEA - Datacenter Energy Mix",
+          "url": "https://www.iea.org/reports/global-energy-review-2025/key-findings"
+        },
+        {
+          "text": "90%+ of power projects awaiting grid connection are solar, battery or wind",
+          "source": "The Register - Renewables vs SMR",
+          "url": "https://www.theregister.com/2025/09/26/renewables_vs_smr_datacenter/"
+        }
+      ]
+    },
+    {
+      "type": "company",
+      "title": "Il Ritorno del Nucleare",
+      "name": "Three Mile Island + Microsoft",
+      "tagline": "Il Deal che Ha Fatto Storia",
+      "facts": [
+        {
+          "label": "Capacità",
+          "value": "835 megawatt (alimenta 800K+ case)"
+        },
+        {
+          "label": "Deal",
+          "value": "20 anni power purchase agreement"
+        },
+        {
+          "label": "Investimento",
+          "value": "$1.6 miliardi (Constellation Energy)"
+        },
+        {
+          "label": "Restart",
+          "value": "2028 (approvazione NRC 2027)"
+        },
+        {
+          "label": "Jobs",
+          "value": "3,400 diretti + indiretti"
+        },
+        {
+          "label": "Impatto economico",
+          "value": "$16B PIL Pennsylvania, $3B+ tasse"
+        }
+      ],
+      "ironicClosing": "Dall'incidente del 1979 al cloud di Microsoft. Redemption arc completato.",
+      "citations": [
+        {
+          "text": "Microsoft 20-year PPA for 835 MW Three Mile Island restart, $1.6B investment, 2028 launch",
+          "source": "Constellation Energy - Press Release",
+          "url": "https://www.constellationenergy.com/newsroom/2024/Constellation-to-Launch-Crane-Clean-Energy-Center-Restoring-Jobs-and-Carbon-Free-Power-to-The-Grid.html"
+        },
+        {
+          "text": "Three Mile Island restart creates 3,400 jobs, $16B GDP impact, $3B+ taxes",
+          "source": "Utility Dive - TMI Restart",
+          "url": "https://www.utilitydive.com/news/constellation-three-mile-island-nuclear-power-plant-microsoft-data-center-ppa/727652/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Small Modular Reactors (SMR): Timeline",
+      "paragraphs": [
+        "<strong>2026:</strong> China Linglong One (ACP100) - Primo SMR land-based commerciale al mondo",
+        "<strong>2026:</strong> TerraPower - NRC approval attesa (operativo 2030)",
+        "<strong>2029:</strong> Westinghouse - Commercial deployments pianificati",
+        "",
+        "<strong>Pipeline globale:</strong> 22 GW progetti SMR ($176 miliardi investment)",
+        "<strong>US DOE:</strong> $900 milioni per accelerare deployment Gen-III+"
+      ],
+      "ironicClosing": "La Cina lancia il primo SMR mentre gli USA ancora approvano i permessi",
+      "citations": [
+        {
+          "text": "China Linglong One SMR scheduled commercial operation 2026, first land-based SMR",
+          "source": "Nuclear Business Platform - SMR Tech 2025",
+          "url": "https://www.nuclearbusiness-platform.com/media/insights/top-5-smr-tech"
+        },
+        {
+          "text": "22 GW SMR pipeline globally, $176B potential investment",
+          "source": "Utility Dive - SMR Market",
+          "url": "https://www.utilitydive.com/news/small-modular-reactor-haleu-ge-hitachi-nuscale/709978/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Fusione Nucleare: Il Sogno",
+      "subtitle": "Quando l'energia sarà infinita (forse)",
+      "paragraphs": [
+        "<strong>2025 breakthrough:</strong> China EAST tokamak - 1,066 secondi steady-state plasma",
+        "<strong>2025 record:</strong> HL-3 Tokamak - 117M°C ion temp, 160M°C electron temp",
+        "",
+        "<strong>2035:</strong> ITER online (Francia) - world's largest tokamak",
+        "<strong>2045-2050:</strong> DEMO reactors (Korea, EU, Japan, China)",
+        "<strong>Late 2050s:</strong> Prima commercializzazione realistica"
+      ],
+      "ironicClosing": "Fusione nucleare: 30 anni nel futuro dal 1950. Ancora 30 anni nel futuro.",
+      "citations": [
+        {
+          "text": "China EAST achieved 1,066 seconds steady-state plasma January 2025",
+          "source": "IAEA - Fusion Energy 2025",
+          "url": "https://www.iaea.org/newscenter/news/fusion-energy-in-2025-six-global-trends-to-watch"
+        },
+        {
+          "text": "ITER expected online 2035, DEMO reactors 2045-2050, commercial late 2050s",
+          "source": "Wikipedia - Fusion Power",
+          "url": "https://en.wikipedia.org/wiki/Fusion_power"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Fusione: Timeline Realistica",
+      "paragraphs": [
+        "<strong>2030s:</strong> Alcuni private ventures (Commonwealth Fusion) mirano a commercializzazione early 2030s",
+        "<strong>2040s-2050s:</strong> Primi commercial fusion plants operativi (consensus esperti)",
+        "<strong>2060-2070:</strong> Tokamak reactors deployment su larga scala",
+        "<strong>2100:</strong> Fusione potrebbe raggiungere 10-20% generazione elettrica globale"
+      ],
+      "ironicClosing": "I tuoi pronipoti forse vedranno la fusione. Forse.",
+      "citations": [
+        {
+          "text": "First commercial fusion plants 2040s-2050s, tokamak deployment 2060-2070, 20% generation by 2100",
+          "source": "IAEA - Long-term Fusion Study",
+          "url": "https://www-pub.iaea.org/mtcd/publications/pdf/csp_008c/pdf/sep_03.pdf"
+        },
+        {
+          "text": "Commonwealth Fusion targets commercialization early 2030s, but late 2050s more realistic",
+          "source": "Fortune - Fusion Timeline",
+          "url": "https://fortune.com/2025/10/02/nuclear-fusion-online-commercial-ai-power/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Costi Energia: Proiezioni Future",
+      "metrics": [
+        {
+          "value": "$121/MWh",
+          "label": "EU DEMO fusion concept (LCOE projection)"
+        },
+        {
+          "value": "$11.3K/kW",
+          "label": "Worst-case scenario fusion (ancora 10% generation by 2100)"
+        },
+        {
+          "value": "Incerto",
+          "label": "Costo fusion dipende da tech choices future"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Energia a basso costo?</strong> Forse fine secolo, se tutto va bene",
+        "<strong>Nucleare sicuro?</strong> SMR più sicuri, fusion intrinsecamente safe"
+      ],
+      "ironicClosing": "Energia cheap e sicura entro 2100. Nel frattempo, gas naturale.",
+      "citations": [
+        {
+          "text": "EU DEMO fusion LCOE projection $121/MWh, costs highly uncertain",
+          "source": "ScienceDirect - Fusion Economics",
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0301421523000964"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "La Sfida: È Sostenibile?",
+      "paragraphs": [
+        "<strong>Problema:</strong> Domanda energia AI cresce 15% annuo",
+        "<strong>Problema:</strong> Renewables intermittenti (notte, no vento)",
+        "<strong>Problema:</strong> Nuclear lento da deployare (permessi, costruzione)",
+        "<strong>Problema:</strong> Grid infrastructure non pronta per il carico",
+        "",
+        "<strong>Opportunità:</strong> AI può ottimizzare energy sector stesso",
+        "<strong>Opportunità:</strong> Accelera investimenti in clean energy"
+      ],
+      "ironicClosing": "L'AI consuma troppo. Ma potrebbe anche risolvere il problema. Forse.",
+      "citations": [
+        {
+          "text": "AI set to drive surging electricity demand while offering potential to transform energy sector",
+          "source": "IEA - AI and Energy",
+          "url": "https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "title": "Strategie di Ottimizzazione",
+      "intro": "Come rendere l'AI più energy-efficient:",
+      "items": [
+        "<strong>Model efficiency:</strong> Modelli più piccoli, pruning, quantization",
+        "<strong>Hardware specializzato:</strong> Chip energy-efficient (TPU, custom ASIC)",
+        "<strong>Datacenter cooling:</strong> Liquid cooling, free cooling, immersion",
+        "<strong>Renewable integration:</strong> Datacenter vicino a fonti rinnovabili",
+        "<strong>Workload scheduling:</strong> Training quando c'è eccesso solar/wind",
+        "<strong>Edge computing:</strong> Inference locale per ridurre datacenter load"
+      ],
+      "ironicClosing": "Ottimizzare aiuta. Ma non basta quando scali da miliardi a trilioni di query."
+    },
+    {
+      "type": "text",
+      "title": "Previsioni 2026-2030",
+      "paragraphs": [
+        "<strong>2026:</strong> Primo SMR commerciale (China), più nuclear restart deals",
+        "<strong>2027:</strong> Renewables superano 30% mix datacenter",
+        "<strong>2028:</strong> Three Mile Island online, altri restart USA",
+        "<strong>2029-2030:</strong> SMR deployment USA ed Europa, fusion ancora R&D",
+        "",
+        "<strong>Il 2026 sarà l'anno</strong> in cui l'energia diventa il vero bottleneck dell'AI"
+      ],
+      "ironicClosing": "L'AI scale-up si fermerà. Non per mancanza di idee, ma di gigawatt.",
+      "citations": [
+        {
+          "text": "Utilities grapple with multibillion question: How much AI datacenter power demand is real",
+          "source": "CNBC - AI Power Demand",
+          "url": "https://www.cnbc.com/2025/10/17/ai-data-center-openai-gas-nuclear-renewable-utility.html"
+        }
+      ]
+    },
+    {
+      "type": "summary",
+      "title": "Cosa Abbiamo Imparato",
+      "items": [
+        "$325B+ investimenti datacenter hyperscaler nel 2025",
+        "Consumo datacenter: 415 TWh (2024) → 945 TWh (2030)",
+        "Training costa tanto (GPT-4: $100M, 50 GWh), inference scala di più (347 TWh entro 2030)",
+        "Mix energia: USA 40% gas, Europa 50% renewables",
+        "Nuclear comeback: Three Mile Island 2028, SMR China 2026",
+        "Fusion: bella idea, ma commerciale solo 2050+ (realistically)",
+        "Energia cheap e sicura? Fine secolo, se tutto va bene"
+      ],
+      "ironicClosing": "L'AI è hungry. Di dati, di chip, e soprattutto di terawatt."
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

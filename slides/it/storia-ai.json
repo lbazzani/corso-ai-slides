@@ -1,0 +1,692 @@
+{
+  "number": 0,
+  "title": "Storia dell'AI: Dalle Origini agli LLM",
+  "description": "70 anni di promesse, fallimenti, rinascite e rivoluzioni",
+  "steps": [
+    {
+      "name": "La Promessa",
+      "slides": [
+        0
+      ]
+    },
+    {
+      "name": "Fondamenta (1950-1956)",
+      "slides": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "Boom & Bust #1 (1956-1980)",
+      "slides": [
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "Boom & Bust #2 (1980-1997)",
+      "slides": [
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "name": "Rinascita (1997-2012)",
+      "slides": [
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "name": "Deep Learning (2012-2017)",
+      "slides": [
+        15,
+        16,
+        17
+      ]
+    },
+    {
+      "name": "Transformer Era (2017-2025)",
+      "slides": [
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "name": "Investimenti & Lezioni",
+      "slides": [
+        22,
+        23,
+        24
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Storia dell'AI",
+      "subtitle": "Dalle Origini agli LLM",
+      "description": "70 anni di promesse, fallimenti, rinascite. E finalmente <strong>funziona</strong>.",
+      "ironicClosing": "Spoiler: ci sono voluti 70 anni e due AI winter per arrivarci"
+    },
+    {
+      "type": "text",
+      "title": "1950: Alan Turing e la Domanda",
+      "paragraphs": [
+        "<strong>\"Computing Machinery and Intelligence\"</strong> - Mind journal, 1950",
+        "",
+        "<strong>La domanda:</strong> \"Can machines think?\"",
+        "",
+        "<strong>L'Imitation Game (Turing Test):</strong>",
+        "• Se un computer inganna un umano facendosi credere umano → intelligente",
+        "• Predizione: nel 2000, computer passerà il test (sbagliato di ~24 anni)",
+        "",
+        "<strong>La visione:</strong> Macchine che apprendono, ragionano, conversano"
+      ],
+      "ironicClosing": "Turing predisse il 2000. ChatGPT è arrivato nel 2022. Close enough.",
+      "citations": [
+        {
+          "text": "Alan Turing 'Computing Machinery and Intelligence' 1950, introduced Turing Test",
+          "source": "Mind Journal - Turing Paper",
+          "url": "https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "1956: La Nascita Ufficiale dell'AI",
+      "paragraphs": [
+        "<strong>Dartmouth Conference - Estate 1956</strong>",
+        "",
+        "<strong>I fondatori:</strong> John McCarthy, Marvin Minsky, Nathaniel Rochester, Claude Shannon",
+        "",
+        "<strong>La proposta:</strong>",
+        "\"Every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it\"",
+        "",
+        "<strong>Il nome:</strong> McCarthy conia il termine \"Artificial Intelligence\"",
+        "",
+        "<strong>L'ottimismo:</strong> 2 mesi, 10 persone, problema risolto (LOL)"
+      ],
+      "ironicClosing": "Pensavano di risolvere l'AI in un'estate. Siamo ancora qui 70 anni dopo.",
+      "citations": [
+        {
+          "text": "Dartmouth Conference 1956: McCarthy, Minsky, Rochester, Shannon coin 'AI' term",
+          "source": "Dartmouth AI Conference History",
+          "url": "https://en.wikipedia.org/wiki/Dartmouth_workshop"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "1956-1974: I Primi Anni d'Oro",
+      "paragraphs": [
+        "<strong>Successi iniziali:</strong>",
+        "",
+        "<strong>1957 - Perceptron (Rosenblatt):</strong> Prima rete neurale che apprende",
+        "• New York Times: \"the embryo of an electronic computer that [the Navy] expects will be able to walk, talk, see, write, reproduce itself and be conscious of its existence\"",
+        "",
+        "<strong>1960s - ELIZA (Weizenbaum):</strong> Chatbot che simula psicoterapeuta",
+        "",
+        "<strong>Funding massiccio:</strong> DARPA, università USA e UK, laboratori ovunque",
+        "",
+        "<strong>L'euforia:</strong> \"AI risolverà tutto entro 20 anni\""
+      ],
+      "ironicClosing": "Il NY Times prometteva robot coscienti nel 1958. Ancora aspettiamo."
+    },
+    {
+      "type": "text",
+      "title": "1969: Il Primo Colpo",
+      "paragraphs": [
+        "<strong>Minsky & Papert pubblicano \"Perceptrons\" (1969)</strong>",
+        "",
+        "<strong>La critica devastante:</strong>",
+        "• Perceptron può imparare solo cose che sa rappresentare",
+        "• Ma sa rappresentare pochissimo (es. non sa fare XOR)",
+        "• Limitazioni matematiche fondamentali",
+        "",
+        "<strong>L'effetto:</strong>",
+        "• Fine ricerca su reti neurali per ~15 anni",
+        "• Shift verso approcci simbolici",
+        "• Primi dubbi sull'AI"
+      ],
+      "ironicClosing": "Un libro distrugge un intero campo di ricerca. Il peer review è brutale.",
+      "citations": [
+        {
+          "text": "Minsky & Papert 'Perceptrons' 1969 proved limitations, caused AI winter",
+          "source": "Perceptrons History",
+          "url": "https://en.wikipedia.org/wiki/Perceptrons_(book)"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "1974: Il Primo AI Winter",
+      "paragraphs": [
+        "<strong>Lighthill Report (UK, 1973):</strong> L'AI non ha mantenuto le promesse",
+        "",
+        "<strong>1974 - Funding Stop:</strong>",
+        "• USA e UK tagliano fondi alla ricerca AI",
+        "• Aspettative troppo alte, risultati troppo limitati",
+        "• Problemi del \"mondo reale\" troppo complessi",
+        "",
+        "<strong>Il problema:</strong>",
+        "• Computer troppo lenti, memoria insufficiente",
+        "• Mancanza di dati per training",
+        "• Symbolic AI non scala"
+      ],
+      "ironicClosing": "Primo AI winter: quando le promesse incontrano la realtà e perdono.",
+      "citations": [
+        {
+          "text": "1974 US and UK governments stopped funding undirected AI research",
+          "source": "Our World in Data - AI Investments",
+          "url": "https://ourworldindata.org/ai-investments"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "1980s: Expert Systems Boom",
+      "intro": "<strong>La rinascita: AI diventa business</strong>",
+      "metrics": [
+        {
+          "value": "1980",
+          "label": "XCON/R1 (DEC) - configuratore automatico"
+        },
+        {
+          "value": "$40M/anno",
+          "label": "Risparmi stimati di XCON (DEC claim)"
+        },
+        {
+          "value": "$1 miliardo",
+          "label": "Valore industria AI nel 1988"
+        },
+        {
+          "value": "15,000 regole",
+          "label": "XCON nel 1989 (unmaintainable)"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Expert Systems:</strong> Sistemi basati su regole if-then che emulano esperti umani",
+        "<strong>MYCIN:</strong> Diagnosi infezioni sangue, 69% accuracy (meglio di umani), ma mai usato in produzione"
+      ],
+      "ironicClosing": "Expert systems: quando 15,000 if-then sembravano una buona idea",
+      "citations": [
+        {
+          "text": "XCON/R1 saved $40M/year, had 15,000 rules by 1989, too expensive to maintain",
+          "source": "Expert Systems History",
+          "url": "https://medium.com/version-1/an-overview-of-the-rise-and-fall-of-expert-systems-14e26005e70e"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "1982: Il Giappone Scommette Tutto",
+      "paragraphs": [
+        "<strong>Fifth Generation Computer Systems (FGCS) Project</strong>",
+        "",
+        "<strong>L'ambizione:</strong>",
+        "• Budget: miliardi di yen, durata: 10 anni (1982-1992)",
+        "• Obiettivo: computer pensanti basati su logic programming",
+        "• Primo progetto AI nazionale senza scopi militari",
+        "• Approccio: open, internazionale, collaborative",
+        "",
+        "<strong>La reazione USA:</strong>",
+        "• Panico: \"Il Giappone ci supererà!\"",
+        "• 1983: Reagan lancia Strategic Computing Initiative ($1B)",
+        "• DARPA rilancia funding AI"
+      ],
+      "ironicClosing": "Il Giappone spaventa gli USA investendo in AI. Funzionerà? Spoiler: no.",
+      "citations": [
+        {
+          "text": "Japan FGCS 1982-1992, Reagan responded with $1B Strategic Computing Initiative 1983",
+          "source": "Japan Fifth Generation History",
+          "url": "https://instadeq.com/blog/posts/japans-fifth-generation-computer-systems-success-or-failure/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "1986: La Svolta Nascosta",
+      "paragraphs": [
+        "<strong>Backpropagation Re-discovered</strong>",
+        "",
+        "<strong>Rumelhart, Hinton, Williams - Nature 1986:</strong>",
+        "\"Learning representations by back-propagating errors\"",
+        "",
+        "<strong>Cosa cambia:</strong>",
+        "• Algoritmo per training efficiente di reti neurali multi-layer",
+        "• Risolve problema credit assignment (chi ha sbagliato nel network?)",
+        "• Matematica esisteva dagli anni '70, ma nessuno l'aveva resa pratica",
+        "",
+        "<strong>Il problema:</strong> Nessuno se ne accorge. Computer ancora troppo lenti."
+      ],
+      "ironicClosing": "Backprop 1986: la chiave del deep learning, ignorata per 20 anni.",
+      "citations": [
+        {
+          "text": "Rumelhart, Hinton, Williams 'Learning by back-propagating errors' Nature 1986",
+          "source": "Nature - Backpropagation Paper",
+          "url": "https://www.nature.com/articles/323533a0"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "1987: Il Secondo AI Winter",
+      "paragraphs": [
+        "<strong>Il crollo improvviso del mercato hardware AI</strong>",
+        "",
+        "<strong>Lisp Machines Collapse:</strong>",
+        "• Symbolics, LMI: workstation specializzate da $100K+",
+        "• 1987: Apple Mac e IBM PC diventano più potenti e costano 1/10",
+        "• Lisp machines: game over",
+        "",
+        "<strong>Expert Systems Bust:</strong>",
+        "• XCON troppo costoso da mantenere (15K regole)",
+        "• Sistemi rigidi, non apprendono, qualification problem",
+        "• Non scalano su problemi complessi",
+        "",
+        "<strong>FGCS fallisce (1991):</strong> Nessun thinking machine, zero commercializzazione"
+      ],
+      "ironicClosing": "Secondo AI winter: quando il Giappone e le Lisp machines vanno KO insieme.",
+      "citations": [
+        {
+          "text": "1987 collapse of AI hardware market, Lisp machines replaced by cheaper PCs",
+          "source": "Second AI Winter History",
+          "url": "https://www.holloway.com/g/making-things-think/sections/the-second-ai-winter-19871993"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Perché il Giappone Fallì",
+      "paragraphs": [
+        "<strong>Fifth Generation: Post-mortem</strong>",
+        "",
+        "<strong>Errori strategici:</strong>",
+        "• Bet su logic programming (Prolog) invece di neural networks",
+        "• Obiettivi irrealistici (thinking machines in 10 anni)",
+        "• Ricerca scollegata da mercato e applicazioni reali",
+        "• Troppo top-down, poca flessibilità",
+        "",
+        "<strong>La lezione:</strong>",
+        "• Predire il futuro tecnologico è impossibile",
+        "• Progetti governativi massicci raramente funzionano",
+        "• Senza validazione di mercato, ricerca diventa autoreferenziale"
+      ],
+      "ironicClosing": "Il Giappone investì miliardi in Prolog. Il mondo scelse Python e neural networks.",
+      "citations": [
+        {
+          "text": "FGCS failed due to unrealistic goals, lack of market alignment, rigid planning",
+          "source": "FGCS Failure Analysis",
+          "url": "https://blog.pureinventionbook.com/p/why-didnt-japan-invent-generative"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Fattori Abilitanti del Successo AI",
+      "paragraphs": [
+        "<strong>Perché l'AI funziona oggi e non negli '80?</strong>",
+        "",
+        "<strong>1. Compute Power:</strong> GPU (2007 CUDA), TPU, cloud scale",
+        "<strong>2. Big Data:</strong> Internet → miliardi di esempi per training",
+        "<strong>3. Algoritmi:</strong> Backprop (1986), dropout, batch norm, Adam optimizer",
+        "<strong>4. Architetture:</strong> CNN (2012), Transformer (2017)",
+        "<strong>5. Open Source:</strong> TensorFlow, PyTorch, framework collaborativi",
+        "<strong>6. Capital:</strong> VC funding, hyperscaler investment",
+        "",
+        "<strong>Convergenza:</strong> Tutti insieme dopo 2012, non prima"
+      ],
+      "ironicClosing": "L'AI non funzionava perché mancavano GPU, data e patience. Ora abbiamo tutto."
+    },
+    {
+      "type": "text",
+      "title": "1997-2012: Rinascita Silenziosa",
+      "paragraphs": [
+        "<strong>L'AI cambia nome e funziona</strong>",
+        "",
+        "<strong>1997 - Deep Blue batte Kasparov:</strong> Scacchi risolti (brute force + euristica)",
+        "",
+        "<strong>2000s - Machine Learning boom:</strong>",
+        "• Spam filtering, recommendation systems (Netflix, Amazon)",
+        "• Google Search: PageRank + ML",
+        "• Nessuno la chiama \"AI\" (troppo burned), si dice \"ML\"",
+        "",
+        "<strong>2006 - Geoffrey Hinton + Deep Learning:</strong>",
+        "• Layer-wise pre-training per reti profonde",
+        "• Il termine \"Deep Learning\" inizia a diffondersi"
+      ],
+      "ironicClosing": "L'AI funziona solo quando smetti di chiamarla AI e dici 'machine learning'."
+    },
+    {
+      "type": "text",
+      "title": "2007: L'Abilitatore Silenzioso",
+      "paragraphs": [
+        "<strong>NVIDIA CUDA - 2007</strong>",
+        "",
+        "<strong>Cosa cambia:</strong>",
+        "• GPU programmabili per calcolo general-purpose (non solo grafica)",
+        "• Parallelismo massiccio: migliaia di core vs decine di CPU",
+        "• Training neural networks: 10-50x più veloce",
+        "",
+        "<strong>Il timing perfetto:</strong>",
+        "• 2007: CUDA release",
+        "• 2009: ImageNet dataset (14M immagini)",
+        "• 2012: AlexNet usa 2x GTX 580 GPU",
+        "",
+        "<strong>Oggi:</strong> Nessun deep learning senza GPU/TPU"
+      ],
+      "ironicClosing": "Le GPU per Fortnite hanno reso possibile ChatGPT. Grazie, gamers.",
+      "citations": [
+        {
+          "text": "NVIDIA CUDA 2007 enabled GPU computing for neural networks, 10-50x speedup",
+          "source": "TuringPost - ImageNet History",
+          "url": "https://www.turingpost.com/p/cvhistory6"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "2009: ImageNet - Il Dataset che Cambiò Tutto",
+      "intro": "<strong>Fei-Fei Li (Stanford): \"More data beats better algorithms\"</strong>",
+      "metrics": [
+        {
+          "value": "14 milioni",
+          "label": "Immagini etichettate a mano"
+        },
+        {
+          "value": "22,000",
+          "label": "Categorie di oggetti"
+        },
+        {
+          "value": "2009-2017",
+          "label": "ILSVRC competition anni"
+        },
+        {
+          "value": "3.57%",
+          "label": "Human error rate (2015 benchmark)"
+        }
+      ],
+      "paragraphs": [
+        "<strong>L'insight:</strong> Per fare AI servono DATI, non solo algoritmi smart",
+        "<strong>2010-2012:</strong> Modelli tradizionali stagnano (~26% error rate)"
+      ],
+      "ironicClosing": "14 milioni di immagini etichettate. Crowdsourcing pre-GPT. Eroico.",
+      "citations": [
+        {
+          "text": "ImageNet 14M images, 22K categories, human error 3.57%, changed AI direction",
+          "source": "Quartz - ImageNet Impact",
+          "url": "https://qz.com/1034972/the-data-that-changed-the-direction-of-ai-research-and-possibly-the-world"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "2012: La Rivoluzione Deep Learning",
+      "paragraphs": [
+        "<strong>30 settembre 2012 - ImageNet Challenge</strong>",
+        "",
+        "<strong>AlexNet (Krizhevsky, Sutskever, Hinton):</strong>",
+        "• Top-5 error: 15.3% (vs 26% competitors)",
+        "• Victory margin: +10.8% (annichilimento)",
+        "• Architettura: CNN con 8 layers, 60M parametri",
+        "• Hardware: 2x NVIDIA GTX 580 (nella camera di Krizhevsky)",
+        "",
+        "<strong>Cosa convergeva:</strong>",
+        "1. Big Data (ImageNet)",
+        "2. GPU (CUDA)",
+        "3. Deep networks (Backprop + ReLU + Dropout)"
+      ],
+      "ironicClosing": "AlexNet: trainato in una camera da letto, cambiò il mondo. Dropout > PhD a volte.",
+      "citations": [
+        {
+          "text": "AlexNet 2012: 15.3% error vs 26% runner-up, trained on 2 GTX 580 GPUs",
+          "source": "Pinecone - AlexNet History",
+          "url": "https://www.pinecone.io/learn/series/image-search/imagenet/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "2012-2017: Deep Learning Domina",
+      "paragraphs": [
+        "<strong>Post-AlexNet: Tutti fanno deep learning</strong>",
+        "",
+        "<strong>2014 - GANs (Goodfellow):</strong> Reti che generano immagini fake realistiche",
+        "<strong>2014 - Attention mechanism (Bahdanau):</strong> Il seme dei Transformer",
+        "<strong>2015 - ResNet (He et al.):</strong> 152 layers, batte umani su ImageNet (3.57% error)",
+        "<strong>2016 - AlphaGo batte Lee Sedol:</strong> Go risolto (più complesso degli scacchi)",
+        "",
+        "<strong>Investimenti AI:</strong> Da $3B (2012) a $8B (2016)",
+        "",
+        "<strong>Shift culturale:</strong> \"AI\" non è più una parolaccia"
+      ],
+      "ironicClosing": "2012-2017: gli anni in cui 'deep learning' ha smesso di essere hype ed è diventato realtà."
+    },
+    {
+      "type": "text",
+      "title": "2017: Attention Is All You Need",
+      "paragraphs": [
+        "<strong>12 giugno 2017 - Il paper che cambia tutto</strong>",
+        "",
+        "<strong>Autori:</strong> Vaswani et al. (Google Brain)",
+        "",
+        "<strong>L'idea:</strong> Elimina CNN e RNN, usa solo attention mechanism",
+        "",
+        "<strong>Transformer architecture:</strong>",
+        "• Self-attention: ogni parola guarda tutte le altre",
+        "• Parallelizzabile (vs RNN sequenziali)",
+        "• Scala benissimo (più parametri = migliori risultati)",
+        "",
+        "<strong>L'impatto:</strong> Fondazione di GPT, BERT, tutti gli LLM moderni"
+      ],
+      "ironicClosing": "Un paper di 8 pagine ha reso obsoleti 20 anni di ricerca su RNN. Brutal.",
+      "citations": [
+        {
+          "text": "Vaswani et al. 'Attention Is All You Need' June 12, 2017, foundation of all LLMs",
+          "source": "Attention Is All You Need Paper",
+          "url": "https://arxiv.org/abs/1706.03762"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "2018-2020: L'Era Pre-Transformer",
+      "paragraphs": [
+        "<strong>Tutti sperimentano con Transformer</strong>",
+        "",
+        "<strong>Giugno 2018 - GPT-1 (OpenAI):</strong>",
+        "• 117M parametri, generative pre-training",
+        "• Idea: pre-train su tanto testo, poi fine-tune",
+        "",
+        "<strong>Ottobre 2018 - BERT (Google):</strong>",
+        "• Bidirectional (legge in entrambe le direzioni)",
+        "• Masked language modeling",
+        "• Diventa ubiquitous per NLP tasks",
+        "",
+        "<strong>Febbraio 2019 - GPT-2 (OpenAI):</strong>",
+        "• 1.5B parametri, trained on WebText (8M pages)",
+        "• OpenAI: \"Too dangerous to release\" (poi rilasciato)"
+      ],
+      "ironicClosing": "GPT-2 'troppo pericoloso'. GPT-4 è 1000x più grande. Oops.",
+      "citations": [
+        {
+          "text": "GPT-1 June 2018 (117M params), BERT Oct 2018, GPT-2 Feb 2019 (1.5B params)",
+          "source": "LLM History Timeline",
+          "url": "https://medium.com/@lmpo/a-brief-history-of-lmms-from-transformers-2017-to-deepseek-r1-2025-dae75dd3f59a"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "2020: GPT-3 - Il Salto Quantico",
+      "intro": "<strong>28 maggio 2020 - OpenAI rilascia GPT-3</strong>",
+      "metrics": [
+        {
+          "value": "175 miliardi",
+          "label": "Parametri (117x GPT-2)"
+        },
+        {
+          "value": "45TB",
+          "label": "Dati training (CommonCrawl, Wikipedia, books)"
+        },
+        {
+          "value": "$4.6M",
+          "label": "Costo stimato training (single run)"
+        },
+        {
+          "value": "Zero-shot",
+          "label": "Impara task senza fine-tuning"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Il breakthrough:</strong> Più grande = più capace (scaling law)",
+        "<strong>Emergent abilities:</strong> Few-shot learning, reasoning, coding"
+      ],
+      "ironicClosing": "GPT-3: quando 'bigger is better' diventa legge di natura",
+      "citations": [
+        {
+          "text": "GPT-3 May 28 2020, 175B parameters, $4.6M training cost, zero-shot learning",
+          "source": "Wikipedia - GPT-3",
+          "url": "https://en.wikipedia.org/wiki/GPT-3"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "2022: L'Anno di ChatGPT",
+      "paragraphs": [
+        "<strong>30 novembre 2022 - ChatGPT launch</strong>",
+        "",
+        "<strong>I numeri:</strong>",
+        "• 1 milione di utenti in 5 giorni",
+        "• 100 milioni in 2 mesi (record assoluto)",
+        "",
+        "<strong>Cosa cambia:</strong>",
+        "• GPT-3.5 + RLHF (Reinforcement Learning from Human Feedback)",
+        "• Conversational, helpful, (quasi) allineato",
+        "• Accessible: gratis, web interface, nessun PhD richiesto",
+        "",
+        "<strong>L'effetto:</strong> Mainstream AI. Tutti provano, giornali impazziscono, governi si agitano"
+      ],
+      "ironicClosing": "70 anni di AI research. Poi una chat gratuita rende tutto mainstream in 2 mesi.",
+      "citations": [
+        {
+          "text": "ChatGPT Nov 30 2022, 1M users in 5 days, 100M in 2 months, fastest growing app ever",
+          "source": "ChatGPT Growth Stats",
+          "url": "https://en.wikipedia.org/wiki/ChatGPT"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Investimenti AI: Il Boom Finale",
+      "intro": "<strong>Dalla crisi al boom: 70 anni di montagne russe</strong>",
+      "metrics": [
+        {
+          "value": "$3B",
+          "label": "2012 - Post AlexNet"
+        },
+        {
+          "value": "$18B",
+          "label": "2014 - Deep learning hype"
+        },
+        {
+          "value": "$75B",
+          "label": "2020 - Pre-ChatGPT (21% VC globale)"
+        },
+        {
+          "value": "$119B",
+          "label": "2021 - Picco pre-ChatGPT"
+        },
+        {
+          "value": "$100B+",
+          "label": "2024 - Post-ChatGPT (33% VC globale)"
+        },
+        {
+          "value": "$320B",
+          "label": "2025 - Big Tech combined (Microsoft, Google, Meta, Amazon)"
+        }
+      ],
+      "ironicClosing": "Da $0 (AI winter) a $320B/anno in 5 anni. L'hype è morto, l'AI no.",
+      "citations": [
+        {
+          "text": "AI investment: $3B (2012) to $119B (2021) to $100B+ (2024), $320B Big Tech 2025",
+          "source": "Our World in Data - AI Investments",
+          "url": "https://ourworldindata.org/ai-investments"
+        },
+        {
+          "text": "2024: 33% of all VC funding went to AI, highest ever",
+          "source": "Second Talent - AI Funding Stats",
+          "url": "https://www.secondtalent.com/resources/ai-startup-funding-investment/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Lezioni dalla Storia dell'AI",
+      "paragraphs": [
+        "<strong>Cosa abbiamo imparato in 70 anni</strong>",
+        "",
+        "<strong>1. Hype kills:</strong> Over-promise → under-deliver → winter. Sempre.",
+        "<strong>2. Hardware matters:</strong> Senza GPU, niente deep learning. Point.",
+        "<strong>3. Data > Algorithm:</strong> ImageNet > clever tricks. Big data wins.",
+        "<strong>4. Scaling works:</strong> GPT-3 → GPT-4 → bigger = better (finora)",
+        "<strong>5. Timing is everything:</strong> Backprop 1986, usato dal 2012. Aspetta 26 anni.",
+        "<strong>6. Open source accelera:</strong> TensorFlow, PyTorch > Lisp machines proprietarie",
+        "<strong>7. Governo ≠ innovazione:</strong> FGCS failure, DARPA mixed results",
+        "<strong>8. Convergenza vince:</strong> Data + Compute + Algoritmi insieme, non separati"
+      ],
+      "ironicClosing": "70 anni per capire: serve pazienza, GPU, dati e humility. E meno hype."
+    },
+    {
+      "type": "text",
+      "title": "2025 e Oltre: Cosa Abbiamo Ora",
+      "paragraphs": [
+        "<strong>Fine 2025 - Lo stato dell'arte</strong>",
+        "",
+        "<strong>LLM ovunque:</strong> GPT-4, Claude 3.5, Gemini 2.0, Llama 4, GPT-4.5",
+        "<strong>Multimodal:</strong> Testo + Immagini + Audio + Video (GPT-4o, Gemini)",
+        "<strong>Agentic AI:</strong> LLM che usano tools, navigano web, scrivono codice",
+        "<strong>Edge AI:</strong> Modelli su smartphone (Llama 3.2, Gemini Nano)",
+        "",
+        "<strong>Il futuro (2026+):</strong>",
+        "• Reasoning models (o1, o3)",
+        "• Multi-agent systems",
+        "• AI regulation (EU AI Act, etc.)"
+      ],
+      "ironicClosing": "2025: l'AI funziona. Davvero. Dopo 70 anni, 2 winter, miliardi buttati. Ce l'abbiamo fatta."
+    },
+    {
+      "type": "summary",
+      "title": "Timeline Essenziale AI",
+      "items": [
+        "1950 - Turing Test: la domanda 'Can machines think?'",
+        "1956 - Dartmouth: nasce ufficialmente l'AI (2 mesi per risolverla! lol)",
+        "1969 - Perceptrons critique → primo declino neural networks",
+        "1974-1980 - Primo AI Winter (funding stop, promesse non mantenute)",
+        "1980s - Expert systems boom ($1B industry) → bust (troppo rigidi)",
+        "1982-1992 - Japan FGCS: miliardi investiti, zero risultati",
+        "1986 - Backpropagation (Hinton): ignorato per 20 anni",
+        "1987-1997 - Secondo AI Winter (Lisp machines KO, FGCS fallisce)",
+        "2007 - CUDA: GPU → deep learning possibile",
+        "2012 - AlexNet: deep learning revolution inizia (ImageNet +10.8%)",
+        "2017 - Transformer: 'Attention Is All You Need' → base di tutti gli LLM",
+        "2018-2020 - GPT-1/2/3, BERT: scaling laws emergono",
+        "2022 - ChatGPT: 100M utenti in 2 mesi, AI mainstream",
+        "2025 - $320B investment, 33% VC su AI, funziona davvero"
+      ],
+      "ironicClosing": "70 anni. 2 winter. Infinite promesse. Finalmente: works as intended. Mostly."
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

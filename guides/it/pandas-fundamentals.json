@@ -1,0 +1,491 @@
+{
+  "title": "Pandas Fundamentals: Guida Completa",
+  "description": "Data manipulation con DataFrame e Series - La libreria essenziale per Data Science",
+  "steps": [
+    {
+      "name": "Introduzione",
+      "slides": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Series & DataFrame",
+      "slides": [
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "Indexing & Selection",
+      "slides": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "Data Cleaning",
+      "slides": [
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "name": "Operations",
+      "slides": [
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "name": "GroupBy & Aggregations",
+      "slides": [
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "name": "Merge & Join",
+      "slides": [
+        24,
+        25,
+        26
+      ]
+    },
+    {
+      "name": "File I/O",
+      "slides": [
+        27,
+        28
+      ]
+    },
+    {
+      "name": "Esempio Guidato",
+      "slides": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    {
+      "name": "Best Practices",
+      "slides": [
+        35
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Pandas Fundamentals",
+      "subtitle": "Data Manipulation Made Easy",
+      "description": "La libreria Python per analisi dati che tutti usano"
+    },
+    {
+      "type": "text",
+      "title": "Cos'è Pandas?",
+      "paragraphs": [
+        "<strong>Pandas = Python Data Analysis Library</strong>",
+        "",
+        "<strong>Cosa fa:</strong>",
+        "• Manipolazione dati strutturati (tabelle, time series)",
+        "• Lettura/scrittura file (CSV, Excel, SQL, JSON)",
+        "• Data cleaning: valori mancanti, duplicati, trasformazioni",
+        "• Analisi: groupby, pivot, merge, join",
+        "• Integrazione perfetta con NumPy, Matplotlib, Scikit-learn",
+        "",
+        "<strong>Usato da:</strong> Data Scientists, Analysts, ML Engineers",
+        "<strong>Installazione:</strong> <code>pip install pandas</code>"
+      ],
+      "ironicClosing": "Se fai data science in Python e non usi Pandas, stai facendo tutto manualmente."
+    },
+    {
+      "type": "code",
+      "title": "💻 Import e Versione",
+      "code": {
+        "language": "python",
+        "snippet": "import pandas as pd\nimport numpy as np\n\n# Verifica versione\nprint(pd.__version__)  # 2.x.x raccomandato\n\n# Configurazioni utili\npd.set_option('display.max_rows', 100)\npd.set_option('display.max_columns', None)\npd.set_option('display.width', None)\npd.set_option('display.precision', 2)\n\n# Info sistema\nprint(pd.show_versions())"
+      },
+      "explanation": "Convenzione: import pandas as pd. Set options per visualizzazione migliore."
+    },
+    {
+      "type": "title",
+      "title": "Series & DataFrame",
+      "subtitle": "Le Due Strutture Fondamentali",
+      "description": "Series = 1D array con indice, DataFrame = tabella 2D"
+    },
+    {
+      "type": "code",
+      "title": "💻 Series Basics",
+      "code": {
+        "language": "python",
+        "snippet": "import pandas as pd\nimport numpy as np\n\n# Crea Series da lista\ns = pd.Series([1, 3, 5, 7, 9])\nprint(s)\n# 0    1\n# 1    3\n# 2    5\n# 3    7\n# 4    9\n# dtype: int64\n\n# Con indice custom\ns = pd.Series([10, 20, 30], index=['a', 'b', 'c'])\nprint(s['a'])  # 10\n\n# Da dizionario\ndata = {'Milano': 1366180, 'Roma': 2761632, 'Napoli': 914758}\ns = pd.Series(data)\nprint(s)\n\n# Proprietà\nprint(s.values)  # ndarray NumPy\nprint(s.index)   # Index(['Milano', 'Roma', 'Napoli'])\nprint(s.dtype)   # int64"
+      },
+      "explanation": "Series = array 1D + indice. Come colonna di Excel con nomi righe."
+    },
+    {
+      "type": "code",
+      "title": "💻 DataFrame Basics",
+      "code": {
+        "language": "python",
+        "snippet": "# DataFrame da dizionario\ndata = {\n    'nome': ['Alice', 'Bob', 'Charlie', 'Diana'],\n    'età': [25, 30, 35, 28],\n    'città': ['Milano', 'Roma', 'Torino', 'Napoli'],\n    'stipendio': [45000, 52000, 48000, 51000]\n}\n\ndf = pd.DataFrame(data)\nprint(df)\n#       nome  età    città  stipendio\n# 0    Alice   25   Milano      45000\n# 1      Bob   30     Roma      52000\n# 2  Charlie   35   Torino      48000\n# 3    Diana   28   Napoli      51000\n\n# Info DataFrame\nprint(df.shape)        # (4, 4) - righe, colonne\nprint(df.columns)      # Index(['nome', 'età', 'città', 'stipendio'])\nprint(df.index)        # RangeIndex(start=0, stop=4, step=1)\nprint(df.dtypes)       # dtype di ogni colonna"
+      },
+      "explanation": "DataFrame = tabella 2D. Come foglio Excel in Python."
+    },
+    {
+      "type": "code",
+      "title": "💻 Creare DataFrame - Vari Modi",
+      "code": {
+        "language": "python",
+        "snippet": "# 1. Da liste di liste\ndata = [['Alice', 25], ['Bob', 30], ['Charlie', 35]]\ndf = pd.DataFrame(data, columns=['nome', 'età'])\n\n# 2. Da dizionario di liste\ndata = {\n    'nome': ['Alice', 'Bob', 'Charlie'],\n    'età': [25, 30, 35]\n}\ndf = pd.DataFrame(data)\n\n# 3. Da NumPy array\narr = np.array([[1, 2], [3, 4], [5, 6]])\ndf = pd.DataFrame(arr, columns=['A', 'B'])\n\n# 4. Da lista di dizionari\ndata = [\n    {'nome': 'Alice', 'età': 25},\n    {'nome': 'Bob', 'età': 30}\n]\ndf = pd.DataFrame(data)\n\n# 5. DataFrame vuoto\ndf = pd.DataFrame(columns=['A', 'B', 'C'])"
+      },
+      "explanation": "Pandas flessibile: accetta liste, dict, NumPy array, dict di dict."
+    },
+    {
+      "type": "code",
+      "title": "💻 Ispezionare DataFrame",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'A': [1, 2, 3, 4, 5],\n    'B': [10, 20, 30, 40, 50],\n    'C': ['x', 'y', 'z', 'w', 'v']\n})\n\n# Prime/ultime righe\nprint(df.head())     # Prime 5 (default)\nprint(df.head(3))    # Prime 3\nprint(df.tail(2))    # Ultime 2\n\n# Info struttura\nprint(df.info())     # Dtypes, memory, non-null count\nprint(df.describe()) # Statistiche colonne numeriche\n\n# Shape e dimensioni\nprint(df.shape)      # (5, 3)\nprint(len(df))       # 5 righe\nprint(df.size)       # 15 elementi totali\n\n# Valori unici\nprint(df['C'].unique())       # Array valori unici\nprint(df['C'].nunique())      # 5 (count unici)\nprint(df['C'].value_counts()) # Frequenza valori"
+      },
+      "explanation": "head(), tail(), info(), describe() per esplorare dati velocemente."
+    },
+    {
+      "type": "title",
+      "title": "Indexing & Selection",
+      "subtitle": "Accesso e Selezione Dati",
+      "description": "loc, iloc, at, iat, boolean indexing"
+    },
+    {
+      "type": "code",
+      "title": "💻 Selezionare Colonne",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'nome': ['Alice', 'Bob', 'Charlie'],\n    'età': [25, 30, 35],\n    'città': ['Milano', 'Roma', 'Torino']\n})\n\n# Singola colonna (Series)\nprint(df['nome'])\nprint(df.nome)  # Funziona se nome valido Python\n\n# Multiple colonne (DataFrame)\nprint(df[['nome', 'età']])\n\n# Aggiungere colonna\ndf['stipendio'] = [45000, 52000, 48000]\ndf['senior'] = df['età'] > 30\n\n# Rimuovere colonna\ndf = df.drop('senior', axis=1)     # axis=1 per colonne\ndf = df.drop(['città'], axis=1)    # Lista di colonne\ndel df['stipendio']                # Alternativa\n\n# Rinominare colonne\ndf = df.rename(columns={'età': 'age', 'nome': 'name'})"
+      },
+      "explanation": "df['col'] per singola, df[['col1', 'col2']] per multiple. axis=1 = colonne."
+    },
+    {
+      "type": "code",
+      "title": "💻 Selezionare Righe - loc & iloc",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'nome': ['Alice', 'Bob', 'Charlie', 'Diana'],\n    'età': [25, 30, 35, 28]\n}, index=['a', 'b', 'c', 'd'])\n\n# loc: label-based (usa index)\nprint(df.loc['a'])              # Riga 'a'\nprint(df.loc['a':'c'])          # Righe 'a' a 'c' (inclusive!)\nprint(df.loc['b', 'età'])       # Elemento specifico\nprint(df.loc[['a', 'c'], ['nome', 'età']])  # Subset\n\n# iloc: position-based (usa numeri)\nprint(df.iloc[0])               # Prima riga\nprint(df.iloc[0:2])             # Righe 0, 1 (escluso 2)\nprint(df.iloc[1, 1])            # Riga 1, colonna 1\nprint(df.iloc[[0, 2], [0, 1]])  # Fancy indexing\n\n# at, iat: singolo valore (più veloce)\nprint(df.at['a', 'nome'])       # 'Alice'\nprint(df.iat[0, 0])             # 'Alice'"
+      },
+      "explanation": "loc = label-based, iloc = position-based. at/iat per singolo valore veloce."
+    },
+    {
+      "type": "code",
+      "title": "💻 Boolean Indexing",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'nome': ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve'],\n    'età': [25, 30, 35, 28, 22],\n    'stipendio': [45000, 52000, 48000, 51000, 42000]\n})\n\n# Filtro semplice\nprint(df[df['età'] > 28])\n\n# Multiple condizioni (& e |)\nprint(df[(df['età'] > 25) & (df['stipendio'] > 50000)])\nprint(df[(df['età'] < 25) | (df['stipendio'] > 50000)])\n\n# isin per membership\nprint(df[df['nome'].isin(['Alice', 'Bob'])])\n\n# between per range\nprint(df[df['età'].between(25, 30)])\n\n# str methods\nprint(df[df['nome'].str.startswith('A')])\nprint(df[df['nome'].str.contains('e')])\n\n# Negazione con ~\nprint(df[~(df['età'] > 30)])  # età <= 30"
+      },
+      "explanation": "Boolean indexing: df[condition]. & per AND, | per OR, ~ per NOT."
+    },
+    {
+      "type": "code",
+      "title": "💻 Query Method",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'nome': ['Alice', 'Bob', 'Charlie', 'Diana'],\n    'età': [25, 30, 35, 28],\n    'stipendio': [45000, 52000, 48000, 51000]\n})\n\n# Query con stringa (più leggibile)\nprint(df.query('età > 28'))\nprint(df.query('età > 28 and stipendio > 50000'))\nprint(df.query('25 < età < 35'))\n\n# Con variabili esterne\nmin_age = 28\nprint(df.query('età > @min_age'))\n\n# String contains\nprint(df.query('nome.str.contains(\"li\")', engine='python'))\n\n# isin\nnames = ['Alice', 'Bob']\nprint(df.query('nome in @names'))"
+      },
+      "explanation": "query() più leggibile per filtri complessi. @ per variabili esterne."
+    },
+    {
+      "type": "code",
+      "title": "💻 Sorting",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'nome': ['Charlie', 'Alice', 'Diana', 'Bob'],\n    'età': [35, 25, 28, 30],\n    'stipendio': [48000, 45000, 51000, 52000]\n})\n\n# Sort by values\nprint(df.sort_values('età'))\nprint(df.sort_values('età', ascending=False))\n\n# Multiple columns\nprint(df.sort_values(['età', 'stipendio']))\nprint(df.sort_values(['età', 'stipendio'], ascending=[True, False]))\n\n# Sort by index\ndf = df.set_index('nome')\nprint(df.sort_index())\n\n# inplace (modifica originale)\ndf.sort_values('età', inplace=True)\n\n# Ritorna posizioni sorted\nprint(df['età'].argsort())"
+      },
+      "explanation": "sort_values() per valori, sort_index() per indice. inplace per modificare."
+    },
+    {
+      "type": "title",
+      "title": "Data Cleaning",
+      "subtitle": "Gestione Dati Mancanti e Duplicati",
+      "description": "dropna, fillna, duplicated, replace"
+    },
+    {
+      "type": "code",
+      "title": "💻 Valori Mancanti - Rilevamento",
+      "code": {
+        "language": "python",
+        "snippet": "import numpy as np\n\ndf = pd.DataFrame({\n    'A': [1, 2, np.nan, 4],\n    'B': [5, np.nan, np.nan, 8],\n    'C': [9, 10, 11, 12]\n})\n\n# Rilevare NaN\nprint(df.isna())        # Boolean DataFrame\nprint(df.isnull())      # Alias di isna()\nprint(df.notna())       # Opposto\n\n# Count NaN per colonna\nprint(df.isna().sum())\n# A    1\n# B    2\n# C    0\n\n# Percentuale NaN\nprint(df.isna().sum() / len(df) * 100)\n\n# Righe con almeno un NaN\nprint(df[df.isna().any(axis=1)])\n\n# Colonne con NaN\nprint(df.columns[df.isna().any()])"
+      },
+      "explanation": "isna() per rilevare NaN. sum() per contare, any() per esistenza."
+    },
+    {
+      "type": "code",
+      "title": "💻 Valori Mancanti - Rimozione",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'A': [1, 2, np.nan, 4],\n    'B': [5, np.nan, np.nan, 8],\n    'C': [9, 10, 11, 12]\n})\n\n# Rimuovi righe con NaN\nprint(df.dropna())              # Qualsiasi NaN\nprint(df.dropna(how='all'))     # Solo righe tutte NaN\nprint(df.dropna(thresh=2))      # Almeno 2 valori non-NaN\n\n# Rimuovi colonne con NaN\nprint(df.dropna(axis=1))        # Qualsiasi NaN in colonna\n\n# Rimuovi basato su colonne specifiche\nprint(df.dropna(subset=['A']))\nprint(df.dropna(subset=['A', 'B']))\n\n# inplace\ndf.dropna(inplace=True)"
+      },
+      "explanation": "dropna() rimuove NaN. how='all' solo righe tutte NaN, thresh=N minimo valori."
+    },
+    {
+      "type": "code",
+      "title": "💻 Valori Mancanti - Riempimento",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'A': [1, np.nan, 3, np.nan, 5],\n    'B': [10, 20, np.nan, 40, 50]\n})\n\n# Riempi con valore fisso\nprint(df.fillna(0))\nprint(df.fillna({'A': 0, 'B': -1}))  # Per colonna\n\n# Forward fill (valore precedente)\nprint(df.fillna(method='ffill'))\nprint(df.ffill())  # Shorthand\n\n# Backward fill (valore successivo)\nprint(df.fillna(method='bfill'))\nprint(df.bfill())  # Shorthand\n\n# Riempi con media/mediana\nprint(df.fillna(df.mean()))\nprint(df.fillna(df.median()))\n\n# Interpolazione lineare\nprint(df.interpolate())\nprint(df['A'].interpolate(method='linear'))"
+      },
+      "explanation": "fillna() riempie NaN. ffill/bfill per propagazione, mean() per statistica."
+    },
+    {
+      "type": "code",
+      "title": "💻 Duplicati",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'A': [1, 1, 2, 2, 3],\n    'B': ['x', 'x', 'y', 'y', 'z']\n})\n\n# Rilevare duplicati\nprint(df.duplicated())              # Boolean Series\nprint(df.duplicated().sum())        # Count duplicati\nprint(df[df.duplicated()])          # Righe duplicate\n\n# Basato su colonne specifiche\nprint(df.duplicated(subset=['A']))\n\n# keep parameter\nprint(df.duplicated(keep='first'))  # Marca tutti tranne primo\nprint(df.duplicated(keep='last'))   # Marca tutti tranne ultimo\nprint(df.duplicated(keep=False))    # Marca tutti i duplicati\n\n# Rimuovere duplicati\nprint(df.drop_duplicates())\nprint(df.drop_duplicates(subset=['A']))\nprint(df.drop_duplicates(keep='last'))\n\ndf.drop_duplicates(inplace=True)"
+      },
+      "explanation": "duplicated() rileva, drop_duplicates() rimuove. keep per quale tenere."
+    },
+    {
+      "type": "title",
+      "title": "Operations",
+      "subtitle": "Operazioni su DataFrame",
+      "description": "Apply, map, arithmetic, string operations"
+    },
+    {
+      "type": "code",
+      "title": "💻 Arithmetic Operations",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'A': [1, 2, 3],\n    'B': [10, 20, 30]\n})\n\n# Element-wise operations\nprint(df + 10)\nprint(df * 2)\nprint(df ** 2)\n\n# Between DataFrames\ndf2 = pd.DataFrame({\n    'A': [1, 1, 1],\n    'B': [5, 5, 5]\n})\nprint(df + df2)\nprint(df - df2)\n\n# Between columns\ndf['C'] = df['A'] + df['B']\ndf['ratio'] = df['B'] / df['A']\n\n# Aggregazioni per colonna\nprint(df.sum())         # Somma per colonna\nprint(df.mean())        # Media per colonna\nprint(df.std())         # Std per colonna\n\n# Aggregazioni per riga\nprint(df.sum(axis=1))   # Somma per riga\nprint(df.mean(axis=1))  # Media per riga"
+      },
+      "explanation": "Operazioni vectorized come NumPy. axis=0 colonne, axis=1 righe."
+    },
+    {
+      "type": "code",
+      "title": "💻 Apply & Map",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'nome': ['alice', 'bob', 'charlie'],\n    'età': [25, 30, 35],\n    'stipendio': [45000, 52000, 48000]\n})\n\n# apply su colonna (Series)\ndf['nome_upper'] = df['nome'].apply(str.upper)\ndf['età_cat'] = df['età'].apply(lambda x: 'giovane' if x < 30 else 'senior')\n\n# apply su DataFrame (axis=0 per colonne, axis=1 per righe)\nprint(df[['età', 'stipendio']].apply(np.mean))  # Media per colonna\nprint(df[['età', 'stipendio']].apply(np.mean, axis=1))  # Media per riga\n\n# map per Series (dizionario o funzione)\nmapping = {25: 'A', 30: 'B', 35: 'C'}\ndf['età_code'] = df['età'].map(mapping)\n\n# applymap per element-wise su DataFrame (deprecated in pandas 2.1)\n# Usa apply invece\ndf[['età', 'stipendio']] = df[['età', 'stipendio']].apply(lambda x: x * 2)"
+      },
+      "explanation": "apply() per trasformazioni complesse. map() per mapping valori."
+    },
+    {
+      "type": "code",
+      "title": "💻 String Operations",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'nome': ['Alice Smith', 'Bob Jones', 'Charlie Brown'],\n    'email': ['alice@example.com', 'bob@test.org', 'charlie@demo.net']\n})\n\n# String methods con .str accessor\ndf['nome_lower'] = df['nome'].str.lower()\ndf['nome_upper'] = df['nome'].str.upper()\ndf['nome_len'] = df['nome'].str.len()\n\n# Split\ndf['first_name'] = df['nome'].str.split().str[0]\ndf['last_name'] = df['nome'].str.split().str[1]\n\n# Contains, startswith, endswith\nprint(df[df['nome'].str.contains('Brown')])\nprint(df[df['email'].str.endswith('.com')])\n\n# Replace\ndf['email_clean'] = df['email'].str.replace('@', ' at ')\n\n# Extract con regex\ndf['domain'] = df['email'].str.extract(r'@([\\w.]+)')\n\n# Strip whitespace\ndf['nome'] = df['nome'].str.strip()"
+      },
+      "explanation": ".str accessor per operazioni stringa. Supporta regex, split, replace."
+    },
+    {
+      "type": "code",
+      "title": "💻 Datetime Operations",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'date': ['2025-01-01', '2025-01-15', '2025-02-01'],\n    'value': [100, 200, 150]\n})\n\n# Converti a datetime\ndf['date'] = pd.to_datetime(df['date'])\n\n# Extract components\ndf['year'] = df['date'].dt.year\ndf['month'] = df['date'].dt.month\ndf['day'] = df['date'].dt.day\ndf['dayofweek'] = df['date'].dt.dayofweek  # 0=Monday\ndf['quarter'] = df['date'].dt.quarter\n\n# Date arithmetic\ndf['next_week'] = df['date'] + pd.Timedelta(days=7)\ndf['days_since'] = (pd.Timestamp('2025-02-01') - df['date']).dt.days\n\n# Resample (time series)\ndf = df.set_index('date')\nmonthly = df.resample('M').sum()  # Monthly aggregation\n\n# Date range\ndates = pd.date_range('2025-01-01', periods=10, freq='D')\ndf_ts = pd.DataFrame({'value': range(10)}, index=dates)"
+      },
+      "explanation": "to_datetime() converte, .dt accessor per date operations."
+    },
+    {
+      "type": "title",
+      "title": "GroupBy & Aggregations",
+      "subtitle": "Split-Apply-Combine",
+      "description": "Raggruppamento e aggregazioni"
+    },
+    {
+      "type": "code",
+      "title": "💻 GroupBy Basics",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'team': ['A', 'B', 'A', 'B', 'A', 'B'],\n    'player': ['Alice', 'Bob', 'Charlie', 'Diana', 'Eve', 'Frank'],\n    'score': [95, 88, 92, 85, 98, 90],\n    'age': [25, 30, 28, 27, 26, 29]\n})\n\n# GroupBy singola colonna\nprint(df.groupby('team').mean())\n# Output:\n#       score   age\n# team              \n# A      95.0  26.3\n# B      87.7  28.7\n\n# Aggregazioni comuni\nprint(df.groupby('team')['score'].sum())\nprint(df.groupby('team')['score'].mean())\nprint(df.groupby('team')['score'].max())\nprint(df.groupby('team').size())  # Count per gruppo\n\n# Multiple aggregazioni\nprint(df.groupby('team').agg({'score': ['mean', 'sum', 'max'], 'age': 'mean'}))"
+      },
+      "explanation": "groupby() + aggregation. Split-apply-combine pattern."
+    },
+    {
+      "type": "code",
+      "title": "💻 Advanced GroupBy",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'region': ['North', 'South', 'North', 'South'],\n    'category': ['A', 'A', 'B', 'B'],\n    'sales': [100, 150, 200, 120],\n    'profit': [20, 30, 40, 25]\n})\n\n# Multiple groupby columns\nprint(df.groupby(['region', 'category']).sum())\n\n# Named aggregations (pandas 0.25+)\nresult = df.groupby('region').agg(\n    total_sales=('sales', 'sum'),\n    avg_profit=('profit', 'mean'),\n    count=('sales', 'size')\n)\n\n# Custom aggregations\ndef range_func(x):\n    return x.max() - x.min()\n\nprint(df.groupby('region')['sales'].agg(range_func))\n\n# Transform (mantiene shape originale)\ndf['sales_pct'] = df.groupby('region')['sales'].transform(lambda x: x / x.sum())\n\n# Filter groups\nprint(df.groupby('region').filter(lambda x: x['sales'].sum() > 200))"
+      },
+      "explanation": "Multiple columns, named agg, transform, filter per operazioni avanzate."
+    },
+    {
+      "type": "code",
+      "title": "💻 Pivot Tables",
+      "code": {
+        "language": "python",
+        "snippet": "df = pd.DataFrame({\n    'date': ['2025-01', '2025-01', '2025-02', '2025-02'],\n    'city': ['Milano', 'Roma', 'Milano', 'Roma'],\n    'product': ['A', 'B', 'A', 'B'],\n    'sales': [100, 150, 120, 180]\n})\n\n# Pivot table\npivot = df.pivot_table(\n    values='sales',\n    index='city',\n    columns='date',\n    aggfunc='sum',\n    fill_value=0\n)\nprint(pivot)\n# date     2025-01  2025-02\n# city                     \n# Milano      100      120\n# Roma        150      180\n\n# Multiple aggregations\npivot = df.pivot_table(\n    values='sales',\n    index='city',\n    columns='product',\n    aggfunc=['sum', 'mean']\n)\n\n# Margins (totali)\npivot = df.pivot_table(\n    values='sales',\n    index='city',\n    columns='product',\n    aggfunc='sum',\n    margins=True\n)"
+      },
+      "explanation": "pivot_table() per reshape dati. Excel-style pivot tables."
+    },
+    {
+      "type": "title",
+      "title": "Merge & Join",
+      "subtitle": "Combinare DataFrame",
+      "description": "merge, join, concat"
+    },
+    {
+      "type": "code",
+      "title": "💻 Merge - SQL-style Joins",
+      "code": {
+        "language": "python",
+        "snippet": "# Due DataFrame\ndf1 = pd.DataFrame({\n    'id': [1, 2, 3],\n    'name': ['Alice', 'Bob', 'Charlie']\n})\n\ndf2 = pd.DataFrame({\n    'id': [1, 2, 4],\n    'salary': [50000, 60000, 55000]\n})\n\n# Inner join (default)\nprint(pd.merge(df1, df2, on='id'))\n# id     name  salary\n# 0   1    Alice   50000\n# 1   2      Bob   60000\n\n# Left join (keep all from left)\nprint(pd.merge(df1, df2, on='id', how='left'))\n\n# Right join (keep all from right)\nprint(pd.merge(df1, df2, on='id', how='right'))\n\n# Outer join (keep all)\nprint(pd.merge(df1, df2, on='id', how='outer'))\n\n# Different column names\nprint(pd.merge(df1, df2, left_on='id', right_on='id'))"
+      },
+      "explanation": "merge() = SQL JOIN. how='inner'/'left'/'right'/'outer'"
+    },
+    {
+      "type": "code",
+      "title": "💻 Concat - Stacking DataFrames",
+      "code": {
+        "language": "python",
+        "snippet": "df1 = pd.DataFrame({\n    'A': [1, 2],\n    'B': [3, 4]\n})\n\ndf2 = pd.DataFrame({\n    'A': [5, 6],\n    'B': [7, 8]\n})\n\n# Vertical concat (stacking rows)\nprint(pd.concat([df1, df2]))\n#    A  B\n# 0  1  3\n# 1  2  4\n# 0  5  7\n# 1  6  8\n\n# Reset index\nprint(pd.concat([df1, df2], ignore_index=True))\n\n# Horizontal concat (stacking columns)\nprint(pd.concat([df1, df2], axis=1))\n\n# Con keys per multi-index\nprint(pd.concat([df1, df2], keys=['first', 'second']))\n\n# Join type per missing columns\ndf3 = pd.DataFrame({'C': [9, 10]})\nprint(pd.concat([df1, df3], axis=1))  # NaN per missing"
+      },
+      "explanation": "concat() per stacking. axis=0 verticale, axis=1 orizzontale."
+    },
+    {
+      "type": "code",
+      "title": "💻 Join Method",
+      "code": {
+        "language": "python",
+        "snippet": "# Join usa index per default\ndf1 = pd.DataFrame({\n    'A': [1, 2, 3]\n}, index=['x', 'y', 'z'])\n\ndf2 = pd.DataFrame({\n    'B': [4, 5, 6]\n}, index=['x', 'y', 'w'])\n\n# Join on index (inner default)\nprint(df1.join(df2))\n#    A    B\n# x  1  4.0\n# y  2  5.0\n# z  3  NaN\n\n# Left join\nprint(df1.join(df2, how='left'))\n\n# Outer join\nprint(df1.join(df2, how='outer'))\n\n# Join multiple DataFrames\ndf3 = pd.DataFrame({'C': [7, 8]}, index=['x', 'z'])\nprint(df1.join([df2, df3]))"
+      },
+      "explanation": "join() usa index. Più comodo di merge() quando key = index."
+    },
+    {
+      "type": "title",
+      "title": "File I/O",
+      "subtitle": "Leggere e Scrivere Dati",
+      "description": "CSV, Excel, JSON, SQL, Parquet"
+    },
+    {
+      "type": "code",
+      "title": "💻 CSV Operations",
+      "code": {
+        "language": "python",
+        "snippet": "# Leggi CSV\ndf = pd.read_csv('data.csv')\ndf = pd.read_csv('data.csv', sep=';')              # Separator custom\ndf = pd.read_csv('data.csv', encoding='utf-8')    # Encoding\ndf = pd.read_csv('data.csv', index_col=0)         # Prima colonna = index\ndf = pd.read_csv('data.csv', usecols=['A', 'B'])  # Solo alcune colonne\ndf = pd.read_csv('data.csv', nrows=100)           # Prime 100 righe\ndf = pd.read_csv('data.csv', skiprows=[0, 2])     # Salta righe\n\n# Scrivi CSV\ndf.to_csv('output.csv')\ndf.to_csv('output.csv', index=False)              # Senza index\ndf.to_csv('output.csv', columns=['A', 'B'])       # Solo alcune colonne\ndf.to_csv('output.csv', sep=';')                  # Separator custom\ndf.to_csv('output.csv', encoding='utf-8')         # Encoding\n\n# Compressi\ndf = pd.read_csv('data.csv.gz')                   # Auto-detect gzip\ndf.to_csv('output.csv.gz', compression='gzip')"
+      },
+      "explanation": "read_csv() e to_csv() per CSV. Supporta compressione, encoding, separatori."
+    },
+    {
+      "type": "code",
+      "title": "💻 Altri Formati",
+      "code": {
+        "language": "python",
+        "snippet": "# Excel\ndf = pd.read_excel('data.xlsx')\ndf = pd.read_excel('data.xlsx', sheet_name='Sheet1')\ndf = pd.read_excel('data.xlsx', sheet_name=0)  # Prima sheet\ndf.to_excel('output.xlsx', sheet_name='Data', index=False)\n\n# Multiple sheets\nwith pd.ExcelWriter('output.xlsx') as writer:\n    df1.to_excel(writer, sheet_name='Sheet1')\n    df2.to_excel(writer, sheet_name='Sheet2')\n\n# JSON\ndf = pd.read_json('data.json')\ndf.to_json('output.json', orient='records', indent=2)\n\n# SQL\nimport sqlite3\nconn = sqlite3.connect('database.db')\ndf = pd.read_sql('SELECT * FROM table', conn)\ndf.to_sql('table_name', conn, if_exists='replace')\n\n# Parquet (efficiente per dati grandi)\ndf = pd.read_parquet('data.parquet')\ndf.to_parquet('output.parquet', compression='snappy')"
+      },
+      "explanation": "Pandas supporta Excel, JSON, SQL, Parquet. Parquet ottimo per performance."
+    },
+    {
+      "type": "title",
+      "title": "Esempio Guidato Completo",
+      "subtitle": "Analisi Vendite E-commerce",
+      "description": "Un esempio pratico end-to-end"
+    },
+    {
+      "type": "text",
+      "title": "📊 Scenario: Analisi Vendite",
+      "paragraphs": [
+        "<strong>Obiettivo:</strong> Analizzare dati vendite e-commerce",
+        "",
+        "<strong>Dataset:</strong>",
+        "• sales.csv: id, date, customer_id, product, quantity, price",
+        "• customers.csv: customer_id, name, city, country",
+        "",
+        "<strong>Domande business:</strong>",
+        "1. Quali sono i top 5 prodotti per revenue?",
+        "2. Trend vendite mensili 2024",
+        "3. Quali città generano più revenue?",
+        "4. Customer segmentation per spesa totale",
+        "5. Prodotti con calo vendite Q4 vs Q3",
+        "",
+        "<strong>Output:</strong> Report con grafici e insights"
+      ],
+      "ironicClosing": "Questo è il tipo di analisi che farai ogni giorno come Data Analyst."
+    },
+    {
+      "type": "code",
+      "title": "💻 Step 1: Load & Explore Data",
+      "code": {
+        "language": "python",
+        "snippet": "import pandas as pd\nimport numpy as np\n\n# Crea dati demo\nnp.random.seed(42)\ndates = pd.date_range('2024-01-01', '2024-12-31', freq='D')\n\nsales = pd.DataFrame({\n    'date': np.random.choice(dates, 1000),\n    'customer_id': np.random.randint(1, 101, 1000),\n    'product': np.random.choice(['Laptop', 'Phone', 'Tablet', 'Headphones', 'Monitor'], 1000),\n    'quantity': np.random.randint(1, 5, 1000),\n    'price': np.random.randint(100, 2000, 1000)\n})\n\ncustomers = pd.DataFrame({\n    'customer_id': range(1, 101),\n    'name': [f'Customer_{i}' for i in range(1, 101)],\n    'city': np.random.choice(['Milano', 'Roma', 'Torino', 'Napoli'], 100),\n    'country': 'Italy'\n})\n\n# Esplora\nprint(sales.head())\nprint(sales.info())\nprint(sales.describe())"
+      },
+      "explanation": "Step 1: Load dati e quick exploration con head(), info(), describe()."
+    },
+    {
+      "type": "code",
+      "title": "💻 Step 2: Data Cleaning",
+      "code": {
+        "language": "python",
+        "snippet": "# Check missing values\nprint(sales.isna().sum())\nprint(customers.isna().sum())\n\n# Check duplicati\nprint(f\"Duplicates in sales: {sales.duplicated().sum()}\")\nprint(f\"Duplicates in customers: {customers.duplicated().sum()}\")\n\n# Converti date a datetime\nsales['date'] = pd.to_datetime(sales['date'])\n\n# Aggiungi colonne derivate\nsales['revenue'] = sales['quantity'] * sales['price']\nsales['month'] = sales['date'].dt.month\nsales['quarter'] = sales['date'].dt.quarter\nsales['year'] = sales['date'].dt.year\n\n# Remove outliers (esempio: quantity > 10)\nsales_clean = sales[sales['quantity'] <= 10].copy()\n\nprint(f\"Righe prima: {len(sales)}\")\nprint(f\"Righe dopo cleaning: {len(sales_clean)}\")"
+      },
+      "explanation": "Step 2: Cleaning - check NaN, duplicati, converti date, rimuovi outliers."
+    },
+    {
+      "type": "code",
+      "title": "💻 Step 3: Merge & Analysis",
+      "code": {
+        "language": "python",
+        "snippet": "# Merge sales con customers\ndf = pd.merge(sales_clean, customers, on='customer_id', how='left')\n\n# Q1: Top 5 prodotti per revenue\ntop_products = df.groupby('product')['revenue'].sum().sort_values(ascending=False).head(5)\nprint(\"\\nTop 5 Products by Revenue:\")\nprint(top_products)\n\n# Q2: Trend vendite mensili\nmonthly_sales = df.groupby('month')['revenue'].sum()\nprint(\"\\nMonthly Revenue:\")\nprint(monthly_sales)\n\n# Q3: Top città per revenue\ntop_cities = df.groupby('city')['revenue'].sum().sort_values(ascending=False)\nprint(\"\\nTop Cities by Revenue:\")\nprint(top_cities)\n\n# Q4: Customer segmentation\ncustomer_spend = df.groupby('customer_id')['revenue'].sum()\nbins = [0, 10000, 50000, 100000, float('inf')]\nlabels = ['Low', 'Medium', 'High', 'VIP']\nsegments = pd.cut(customer_spend, bins=bins, labels=labels)\nprint(\"\\nCustomer Segmentation:\")\nprint(segments.value_counts())"
+      },
+      "explanation": "Step 3: Merge data e rispondere alle domande business con groupby e aggregazioni."
+    },
+    {
+      "type": "code",
+      "title": "💻 Step 4: Advanced Analysis",
+      "code": {
+        "language": "python",
+        "snippet": "# Q5: Prodotti con calo Q4 vs Q3\nq3_sales = df[df['quarter'] == 3].groupby('product')['revenue'].sum()\nq4_sales = df[df['quarter'] == 4].groupby('product')['revenue'].sum()\n\ncomparison = pd.DataFrame({\n    'Q3': q3_sales,\n    'Q4': q4_sales\n})\ncomparison['change'] = comparison['Q4'] - comparison['Q3']\ncomparison['pct_change'] = (comparison['change'] / comparison['Q3'] * 100).round(2)\n\nprint(\"\\nQ4 vs Q3 Performance:\")\nprint(comparison.sort_values('pct_change'))\n\n# Pivot table per analisi avanzata\npivot = df.pivot_table(\n    values='revenue',\n    index='product',\n    columns='quarter',\n    aggfunc='sum',\n    fill_value=0\n)\nprint(\"\\nRevenue by Product & Quarter:\")\nprint(pivot)\n\n# Statistical summary\nprint(\"\\nRevenue Statistics by Product:\")\nprint(df.groupby('product')['revenue'].describe())"
+      },
+      "explanation": "Step 4: Analisi avanzate - confronto periodi, pivot tables, statistiche."
+    },
+    {
+      "type": "code",
+      "title": "💻 Step 5: Export Results",
+      "code": {
+        "language": "python",
+        "snippet": "# Crea report finale\nreport = pd.DataFrame({\n    'Metric': [\n        'Total Revenue',\n        'Total Orders',\n        'Average Order Value',\n        'Unique Customers',\n        'Top Product'\n    ],\n    'Value': [\n        f\"€{df['revenue'].sum():,.0f}\",\n        len(df),\n        f\"€{df['revenue'].mean():.2f}\",\n        df['customer_id'].nunique(),\n        top_products.index[0]\n    ]\n})\n\nprint(\"\\n=== EXECUTIVE SUMMARY ===\")\nprint(report.to_string(index=False))\n\n# Export to Excel con multiple sheets\nwith pd.ExcelWriter('sales_analysis_report.xlsx') as writer:\n    report.to_excel(writer, sheet_name='Summary', index=False)\n    top_products.to_excel(writer, sheet_name='Top Products')\n    top_cities.to_excel(writer, sheet_name='Top Cities')\n    monthly_sales.to_excel(writer, sheet_name='Monthly Trend')\n    comparison.to_excel(writer, sheet_name='Q4 vs Q3')\n\nprint(\"\\n✅ Report exported to 'sales_analysis_report.xlsx'\")"
+      },
+      "explanation": "Step 5: Crea report executive e export multi-sheet Excel. Ready for stakeholders!"
+    },
+    {
+      "type": "text",
+      "title": "📚 Pandas Best Practices",
+      "paragraphs": [
+        "<strong>✅ DO:</strong>",
+        "• Usa vectorized operations invece di loop",
+        "• read_csv con usecols per dataset grandi",
+        "• inplace=True solo se necessario (preferisci assignment)",
+        "• Categorical dtype per colonne ripetitive (risparmia memoria)",
+        "• query() per filtri complessi (più leggibile)",
+        "• method chaining per codice pulito: df.dropna().sort_values()",
+        "",
+        "<strong>❌ DON'T:</strong>",
+        "• Loop con iterrows() (lentissimo, usa apply/vectorize)",
+        "• Append in loop (usa concat con lista)",
+        "• Modify DataFrame durante iterazione",
+        "• Ignora dtypes (controlli sempre con .info())",
+        "",
+        "<strong>Performance:</strong> Vectorize > apply > iterrows",
+        "<strong>Memory:</strong> Usa chunking per file enormi (chunksize parameter)"
+      ],
+      "ironicClosing": "Pandas: se lo usi bene è veloce, se lo usi male è una tartaruga."
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

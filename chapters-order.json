@@ -1,0 +1,33 @@
+{
+  "it": {
+    "chapters": [
+      "storia-ai",
+      "ai-generativa-stato-arte",
+      "ai-agentica-framework",
+      "workshop-crewai",
+      "ai-energia-sostenibilita",
+      "llm-transformer-fondamenti",
+      "python-data-science",
+      "embeddings-vector-db-rag",
+      "pytorch-tensorflow-ml",
+      "workshop-pytorch-nlp",
+      "workshop-tensorflow-nlp"
+    ],
+    "guides": [
+      "python-fundamentals",
+      "numpy-fundamentals",
+      "pandas-fundamentals",
+      "javascript-node-fundamentals",
+      "nextjs-fundamentals",
+      "jupyter-fundamentals"
+    ]
+  },
+  "en": {
+    "chapters": [
+      "storia-ai"
+    ],
+    "guides": [
+      "jupyter-fundamentals"
+    ]
+  }
+}

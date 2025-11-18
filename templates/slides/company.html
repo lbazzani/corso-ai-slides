@@ -1,0 +1,8 @@
+<h1>{{name}}</h1>
+<h2>{{tagline}}</h2>
+{{#if logo}}
+<img src="../../assets/images/logos/{{logo}}" alt="{{name}} logo" class="slide-logo">
+{{/if}}
+{{#each facts}}
+<p><strong>{{label}}:</strong> {{value}}</p>
+{{/each}}

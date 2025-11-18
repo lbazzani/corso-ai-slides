@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Course - Corso AI Generativa</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+        .loader {
+            text-align: center;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        h1 {
+            font-size: 2rem;
+            margin: 0 0 10px 0;
+        }
+        p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <h1>Advanced AI Course</h1>
+        <p>Redirecting to your language...</p>
+    </div>
+
+    <script>
+        // Rileva lingua del browser
+        const userLang = navigator.language || navigator.userLanguage;
+        const isItalian = userLang.toLowerCase().startsWith('it');
+
+        // Controlla se c'è una preferenza salvata
+        const savedLang = localStorage.getItem('course-lang');
+
+        // Determina lingua da usare
+        const targetLang = savedLang || (isItalian ? 'it' : 'en');
+
+        // Redirect
+        window.location.href = `output/${targetLang}/index.html`;
+    </script>
+</body>
+</html>
