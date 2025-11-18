@@ -327,41 +327,40 @@ body.slide-page {
     z-index: 100;
 }
 
-/* Titoli - Stile tecnico professionale con barra full-width */
+/* Titoli - Stile minimal professionale */
 .slide-content h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    margin: 0;  /* Zero margin per partire dal bordo superiore */
-    margin-bottom: 0;
-    color: white;
-    line-height: 1.3;
-    width: calc(100% + 10rem); /* Estende oltre il padding del contenitore */
-    margin-left: -5rem; /* Compensa il padding laterale */
-    margin-right: -5rem;
-    padding: 1rem 5rem 0.5rem;  /* Padding più generoso in alto, ridotto sotto per subtitle */
-    background: var(--primary-color);
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    border-radius: 0;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.2);  /* Linea sottile per separazione */
-}
-
-/* h2 quando è subtitle (dentro la barra del titolo) */
-.slide-content h1 + h2 {
-    font-size: 1.4rem;
-    font-weight: 400;
     margin: 0;
-    margin-bottom: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.4;
+    margin-bottom: 0;
+    color: var(--text-dark);
+    line-height: 1.3;
     width: calc(100% + 10rem);
     margin-left: -5rem;
     margin-right: -5rem;
-    padding: 0.5rem 5rem 1rem;  /* Ridotto padding sopra, normale sotto */
-    background: var(--primary-color);  /* Stesso background di h1 */
+    padding: 1.2rem 5rem 0.4rem;
+    background: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    border-radius: 0;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* h2 quando è subtitle (dentro lo stesso blocco del titolo) */
+.slide-content h1 + h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    width: calc(100% + 10rem);
+    margin-left: -5rem;
+    margin-right: -5rem;
+    padding: 0.4rem 5rem 1.2rem;
+    background: linear-gradient(to bottom, #f1f5f9 0%, #e2e8f0 100%);
+    text-align: center;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 /* h2 quando NON è subtitle (titolo slide normale) */
@@ -370,17 +369,16 @@ body.slide-page {
     font-weight: 700;
     margin: 0;
     margin-bottom: 1rem;
-    color: white;
+    color: var(--text-dark);
     line-height: 1.3;
     width: calc(100% + 10rem);
     margin-left: -5rem;
     margin-right: -5rem;
-    padding: 0.8rem 5rem;
-    background: var(--accent-color);
+    padding: 1rem 5rem;
+    background: linear-gradient(to bottom, #f8fafc 0%, #f1f5f9 100%);
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-    border-radius: 0;
-    border-bottom: 3px solid rgba(255, 255, 255, 0.15);
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .slide-content h3 {
