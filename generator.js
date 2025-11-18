@@ -15,6 +15,20 @@ const path = require('path');
 const TEMPLATES_DIR = './templates';
 const SLIDE_TEMPLATES_DIR = './templates/slides';
 
+// Messaggi ironici del personaggio (appare ogni 9 slide)
+const BUDDY_MESSAGES = [
+    { emoji: '👀', message: 'Ti vedo che ti sei distratto... torna qui!' },
+    { emoji: '🤖', message: 'Questa parte è importante. Memorizza!' },
+    { emoji: '☕', message: 'Caffè dopo. Ancora 3 slide!' },
+    { emoji: '🦉', message: 'Occhio! Questo ritorna dopo.' },
+    { emoji: '🧠', message: 'Brain.exe smesso? Respira e rileggi.' },
+    { emoji: '⚡', message: 'Questa ti farà sembrare smart nei meeting.' },
+    { emoji: '🎯', message: 'Focus! Slide densa incoming.' },
+    { emoji: '💡', message: 'Plot twist: più semplice di quanto sembri.' },
+    { emoji: '🔥', message: 'Hot take in arrivo. Attenzione.' },
+    { emoji: '🚀', message: 'Quasi alla fine, dai!' }
+];
+
 // Legge un template
 function readTemplate(templatePath) {
     return fs.readFileSync(templatePath, 'utf8');
@@ -106,6 +120,22 @@ function renderSlideContent(slideData) {
     // Aggiungi frase ironica se presente
     if (slideData.ironicClosing) {
         content += `<div class="ironic-closing">${escapeHtml(slideData.ironicClosing)}</div>`;
+    }
+
+    return content;
+}
+
+// Funzione wrapper che aggiunge il personaggio ironico
+function renderSlideContentWithBuddy(slideData, slideIndex = 0) {
+    let content = renderSlideContent(slideData);
+
+    // Aggiungi personaggio ironico ogni 9 slide (ma non sulla prima)
+    if (slideIndex > 0 && slideIndex % 9 === 0) {
+        const buddy = BUDDY_MESSAGES[Math.floor(slideIndex / 9) % BUDDY_MESSAGES.length];
+        content += `
+            <div class="slide-buddy">${buddy.emoji}</div>
+            <div class="slide-buddy-message">${buddy.message}</div>
+        `;
     }
 
     return content;
@@ -203,7 +233,7 @@ function generateSlide(slideData, slideIndex, totalSlides, chapterData, allChapt
     const hasPrev = slideIndex > 0;
     const hasNext = slideIndex < totalSlides - 1;
 
-    const slideContent = renderSlideContent(slideData);
+    const slideContent = renderSlideContentWithBuddy(slideData, slideIndex);
     const navBar = generateNavBar(allChapters, chapterData, slideIndex, LANG);
 
     const data = {
