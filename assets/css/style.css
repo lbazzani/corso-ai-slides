@@ -570,7 +570,7 @@ code[class*="language-"] {
 
 /* Citazioni */
 .citations {
-    margin-top: 1rem;
+    margin-top: auto; /* Ancora in basso se c'è spazio */
     padding-top: 0.75rem;
     border-top: 1px solid #e2e8f0;
     max-width: 1000px;
@@ -610,13 +610,18 @@ code[class*="language-"] {
 
 /* Ironic closing */
 .ironic-closing {
-    margin-top: 1rem;
+    margin-top: auto; /* Ancora in basso se c'è spazio e non ci sono citations */
     padding-top: 0.75rem;
     border-top: 1px solid #e2e8f0;
     font-style: italic;
     color: var(--secondary-color);
     font-size: 1rem;
     text-align: center;
+}
+
+/* Se esistono sia citations che ironic-closing, usa spacing normale per ironic-closing */
+.citations ~ .ironic-closing {
+    margin-top: 1rem;
 }
 
 /* Slide buddy - personaggio ironico che appare dopo 20 secondi */
