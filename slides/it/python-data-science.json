@@ -75,21 +75,21 @@
       "title": "Python per Data Science",
       "subtitle": "Dalle Basi alle Librerie Avanzate",
       "description": "Un percorso completo per diventare Data Scientist nel 2026",
-      "ironicClosing": "Il linguaggio che ha conquistato il mondo dei dati, una list comprehension alla volta"
+      "ironicClosing": "Il linguaggio che ha vinto la guerra dei dati mentre R scriveva ancora la documentazione"
     },
     {
       "type": "text",
       "title": "Perché Python Domina la Data Science",
       "paragraphs": [
         "<strong>87%</strong> dei data professionals usa Python regolarmente (Kaggle survey)",
-        "<strong>30.27%</strong> share nel PYPL index (+1.4% growth)",
-        "<strong>1.19 milioni</strong> job listings su LinkedIn richiedono Python",
+        "<strong>30.27%</strong> share nel PYPL index - primo da 10 anni",
+        "<strong>1.19 milioni</strong> job listings su LinkedIn - più di Java e C++ messi insieme",
         "",
-        "<strong>Ecosystem ricchissimo:</strong> NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch",
-        "<strong>Semplicità:</strong> Sintassi leggibile, curva di apprendimento dolce",
-        "<strong>Community:</strong> Stack Overflow, GitHub, migliaia di librerie"
+        "<strong>Ecosystem ricchissimo:</strong> NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch - tutto già fatto",
+        "<strong>Semplicità:</strong> Sintassi che leggi come inglese (quasi)",
+        "<strong>Community:</strong> Se hai un problema, qualcuno su Stack Overflow l'ha già risolto 3 anni fa"
       ],
-      "ironicClosing": "8 su 10 esperti consigliano di imparare Python per primi. Gli altri 2 stanno ancora debuggando R.",
+      "ironicClosing": "Python ha vinto. R resiste solo in ambito accademico e nelle battute dei developer.",
       "citations": [
         {
           "text": "87% of data professionals use Python regularly, Kaggle survey",
@@ -109,18 +109,18 @@
       "metrics": [
         {
           "value": "+34%",
-          "label": "Crescita employment data science entro 2034"
+          "label": "Crescita employment data science entro 2034 - più veloce di quasi ogni altro settore"
         },
         {
           "value": "21,000",
-          "label": "Nuovi job openings all'anno (prossima decade)"
+          "label": "Nuovi job openings all'anno solo negli USA - e non bastano"
         },
         {
           "value": ">50%",
-          "label": "Domanda supererà offerta entro 2026 (McKinsey)"
+          "label": "Domanda supererà offerta entro 2026 (McKinsey) - siamo già in ritardo"
         }
       ],
-      "ironicClosing": "Uno dei lavori tech più richiesti del decennio. No pressure.",
+      "ironicClosing": "Se sai Python e machine learning, hai più job offer che giorni della settimana.",
       "citations": [
         {
           "text": "Data science employment predicted to grow 34% by 2034",
@@ -155,8 +155,8 @@
           "<strong>Media nazionale:</strong> €37-39K"
         ]
       },
-      "note": "<strong>Reality check:</strong> USA paga 3-4x l'Italia, ma costo vita e tasse contano",
-      "ironicClosing": "Stipendi USA impressionanti. Affitto a San Francisco pure.",
+      "note": "<strong>Reality check:</strong> USA paga 3-4x l'Italia, ma affitto a SF costa quanto una casa intera qui",
+      "ironicClosing": "$152K in Bay Area = €35K in Italia per potere d'acquisto reale. L'economia è una scienza triste.",
       "citations": [
         {
           "text": "USA: Entry $152K, mid $138-175K, senior $190-230K",
@@ -180,7 +180,7 @@
         "<strong>Cloud:</strong> AWS, Azure, Google Cloud (essenziali per deployment)",
         "<strong>Top 5 skills:</strong> ML, AI, Python, PyTorch, TensorFlow"
       ],
-      "ironicClosing": "Python è menzionato nel 71% dei job AI engineering. Gli altri 29% assumono solo GPT-4.",
+      "ironicClosing": "71% dei job AI richiedono Python. Il restante 29% mente e ti fanno scrivere Python comunque.",
       "citations": [
         {
           "text": "Python 57% job postings, SQL 30%, R 33%. ML in 69% descriptions.",
@@ -215,7 +215,7 @@
           "label": "CAGR 2021-2026"
         }
       ],
-      "ironicClosing": "Il mercato cresce più veloce della tua pandas DataFrame",
+      "ironicClosing": "Un mercato che cresce al 27.7% annuo. Il tuo stipendio... beh, quello dipende da te.",
       "citations": [
         {
           "text": "Data science platform market: $175.15B (2025), $322.9B (2026), $676.51B (2034)",
@@ -240,7 +240,7 @@
         "Context managers - Gestione risorse",
         "Type hints - Codice production-ready"
       ],
-      "ironicClosing": "Quando capisci le list comprehension, tutto sembra banale"
+      "ironicClosing": "List comprehension: quando capisci come funzionano, non torni più indietro. Mai."
     },
     {
       "type": "code",
@@ -262,7 +262,7 @@
         "<strong>PyTorch/TensorFlow:</strong> Deep Learning",
         "<strong>Jupyter:</strong> Notebook interattivi per analisi"
       ],
-      "ironicClosing": "Un ecosistema così ricco che scegliere è il problema più difficile"
+      "ironicClosing": "NumPy, Pandas, Matplotlib, Seaborn, Plotly, Scikit-learn... sì, dovrai impararli tutti."
     },
     {
       "type": "data",
@@ -282,7 +282,7 @@
           "label": "Anno di nascita (Numeric, poi NumPy nel 2005)"
         }
       ],
-      "ironicClosing": "Senza NumPy non ci sarebbero Pandas, TensorFlow, PyTorch... nulla",
+      "ironicClosing": "NumPy è il motore nascosto dietro tutto. Tipo Linux, ma per i numeri.",
       "citations": [
         {
           "text": "NumPy 2.5B+ downloads, 50-100x faster than pure Python",
@@ -310,7 +310,7 @@
         "<strong>Random:</strong> Generazione numeri casuali per simulazioni",
         "<strong>Integration:</strong> Pandas, Scikit-learn, TensorFlow usano NumPy"
       ],
-      "ironicClosing": "Loop Python? No grazie, vectorize tutto"
+      "ironicClosing": "Se stai scrivendo un for loop su un array NumPy, stai sbagliando tutto."
     },
     {
       "type": "data",
@@ -334,7 +334,7 @@
           "label": "Struttura dati principale (tabelle)"
         }
       ],
-      "ironicClosing": "Excel per programmatori, ma con superpoteri",
+      "ironicClosing": "Pandas è Excel se Excel fosse stato progettato da gente che sa programmare.",
       "citations": [
         {
           "text": "Pandas 2.4B downloads, 86% data scientists use it",
@@ -371,7 +371,7 @@
         "<strong>Time series:</strong> Resampling, rolling windows, date ranges",
         "<strong>Reporting:</strong> Aggregazioni, pivot tables, export"
       ],
-      "ironicClosing": "Se i tuoi dati sono in una tabella, Pandas è la risposta"
+      "ironicClosing": "Pandas: per quando Excel crashava già 3 righe fa."
     },
     {
       "type": "text",
@@ -384,7 +384,7 @@
         "",
         "<strong>Regola d'oro:</strong> Un grafico vale 1000 righe di dati"
       ],
-      "ironicClosing": "Data viz: dove l'arte incontra la scienza (e i colori brutti)"
+      "ironicClosing": "Matplotlib: potente ma brutto. Seaborn: bello ma limitato. Plotly: perfetto ma complicato. Scegli."
     },
     {
       "type": "code",
@@ -405,7 +405,7 @@
         "<strong>Evita 3D e pie charts:</strong> (quasi sempre)",
         "<strong>Interattività:</strong> Plotly per dashboard e report"
       ],
-      "ironicClosing": "Un pie chart 3D è il modo più veloce per perdere credibilità"
+      "ironicClosing": "Pie chart 3D = modo più veloce per dire 'non capisco né dati né design'."
     },
     {
       "type": "data",
@@ -429,7 +429,7 @@
           "label": "fit(), predict(), transform() ovunque"
         }
       ],
-      "ironicClosing": "ML classico: quando il deep learning è overkill (spesso)",
+      "ironicClosing": "Random Forest risolve l'80% dei problemi ML. Gli altri 20%? Anche quelli.",
       "citations": [
         {
           "text": "Scikit-learn 600M+ downloads, 80+ algorithms with consistent API",
@@ -457,7 +457,7 @@
         "<strong>Dimensionality:</strong> PCA, t-SNE, UMAP",
         "<strong>Preprocessing:</strong> Scaling, encoding, feature selection"
       ],
-      "ironicClosing": "80% dei problemi ML si risolvono con Random Forest. Il restante 20% pure."
+      "ironicClosing": "Prima prova Random Forest. Se non funziona, prova XGBoost. Se non basta, allora sì, neural network."
     },
     {
       "type": "text",
@@ -469,7 +469,7 @@
         "<strong>Trend 2026:</strong> PyTorch domina research, TensorFlow ancora forte in enterprise",
         "<strong>JAX:</strong> Il nuovo challenger (Google) - velocità, funzionale"
       ],
-      "ironicClosing": "PyTorch per il PhD, TensorFlow per il deploy, JAX per i masochisti (affettuosamente)"
+      "ironicClosing": "PyTorch: per research. TensorFlow: per production. JAX: per quando vuoi riscrivere tutto da zero."
     },
     {
       "type": "text",
@@ -481,7 +481,7 @@
         "<strong>MLOps maturo:</strong> CI/CD per ML, monitoring, A/B testing",
         "<strong>Causal inference:</strong> Oltre le correlazioni"
       ],
-      "ironicClosing": "L'AI aiuterà i data scientist. Non li sostituirà. (Per ora.)"
+      "ironicClosing": "L'AI scriverà codice boilerplate. Tu continuerai a capire perché i modelli falliscono. Win-win."
     },
     {
       "type": "summary",
@@ -495,7 +495,7 @@
         "PyTorch: Research leader, TensorFlow: production standard",
         "Futuro: AutoML, LLM tools, MLOps maturity"
       ],
-      "ironicClosing": "Data science nel 2026: quando sai Python, sai già metà del lavoro"
+      "ironicClosing": "Python + SQL + domain knowledge = lavoro garantito. Il resto è ottimizzazione."
     }
   ],
   "lastTranslated": null,

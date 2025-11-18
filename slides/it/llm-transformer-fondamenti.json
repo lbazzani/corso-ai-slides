@@ -57,7 +57,7 @@
       "title": "LLM e Transformer",
       "subtitle": "Come Funzionano Davvero",
       "description": "Dalla teoria all'architettura che ha cambiato tutto",
-      "ironicClosing": "Quando 8 ricercatori Google cambiano il mondo... per altri"
+      "ironicClosing": "Google inventa il transformer. OpenAI ci costruisce un impero. Classic."
     },
     {
       "type": "text",
@@ -73,7 +73,7 @@
         "• Relazioni: \"gatto\" + \"salire\" → superfici elevate",
         "• Pattern appresi: miliardi di esempi visti in training"
       ],
-      "ironicClosing": "Prevedere parole. 175 miliardi di parametri per prevedere parole. Eppure funziona."
+      "ironicClosing": "175 miliardi di parametri per fare autocomplete on steroids. E ha funzionato."
     },
     {
       "type": "text",
@@ -90,7 +90,7 @@
         "<strong>Problema 3 - Context limitato:</strong>",
         "Difficile catturare relazioni long-range"
       ],
-      "ironicClosing": "RNN: quando la memoria a breve termine è un problema anche per le AI"
+      "ironicClosing": "RNN aveva Alzheimer architetturale. Transformer ha memoria fotografica."
     },
     {
       "type": "text",
@@ -107,7 +107,7 @@
         "• Capisce che \"it\" = animal, non street",
         "• Tutto in parallelo, non sequenziale"
       ],
-      "ironicClosing": "Attention = chiedere a ogni parola 'chi è importante per te in questa frase?'",
+      "ironicClosing": "Self-attention: ogni parola chiede alle altre 'chi di voi conta davvero?' in parallelo.",
       "citations": [
         {
           "text": "Attention Is All You Need - Google Brain 2017, foundation of all transformers",
@@ -133,7 +133,7 @@
         "",
         "<strong>Risultato:</strong> Ogni parola sa chi è importante nel contesto"
       ],
-      "ironicClosing": "Query, Key, Value: rubato dai database. Se funziona, funziona.",
+      "ironicClosing": "Query, Key, Value: copiato dai database. Il miglior codice è quello che rubi bene.",
       "citations": [
         {
           "text": "Self-attention uses Query, Key, Value inspired by database retrieval",
@@ -158,7 +158,7 @@
         "• BLEU score migliore su traduzione",
         "• Scala benissimo (più grande = meglio)"
       ],
-      "ironicClosing": "8 ricercatori, 1 paper, fondamenta di GPT/BERT/Gemini/tutto",
+      "ironicClosing": "8 ricercatori, 1 paper, fondamenta dell'intera industria AI moderna. Non male come ROI.",
       "citations": [
         {
           "text": "Google Brain team invented transformer architecture June 12, 2017",
@@ -183,7 +183,7 @@
         "",
         "<strong>Google?</strong> Ancora dibattendo rischi reputazionali interni"
       ],
-      "ironicClosing": "OpenAI ha letto il paper di Google e ha capito prima di Google cosa significava",
+      "ironicClosing": "OpenAI ha letto il paper di Google e ha fatto shipping mentre Google faceva meeting.",
       "citations": [
         {
           "text": "OpenAI released GPT-1 in June 2018, capitalizing on Google's transformer",
@@ -208,9 +208,9 @@
         "<strong>4. Business Model:</strong>",
         "Google guadagna da ads → LLM rischia di cannibalizzare search",
         "",
-        "<strong>Lezione:</strong> Inventare ≠ Vincere. Execution matters."
+        "<strong>Lezione:</strong> Inventare ≠ Vincere. Speed beats perfection."
       ],
-      "ironicClosing": "Google ha creato il transformer. OpenAI ha creato il prodotto. Microsoft ha scritto l'assegno.",
+      "ironicClosing": "Google inventa. OpenAI shippa. Microsoft paga. Tutti vincono tranne Google.",
       "citations": [
         {
           "text": "Google feared reputation risk and corporate inertia while OpenAI shipped fast",
@@ -238,7 +238,7 @@
         "",
         "<strong>Bottom line:</strong> Non è più solo una corsa tecnica"
       ],
-      "ironicClosing": "Google ora gioca catch-up sulla propria invenzione. L'ironia è deliziosa."
+      "ironicClosing": "Recuperare terreno sulla tua stessa invenzione: Google speedrun any%."
     },
     {
       "type": "data",
@@ -270,7 +270,7 @@
           "label": "FLOPS necessari"
         }
       ],
-      "ironicClosing": "4.6 milioni di dollari per insegnare a una AI a prevedere parole. Best money ever spent.",
+      "ironicClosing": "$4.6M per autocomplete intelligente. Oggi vale $300 miliardi. Not bad.",
       "citations": [
         {
           "text": "GPT-3: 175B params, 499B tokens, $4.6M cost, 3.1e23 FLOPS",
@@ -295,7 +295,7 @@
         "",
         "<strong>Quality > Quantity:</strong> CommonCrawl filtrato pesantemente per similarità con corpora di alta qualità"
       ],
-      "ironicClosing": "GPT-3 ha letto l'internet. Spiega molto sul suo... carattere.",
+      "ironicClosing": "Trained on Reddit upvotes. Spiega perché GPT-3 a volte suona così... confident.",
       "citations": [
         {
           "text": "GPT-3 trained on 60% CommonCrawl, 22% WebText2, 16% Books, 3% Wikipedia",
@@ -322,7 +322,7 @@
         "• Open source modelli mid-size (Llama, Mistral) crescono",
         "• Inference cost ora > training cost (per molte aziende)"
       ],
-      "ironicClosing": "Da $5M a $100M in 3 anni. Scaling laws applicano anche ai budget."
+      "ironicClosing": "Scaling laws: modelli più grandi = migliori. Budget più grandi = obbligatori."
     },
     {
       "type": "text",
@@ -342,7 +342,7 @@
         "• Può autocorreggersi, provare approcci diversi",
         "• Spezza problemi complessi in sottoproblemi"
       ],
-      "ironicClosing": "LLM che 'pensano'. O almeno, simulano molto bene il pensiero.",
+      "ironicClosing": "Chain of thought: l'AI mostra il lavoro come in quinta elementare. Ma funziona.",
       "citations": [
         {
           "text": "o1 uses reinforcement learning to learn chain of thought reasoning",
@@ -368,7 +368,7 @@
         "",
         "<strong>Differenza:</strong> Breaking down, self-correction, focus on relevant info"
       ],
-      "ironicClosing": "Chain of thought = mostrare il lavoro, come a scuola. Ma funziona."
+      "ironicClosing": "Reasoning step-by-step: la professoressa di matematica aveva ragione."
     },
     {
       "type": "data",
@@ -393,7 +393,7 @@
         "<strong>Implicazione:</strong> Su task strutturati (math, logic), o3 compete con umani",
         "<strong>Ma:</strong> Ancora pattern matching, non vera comprensione"
       ],
-      "ironicClosing": "87.5% vs 85% umano. Quasi AGI? No. Impressive? Sì.",
+      "ironicClosing": "87.5% vs 85% umano su test logici. AGI? No. Allarme? Dipende a chi chiedi.",
       "citations": [
         {
           "text": "o3 scores 87.5% on ARC-AGI vs 85% human baseline, 5% GPT-4",
@@ -421,7 +421,7 @@
         "• Umano: trasferisce conoscenza a domini nuovi",
         "• LLM: eccelle in domini strutturati visti in training, fatica su novel contexts"
       ],
-      "ironicClosing": "LLM simula il ragionamento. Umano... ragiona. Differenza sottile ma fondamentale."
+      "ironicClosing": "Simulare reasoning perfettamente = reasoning? Filosofi dibattono. Venture capitalist investono."
     },
     {
       "type": "text",
@@ -442,7 +442,7 @@
         "<strong>5. Future:</strong>",
         "Quando (se mai) LLM reasoning diventerà indistinguibile da quello umano?"
       ],
-      "ironicClosing": "Le domande difficili non hanno risposte in 175B parametri. Per ora."
+      "ironicClosing": "Le domande etiche non si risolvono con più GPU. Peccato."
     }
   ],
   "lastTranslated": null,
