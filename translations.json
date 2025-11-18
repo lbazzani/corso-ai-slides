@@ -2,11 +2,11 @@
   "it": {
     "lang": "it",
     "courseTitle": "Corso AI - Generativa, Agentica ed Energia",
-    "authorBio": "Consulente indipendente specializzato in cloud infrastructure, AI generativa e soluzioni enterprise con oltre 20 anni di esperienza nella leadership tecnologica.",
+    "authorBio": "Consulente indipendente con 20+ anni di esperienza in cloud infrastructure e AI. Ho visto l'evoluzione da quando 'cloud' significava solo nuvole e 'AI' era fantascienza. Ora aiuto aziende a non farsi travolgere dall'hype (e a costruire cose che funzionano davvero).",
     "chaptersTitle": "📖 Capitoli del Corso",
-    "chaptersIntro": "Un percorso completo attraverso la storia, le tecnologie e le applicazioni pratiche dell'Intelligenza Artificiale. Dalla nascita dell'AI negli anni '50 fino agli LLM moderni, passando per Python, embeddings, RAG e sistemi agentici. Con esempi di codice, casi d'uso reali e workshop hands-on.",
+    "chaptersIntro": "Un percorso completo dall'AI degli anni '50 (quando 64KB di RAM erano tantissimi) fino agli LLM moderni che consumano più energia del Portogallo. Storia, fondamenti tecnici, Python, embeddings, RAG, sistemi agentici. Con numeri reali, esempi di codice funzionante, e zero marketing fluff.",
     "guidesTitle": "📚 Guide Tecniche",
-    "guidesIntro": "Guide pratiche step-by-step per padroneggiare le tecnologie fondamentali.",
+    "guidesIntro": "Guide step-by-step per imparare le tecnologie che stanno sotto il cappuccio. Perché capire come funziona davvero l'AI è più utile che sapere solo invocare un'API.",
     "allRightsReserved": "Tutti i diritti riservati.",
     "updatedMaterial": "Materiale didattico aggiornato a fine 2025",
     "slides": "slide"
@@ -14,11 +14,11 @@
   "en": {
     "lang": "en",
     "courseTitle": "AI Course - Generative, Agentic and Energy",
-    "authorBio": "Independent consultant specialized in cloud infrastructure, generative AI and enterprise solutions with over 20 years of experience in technology leadership.",
+    "authorBio": "Independent consultant with 20+ years in cloud infrastructure and AI. I've witnessed the evolution from when 'cloud' just meant weather and 'AI' was pure sci-fi. Now I help companies navigate the hype (and actually build things that work).",
     "chaptersTitle": "📖 Course Chapters",
-    "chaptersIntro": "A complete journey through the history, technologies and practical applications of Artificial Intelligence. From the birth of AI in the 1950s to modern LLMs, through Python, embeddings, RAG and agentic systems. With code examples, real use cases and hands-on workshops.",
+    "chaptersIntro": "A complete journey from 1950s AI (when 64KB RAM was massive) to modern LLMs consuming more energy than Portugal. History, technical fundamentals, Python, embeddings, RAG, agentic systems. Real numbers, working code examples, zero marketing fluff.",
     "guidesTitle": "📚 Technical Guides",
-    "guidesIntro": "Practical step-by-step guides to master fundamental technologies.",
+    "guidesIntro": "Step-by-step guides to learn the technologies under the hood. Because understanding how AI actually works beats just knowing how to call an API.",
     "allRightsReserved": "All rights reserved.",
     "updatedMaterial": "Educational material updated to late 2025",
     "slides": "slides"
