@@ -610,7 +610,7 @@ code[class*="language-"] {
     text-align: center;
 }
 
-/* Slide buddy - personaggio ironico che appare brevemente */
+/* Slide buddy - personaggio ironico che appare dopo 20 secondi */
 .slide-buddy {
     position: fixed;
     bottom: 30px;
@@ -619,16 +619,20 @@ code[class*="language-"] {
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    display: flex;
+    display: none; /* Nascosto di default */
     align-items: center;
     justify-content: center;
     font-size: 26px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     z-index: 100;
-    animation: buddyFadeInOut 6s ease-in-out forwards;
     opacity: 0;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.5s ease;
+}
+
+.slide-buddy.show {
+    display: flex;
+    animation: buddyFadeIn 0.5s ease-in-out forwards;
 }
 
 .slide-buddy:hover {
@@ -649,8 +653,14 @@ code[class*="language-"] {
     color: var(--text-color);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     z-index: 99;
-    animation: messageFadeInOut 6s ease-in-out forwards;
+    display: none; /* Nascosto di default */
     opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slide-buddy-message.show {
+    display: block;
+    animation: messageFadeIn 0.5s ease-in-out forwards;
 }
 
 .slide-buddy-message::after {
@@ -665,43 +675,25 @@ code[class*="language-"] {
     border-top: 8px solid white;
 }
 
-@keyframes buddyFadeInOut {
+@keyframes buddyFadeIn {
     0% {
         opacity: 0;
         transform: translateY(20px) scale(0.8);
     }
-    10% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-    85% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
     100% {
-        opacity: 0;
-        transform: translateY(10px) scale(0.9);
-        pointer-events: none;
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
-@keyframes messageFadeInOut {
+@keyframes messageFadeIn {
     0% {
         opacity: 0;
         transform: translateY(10px);
     }
-    10% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    85% {
-        opacity: 1;
-        transform: translateY(0);
-    }
     100% {
-        opacity: 0;
-        transform: translateY(5px);
-        pointer-events: none;
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

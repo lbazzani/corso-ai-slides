@@ -182,6 +182,17 @@
                 }, 2000);
             });
         }
+
+        // Slide buddy - appare dopo 20 secondi
+        const buddyElement = document.querySelector('.slide-buddy');
+        const buddyMessage = document.querySelector('.slide-buddy-message');
+
+        if (buddyElement && buddyMessage) {
+            setTimeout(() => {
+                buddyElement.classList.add('show');
+                buddyMessage.classList.add('show');
+            }, 20000); // 20 secondi
+        }
     </script>
 
     <!-- Common Fixed Footer -->
