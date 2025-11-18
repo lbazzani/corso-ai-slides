@@ -59,11 +59,18 @@
             const currentPath = window.location.pathname;
             const pathParts = currentPath.split('/');
 
-            // Trova l'indice di "output" nel path
-            const outputIndex = pathParts.indexOf('output');
-            if (outputIndex === -1) return;
+            // Trova la lingua corrente cercando 'it' o 'en' nel path
+            let langIndex = -1;
+            let currentLang = '';
+            for (let i = 0; i < pathParts.length; i++) {
+                if (pathParts[i] === 'it' || pathParts[i] === 'en') {
+                    langIndex = i;
+                    currentLang = pathParts[i];
+                    break;
+                }
+            }
 
-            const currentLang = pathParts[outputIndex + 1]; // it o en
+            if (langIndex === -1) return; // Lingua non trovata nel path
 
             if (currentLang === targetLang) {
                 document.getElementById('langMenu').classList.remove('show');
@@ -74,7 +81,7 @@
             localStorage.setItem('course-lang', targetLang);
 
             // Costruisci il nuovo path sostituendo la lingua
-            pathParts[outputIndex + 1] = targetLang;
+            pathParts[langIndex] = targetLang;
             const newPath = pathParts.join('/');
 
             // Prova a caricare la pagina nella nuova lingua
@@ -84,29 +91,14 @@
                         // Pagina esiste, redirige
                         window.location.pathname = newPath;
                     } else {
-                        // Pagina non esiste, prova la lingua opposta
-                        const oppositeLang = currentLang; // La lingua originale
-                        pathParts[outputIndex + 1] = oppositeLang;
-                        const fallbackPath = pathParts.join('/');
-
-                        return fetch(fallbackPath, { method: 'HEAD' })
-                            .then(fallbackResponse => {
-                                if (fallbackResponse.ok) {
-                                    // Pagina esiste nella lingua opposta
-                                    window.location.pathname = fallbackPath;
-                                } else {
-                                    // Nessuna versione esiste, vai all'index della lingua target
-                                    pathParts[outputIndex + 1] = targetLang;
-                                    const indexPath = pathParts.slice(0, outputIndex + 2).join('/') + '/index.html';
-                                    window.location.pathname = indexPath;
-                                }
-                            });
+                        // Pagina non esiste, vai all'index della lingua target
+                        const indexPath = '/' + targetLang + '/index.html';
+                        window.location.pathname = indexPath;
                     }
                 })
                 .catch(() => {
                     // Errore, fallback all'index della lingua target
-                    pathParts[outputIndex + 1] = targetLang;
-                    const indexPath = pathParts.slice(0, outputIndex + 2).join('/') + '/index.html';
+                    const indexPath = '/' + targetLang + '/index.html';
                     window.location.pathname = indexPath;
                 });
         }
