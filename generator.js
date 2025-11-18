@@ -4,23 +4,16 @@
  * Generatore di slide per corso AI - Template Based (Multi-Language)
  * Legge JSON puri e usa template per generare HTML
  *
- * Usage: node generator.js [--lang=it|en]
+ * Usage: node generator.js
+ * Genera automaticamente tutte le lingue disponibili in chapters-order.json
  */
 
 const fs = require('fs');
 const path = require('path');
 
-// Parse arguments
-const args = process.argv.slice(2);
-const langArg = args.find(arg => arg.startsWith('--lang='));
-const LANG = langArg ? langArg.split('=')[1] : 'it';
-
-// Configurazione
-const SLIDES_DIR = `./slides/${LANG}`;
-const GUIDES_DIR = `./guides/${LANG}`;
+// Configurazione base
 const TEMPLATES_DIR = './templates';
 const SLIDE_TEMPLATES_DIR = './templates/slides';
-const OUTPUT_DIR = `./output/${LANG}`;
 
 // Legge un template
 function readTemplate(templatePath) {
@@ -264,7 +257,7 @@ function generateChapter(chapterFile, allChapters, sourceDir = SLIDES_DIR) {
 }
 
 // Genera l'indice principale del corso
-function generateMainIndex(chapters, guides = []) {
+function generateMainIndex(chapters, guides = [], LANG, OUTPUT_DIR) {
     const template = readTemplate(path.join(TEMPLATES_DIR, 'main-index.html'));
 
     // Carica traduzioni
@@ -362,10 +355,15 @@ function escapeHtml(text) {
     return text.replace(/[&<>"']/g, m => map[m]);
 }
 
-// Main
-function main() {
-    console.log(`=🤖 Generatore di Slide per Corso AI (Template-Based)\n`);
-    console.log(`📚 Lingua: ${LANG.toUpperCase()}\n`);
+// Genera le slide per una specifica lingua
+function generateForLanguage(LANG, chaptersOrderConfig) {
+    console.log(`\n📚 Lingua: ${LANG.toUpperCase()}`);
+    console.log(`${'='.repeat(50)}`);
+
+    // Configurazione per questa lingua
+    const SLIDES_DIR = `./slides/${LANG}`;
+    const GUIDES_DIR = `./guides/${LANG}`;
+    const OUTPUT_DIR = `./output/${LANG}`;
 
     // Verifica che esistano le directory necessarie
     [SLIDES_DIR, GUIDES_DIR, TEMPLATES_DIR, OUTPUT_DIR].forEach(dir => {
@@ -374,34 +372,46 @@ function main() {
         }
     });
 
-    // Carica l'ordine dei capitoli dal file di configurazione
-    const chaptersOrderConfig = JSON.parse(fs.readFileSync('./chapters-order.json', 'utf8'));
     const langConfig = chaptersOrderConfig[LANG];
 
     if (!langConfig) {
         console.error(`❌ Configurazione non trovata per la lingua "${LANG}" in chapters-order.json`);
-        process.exit(1);
+        return { success: false };
     }
 
     // Ordina i file secondo la configurazione
     const slideFiles = langConfig.chapters.map(slug => `${slug}.json`);
     const guideFiles = langConfig.guides.map(slug => `${slug}.json`);
 
-    // Verifica che ci sia almeno un file (slides o guides)
-    if (slideFiles.length === 0 && guideFiles.length === 0) {
-        console.error(`❌ Nessun capitolo trovato per la lingua "${LANG}"`);
-        console.error(`   Verifica chapters-order.json e che i file esistano in:`);
-        console.error(`   - ${SLIDES_DIR}/`);
-        console.error(`   - ${GUIDES_DIR}/`);
-        process.exit(1);
+    // Filtra solo i file che esistono effettivamente
+    const existingSlideFiles = slideFiles.filter(file => {
+        const exists = fs.existsSync(path.join(SLIDES_DIR, file));
+        if (!exists) {
+            console.warn(`⚠️  Capitolo non trovato: ${file} (skipped)`);
+        }
+        return exists;
+    });
+
+    const existingGuideFiles = guideFiles.filter(file => {
+        const exists = fs.existsSync(path.join(GUIDES_DIR, file));
+        if (!exists) {
+            console.warn(`⚠️  Guida non trovata: ${file} (skipped)`);
+        }
+        return exists;
+    });
+
+    // Verifica che ci sia almeno un file
+    if (existingSlideFiles.length === 0 && existingGuideFiles.length === 0) {
+        console.error(`❌ Nessun capitolo o guida trovata per la lingua "${LANG}"`);
+        return { success: false };
     }
 
     // Prima passata: leggi tutti i capitoli per creare la nav
-    const allChapters = slideFiles.map((file, index) => {
+    const allChapters = existingSlideFiles.map((file, index) => {
         const data = JSON.parse(fs.readFileSync(path.join(SLIDES_DIR, file), 'utf8'));
         const slug = file.replace('.json', '');
         return {
-            number: index,  // Numero basato sulla posizione nell'ordine
+            number: index,
             title: data.title,
             slug: slug,
             slides: data.slides
@@ -409,7 +419,7 @@ function main() {
     });
 
     // Prima passata: leggi tutte le guide
-    const allGuides = guideFiles.map(file => {
+    const allGuides = existingGuideFiles.map(file => {
         const data = JSON.parse(fs.readFileSync(path.join(GUIDES_DIR, file), 'utf8'));
         const slug = file.replace('.json', '');
         return {
@@ -419,31 +429,74 @@ function main() {
         };
     });
 
+    // Modifica temporanea delle variabili globali per questa lingua
+    const originalGenerateChapter = generateChapter;
+    const originalGenerateMainIndex = generateMainIndex;
+
+    // Wrapper per passare le directory corrette
+    const generateChapterWrapper = (file, allItems, dir) => {
+        return originalGenerateChapter(file, allItems, dir, LANG, OUTPUT_DIR);
+    };
+
+    const generateMainIndexWrapper = (chapters, guides) => {
+        return originalGenerateMainIndex(chapters, guides, LANG, OUTPUT_DIR);
+    };
+
     // Seconda passata: genera ogni capitolo con la nav completa
-    const chapters = slideFiles.map(file => generateChapter(file, allChapters, SLIDES_DIR));
+    const chapters = existingSlideFiles.map(file => generateChapterWrapper(file, allChapters, SLIDES_DIR));
 
     // Genera le guide
-    const guides = guideFiles.map(file => generateChapter(file, allGuides, GUIDES_DIR));
+    const guides = existingGuideFiles.map(file => generateChapterWrapper(file, allGuides, GUIDES_DIR));
 
     if (guides.length > 0) {
-        console.log('\n📚 Guide tecniche:');
+        console.log('\n📚 Guide tecniche generati');
     }
 
     // Genera l'indice principale
-    const mainIndexHtml = generateMainIndex(chapters, guides);
+    const mainIndexHtml = generateMainIndexWrapper(chapters, guides);
     fs.writeFileSync(path.join(OUTPUT_DIR, 'index.html'), mainIndexHtml);
 
-    console.log(`\n✅ Indice principale generato: output/${LANG}/index.html`);
-
-    // Genera index root (solo una volta, quando generi IT)
-    if (LANG === 'it') {
-        const rootIndexTemplate = readTemplate(path.join(TEMPLATES_DIR, 'index-root.html'));
-        fs.writeFileSync('./index.html', rootIndexTemplate);
-        console.log('✅ Index root generato: index.html');
-    }
+    console.log(`✅ Indice principale: output/${LANG}/index.html`);
 
     const totalSlides = chapters.reduce((sum, c) => sum + c.slides.length, 0) + guides.reduce((sum, g) => sum + g.slides.length, 0);
-    console.log(`\n<✓ Generazione completata! ${chapters.length} capitoli, ${guides.length} guide, ${totalSlides} slide totali`);
+    console.log(`✓ ${chapters.length} capitoli, ${guides.length} guide, ${totalSlides} slide totali`);
+
+    return { success: true, chapters: chapters.length, guides: guides.length, slides: totalSlides };
+}
+
+// Main
+function main() {
+    console.log(`🤖 Generatore di Slide per Corso AI (Template-Based)`);
+    console.log(`${'='.repeat(50)}\n`);
+
+    // Carica l'ordine dei capitoli dal file di configurazione
+    const chaptersOrderConfig = JSON.parse(fs.readFileSync('./chapters-order.json', 'utf8'));
+    const languages = Object.keys(chaptersOrderConfig);
+
+    console.log(`🌐 Lingue disponibili: ${languages.join(', ')}`);
+
+    // Genera per ogni lingua
+    const results = {};
+    for (const lang of languages) {
+        const result = generateForLanguage(lang, chaptersOrderConfig);
+        results[lang] = result;
+    }
+
+    // Genera index root
+    const rootIndexTemplate = readTemplate(path.join(TEMPLATES_DIR, 'index-root.html'));
+    fs.writeFileSync('./index.html', rootIndexTemplate);
+    console.log(`\n✅ Index root generato: index.html`);
+
+    // Riepilogo finale
+    console.log(`\n${'='.repeat(50)}`);
+    console.log(`✓ GENERAZIONE COMPLETATA\n`);
+    for (const lang of languages) {
+        if (results[lang].success) {
+            console.log(`  ${lang.toUpperCase()}: ${results[lang].chapters} capitoli, ${results[lang].guides} guide, ${results[lang].slides} slide`);
+        } else {
+            console.log(`  ${lang.toUpperCase()}: ❌ Errore`);
+        }
+    }
 }
 
 // Esegui

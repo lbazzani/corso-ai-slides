@@ -153,7 +153,7 @@
         "<strong>Jupyter Notebook 7.4.7 (Classic, modernized)</strong>",
         "• Single-document interface (simpler)",
         "• Based on JupyterLab architecture (from v7)",
-        "• Compatibility with old laptops",
+        "• Compatibility with old notebooks",
         "• Perfect for beginners or simple use",
         "",
         "<strong>⚠️ Deprecated:</strong>",
@@ -168,7 +168,7 @@
       "type": "text",
       "title": "Why Jupyter?",
       "paragraphs": [
-        "<strong>Literate Programming:</strong> Code + documentation + visualizations in a single document",
+        "<strong>Literate Programming:</strong> Code + documentation + visualizations in one document",
         "<strong>Interactivity:</strong> Run code cell by cell, see results immediately",
         "<strong>Reproducibility:</strong> Notebook = reproducible research (code + data + output)",
         "<strong>Views:</strong> Inline, interactive, updatable charts",
@@ -193,7 +193,7 @@
         "• Python 3.8+ (recommended 3.11+)",
         "• pip or conda package manager",
         "",
-        "<strong>Opzione 1: pip (standard)</strong>",
+        "<strong>Option 1: pip (standard)</strong>",
         "<code>pip install notebook</code> → Classic Jupyter Notebook",
         "<code>pip install jupyterlab</code> → JupyterLab (recommended)",
         "",
@@ -205,11 +205,11 @@
         "<code>jupyter lab</code> → JupyterLab",
         "The browser automatically opens at <code>http://localhost:8888</code>",
         "",
-        "<strong>Installation verification:</strong>",
+        "<strong>Installation check:</strong>",
         "<code>jupyter --version</code>",
         "<code>jupyter lab --version</code>"
       ],
-      "ironicClosing": "Installation: one command. Startup: one command. Productivity: endless hours wasted making pretty charts."
+      "ironicClosing": "Installation: one command. Start: one command. Productivity: endless hours wasted making pretty charts."
     },
     {
       "type": "code",
@@ -218,7 +218,7 @@
         "language": "bash",
         "snippet": "# Installazione\npip install jupyterlab\n\n# Avviare JupyterLab\njupyter lab\n\n# O Notebook classic\njupyter notebook\n\n# Avvia su porta specifica\njupyter lab --port=8889\n\n# Avvia senza aprire browser\njupyter lab --no-browser\n\n# Avvia in directory specifica\ncd /path/to/project\njupyter lab\n\n# ===== Creare primo notebook =====\n# 1. Click \"New\" → \"Notebook\"\n# 2. Scegli kernel (Python 3)\n# 3. Prima cella:\nprint(\"Hello, Jupyter!\")\n\n# 4. Esegui: Shift+Enter\n# Output: Hello, Jupyter!\n\n# Salvare: Cmd+S (Mac) o Ctrl+S (Win/Linux)\n# File salvato come: Untitled.ipynb"
       },
-      "explanation": "jupyter lab to start. Shift+Enter to execute cells. .ipynb is the format."
+      "explanation": "Jupyter Lab to start. Shift+Enter to execute cells. .ipynb is the format."
     },
     {
       "type": "title",
@@ -361,7 +361,7 @@
         "language": "markdown",
         "snippet": "# Titolo Analisi: Predizione Prezzi Case\n\n**Autore:** Nome Cognome  \n**Data:** 2025-11-18  \n**Versione:** 1.0\n\n---\n\n## 📋 Table of Contents\n1. [Introduzione](#intro)\n2. [Dataset](#dataset)\n3. [Analisi Esplorativa](#eda)\n4. [Feature Engineering](#features)\n5. [Modeling](#modeling)\n6. [Risultati](#results)\n7. [Conclusioni](#conclusions)\n\n---\n\n## 1. Introduzione {#intro}\n\n### Obiettivo\nPredire il prezzo di vendita delle case basandosi su features come...\n\n### Metodologia\n- Dataset: Kaggle House Prices\n- Modelli: Linear Regression, Random Forest, XGBoost\n- Metrica: RMSE\n\n---\n\n## 2. Dataset {#dataset}\n\n### Source\n...\n\n<!-- Poi celle code con pandas.read_csv(), df.head(), etc. -->"
       },
-      "explanation": "Professional structure: Title, TOC, sections, markdown + alternating code."
+      "explanation": "Professional structure: Title, TOC, sections, markdown + alternate code."
     },
     {
       "type": "code",
@@ -394,7 +394,7 @@
         "<strong>6. LaTeX for complex formulas</strong>",
         "Readable, standard, publication-ready",
         "",
-        "<strong>7. Comment complex code</strong>",
+        "<strong>7. Comment on complex code</strong>",
         "Markdown cells before complex code to explain logic",
         "",
         "<strong>8. Versioning info</strong>",
@@ -424,7 +424,7 @@
         "language": "python",
         "snippet": "# ===== %%time / %%timeit =====\n# Time intera cella\n%%time\nimport numpy as np\narr = np.random.randn(1000000)\nresult = arr.mean()\n\n%%timeit\n# Average time su multiple runs\nimport numpy as np\narr = np.random.randn(1000)\nresult = arr.mean()\n\n# ===== %%writefile =====\n# Scrive contenuto cella in file\n%%writefile script.py\ndef hello():\n    print(\"Hello from script!\")\n\nif __name__ == '__main__':\n    hello()\n\n# ===== %%bash =====\n# Esegui comandi bash\n%%bash\necho \"Hello from bash\"\nls -la\npwd\n\n# ===== %%html =====\n# Render HTML\n%%html\n<h1 style=\"color: blue;\">HTML Header</h1>\n<p>Paragraph text</p>\n\n# ===== %%javascript =====\n# Esegui JavaScript\n%%javascript\nalert('Hello from JavaScript!');\n\n# ===== %%latex =====\n# Render LaTeX\n%%latex\n\\begin{align}\nx &= y + z \\\\\na &= b + c\n\\end{align}"
       },
-      "explanation": "Cell magics: %% prefix. Entire cell. %%time, %%writefile, %%bash, %%html."
+      "explanation": "Cell magics: %% prefix. Whole cell. %%time, %%writefile, %%bash, %%html."
     },
     {
       "type": "code",
@@ -466,7 +466,7 @@
         "language": "python",
         "snippet": "%matplotlib inline\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Line plot\nx = np.linspace(0, 10, 100)\ny = np.sin(x)\n\nplt.figure(figsize=(10, 6))\nplt.plot(x, y, label='sin(x)', linewidth=2)\nplt.plot(x, np.cos(x), label='cos(x)', linewidth=2, linestyle='--')\nplt.xlabel('x')\nplt.ylabel('y')\nplt.title('Trigonometric Functions')\nplt.legend()\nplt.grid(True, alpha=0.3)\nplt.show()\n\n# Scatter plot\nx = np.random.randn(100)\ny = np.random.randn(100)\ncolors = np.random.rand(100)\n\nplt.figure(figsize=(8, 6))\nplt.scatter(x, y, c=colors, s=50, alpha=0.6, cmap='viridis')\nplt.colorbar()\nplt.xlabel('X')\nplt.ylabel('Y')\nplt.title('Scatter Plot')\nplt.show()\n\n# Subplots\nfig, axes = plt.subplots(2, 2, figsize=(12, 10))\naxes[0, 0].plot(x, y)\naxes[0, 1].hist(x, bins=20)\naxes[1, 0].scatter(x, y)\naxes[1, 1].bar([1, 2, 3], [10, 20, 15])\nplt.tight_layout()\nplt.show()"
       },
-      "explanation": "Matplotlib: base library. plot(), scatter(), hist(), subplots(). Very flexible."
+      "explanation": "Matplotlib: basic library. plot(), scatter(), hist(), subplots(). Very flexible."
     },
     {
       "type": "code",
@@ -506,7 +506,7 @@
     },
     {
       "type": "text",
-      "title": "Best Practices Visualizations",
+      "title": "Best Practices for Visualizations",
       "paragraphs": [
         "<strong>1. Choose the right library for the use case</strong>",
         "• Matplotlib: Maximum flexibility, publication-quality",
@@ -539,7 +539,7 @@
     },
     {
       "type": "title",
-      "title": "Kernel & Languages",
+      "title": "Kernel & Linguaggi",
       "subtitle": "Python, R, Julia, SQL, JavaScript",
       "description": "Jupyter supports 40+ languages via kernels"
     },
@@ -579,7 +579,7 @@
         "language": "r",
         "snippet": "# Installazione IRkernel\n# In R console:\ninstall.packages('IRkernel')\nIRkernel::installspec()  # Install kernel spec\n\n# ===== Poi crea notebook R =====\n# New → R\n\n# R code in Jupyter\nlibrary(ggplot2)\n\n# Data\ndata(mtcars)\n\n# Plot\nggplot(mtcars, aes(x = wt, y = mpg)) +\n  geom_point(aes(color = factor(cyl)), size = 3) +\n  geom_smooth(method = 'lm', se = FALSE) +\n  labs(title = 'MPG vs Weight',\n       x = 'Weight (1000 lbs)',\n       y = 'Miles per Gallon',\n       color = 'Cylinders') +\n  theme_minimal()\n\n# Summary statistics\nsummary(mtcars)\n\n# Linear model\nmodel <- lm(mpg ~ wt + hp, data = mtcars)\nsummary(model)"
       },
-      "explanation": "IRkernel for R. Install R packages, then ggplot2, dplyr, etc. work."
+      "explanation": "IRkernel for R. Install R packages, then ggplot2, dplyr, etc. will work."
     },
     {
       "type": "code",
@@ -736,7 +736,7 @@
         "",
         "<strong>❌ Cons:</strong>",
         "• Weekly GPU limits",
-        "• No internet access (security, Kaggle solo datasets)",
+        "• No internet access (security, solo Kaggle datasets)",
         "• Less popular than Colab",
         "",
         "<strong>Perfect for:</strong>",
@@ -808,7 +808,7 @@
         "language": "bash",
         "snippet": "# Installazione\npip install voila\n\n# Converti notebook in web app (hide code)\nvoila mynotebook.ipynb\n\n# Apre browser su http://localhost:8866\n# Mostra solo output e widgets (no code cells)\n\n# Serve directory\nvoila notebooks/\n\n# Template custom\nvoila mynotebook.ipynb --template=dark\n\n# Deploy su Heroku/Binder\n# Voilà può essere hostato come web app\n\n# ===== Esempio notebook per Voilà =====\n# mynotebook.ipynb\nimport ipywidgets as widgets\nimport pandas as pd\nimport plotly.express as px\n\n# Load data\ndf = pd.read_csv('data.csv')\n\n# Dropdown filter\ncategory = widgets.Dropdown(\n    options=df['category'].unique(),\n    description='Category:'\n)\n\n# Interactive plot\ndef update_plot(cat):\n    filtered = df[df['category'] == cat]\n    fig = px.bar(filtered, x='name', y='value')\n    fig.show()\n\nwidgets.interactive(update_plot, cat=category)\n\n# Voilà rende questo un dashboard interattivo"
       },
-      "explanation": "Here you go: notebook → web app. Hide code, show widgets. Deploy dashboards."
+      "explanation": "Voilà: notebook → web app. Hide code, show widgets. Deploy dashboards."
     },
     {
       "type": "code",
@@ -869,7 +869,7 @@
         "Output renders git diff unreadable",
         "<code>jupyter nbconvert --clear-output --inplace *.ipynb</code>",
         "",
-        "<strong>2. nbstripout per git automation</strong>",
+        "<strong>2. nbstripout for git automation</strong>",
         "<code>pip install nbstripout</code>",
         "<code>nbstripout --install</code> (auto-strip on commit)",
         "",
@@ -883,7 +883,7 @@
         "Download link or script to fetch data",
         "",
         "<strong>6. Restart & Run All before sharing</strong>",
-        "Check everything is executed correctly",
+        "Check everything executes correctly",
         "",
         "<strong>7. Markdown documentation</strong>",
         "Explain what the notebook does, assumptions, results.",
@@ -972,9 +972,9 @@
         "",
         "<strong>8. Notebook as script</strong>",
         "❌ Pure execution, no exploration/analysis",
-        "✅ Use a .py script instead (notebook is for exploration)"
+        "✅ Use .py script instead (notebook is for exploration)"
       ],
-      "ironicClosing": "Anti-patterns: a fast track to tech debt. Notebook becomes legacy code that no one touches."
+      "ironicClosing": "Anti-patterns: a quick route to tech debt. Notebook becomes legacy code that no one touches."
     },
     {
       "type": "text",
@@ -1004,7 +1004,7 @@
         "• Jupyter for exploration & prototyping",
         "• Refactor mature code into .py modules",
         "• Import modules in notebook",
-        "• Production: scripts Python standard"
+        "• Production: standard Python scripts"
       ],
       "ironicClosing": "Jupyter: great for exploration. Horrible for production. Know the boundaries, thrive."
     }

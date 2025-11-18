@@ -37,6 +37,11 @@
       "workshop-tensorflow-nlp"
     ],
     "guides": [
+      "python-fundamentals",
+      "numpy-fundamentals",
+      "pandas-fundamentals",
+      "javascript-node-fundamentals",
+      "nextjs-fundamentals",
       "jupyter-fundamentals"
     ]
   }
