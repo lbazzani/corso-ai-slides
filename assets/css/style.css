@@ -659,6 +659,90 @@ code[class*="language-"] {
     margin-top: 1rem;
 }
 
+/* Title Slide - Prima slide di ogni capitolo */
+.title-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 60vh;
+    padding: 2rem 0;
+}
+
+.title-slide-decoration {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.title-slide-icon {
+    font-size: 4rem;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.title-slide h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 1rem 0 0.5rem 0;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.title-slide h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--text-light);
+    margin: 0.5rem 0 2rem 0;
+    text-align: center;
+    width: 100%;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+.title-slide-description {
+    position: relative;
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(to right, rgba(59, 130, 246, 0.05), rgba(147, 51, 234, 0.05));
+    border-radius: 12px;
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    max-width: 600px;
+}
+
+.description-accent {
+    position: absolute;
+    left: -3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 60%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    border-radius: 3px;
+}
+
+.title-slide-description p {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.6;
+}
+
 /* Slide buddy - personaggio ironico che appare dopo 20 secondi */
 .slide-buddy {
     position: fixed;
@@ -1223,6 +1307,26 @@ code[class*="language-"] {
         font-size: 1.3rem;
         padding: 0.5rem 0.9rem;
     }
+
+    .title-slide-icon {
+        font-size: 3rem;
+    }
+
+    .title-slide h1 {
+        font-size: 2.8rem;
+    }
+
+    .title-slide h2 {
+        font-size: 1.7rem;
+    }
+
+    .title-slide-description {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .title-slide-description p {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1265,6 +1369,27 @@ code[class*="language-"] {
     .slide-list li {
         font-size: 1.2rem;
         padding: 0.5rem 0.8rem;
+    }
+
+    .title-slide-icon {
+        font-size: 2.5rem;
+    }
+
+    .title-slide h1 {
+        font-size: 2rem;
+    }
+
+    .title-slide h2 {
+        font-size: 1.3rem;
+    }
+
+    .title-slide-description {
+        padding: 1rem 1.2rem;
+        max-width: 100%;
+    }
+
+    .title-slide-description p {
+        font-size: 1.1rem;
     }
 
     .two-column {

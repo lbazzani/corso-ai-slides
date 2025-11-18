@@ -1,7 +1,15 @@
-<h1>{{title}}</h1>
-{{#if subtitle}}
-<h2>{{subtitle}}</h2>
-{{/if}}
-{{#if description}}
-<p>{{description}}</p>
-{{/if}}
+<div class="title-slide">
+    <div class="title-slide-decoration">
+        <div class="title-slide-icon">🎯</div>
+    </div>
+    <h1>{{title}}</h1>
+    {{#if subtitle}}
+    <h2>{{subtitle}}</h2>
+    {{/if}}
+    {{#if description}}
+    <div class="title-slide-description">
+        <div class="description-accent"></div>
+        <p>{{description}}</p>
+    </div>
+    {{/if}}
+</div>
