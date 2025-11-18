@@ -306,12 +306,12 @@
       "type": "text",
       "title": "Google: Il Gigante che Accelera",
       "paragraphs": [
-        "<strong>Gemini:</strong> Quota web più che raddoppiata (2024-2025)",
-        "<strong>Vertex AI:</strong> Platform enterprise leader",
-        "<strong>Investimenti:</strong> $3B+ in Anthropic, infrastruttura massiccia",
-        "Google AI esisteva prima dell'hype. Ora domina l'infrastruttura che lo alimenta"
+        "<strong>Gemini:</strong> Quota web traffico più che raddoppiata in 1 anno (2024-2025)",
+        "<strong>Vertex AI:</strong> Platform enterprise leader - se devi deployare in production, ci passi",
+        "<strong>Investimenti:</strong> $3B+ in Anthropic (hedge delle scommesse), infrastruttura TPU massiccia",
+        "Google faceva AI quando 'AI' significava solo CAPTCHA. Ora domina l'infrastruttura che alimenta l'hype altrui"
       ],
-      "ironicClosing": "Quando possiedi già la search, l'email e il cloud, aggiungere l'AI è solo questione di quando",
+      "ironicClosing": "Quando possiedi già search, email, cloud, YouTube e Android... aggiungere l'AI è solo questione di quando.",
       "citations": [
         {
           "text": "Gemini more than doubled web traffic share in last year",
@@ -331,21 +331,21 @@
       "leftColumn": {
         "title": "Meta",
         "items": [
-          "<strong>LLaMA:</strong> Open source leader",
-          "<strong>Context:</strong> 10M tokens (LLaMA 4)",
-          "Strategia: open weight, infra propria"
+          "<strong>LLaMA:</strong> Leader open weight - rilasciato gratis, licenza commerciale",
+          "<strong>Context:</strong> 10M tokens (LLaMA 4) - leggi War and Peace 20 volte in un prompt",
+          "Strategia: open weight, GPU proprie, zero dipendenza da OpenAI"
         ]
       },
       "rightColumn": {
         "title": "Cohere",
         "items": [
-          "<strong>Command R+:</strong> Enterprise focus",
-          "<strong>RAG:</strong> Native optimization",
-          "Use case: production systems"
+          "<strong>Command R+:</strong> Enterprise-first, compliance ready",
+          "<strong>RAG nativo:</strong> Ottimizzato per retrieval (non afterthought)",
+          "Use case: production, non demo - quando serve che funzioni davvero"
         ]
       },
-      "note": "<strong>Mistral AI (Francia):</strong> Valuation $6B+ (2024). Focus: sovereignty, open models, Europa",
-      "ironicClosing": "Il campo di battaglia è globale, ma i player europei stanno difendendo il terreno",
+      "note": "<strong>Mistral AI (Francia):</strong> Valuation $6B+ (2024). Focus: sovranità digitale EU, modelli open, no dependency USA",
+      "ironicClosing": "Il campo di battaglia AI è globale. I player europei stanno difendendo (e perdendo) terreno.",
       "citations": [
         {
           "text": "LLaMA 4 offers context windows up to 10M tokens",
@@ -360,22 +360,22 @@
       "items": [
         {
           "rank": "🏆",
-          "name": "Claude",
-          "description": "Precision, context awareness, costruisce app complete"
+          "name": "Claude Sonnet 4",
+          "description": "Precisione chirurgica, context awareness, scrive app complete funzionanti - il preferito dei dev"
         },
         {
           "rank": "🥈",
           "name": "GPT-4o",
-          "description": "Flessibilità, creatività, spiegazioni chiare"
+          "description": "Versatile, creativo, spiega bene - ottimo per learning e prototipazione rapida"
         },
         {
           "rank": "🥉",
-          "name": "Gemini",
-          "description": "Solido, veloce (Flash), cost-effective"
+          "name": "Gemini Flash",
+          "description": "Veloce, economico, sorprendentemente capace - best ROI quando il budget conta"
         }
       ],
-      "note": "Reality check: Claude 4 Sonnet costa 20x Gemini Flash",
-      "ironicClosing": "Il migliore per il tuo task != il più costoso != il più hyped",
+      "note": "Reality check: Claude 4 Sonnet costa 20x Gemini Flash. Scegli in base al task, non all'hype.",
+      "ironicClosing": "Il migliore LLM per te != il più costoso != il più hyped != quello che usa il tuo collega",
       "citations": [
         {
           "text": "Claude excels in coding with precision and context awareness",
@@ -394,15 +394,15 @@
       "title": "LLM Showdown: Writing & Research",
       "paragraphs": [
         "<strong>Creative Writing:</strong>",
-        "🏆 Claude 3.5 Sonnet - Profondità emotiva, storytelling",
-        "🥈 ChatGPT - Conversazionale, popolare, versatile",
+        "🏆 Claude 3.5 Sonnet - Profondità emotiva, storytelling naturale, non suona come AI",
+        "🥈 ChatGPT - Conversazionale, accessibile, va dritto al punto (a volte troppo)",
         "",
-        "<strong>Deep Research:</strong>",
-        "Claude: 7 pagine / <strong>427 fonti</strong>",
-        "ChatGPT: 36 pagine / 25 fonti",
-        "Gemini: 48 pagine / 100 fonti"
+        "<strong>Deep Research (stesso prompt, stesso topic):</strong>",
+        "Claude: 7 pagine compatte / <strong>427 fonti verificate</strong> (densità)",
+        "ChatGPT: 36 pagine / 25 fonti (verbosità)",
+        "Gemini: 48 pagine / 100 fonti (middle ground)"
       ],
-      "ironicClosing": "Volume vs densità: entrambi hanno ragione, dipende cosa stai cercando",
+      "ironicClosing": "Volume vs densità vs equilibrio: dipende se ti pagano a parola o a insight.",
       "citations": [
         {
           "text": "Claude 3.5 Sonnet creative powerhouse for emotional depth",
@@ -419,14 +419,15 @@
     {
       "type": "list",
       "title": "Tendenze 2026: Multimodalità Nativa",
-      "intro": "Input/Output nativamente <strong>cross-modal:</strong>",
+      "intro": "Input/Output nativamente <strong>cross-modal</strong> - non più un feature add-on:",
       "items": [
-        "Testo + Immagini + Audio + Video",
-        "Gemini 2.0: multimodal-first design",
-        "GPT-4o: ottimizzato per interazione real-time",
-        "Claude: visual understanding avanzato"
+        "Testo + Immagini + Audio + Video processati simultaneamente, non sequenzialmente",
+        "Gemini 2.0: multimodal-first design - nato così, non retrofittato",
+        "GPT-4o: ottimizzato per interazione real-time voce/video/screen",
+        "Claude: visual understanding avanzato - legge screenshot come codice",
+        "GPT-4.5 Vision Pro: analisi video frame-by-frame real-time"
       ],
-      "ironicClosing": "Quando descrivere un'immagine con parole inizia a sembrare primitivo",
+      "ironicClosing": "Quando descrivere un'immagine con 1000 parole inizia a sembrare barbarico. Basta inviarla.",
       "citations": [
         {
           "text": "2025 models show significant multimodal capabilities across modalities",
@@ -438,16 +439,16 @@
     {
       "type": "list",
       "title": "Tendenze 2026: AI Agentica",
-      "intro": "Da chatbot reattivi ad <strong>agent autonomi:</strong>",
-      "subtitle": "Caratteristiche:",
+      "intro": "Da chatbot reattivi ad <strong>agent autonomi</strong> - il vero cambio di paradigma:",
+      "subtitle": "Caratteristiche chiave degli AI agents:",
       "items": [
-        "Reasoning multi-step",
-        "Planning e decomposizione task",
-        "Memory persistente",
-        "Tool use (API, DB, browser)",
-        "Collaboration multi-agent"
+        "Reasoning multi-step: non solo next token, ma chain-of-thought pianificato",
+        "Planning e decomposizione task: 'scrivi una app' diventa 20 subtask eseguiti autonomamente",
+        "Memory persistente: ricorda conversazioni, decisioni, errori passati",
+        "Tool use nativo: API, database, browser, terminal - non è simulato, è reale",
+        "Collaboration multi-agent: swarm di agent specializzati che cooperano"
       ],
-      "ironicClosing": "L'AI che non aspetta i tuoi comandi ma capisce i tuoi obiettivi",
+      "ironicClosing": "L'AI che non aspetta i tuoi prompt ma persegue i tuoi obiettivi. Autonomamente. Per ore.",
       "citations": [
         {
           "text": "2025 trend: autonomous AI systems with multi-step reasoning capabilities",
@@ -500,15 +501,15 @@
       "type": "text",
       "title": "La Scelta Pragmatica 2026",
       "paragraphs": [
-        "<strong>Coding production:</strong> Claude o DeepSeek (cost)",
-        "<strong>Creative content:</strong> Claude 3.5 Sonnet",
-        "<strong>Conversational:</strong> ChatGPT (ecosystem)",
-        "<strong>Multimodal:</strong> Gemini 2.0",
-        "<strong>Research intensive:</strong> Claude (citations)",
-        "<strong>Budget-conscious:</strong> Gemini Flash, LLaMA 4",
-        "<strong>Enterprise compliance:</strong> Hyperscaler managed services"
+        "<strong>Coding production serio:</strong> Claude Sonnet 4 o DeepSeek (se budget tight)",
+        "<strong>Creative content & copywriting:</strong> Claude 3.5 Sonnet (non suona come AI)",
+        "<strong>Conversational & quick tasks:</strong> ChatGPT (ecosystem ricco, UX familiare)",
+        "<strong>Multimodal (video/audio/vision):</strong> Gemini 2.0 Flash",
+        "<strong>Research intensivo con fonti:</strong> Claude (427 sources vs 25 di GPT)",
+        "<strong>Budget-conscious scale:</strong> Gemini Flash, LLaMA 4, Mistral",
+        "<strong>Enterprise compliance/audit:</strong> Hyperscaler managed (Azure, Vertex, Bedrock)"
       ],
-      "ironicClosing": "Non esiste 'il migliore', esiste il fit giusto per il tuo problema e il tuo budget",
+      "ironicClosing": "Non esiste 'il migliore LLM'. Esiste il fit giusto per task, budget, compliance e team skills.",
       "citations": [
         {
           "text": "Best LLM 2025: the one that solves your problem, not newest or most expensive",
@@ -521,12 +522,12 @@
       "type": "text",
       "title": "Previsioni 2026",
       "paragraphs": [
-        "<strong>Consolidamento:</strong> Le piattaforme vincenti integrano tutto (LLM + RAG + agents + tools)",
-        "<strong>Commoditization:</strong> I modelli base diventeranno commodity, il valore si sposta su specializzazione e orchestrazione",
-        "<strong>Regulation:</strong> EU AI Act e simili iniziano a mordere",
-        "<strong>Open source:</strong> Continua a guidare innovazione bottom-up"
+        "<strong>Consolidamento piattaforme:</strong> Vince chi integra tutto - LLM + RAG + agents + tools + deployment. Il modello da solo non basta più.",
+        "<strong>Commoditization modelli base:</strong> GPT-4 level diventa commodity. Il valore si sposta su: specializzazione domain, orchestrazione multi-agent, fine-tuning proprietario.",
+        "<strong>Regulation bites back:</strong> EU AI Act + simili iniziano a mordere davvero. Audit trail, explainability, bias testing diventano mandatori.",
+        "<strong>Open source accelera:</strong> LLaMA, Mistral, DeepSeek continuano a guidare innovazione bottom-up. Closed source perde appeal."
       ],
-      "ironicClosing": "Il 2026 sarà l'anno in cui l'AI diventa noioso (in senso buono: funziona, basta)"
+      "ironicClosing": "Il 2026 sarà l'anno in cui l'AI diventa noiosa. Nel senso buono: funziona, è affidabile, basta parlarne."
     },
     {
       "type": "summary",

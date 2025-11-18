@@ -75,19 +75,19 @@
       "title": "The Market: The Numbers of 2025",
       "metrics": [
         {
-          "value": "$1.5 trilioni",
-          "label": "Spesa AI globale 2025"
+          "value": "$1.5 trillion",
+          "label": "Global AI spending in 2025 (more than Australia's GDP)"
         },
         {
-          "value": "$2 trilioni",
-          "label": "Previsione per il 2026"
+          "value": "$2 trillion",
+          "label": "2026 forecast - basically Italy's GDP"
         },
         {
           "value": "+33%",
-          "label": "Crescita anno su anno"
+          "label": "Year-over-year growth - faster than our coffee consumption to manage it"
         }
       ],
-      "ironicClosing": "From 'interesting' to 'critical infrastructure' in 24 months",
+      "ironicClosing": "From 'interesting' to 'critical infrastructure' in 24 months. ChatGPT sends its regards.",
       "citations": [
         {
           "text": "Gartner: Worldwide AI spending will total $1.5 trillion in 2025",
@@ -106,19 +106,19 @@
       "title": "AI Software: The Growth",
       "metrics": [
         {
-          "value": "$297.9 miliardi",
-          "label": "AI software entro 2027"
+          "value": "$297.9 billion",
+          "label": "Global AI software market by 2027"
         },
         {
           "value": "CAGR 19.1%",
-          "label": "Tasso crescita annuale"
+          "label": "Compound annual growth rate (for those who hate acronyms: +19.1% every year)"
         },
         {
           "value": "35%",
-          "label": "Quota GenAI sul totale AI software (2027, era 8% nel 2023)"
+          "label": "GenAI share of total AI software in 2027 (was 8% in 2023 - quadrupled)"
         }
       ],
-      "ironicClosing": "The software that writes software is becoming the best-selling software.",
+      "ironicClosing": "The software that writes software is becoming the best-selling software. Meta.",
       "citations": [
         {
           "text": "AI software spending to grow to $297.9B by 2027 with 19.1% CAGR",
@@ -133,18 +133,18 @@
       "metrics": [
         {
           "value": "70%+",
-          "label": "ISV integreranno GenAI entro 2026 (vs <1% nel 2024)"
+          "label": "Software vendors (ISVs) will integrate GenAI by 2026. Was <1% in 2024."
         },
         {
           "value": "33%",
-          "label": "Enterprise app con AI agentica entro 2028"
+          "label": "Enterprise software with agentic AI by 2028 (1 in 3 apps will have an AI agent)"
         },
         {
           "value": "65%+",
-          "label": "Enterprises hanno adottato AI agents (fine 2025)"
+          "label": "Large enterprises already using AI agents by end of 2025"
         }
       ],
-      "ironicClosing": "From 'we are evaluating' to 'already in production' faster than we thought.",
+      "ironicClosing": "From 'we're evaluating' to 'already in production' faster than your average budget meeting.",
       "citations": [
         {
           "text": "70% of ISVs will embed GenAI in enterprise apps by 2026, up from <1% in 2024",
