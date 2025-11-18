@@ -1,0 +1,1039 @@
+{
+  "number": 8,
+  "title": "PyTorch & TensorFlow: Deep Learning in Practice",
+  "description": "From Machine Learning to Deep Learning - Frameworks, history, comparisons, and future",
+  "steps": [
+    {
+      "name": "Introduction to ML & DL",
+      "slides": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "Neural Networks 101",
+      "slides": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "Deep Learning History",
+      "slides": [
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "name": "TensorFlow",
+      "slides": [
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "name": "PyTorch",
+      "slides": [
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "name": "Comparison",
+      "slides": [
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "name": "Other Frameworks",
+      "slides": [
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "name": "Cloud & Hyperscaler",
+      "slides": [
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "name": "Numbers & Adoptions",
+      "slides": [
+        29,
+        30,
+        31
+      ]
+    },
+    {
+      "name": "Hardware",
+      "slides": [
+        32,
+        33
+      ]
+    },
+    {
+      "name": "Future & Tips",
+      "slides": [
+        34,
+        35,
+        36
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "PyTorch & TensorFlow",
+      "subtitle": "Deep Learning Becomes Accessible",
+      "description": "How two frameworks have democratized AI"
+    },
+    {
+      "type": "text",
+      "title": "Machine Learning vs Deep Learning",
+      "paragraphs": [
+        "<strong>Machine Learning (ML):</strong>",
+        "• Computers learn from data without being explicitly programmed.",
+        "• Input → Manual Feature Engineering → Algorithm → Output",
+        "• Examples: Decision Trees, Random Forest, SVM, Linear Regression",
+        "• Requires feature engineering: choosing which data is relevant",
+        "",
+        "<strong>Deep Learning (DL):</strong>",
+        "• A subset of ML that uses neural networks with many layers (deep)",
+        "• Input → Neural Network (automatically learns features) → Output",
+        "• Examples: CNN (images), RNN/Transformer (text), GAN (generation)",
+        "• Automatic feature learning: the network learns what is important"
+      ],
+      "ironicClosing": "ML: you say what to look at. DL: the network decides what to look at."
+    },
+    {
+      "type": "text",
+      "title": "When to Use ML vs DL",
+      "paragraphs": [
+        "<strong>Traditional Machine Learning when:</strong>",
+        "• Small dataset (< 10K examples)",
+        "• Structured/tabular data (CSV, database)",
+        "• Interpretability is needed (to explain decisions)",
+        "• Limited resources (CPU, no GPU)",
+        "• Examples: fraud detection, real estate pricing, churn prediction",
+        "",
+        "<strong>Deep Learning when:</strong>",
+        "• Large dataset (> 100K examples)",
+        "• Unstructured data (images, text, audio, video)",
+        "• Performance > interpretability",
+        "• Available hardware (GPU/TPU)",
+        "• Esempi: computer vision, NLP, speech recognition, LLM"
+      ],
+      "ironicClosing": "Got 1000 cat photos? ML. Got 1 million? DL time."
+    },
+    {
+      "type": "text",
+      "title": "The Deep Learning Workflow",
+      "paragraphs": [
+        "<strong>1. Data:</strong> Collection and preparation of the dataset (80% of the work)",
+        "<strong>2. Model:</strong> Define neural network architecture",
+        "<strong>3. Training:</strong> The network learns from the data (iterations + backpropagation)",
+        "<strong>4. Validation:</strong> Test on unseen data",
+        "<strong>5. Deploy:</strong> Put the model into production",
+        "",
+        "<strong>Key concepts:</strong>",
+        "• <strong>Forward pass:</strong> Input → layer → layer → output",
+        "• <strong>Loss:</strong> How much the model is wrong",
+        "• <strong>Backpropagation:</strong> Updates weights to reduce loss",
+        "• <strong>Epochs:</strong> How many times the entire dataset is seen",
+        "• <strong>Batch size:</strong> How many examples it processes together"
+      ],
+      "ironicClosing": "Training = showing examples 1000 times until the network gets it."
+    },
+    {
+      "type": "text",
+      "title": "Why Do You Need a Framework?",
+      "paragraphs": [
+        "<strong>Without a framework:</strong> Implementing backpropagation by hand in NumPy = hell",
+        "",
+        "<strong>With frameworks (PyTorch/TensorFlow):</strong>",
+        "• <strong>Auto-differentiation:</strong> Automatically calculates gradients",
+        "• <strong>GPU acceleration:</strong> Training 10-100x più veloce",
+        "• <strong>Pre-built layers:</strong> Conv2D, LSTM, Attention already ready",
+        "• <strong>Model zoo:</strong> ResNet, BERT, GPT pre-trained",
+        "• <strong>Production tools:</strong> Export, optimize, deploy",
+        "",
+        "<strong>In practice:</strong>",
+        "• Define architecture in a few lines",
+        "• The framework handles all the complex calculations.",
+        "• You focus on data and architecture, not on mathematics."
+      ],
+      "ironicClosing": "Framework = from 1000 lines of math to 50 lines of readable code."
+    },
+    {
+      "type": "title",
+      "title": "Neural Networks 101",
+      "subtitle": "The Basics of Deep Learning",
+      "description": "How a neural network works (simplified)"
+    },
+    {
+      "type": "text",
+      "title": "Anatomy of a Neural Network",
+      "paragraphs": [
+        "<strong>Artificial neuron:</strong>",
+        "• Receives input (numbers)",
+        "• Multiply by weights",
+        "• Sum everything + bias",
+        "• Apply activation function (ReLU, sigmoid)",
+        "• Output → next layer",
+        "",
+        "<strong>Layer types:</strong>",
+        "• <strong>Dense/Fully Connected:</strong> Each neuron is connected to all neurons in the previous layer.",
+        "• <strong>Convolutional (CNN):</strong> For images, detects local patterns",
+        "• <strong>Recurrent (RNN):</strong> For sequences, it has memory",
+        "• <strong>Attention/Transformer:</strong> Weighs the importance of each input (LLM!)",
+        "",
+        "<strong>Simple formula:</strong> output = activation(input × weights + bias)"
+      ],
+      "ironicClosing": "A neural network is just multiplications and sums. Lots of them. Tons of them."
+    },
+    {
+      "type": "text",
+      "title": "How Does a Network Learn?",
+      "paragraphs": [
+        "<strong>1. Forward pass (prediction):</strong>",
+        "• Input passes through all the layers",
+        "• Get output (e.g. 'This photo is a cat: 87%')",
+        "",
+        "<strong>2. Calculate Loss (error):</strong>",
+        "• Compare prediction with truth (real label)",
+        "• High loss = model makes many mistakes",
+        "• Low loss = good model",
+        "",
+        "<strong>3. Backpropagation (update):</strong>",
+        "• Calculate how much each weight contributed to the error",
+        "• Update weights to reduce loss",
+        "• Gradient descent: small steps towards minimum loss",
+        "",
+        "<strong>4. Repeat 1000+ times (epochs):</strong>",
+        "• Each step improves a little bit",
+        "• In the end: accurate model"
+      ],
+      "ironicClosing": "Training = making mistakes 1000 times and learning from your errors."
+    },
+    {
+      "type": "code",
+      "title": "💻 Neural Network: Concept",
+      "code": {
+        "language": "python",
+        "snippet": "# Pseudocodice per capire il concetto\n\n# 1. Definisci architettura\nmodel = NeuralNetwork([\n    InputLayer(784),      # 28x28 immagine = 784 pixel\n    DenseLayer(128),      # Hidden layer con 128 neuroni\n    ActivationLayer('relu'),\n    DenseLayer(10),       # Output: 10 classi (cifre 0-9)\n    ActivationLayer('softmax')\n])\n\n# 2. Training loop\nfor epoch in range(100):  # 100 passaggi su tutto il dataset\n    for batch in dataset:\n        # Forward pass\n        predictions = model.forward(batch.images)\n        \n        # Calculate loss\n        loss = cross_entropy(predictions, batch.labels)\n        \n        # Backpropagation\n        gradients = model.backward(loss)\n        \n        # Update weights\n        model.update_weights(gradients, learning_rate=0.01)\n\n# 3. Inference (uso)\nimage = load_image('digit.png')\nprediction = model.predict(image)\nprint(f'Predicted digit: {prediction}')  # 7"
+      },
+      "explanation": "The framework handles forward, backward, gradients. You define the architecture and call train()."
+    },
+    {
+      "type": "title",
+      "title": "History of Deep Learning",
+      "subtitle": "Why Did It Work Now?",
+      "description": "The 3 conditions that changed everything"
+    },
+    {
+      "type": "text",
+      "title": "The Long Winter of AI (1950-2010)",
+      "paragraphs": [
+        "<strong>1950s-1960s: First artificial neurons</strong>",
+        "• Perceptron (Rosenblatt, 1958): first artificial neuron",
+        "• Problem: XOR not solvable, obvious limitations",
+        "",
+        "<strong>1970s-1980s: First AI Winter</strong>",
+        "• Backpropagation invented (1986) but too slow",
+        "• Computers that are too weak, datasets that are too small",
+        "",
+        "<strong>1990s-2000s: Traditional ML dominates</strong>",
+        "• SVM and Random Forest work better with limited data.",
+        "• Deep Learning relegated to academic research",
+        "",
+        "<strong>2012: The Turning Point</strong>",
+        "• AlexNet wins ImageNet with CNN (Hinton et al.)",
+        "• Error reduced by 40% compared to traditional methods",
+        "• Industry understands: Deep Learning works!"
+      ],
+      "ironicClosing": "60 years of research. Then in 2012: boom. Everything changes.",
+      "citations": [
+        {
+          "text": "AlexNet (2012) ha ridotto l'errore top-5 su ImageNet da 25.8% a 15.3%",
+          "source": "ImageNet Classification with Deep Convolutional Neural Networks",
+          "url": "https://papers.nips.cc/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "The 3 Conditions for Success",
+      "paragraphs": [
+        "<strong>1. Big Data (2000s-today):</strong>",
+        "• The Internet generates billions of images, texts, videos",
+        "• ImageNet (2009): 14M labeled images",
+        "• Wikipedia, Common Crawl: huge text datasets",
+        "• Deep Learning requires A LOT of data to work",
+        "",
+        "<strong>2. Hardware (GPU/TPU):</strong>",
+        "• GPU gaming (NVIDIA) perfect for matrix math",
+        "• 2012: CUDA + cuDNN make GPUs accessible",
+        "• Training that required months → days → hours",
+        "• Google TPU (2016): custom hardware for AI",
+        "",
+        "<strong>3. Framework Moderni (2015-oggi):</strong>",
+        "• TensorFlow (Google, 2015): the first true democratization",
+        "• PyTorch (Facebook, 2016): research becomes accessible",
+        "• From PhD-only to developer-friendly in 5 years"
+      ],
+      "ironicClosing": "Data + GPU + Framework = the AI explosion we see today.",
+      "citations": [
+        {
+          "text": "ImageNet dataset contiene 14,197,122 immagini in 21,841 categorie",
+          "source": "ImageNet Large Scale Visual Recognition Challenge",
+          "url": "https://www.image-net.org/about.php"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Timeline: Key Moments",
+      "paragraphs": [
+        "<strong>2012:</strong> AlexNet wins ImageNet (CNN revolution)",
+        "<strong>2014:</strong> GAN inventate (Goodfellow) - AI genera immagini",
+        "<strong>2015:</strong> ResNet (He et al.) - networks with 152 layers",
+        "<strong>2015:</strong> TensorFlow released by Google (open source)",
+        "<strong>2016:</strong> AlphaGo beats Go champion (DeepMind)",
+        "<strong>2016:</strong> PyTorch released by Facebook AI Research",
+        "<strong>2017:</strong> Attention Is All You Need - Transformer invented",
+        "<strong>2018:</strong> BERT (Google) - NLP revolution",
+        "<strong>2019:</strong> GPT-2 (OpenAI) - impressive language generation",
+        "<strong>2020:</strong> GPT-3 - 175B parameters, few-shot learning",
+        "<strong>2022:</strong> Stable Diffusion, ChatGPT - AI goes mainstream",
+        "<strong>2023-2024:</strong> LLM everywhere, multi-modal AI (GPT-4V, Gemini)"
+      ],
+      "ironicClosing": "From 2012 to today: from niche research to global revolution."
+    },
+    {
+      "type": "title",
+      "title": "TensorFlow",
+      "subtitle": "The Google Framework",
+      "description": "Production-ready, scalable, complete ecosystem"
+    },
+    {
+      "type": "text",
+      "title": "TensorFlow: History and Philosophy",
+      "paragraphs": [
+        "<strong>Who:</strong> Google Brain Team (originally)",
+        "<strong>Release:</strong> November 2015 (open source)",
+        "<strong>Predecessor:</strong> DistBelief (internal Google since 2011)",
+        "",
+        "<strong>Philosophy:</strong>",
+        "• Production-first: from research to deploy seamless",
+        "• Scalability: from mobile to Google-scale datacenter",
+        "• Complete ecosystem: TF Lite (mobile), TF.js (browser), TF Serving",
+        "• Static graph (TF 1.x): define-then-run",
+        "• Eager execution (TF 2.x): dynamic, PyTorch-style",
+        "",
+        "<strong>Used by:</strong> Google (Search, Translate, Photos), Uber, Airbnb, Coca-Cola, Twitter",
+        "",
+        "<strong>Strengths:</strong> Production, deployment, mobile, mature ecosystem"
+      ],
+      "ironicClosing": "TensorFlow: if you want to go to production, it's the safe choice.",
+      "citations": [
+        {
+          "text": "TensorFlow rilasciato nel Nov 2015, 180K+ stars su GitHub",
+          "source": "TensorFlow GitHub Repository",
+          "url": "https://github.com/tensorflow/tensorflow"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "💻 TensorFlow 2.x: Hello World",
+      "code": {
+        "language": "python",
+        "snippet": "import tensorflow as tf\nfrom tensorflow import keras\n\n# 1. Load dataset (MNIST: handwritten digits)\n(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()\nx_train, x_test = x_train / 255.0, x_test / 255.0  # Normalize\n\n# 2. Define model (Sequential API - semplice)\nmodel = keras.Sequential([\n    keras.layers.Flatten(input_shape=(28, 28)),\n    keras.layers.Dense(128, activation='relu'),\n    keras.layers.Dropout(0.2),\n    keras.layers.Dense(10, activation='softmax')\n])\n\n# 3. Compile (specifica loss, optimizer, metrics)\nmodel.compile(\n    optimizer='adam',\n    loss='sparse_categorical_crossentropy',\n    metrics=['accuracy']\n)\n\n# 4. Train\nmodel.fit(x_train, y_train, epochs=5, validation_split=0.1)\n\n# 5. Evaluate\ntest_loss, test_acc = model.evaluate(x_test, y_test)\nprint(f'Test accuracy: {test_acc:.3f}')\n\n# 6. Save model\nmodel.save('my_model.keras')"
+      },
+      "explanation": "TensorFlow 2.x with Keras: high-level, easy, production-ready."
+    },
+    {
+      "type": "text",
+      "title": "TensorFlow: Complete Ecosystem",
+      "paragraphs": [
+        "<strong>TensorFlow Core:</strong> Training and building models",
+        "",
+        "<strong>TensorFlow Lite:</strong> Deployment on mobile/IoT (Android, iOS)",
+        "• Optimized models, quantization, < 1MB possible",
+        "",
+        "<strong>TensorFlow.js:</strong> ML in the browser (JavaScript)",
+        "• Inference client-side, privacy-friendly",
+        "",
+        "<strong>TensorFlow Serving:</strong> Deploy models in production",
+        "• REST/gRPC API, versioning, automatic scaling",
+        "",
+        "<strong>TensorFlow Extended (TFX):</strong> ML pipeline production",
+        "• Data validation, training, serving, monitoring",
+        "",
+        "<strong>TensorFlow Hub:</strong> Pre-trained model repository",
+        "• Transfer learning ready, community contributions"
+      ],
+      "ironicClosing": "TensorFlow = not just training. Entire ML lifecycle covered."
+    },
+    {
+      "type": "text",
+      "title": "TensorFlow: Real Use Cases",
+      "paragraphs": [
+        "<strong>Google Photos:</strong> Object and face recognition in billions of photos",
+        "",
+        "<strong>Google Translate:</strong> Neural Machine Translation (NMT) with Transformer",
+        "",
+        "<strong>Uber:</strong> Demand forecasting and dynamic pricing",
+        "• TensorFlow models process millions of requests per second",
+        "",
+        "<strong>Airbnb:</strong> Smart pricing and personalized recommendations",
+        "",
+        "<strong>Twitter:</strong> Feed ranking and content moderation",
+        "",
+        "<strong>DeepMind AlphaGo:</strong> Even though they now use JAX, it started with TensorFlow.",
+        "",
+        "<strong>Why TensorFlow for these:</strong> Scalability, reliability, easy deployment"
+      ],
+      "ironicClosing": "If you need Google-level scale, TensorFlow is battle-tested."
+    },
+    {
+      "type": "title",
+      "title": "PyTorch",
+      "subtitle": "The Meta/Facebook Framework",
+      "description": "Research-friendly, pythonic, dynamic computation"
+    },
+    {
+      "type": "text",
+      "title": "PyTorch: History and Philosophy",
+      "paragraphs": [
+        "<strong>Who:</strong> Meta AI Research (formerly Facebook AI Research)",
+        "<strong>Release:</strong> January 2017 (open source)",
+        "<strong>Predecessor:</strong> Torch (Lua), used by DeepMind and others",
+        "",
+        "<strong>Philosophy:</strong>",
+        "• Research-first: iteration speed > production",
+        "• Pythonic: natural API, resembles NumPy",
+        "• Dynamic computation graph: define-by-run",
+        "• Easy debugging: Python debugger works normally",
+        "• Academic community: papers implemented in PyTorch first",
+        "",
+        "<strong>Used by:</strong> Meta/Facebook, Tesla Autopilot, OpenAI (GPT!), Hugging Face, DeepMind (partially)",
+        "",
+        "<strong>Strengths:</strong> Research, NLP/LLM, flexibility, community"
+      ],
+      "ironicClosing": "PyTorch: if you're doing research or NLP, it's the de facto standard.",
+      "citations": [
+        {
+          "text": "PyTorch supera TensorFlow nei paper accademici (60%+ nel 2023)",
+          "source": "Papers With Code Trends",
+          "url": "https://paperswithcode.com/trends"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "💻 PyTorch: Hello World",
+      "code": {
+        "language": "python",
+        "snippet": "import torch\nimport torch.nn as nn\nimport torch.optim as optim\nfrom torchvision import datasets, transforms\n\n# 1. Load dataset\ntransform = transforms.Compose([transforms.ToTensor()])\ntrain_data = datasets.MNIST('data', train=True, download=True, transform=transform)\ntrain_loader = torch.utils.data.DataLoader(train_data, batch_size=64, shuffle=True)\n\n# 2. Define model (OOP style - più flessibile)\nclass Net(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc1 = nn.Linear(28*28, 128)\n        self.fc2 = nn.Linear(128, 10)\n    \n    def forward(self, x):\n        x = x.view(-1, 28*28)  # Flatten\n        x = torch.relu(self.fc1(x))\n        x = self.fc2(x)\n        return x\n\nmodel = Net()\ncriterion = nn.CrossEntropyLoss()\noptimizer = optim.Adam(model.parameters())\n\n# 3. Training loop (explicit, più controllo)\nfor epoch in range(5):\n    for batch_idx, (data, target) in enumerate(train_loader):\n        optimizer.zero_grad()           # Reset gradients\n        output = model(data)            # Forward pass\n        loss = criterion(output, target) # Calculate loss\n        loss.backward()                 # Backprop\n        optimizer.step()                # Update weights\n        \n        if batch_idx % 100 == 0:\n            print(f'Epoch {epoch}, Loss: {loss.item():.4f}')\n\n# 4. Save\ntorch.save(model.state_dict(), 'model.pth')"
+      },
+      "explanation": "PyTorch: explicit loop, more control, natural OOP style."
+    },
+    {
+      "type": "text",
+      "title": "PyTorch: Growing Ecosystem",
+      "paragraphs": [
+        "<strong>PyTorch Core:</strong> Training and building models",
+        "",
+        "<strong>torchvision:</strong> Computer vision (datasets, models, transforms)",
+        "• Pre-trained ResNet, VGG, EfficientNet",
+        "",
+        "<strong>torchaudio:</strong> Audio processing",
+        "• Spectrograms, augmentation, speech models",
+        "",
+        "<strong>torchtext:</strong> NLP utilities (deprecated, now Hugging Face)",
+        "",
+        "<strong>PyTorch Lightning:</strong> High-level wrapper (like Keras for TF)",
+        "• Less boilerplate, best practices built-in",
+        "",
+        "<strong>Hugging Face Transformers:</strong> LLM hub (BERT, GPT, LLaMA)",
+        "• De-facto standard for NLP with PyTorch",
+        "",
+        "<strong>TorchServe:</strong> Model serving (production)",
+        "• Recent, less mature than TF Serving but growing"
+      ],
+      "ironicClosing": "PyTorch + Hugging Face ecosystem = unbeatable combination for NLP."
+    },
+    {
+      "type": "text",
+      "title": "PyTorch: Real Use Cases",
+      "paragraphs": [
+        "<strong>OpenAI GPT-2/3/4:</strong> All GPT models trained with PyTorch",
+        "• Complete stack: data loading, training, inference",
+        "",
+        "<strong>Tesla Autopilot:</strong> Computer vision for autonomous driving",
+        "• Andrej Karpathy (former Director of AI): \"PyTorch all the way\"",
+        "",
+        "<strong>Meta/Facebook:</strong> Feed ranking, content moderation, FAIR research",
+        "• Obviously, being the creator",
+        "",
+        "<strong>Stability AI (Stable Diffusion):</strong> Text-to-image generation",
+        "• PyTorch for training diffusion models",
+        "",
+        "<strong>Hugging Face:</strong> 100K+ NLP/CV models, all PyTorch-based",
+        "",
+        "<strong>Why PyTorch for these:</strong> Flexibility, fast research, NLP dominance"
+      ],
+      "ironicClosing": "If you're doing LLM or cutting-edge research, you're probably using PyTorch.",
+      "citations": [
+        {
+          "text": "Andrej Karpathy: \"PyTorch is numpy that can run on GPU, with automatic gradients\"",
+          "source": "Twitter @karpathy",
+          "url": "https://twitter.com/karpathy"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "title": "PyTorch vs TensorFlow",
+      "subtitle": "The Great Showdown",
+      "description": "Who wins? It depends on the use case."
+    },
+    {
+      "type": "text",
+      "title": "Technical Comparison",
+      "paragraphs": [
+        "<strong>Computation Graph:</strong>",
+        "• <strong>TensorFlow 1.x:</strong> Static (define-then-run) - rigid",
+        "• <strong>TensorFlow 2.x:</strong> Eager execution (like PyTorch)",
+        "• <strong>PyTorch:</strong> Dynamic (define-by-run) - flexible",
+        "",
+        "<strong>API Design:</strong>",
+        "• <strong>TensorFlow:</strong> High-level (Keras) + Low-level APIs",
+        "• <strong>PyTorch:</strong> Pythonic, OOP, more manual but clear",
+        "",
+        "<strong>Debugging:</strong>",
+        "• <strong>TensorFlow:</strong> Improved in 2.x, but still complex",
+        "• <strong>PyTorch:</strong> The normal Python debugger works",
+        "",
+        "<strong>Performance:</strong>",
+        "• Equal in training speed (more dependent on hardware)",
+        "• TensorFlow slightly better in optimized inference",
+        "",
+        "<strong>Learning Curve:</strong>",
+        "• <strong>TensorFlow:</strong> Easy Keras, but raw TF is complex",
+        "• <strong>PyTorch:</strong> Steeper at first, but consistent"
+      ],
+      "ironicClosing": "TensorFlow: easy to start, complex to master. PyTorch: the opposite."
+    },
+    {
+      "type": "text",
+      "title": "Ecosystem & Adoption Comparison",
+      "paragraphs": [
+        "<strong>Research (Papers):</strong>",
+        "• <strong>PyTorch:</strong> 60%+ of AI papers in 2023 use PyTorch",
+        "• <strong>TensorFlow:</strong> 20-30%, declining",
+        "• Winner: <strong>PyTorch</strong> (research dominance)",
+        "",
+        "<strong>Production Deployment:</strong>",
+        "• <strong>TensorFlow:</strong> Mature ecosystem (Serving, Lite, JS)",
+        "• <strong>PyTorch:</strong> Latest TorchServe, fewer features",
+        "• Winner: <strong>TensorFlow</strong> (production-ready)",
+        "",
+        "<strong>Community & Learning:</strong>",
+        "• <strong>PyTorch:</strong> Excellent documentation, clear tutorials",
+        "• <strong>TensorFlow:</strong> Lots of documentation, sometimes confusing (TF 1 vs 2)",
+        "• Winner: <strong>Tie</strong> (both excellent)",
+        "",
+        "<strong>Job Market (2024):</strong>",
+        "• Industry jobs: TensorFlow still in demand (legacy + production)",
+        "• Startup/Research: PyTorch most in demand",
+        "• Winner: <strong>TensorFlow</strong> (for now, but that's changing)"
+      ],
+      "ironicClosing": "Research? PyTorch. Production? TensorFlow. Future? Convergence.",
+      "citations": [
+        {
+          "text": "Nel 2023, 69% dei paper su arXiv usano PyTorch vs 12% TensorFlow",
+          "source": "Papers With Code Framework Trends 2023",
+          "url": "https://paperswithcode.com/trends"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "When to Use What?",
+      "paragraphs": [
+        "<strong>Use TensorFlow if:</strong>",
+        "• Deployment on mobile/edge (TF Lite superior)",
+        "• Deploy in the browser (TF.js the only serious option)",
+        "• Existing TensorFlow production pipeline",
+        "• Requires maximum scalability (datacenter-scale)",
+        "• The team prefers the Keras high-level API.",
+        "",
+        "<strong>Use PyTorch if:</strong>",
+        "• You conduct research or implement recent papers",
+        "• Work on NLP/LLM (Hugging Face ecosystem)",
+        "• You want maximum flexibility and control",
+        "• Team with a strong Python background",
+        "• Rapid prototyping and fast iteration",
+        "",
+        "<strong>The truth:</strong> You can do almost anything with both. The difference lies in the workflow, not in the capabilities."
+      ],
+      "ironicClosing": "Plot twist: learn both. Transferable concepts, syntax changes little."
+    },
+    {
+      "type": "title",
+      "title": "Other Frameworks",
+      "subtitle": "The Ecosystem is Expanding",
+      "description": "JAX, ONNX, MXNet, and other players"
+    },
+    {
+      "type": "text",
+      "title": "JAX: The Future?",
+      "paragraphs": [
+        "<strong>Who:</strong> Google Brain/DeepMind",
+        "<strong>Release:</strong> 2018 (open source)",
+        "<strong>Philosophy:</strong> NumPy + autograd + XLA compiler",
+        "",
+        "<strong>Why it matters:</strong>",
+        "• <strong>JIT compilation:</strong> Python code → hardware-specific optimized",
+        "• <strong>Auto-vectorization:</strong> vmap for automatic parallelization",
+        "• <strong>Functional programming:</strong> Pure functions, no side effects",
+        "• <strong>Performance:</strong> Often faster than PyTorch/TF",
+        "",
+        "<strong>Used by:</strong> DeepMind (AlphaFold 2, AlphaStar), Google Research",
+        "",
+        "<strong>Ecosystem:</strong>",
+        "• <strong>Flax:</strong> Neural network library (high-level)",
+        "• <strong>Optax:</strong> Optimizers",
+        "• <strong>Haiku:</strong> Neural networks (DeepMind)",
+        "",
+        "<strong>Downside:</strong> Steep learning curve, immature ecosystem"
+      ],
+      "ironicClosing": "JAX = for those who find PyTorch too slow and want to write beautiful code.",
+      "citations": [
+        {
+          "text": "AlphaFold 2 (Nobel Prize 2024) implementato in JAX/Haiku",
+          "source": "DeepMind AlphaFold GitHub",
+          "url": "https://github.com/deepmind/alphafold"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "ONNX: Interoperability",
+      "paragraphs": [
+        "<strong>ONNX (Open Neural Network Exchange):</strong>",
+        "• Open standard for representing ML models",
+        "• Train in PyTorch → Export ONNX → Deploy in TensorFlow (or vice versa)",
+        "• Created by Microsoft and Facebook (2017)",
+        "",
+        "<strong>Why it's useful:</strong>",
+        "• Portability: train wherever you want, deploy where it's needed",
+        "• Optimization: ONNX Runtime optimizes for target hardware",
+        "• Multi-framework: you are not locked-in",
+        "",
+        "<strong>Typical workflow:</strong>",
+        "1. Train model in PyTorch (research)",
+        "2. Export to ONNX format",
+        "3. Deploy with ONNX Runtime (production)",
+        "4. Benefit: optimized inference, cross-platform",
+        "",
+        "<strong>Adoption:</strong> Microsoft Azure ML, AWS, NVIDIA TensorRT support ONNX"
+      ],
+      "ironicClosing": "ONNX = the MP3 of machine learning. A standard that everyone understands."
+    },
+    {
+      "type": "text",
+      "title": "Other Players and Mentions",
+      "paragraphs": [
+        "<strong>MXNet (Apache):</strong>",
+        "• Supported by AWS (default historical SageMaker)",
+        "• Efficient, scalable, but declining adoption",
+        "• AWS is migrating to PyTorch as the default",
+        "",
+        "<strong>Keras (standalone):</strong>",
+        "• Now integrated into TensorFlow, but exists standalone",
+        "• Backend-agnostic: can use TF, Theano, CNTK",
+        "",
+        "<strong>scikit-learn:</strong>",
+        "• It is NOT deep learning, but traditional ML (Random Forest, SVM, etc)",
+        "• Perfect for tabular data and classic algorithms",
+        "• Integrates well with PyTorch/TF for hybrid approaches",
+        "",
+        "<strong>XGBoost/LightGBM:</strong>",
+        "• Gradient boosting (non-neural networks)",
+        "• They dominate Kaggle competitions for tabular data.",
+        "• Often better than DL on small structured data"
+      ],
+      "ironicClosing": "Deep Learning is not always the answer. XGBoost on tabular data > DL."
+    },
+    {
+      "type": "title",
+      "title": "Cloud & Hyperscaler",
+      "subtitle": "ML as a Service",
+      "description": "AWS, Azure, Google make ML accessible"
+    },
+    {
+      "type": "text",
+      "title": "AWS: SageMaker",
+      "paragraphs": [
+        "<strong>Amazon SageMaker:</strong> Complete ML platform",
+        "",
+        "<strong>Features:</strong>",
+        "• <strong>Notebooks:</strong> Jupyter managed with GPU/TPU",
+        "• <strong>Training:</strong> Automatic distributed training",
+        "• <strong>Autopilot:</strong> AutoML (no-code ML)",
+        "• <strong>Deploy:</strong> Scalable endpoint inference",
+        "• <strong>Pipelines:</strong> MLOps workflow automation",
+        "",
+        "<strong>Framework Support:</strong> PyTorch, TensorFlow, MXNet, XGBoost, scikit-learn",
+        "",
+        "<strong>Costs (2024):</strong>",
+        "• Training: from $0.065/hour (ml.t3.medium CPU) to $32/hour (ml.p4d GPU)",
+        "• Inference: from $0.018/hour endpoint",
+        "",
+        "<strong>Chi usa:</strong> Enterprise, startup AWS-based, alto adoption"
+      ],
+      "ironicClosing": "SageMaker = end-to-end ML without worrying about infrastructure.",
+      "citations": [
+        {
+          "text": "AWS SageMaker usato da oltre 100,000 clienti nel 2024",
+          "source": "AWS re:Invent 2024",
+          "url": "https://aws.amazon.com/sagemaker/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Azure: Azure ML & OpenAI Service",
+      "paragraphs": [
+        "<strong>Azure Machine Learning:</strong> Enterprise ML platform",
+        "",
+        "<strong>Features:</strong>",
+        "• <strong>Designer:</strong> Drag-and-drop ML pipeline (low-code)",
+        "• <strong>Automated ML:</strong> AutoML for classification, regression, forecasting",
+        "• <strong>MLOps:</strong> CI/CD for ML, model registry, monitoring",
+        "• <strong>Responsible AI:</strong> Fairness, interpretability tools built-in",
+        "",
+        "<strong>Azure OpenAI Service:</strong>",
+        "• GPT-4, GPT-4-Turbo, DALL-E 3, Whisper hosted",
+        "• Enterprise-ready: SLA, compliance, Azure AD integration",
+        "• Difference vs OpenAI API: guaranteed data privacy, no training on data",
+        "",
+        "<strong>Framework Support:</strong> PyTorch, TensorFlow, scikit-learn, ONNX",
+        "",
+        "<strong>Who uses it:</strong> Enterprises (Fortune 500), governments, strong presence in Europe"
+      ],
+      "ironicClosing": "Azure = OpenAI with enterprise privacy + complete ML platform.",
+      "citations": [
+        {
+          "text": "Azure OpenAI Service ha oltre 11,000 clienti enterprise (2024)",
+          "source": "Microsoft Build 2024",
+          "url": "https://azure.microsoft.com/en-us/products/ai-services/openai-service"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Google Cloud: Vertex AI",
+      "paragraphs": [
+        "<strong>Google Cloud Vertex AI:</strong> Unified ML platform",
+        "",
+        "<strong>Features:</strong>",
+        "• <strong>Unified:</strong> Training + deployment + MLOps in one platform",
+        "• <strong>AutoML:</strong> No-code training for vision, NLP, tabular",
+        "• <strong>Custom Training:</strong> Full control with PyTorch/TensorFlow",
+        "• <strong>Model Garden:</strong> Pre-trained models (PaLM, Gemini, Imagen)",
+        "• <strong>TPU access:</strong> Google TPU v4/v5 for ultra-fast training",
+        "",
+        "<strong>Generative AI Studio:</strong>",
+        "• Gemini Pro/Ultra API hosted",
+        "• Fine-tuning, grounding, built-in RAG",
+        "",
+        "<strong>Framework Support:</strong> TensorFlow (native), PyTorch, JAX, scikit-learn",
+        "",
+        "<strong>Who uses:</strong> Google itself, ML/AI-first companies, research"
+      ],
+      "ironicClosing": "Vertex AI = if you want TPU and native Gemini, Google is the only choice.",
+      "citations": [
+        {
+          "text": "Google TPU v5 offre 2x performance vs v4 per training LLM",
+          "source": "Google Cloud Next 2024",
+          "url": "https://cloud.google.com/tpu"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "title": "Numbers & Adoptions",
+      "subtitle": "Who Wins the Framework War?",
+      "description": "Data, trends, predictions"
+    },
+    {
+      "type": "text",
+      "title": "GitHub Stars & Community (2024)",
+      "paragraphs": [
+        "<strong>GitHub Stars (popularity indicator):</strong>",
+        "• <strong>TensorFlow:</strong> ~185,000 stars",
+        "• <strong>PyTorch:</strong> ~82,000 stars",
+        "• <strong>Keras:</strong> ~61,000 stars (standalone)",
+        "• <strong>JAX:</strong> ~30,000 stars",
+        "",
+        "<strong>But beware:</strong> TensorFlow was released 2 years earlier (head start)",
+        "",
+        "<strong>Contributors:</strong>",
+        "• <strong>TensorFlow:</strong> 3,000+ contributors",
+        "• <strong>PyTorch:</strong> 2,800+ contributors",
+        "",
+        "<strong>Downloads (PyPI, last year):</strong>",
+        "• <strong>tensorflow:</strong> ~100M downloads/month",
+        "• <strong>torch:</strong> ~80M downloads/month",
+        "",
+        "<strong>Trend:</strong> PyTorch is growing faster, TensorFlow is stable/slightly declining"
+      ],
+      "ironicClosing": "TensorFlow is more popular overall, but PyTorch has stronger momentum.",
+      "citations": [
+        {
+          "text": "GitHub stars: TensorFlow 185K, PyTorch 82K (Gen 2025)",
+          "source": "GitHub Stats",
+          "url": "https://github.com/tensorflow/tensorflow"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Job Market & Industry Adoption",
+      "paragraphs": [
+        "<strong>Job postings (LinkedIn, 2024):</strong>",
+        "• <strong>TensorFlow:</strong> ~45% job listings",
+        "• <strong>PyTorch:</strong> ~40% of job listings",
+        "• Rest: other frameworks or framework-agnostic",
+        "",
+        "<strong>Industry by sector:</strong>",
+        "• <strong>Big Tech:</strong> Mix (Google TF, Meta PyTorch, Microsoft both)",
+        "• <strong>Finance:</strong> TensorFlow (legacy, stability)",
+        "• <strong>Healthcare:</strong> PyTorch (research-heavy)",
+        "• <strong>Automotive:</strong> PyTorch (Tesla, etc)",
+        "• <strong>AI-first Startup:</strong> PyTorch dominant",
+        "",
+        "<strong>Research institutions:</strong>",
+        "• University: 70%+ PyTorch",
+        "• Industrial labs: Mixed, but PyTorch on the rise",
+        "",
+        "<strong>Prediction 2025-2027:</strong> PyTorch is likely to surpass TensorFlow in total adoption."
+      ],
+      "ironicClosing": "Job market: TensorFlow is strong in legacy, but PyTorch is the future.",
+      "citations": [
+        {
+          "text": "PyTorch 40% vs TensorFlow 45% job postings AI/ML nel 2024",
+          "source": "LinkedIn Job Market Analysis",
+          "url": "https://www.linkedin.com/jobs/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Stack Overflow & Learning Trends",
+      "paragraphs": [
+        "<strong>Stack Overflow Questions (2024):</strong>",
+        "• <strong>tensorflow:</strong> ~170K total questions",
+        "• <strong>pytorch:</strong> ~80K total questions",
+        "• Older TensorFlow → more legacy questions",
+        "",
+        "<strong>New questions (2024 trend):</strong>",
+        "• PyTorch: steady growth",
+        "• TensorFlow: stable/declining",
+        "",
+        "<strong>Learning Resources:</strong>",
+        "• <strong>PyTorch:</strong> Documentation voted best by the community",
+        "• <strong>TensorFlow:</strong> More total resources, but confusion between TF 1.x and 2.x",
+        "",
+        "<strong>Online Courses:</strong>",
+        "• Coursera Deep Learning (Andrew Ng): TensorFlow",
+        "• Fast.ai: PyTorch",
+        "• Stanford CS231n: PyTorch (switched from TF in 2020)",
+        "",
+        "<strong>Trend:</strong> New learners prefer PyTorch (learning curve)"
+      ],
+      "ironicClosing": "Stack Overflow: more TF questions = more confusion or more legacy usage?"
+    },
+    {
+      "type": "title",
+      "title": "Hardware: GPU & TPU",
+      "subtitle": "Without GPUs, Deep Learning Wouldn't Exist",
+      "description": "The hardware that made it all possible"
+    },
+    {
+      "type": "text",
+      "title": "GPU: The Game Changer",
+      "paragraphs": [
+        "<strong>Why GPU for Deep Learning?</strong>",
+        "• CPU: 8-64 core, optimized for complex serial logic",
+        "• GPU: 1000+ cores, optimized for simple parallel calculations",
+        "• Deep Learning = massive matrix multiplication → perfect GPUs",
+        "",
+        "<strong>NVIDIA dominance:</strong>",
+        "• <strong>CUDA:</strong> Platform for GPU computing (2007)",
+        "• <strong>cuDNN:</strong> Optimized library for deep learning",
+        "• Market share: 95%+ of AI/ML GPUs are NVIDIA",
+        "",
+        "<strong>Popular GPUs (2024):</strong>",
+        "• <strong>Consumer/Dev:</strong> RTX 4090 (24GB VRAM, ~$1600)",
+        "• <strong>Professional:</strong> A100 (40/80GB, ~$10K)",
+        "• <strong>Cutting-edge:</strong> H100 (80GB HBM3, ~$30K)",
+        "• <strong>Next-gen:</strong> H200, B100/B200 (2025)",
+        "",
+        "<strong>Speedup:</strong> Training CNN on GPU = 10-50x faster than on CPU"
+      ],
+      "ironicClosing": "NVIDIA = the picks and shovels of the AI gold rush.",
+      "citations": [
+        {
+          "text": "NVIDIA H100 offre 3x performance di A100 per training LLM",
+          "source": "NVIDIA H100 Datasheet",
+          "url": "https://www.nvidia.com/en-us/data-center/h100/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "TPU: Google's Secret Weapon",
+      "paragraphs": [
+        "<strong>TPU (Tensor Processing Unit):</strong>",
+        "• Custom ASIC designed by Google for AI/ML",
+        "• Specifically optimized for tensor operations (matrix math)",
+        "• Available only on Google Cloud",
+        "",
+        "<strong>History:</strong>",
+        "• <strong>2015:</strong> TPU v1 (inference only) for Google Search",
+        "• <strong>2017:</strong> TPU v2 (training + inference)",
+        "• <strong>2024:</strong> TPU v5p/v5e (latest generation)",
+        "",
+        "<strong>Performance:</strong>",
+        "• TPU v4: ~2x A100 for training",
+        "• TPU v5: ~2x TPU v4",
+        "• Optimized for TensorFlow/JAX (of course)",
+        "",
+        "<strong>Cost:</strong> Competitive with GPUs on Google Cloud, but less flexible.",
+        "",
+        "<strong>Who uses:</strong> Google (internally), researchers on Google Cloud, GCP-native startups"
+      ],
+      "ironicClosing": "TPU = it's like having a GPU designed by the inventor of Transformers.",
+      "citations": [
+        {
+          "text": "TPU v5p offre 4x performance di v4 per LLM training",
+          "source": "Google Cloud TPU Documentation",
+          "url": "https://cloud.google.com/tpu/docs/system-architecture-tpu-vm"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "title": "Future & Advice",
+      "subtitle": "Where is Deep Learning Going?",
+      "description": "Trend 2025-2030 and how to prepare"
+    },
+    {
+      "type": "text",
+      "title": "Trend 2025-2027",
+      "paragraphs": [
+        "<strong>1. Increasingly larger models (but also more efficient):</strong>",
+        "• GPT-5, Gemini 2.0, Claude 4: 1T+ parameters",
+        "• But also: Distillation, quantization, small but mighty models",
+        "",
+        "<strong>2. Multimodal becomes standard:</strong>",
+        "• Text + images + audio + video in one template",
+        "• GPT-4V, Gemini, Claude 3 already started, more incoming later",
+        "",
+        "<strong>3. Framework convergence:</strong>",
+        "• TensorFlow 2.x increasingly PyTorch-like (eager execution)",
+        "• PyTorch improves production story (TorchServe, quantization)",
+        "• Possible: a day of unified APIs?",
+        "",
+        "<strong>4. JAX gaining traction:</strong>",
+        "• Strong DeepMind commitment",
+        "• Evident performance benefits",
+        "• If the ecosystem matures, it could seriously compete."
+      ],
+      "ironicClosing": "Future: giant models + tiny models. Both useful, different use cases."
+    },
+    {
+      "type": "text",
+      "title": "What to Learn in 2025?",
+      "paragraphs": [
+        "<strong>Per chi inizia:</strong>",
+        "1. <strong>Fundamentals first:</strong> Linear algebra, calculus, probability",
+        "2. <strong>Python:</strong> NumPy, Pandas (data), Matplotlib (viz)",
+        "3. <strong>A framework:</strong> PyTorch (recommended) or TensorFlow 2.x",
+        "4. <strong>Computer Vision:</strong> Basics of CNNs, transfer learning",
+        "5. <strong>NLP:</strong> Transformers, Hugging Face library",
+        "6. <strong>Practice:</strong> Kaggle competitions, personal projects",
+        "",
+        "<strong>For those who are advancing:</strong>",
+        "1. <strong>Modern Architectures:</strong> Transformer, Diffusion, GAN deep dive",
+        "2. <strong>MLOps:</strong> Deploy, monitor, scale models in production",
+        "3. <strong>Distributed training:</strong> Multi-GPU, multi-node",
+        "4. <strong>Optimization:</strong> Quantization, pruning, distillation",
+        "5. <strong>Second framework:</strong> If you know PyTorch, learn TF (or JAX)"
+      ],
+      "ironicClosing": "Best investment: concepts > framework syntax. Frameworks change, math does not."
+    },
+    {
+      "type": "text",
+      "title": "Resources to Get Started",
+      "paragraphs": [
+        "<strong>Online Courses (FREE):</strong>",
+        "• <strong>Fast.ai:</strong> Practical Deep Learning (PyTorch)",
+        "• <strong>DeepLearning.AI:</strong> Deep Learning Specialization (TensorFlow)",
+        "• <strong>Stanford CS231n:</strong> CNN for Visual Recognition (PyTorch)",
+        "• <strong>Hugging Face Course:</strong> NLP with Transformers (PyTorch)",
+        "",
+        "<strong>Books:</strong>",
+        "• <strong>Deep Learning (Goodfellow):</strong> The theoretical bible",
+        "• <strong>Hands-On ML (Géron):</strong> Practical, with scikit-learn + TF",
+        "• <strong>Deep Learning with PyTorch:</strong> Official PyTorch",
+        "",
+        "<strong>Practice:</strong>",
+        "• <strong>Kaggle:</strong> Competitions + datasets + notebooks community",
+        "• <strong>Papers With Code:</strong> Recent papers with implementations",
+        "• <strong>Hugging Face Spaces:</strong> Deploy demo models for free"
+      ],
+      "ironicClosing": "There are plenty of resources. What you need is: time, GPU, and a lot of patience."
+    },
+    {
+      "type": "summary",
+      "title": "Recap: PyTorch, TensorFlow & Deep Learning",
+      "items": [
+        "Machine Learning: algorithms learn from data. Deep Learning: deep neural networks.",
+        "2012-today: Big Data + GPU + Framework = AI explosion",
+        "TensorFlow (Google, 2015): Production-first, complete ecosystem, high-level Keras",
+        "PyTorch (Meta, 2017): Research-first, pythonic, dominant in NLP/LLM",
+        "Comparison: PyTorch wins in research (60%+ papers), TF wins in production (for now)",
+        "Others: JAX (performance), ONNX (interop), scikit-learn (traditional ML)",
+        "Cloud: AWS SageMaker, Azure ML + OpenAI, Google Vertex AI + TPU",
+        "Hardware: Dominant NVIDIA GPU (CUDA), alternative Google TPU",
+        "Future: Giant + tiny models, multimodal, framework convergence, JAX rising",
+        "Tip: Learn PyTorch (or TF), then concepts > syntax. Practice on Kaggle."
+      ],
+      "ironicClosing": "Deep Learning in 2025: democratized, accessible, incredibly powerful. Now it's your turn."
+    }
+  ],
+  "lastTranslated": "2025-11-18",
+  "sourceLanguage": "en"
+}

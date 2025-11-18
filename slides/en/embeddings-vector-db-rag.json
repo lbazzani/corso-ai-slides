@@ -1,0 +1,607 @@
+{
+  "number": 7,
+  "title": "Embeddings, Vector DB, and RAG",
+  "description": "From semantic search to Retrieval Augmented Generation",
+  "steps": [
+    {
+      "name": "Introduction",
+      "slides": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Embeddings: Theory",
+      "slides": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "Embeddings: Practice",
+      "slides": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "name": "Vector Databases",
+      "slides": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "name": "Vector DB Comparison",
+      "slides": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "name": "RAG Fundamentals",
+      "slides": [
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "name": "RAG Solutions",
+      "slides": [
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "name": "Costs and Production",
+      "slides": [
+        21,
+        22,
+        23
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Embeddings, Vector DB, and RAG",
+      "subtitle": "The Semantic Search that Works",
+      "description": "How to transform text into numbers that <strong>understand the meaning</strong>",
+      "ironicClosing": "When searching for \"dog,\" it also finds \"puppy\" without keyword stuffing."
+    },
+    {
+      "type": "text",
+      "title": "The Problem of Traditional Search",
+      "paragraphs": [
+        "<strong>Keyword search:</strong> \"python programming\" finds only \"python programming\"",
+        "<strong>Problems:</strong> Ignored synonyms, lost context, typo = disaster",
+        "",
+        "<strong>Semantic search:</strong> Understands the <em>meaning</em>, not just the words",
+        "Query: \"language for data science\" → find documents on Python, R, Julia"
+      ],
+      "ironicClosing": "Ctrl+F è del '90. Embeddings sono del 2025."
+    },
+    {
+      "type": "text",
+      "title": "Embeddings: The Theory",
+      "paragraphs": [
+        "<strong>Definition:</strong> Numerical representation (vector) of the meaning of a text",
+        "",
+        "<strong>How it works:</strong>",
+        "Text → Transformer model → Vector of numbers (e.g. 1536 dimensions)",
+        "",
+        "<strong>Magical property:</strong> Similar texts = nearby vectors in space",
+        "\"dog\" and \"puppy\" have similar embeddings"
+      ],
+      "ironicClosing": "Transforming words into numbers that understand context. Magic? No, transformer."
+    },
+    {
+      "type": "text",
+      "title": "Embeddings: Vector Space",
+      "paragraphs": [
+        "<strong>Each word/phrase becomes a point in an N-dimensional space</strong>",
+        "",
+        "Typical sizes: 384 (small), 768 (medium), 1536 (large), 3072 (XL)",
+        "",
+        "<strong>Geometric relationships = Semantic relationships:</strong>",
+        "• Small distance → Similar meaning",
+        "• Direction → Conceptual relationship",
+        "• Clustering → Related topics"
+      ],
+      "ironicClosing": "1536 dimensions. Your mind doesn't visualize them, but linear algebra does."
+    },
+    {
+      "type": "text",
+      "title": "Similarity Metrics: Cosine Similarity",
+      "paragraphs": [
+        "<strong>How is similarity between embeddings measured?</strong>",
+        "",
+        "<strong>Cosine Similarity:</strong> Measures the angle between two vectors",
+        "• Range: -1 (opposite) to +1 (identical)",
+        "• 0 = orthogonal (uncorrelated)",
+        "",
+        "<strong>Other metrics:</strong> Euclidean distance, Dot product, Manhattan distance",
+        "",
+        "<strong>Golden rule:</strong> Use the metric with which the model was trained"
+      ],
+      "ironicClosing": "Cosine similarity: when high school geometry actually comes in handy",
+      "citations": [
+        {
+          "text": "Cosine similarity measures angle between vectors, range -1 to +1",
+          "source": "Pinecone - Vector Similarity",
+          "url": "https://www.pinecone.io/learn/vector-similarity/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Embedding Models: Comparison 2025",
+      "intro": "<strong>Who generates the best embeddings?</strong>",
+      "metrics": [
+        {
+          "value": "$0.02/1M",
+          "label": "OpenAI text-embedding-3-small (1536 dim)"
+        },
+        {
+          "value": "$0.13/1M",
+          "label": "OpenAI text-embedding-3-large (3072 dim)"
+        },
+        {
+          "value": "$0.50/1M",
+          "label": "Cohere embed-english-v3.0 (1024 dim)"
+        },
+        {
+          "value": "Free",
+          "label": "Sentence Transformers (self-hosted)"
+        }
+      ],
+      "ironicClosing": "OpenAI dominates, Cohere is cheaper for volume, open source is free but requires a GPU.",
+      "citations": [
+        {
+          "text": "OpenAI text-embedding-3-small $0.02/1M, large $0.13/1M tokens",
+          "source": "OpenAI Pricing 2025",
+          "url": "https://openai.com/api/pricing/"
+        },
+        {
+          "text": "Cohere embed-english-v3.0 costs $0.50 per 1M tokens",
+          "source": "Document360 - Embedding Models",
+          "url": "https://document360.com/blog/text-embedding-model-analysis/"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "Embeddings in Practice: OpenAI",
+      "code": {
+        "language": "python",
+        "snippet": "from openai import OpenAI\nimport numpy as np\nfrom numpy.linalg import norm\n\nclient = OpenAI()\n\n# Generate embeddings\ntext1 = \"Python is great for data science\"\ntext2 = \"Data analysis with Python is powerful\"\ntext3 = \"I love pizza\"\n\nresponse1 = client.embeddings.create(\n    model=\"text-embedding-3-small\",\n    input=text1\n)\nresponse2 = client.embeddings.create(\n    model=\"text-embedding-3-small\",\n    input=text2\n)\nresponse3 = client.embeddings.create(\n    model=\"text-embedding-3-small\",\n    input=text3\n)\n\nemb1 = np.array(response1.data[0].embedding)\nemb2 = np.array(response2.data[0].embedding)\nemb3 = np.array(response3.data[0].embedding)\n\n# Cosine similarity\ndef cosine_sim(a, b):\n    return np.dot(a, b) / (norm(a) * norm(b))\n\nprint(f\"Similarity 1-2: {cosine_sim(emb1, emb2):.3f}\")  # ~0.85\nprint(f\"Similarity 1-3: {cosine_sim(emb1, emb3):.3f}\")  # ~0.15"
+      },
+      "explanation": "Similar texts → similar embeddings (high cosine similarity)"
+    },
+    {
+      "type": "text",
+      "title": "Embedding Models: Dimensions and Trade-offs",
+      "paragraphs": [
+        "<strong>Size:</strong> Larger = more accurate, but more expensive",
+        "",
+        "<strong>OpenAI text-embedding-3-small (1536 dim):</strong> Excellent value for money",
+        "<strong>OpenAI text-embedding-3-large (3072 dim):</strong> Maximum accuracy, 8x storage cost",
+        "<strong>Cohere embed-v4 (1024 dim):</strong> Multimodal (text + image), efficient",
+        "",
+        "<strong>Trade-off:</strong> Accuracy vs Storage vs Query Cost"
+      ],
+      "ironicClosing": "3072 dimensions to search for \"how to boil pasta\"? Overkill.",
+      "citations": [
+        {
+          "text": "Storing OpenAI text-embedding-3-large costs 8x more than Cohere V3 light",
+          "source": "Elephas - Best Embedding Models 2025",
+          "url": "https://elephas.app/blog/best-embedding-models"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Vector Database: Why They Are Needed",
+      "paragraphs": [
+        "<strong>Problem:</strong> You have 10 million documents with embeddings. How do you search quickly?",
+        "",
+        "<strong>Naive solution:</strong> Calculate cosine similarity with all → O(n) = slow",
+        "",
+        "<strong>Vector Database:</strong> Data structures optimized for similarity search",
+        "• ANN (Approximate Nearest Neighbor): finds the k most similar in O(log n)",
+        "• Indexing: HNSW, IVF, LSH",
+        "• Scalability: billions of vectors, queries in milliseconds"
+      ],
+      "ironicClosing": "PostgreSQL with arrays? It works up to 100K vectors. After that, you need a real vector DB."
+    },
+    {
+      "type": "text",
+      "title": "Vector DB: Architecture",
+      "paragraphs": [
+        "<strong>Key components:</strong>",
+        "",
+        "<strong>1. Indexing:</strong> HNSW (Hierarchical Navigable Small World) - the gold standard",
+        "<strong>2. Storage:</strong> In-memory (fast) vs On-disk (cost-effective)",
+        "<strong>3. Filtering:</strong> Metadata + vector search (e.g. \"documents 2025 similar to X\")",
+        "<strong>4. Sharding:</strong> Distribution across nodes for scaling",
+        "<strong>5. Replication:</strong> High availability"
+      ],
+      "ironicClosing": "HNSW: when the navigable graph saves you from O(n) queries"
+    },
+    {
+      "type": "comparison",
+      "title": "Vector DB: Deployment Models",
+      "leftSide": {
+        "title": "Open Source (Self-hosted)",
+        "items": [
+          "FAISS (Meta): Libreria, non DB - velocissimo con GPU",
+          "ChromaDB: Developer-friendly, <1M vectors",
+          "Milvus: Scalabile, enterprise, billions vectors",
+          "Qdrant: Rust, performance, filtering avanzato",
+          "Weaviate: Hybrid search, GraphQL"
+        ]
+      },
+      "rightSide": {
+        "title": "Managed (Cloud)",
+        "items": [
+          "Pinecone: Fully-managed, veloce, costoso",
+          "Weaviate Cloud: Serverless, $25/month start",
+          "Qdrant Cloud: Free tier, pay-per-use",
+          "AWS OpenSearch Serverless: Vector engine integrato",
+          "Azure AI Search: Vector search built-in"
+        ]
+      },
+      "ironicClosing": "Self-hosted = control. Managed = peaceful sleep."
+    },
+    {
+      "type": "data",
+      "title": "Vector DB Comparison: Performance",
+      "intro": "<strong>Benchmark 2025: Speed matters</strong>",
+      "metrics": [
+        {
+          "value": "50K ops/s",
+          "label": "Pinecone - Insert speed"
+        },
+        {
+          "value": "45K ops/s",
+          "label": "Qdrant - Insert speed"
+        },
+        {
+          "value": "35K ops/s",
+          "label": "Weaviate - Insert speed"
+        },
+        {
+          "value": "5K queries/s",
+          "label": "Pinecone - Query speed"
+        }
+      ],
+      "paragraphs": [
+        "<strong>FAISS:</strong> Faster than all (GPU), but it's not a database",
+        "<strong>Milvus:</strong> Scales to billions, but complex setup",
+        "<strong>ChromaDB:</strong> Perfect for prototypes, limit 1M vectors"
+      ],
+      "ironicClosing": "Speed costs. Pinecone wins, but the price is steep.",
+      "citations": [
+        {
+          "text": "Pinecone 50K ops/s insert, Qdrant 45K, Weaviate 35K - benchmark 2025",
+          "source": "Xenoss - Vector DB Comparison",
+          "url": "https://xenoss.io/blog/vector-database-comparison-pinecone-qdrant-weaviate"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Vector DB: Pricing Comparison Nov 2025",
+      "intro": "<strong>How much do storage and queries cost?</strong>",
+      "metrics": [
+        {
+          "value": "$0.025/GB/h",
+          "label": "Pinecone - Storage ($18/GB/mese)"
+        },
+        {
+          "value": "$2/M queries",
+          "label": "Pinecone - Query cost"
+        },
+        {
+          "value": "$102/mese",
+          "label": "Qdrant Cloud - Standard tier (AWS us-east)"
+        },
+        {
+          "value": "$25-153",
+          "label": "Weaviate Serverless (con/senza compression)"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Free tiers:</strong> Qdrant (1GB), ChromaDB (self-hosted), FAISS (self-hosted)",
+        "<strong>Enterprise:</strong> Milvus self-hosted + infrastructure cost"
+      ],
+      "ironicClosing": "Vector storage: the hidden cost of RAG. 100GB? $1800/month on Pinecone.",
+      "citations": [
+        {
+          "text": "Pinecone $0.025/GB/hour storage, Qdrant $102/month standard, Weaviate $25-153",
+          "source": "Xenoss Vector DB Pricing 2025",
+          "url": "https://xenoss.io/blog/vector-database-comparison-pinecone-qdrant-weaviate"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "When to Use Which Vector DB",
+      "paragraphs": [
+        "<strong>FAISS:</strong> Fast in-memory search, no persistence, academic/prototyping",
+        "<strong>ChromaDB:</strong> Prototyping, <1M vectors, single node",
+        "<strong>Qdrant:</strong> Production, complex filtering, Rust performance",
+        "<strong>Milvus:</strong> Enterprise scale (billions), cloud-native, RBAC",
+        "<strong>Pinecone:</strong> Managed, zero-ops, maximum speed (if budget is okay)",
+        "<strong>Weaviate:</strong> Hybrid search (keyword + vector), GraphQL, multimodal"
+      ],
+      "ironicClosing": "Prototype? ChromaDB. Production? Qdrant or Pinecone. Billions? Milvus.",
+      "citations": [
+        {
+          "text": "ChromaDB up to 1M vectors, Milvus billions to trillions scale",
+          "source": "Zilliz - Milvus vs ChromaDB",
+          "url": "https://zilliz.com/blog/milvus-vs-chroma"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "RAG: Retrieval Augmented Generation",
+      "paragraphs": [
+        "<strong>Problem:</strong> LLMs have a knowledge cutoff, they don't know your private data.",
+        "",
+        "<strong>RAG Solution:</strong> Enrich the prompt with relevant context",
+        "",
+        "<strong>Pipeline:</strong>",
+        "1. User query → Embedding",
+        "2. Vector search → Documenti rilevanti",
+        "3. Context + Query → LLM",
+        "4. LLM → Response based on real data"
+      ],
+      "ironicClosing": "RAG = giving the LLM a private library instead of making everything up"
+    },
+    {
+      "type": "code",
+      "title": "RAG: Base Architecture",
+      "code": {
+        "language": "python",
+        "snippet": "# RAG Pipeline completa\nfrom openai import OpenAI\nimport chromadb\n\nclient = OpenAI()\nchroma_client = chromadb.Client()\n\n# 1. Setup: Indicizza documenti\ncollection = chroma_client.create_collection(\"docs\")\n\ndocuments = [\n    \"Python è usato per data science\",\n    \"JavaScript è per sviluppo web\",\n    \"Rust è veloce e safe\"\n]\n\ncollection.add(\n    documents=documents,\n    ids=[\"doc1\", \"doc2\", \"doc3\"]\n)\n\n# 2. Query: Ricerca + Generazione\nquery = \"Che linguaggio uso per ML?\"\n\n# Retrieve: Vector search\nresults = collection.query(\n    query_texts=[query],\n    n_results=2\n)\n\ncontext = \"\\n\".join(results['documents'][0])\n\n# Augment + Generate\nresponse = client.chat.completions.create(\n    model=\"gpt-4\",\n    messages=[{\n        \"role\": \"system\",\n        \"content\": f\"Rispondi basandoti su: {context}\"\n    }, {\n        \"role\": \"user\",\n        \"content\": query\n    }]\n)\n\nprint(response.choices[0].message.content)\n# Output: \"Python è ottimo per ML e data science\""
+      },
+      "explanation": "Retrieve (vector search) → Augment (context) → Generate (LLM)"
+    },
+    {
+      "type": "text",
+      "title": "RAG: Chunking Strategy",
+      "paragraphs": [
+        "<strong>Problem:</strong> Long documents do not fit into an embedding. How to split them?",
+        "",
+        "<strong>Strategies:</strong>",
+        "• <strong>Fixed-size:</strong> 512 tokens, overlap 50 (simple but crude)",
+        "• <strong>Sentence-based:</strong> Split by sentences (preserves semantics)",
+        "• <strong>Semantic:</strong> Split when the topic changes (smart but complex)",
+        "• <strong>Recursive:</strong> Paragraph → Sentence → Token (LangChain default)",
+        "",
+        "<strong>Best practice:</strong> Chunk size = 256-512 tokens, overlap 10-20%"
+      ],
+      "ironicClosing": "Wrong chunking = lost context = wrong answers. Watch out."
+    },
+    {
+      "type": "comparison",
+      "title": "RAG Framework: LangChain vs LlamaIndex",
+      "leftSide": {
+        "title": "LangChain",
+        "items": [
+          "Orchestration-first: chains, agents, tools",
+          "Flessibile: funziona per tutto, non solo RAG",
+          "LangSmith: Observability production-ready",
+          "Ecosistema maturo: 700+ integrazioni",
+          "Curva apprendimento: media-alta"
+        ]
+      },
+      "rightSide": {
+        "title": "LlamaIndex",
+        "items": [
+          "RAG-first: index, query, retrieve",
+          "40% più veloce su document retrieval",
+          "Query planning, reranking built-in",
+          "Data connectors per enterprise (SharePoint, etc)",
+          "Curva apprendimento: bassa"
+        ]
+      },
+      "note": "<strong>Consiglio:</strong> LlamaIndex per RAG puro, LangChain per agent complessi con RAG component",
+      "ironicClosing": "LlamaIndex does RAG better. LangChain does everything. Combining them? Often the best choice.",
+      "citations": [
+        {
+          "text": "LlamaIndex 40% faster document retrieval than LangChain",
+          "source": "Latenode - LangChain vs LlamaIndex 2025",
+          "url": "https://latenode.com/blog/langchain-vs-llamaindex-2025-complete-rag-framework-comparison"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "RAG: Agentic RAG",
+      "paragraphs": [
+        "<strong>Classic RAG:</strong> Query → Vector search → LLM (fixed)",
+        "",
+        "<strong>Agentic RAG:</strong> LLM <em>decides</em> how and where to search",
+        "",
+        "<strong>Capacity:</strong>",
+        "• Multi-index routing (which database to query?)",
+        "• Query planning (breaks down complex queries)",
+        "• Reranking (reorders results by relevance)",
+        "• Self-correction (if the answer is insufficient, search again)"
+      ],
+      "ironicClosing": "Agentic RAG: when retrieval becomes as smart as generation"
+    },
+    {
+      "type": "text",
+      "title": "RAG Hyperscaler: AWS Bedrock",
+      "paragraphs": [
+        "<strong>Knowledge Bases for Bedrock:</strong> RAG managed end-to-end",
+        "",
+        "<strong>Features:</strong>",
+        "• Auto-chunking, embedding (Titan Embeddings), storage (OpenSearch)",
+        "• Multi-model support: Claude, Llama, Mistral",
+        "• Agents for Bedrock: action groups, guardrails, traces",
+        "",
+        "<strong>Best for:</strong> Already on AWS, requires tight integration with S3/RDS/Redshift"
+      ],
+      "ironicClosing": "AWS does everything. Even RAG. If you're already paying for AWS, why not?",
+      "citations": [
+        {
+          "text": "AWS Bedrock Knowledge Bases with auto-chunking, Titan embeddings, OpenSearch",
+          "source": "Medium - RAG on AWS, Azure, GCP",
+          "url": "https://medium.com/@cloudherowithai/rag-based-architecture-of-three-major-public-clouds-aws-azure-and-gcp-e2cf362fd1e0"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "RAG Hyperscaler: Azure AI (Foundry)",
+      "paragraphs": [
+        "<strong>Azure OpenAI Service + Azure AI Search:</strong> RAG with GPT-4",
+        "",
+        "<strong>Features:</strong>",
+        "• Azure AI Search: Built-in vector search, hybrid (keyword + vector)",
+        "• Prompt Flow: Visual RAG pipeline builder",
+        "• Content Safety: Automatic guardrails",
+        "",
+        "<strong>Best for:</strong> Enterprise Microsoft-centric, strict compliance, GPT-4 integration"
+      ],
+      "ironicClosing": "Azure AI: when you want GPT-4 enterprise with Microsoft-grade compliance"
+    },
+    {
+      "type": "text",
+      "title": "RAG Hyperscaler: Google Vertex AI",
+      "paragraphs": [
+        "<strong>Vertex AI Search + Agent Builder:</strong> Multimodal RAG",
+        "",
+        "<strong>Features:</strong>",
+        "• Vertex AI Vector Search: Scalable, low-latency",
+        "• Agent Builder: No-code + LangChain/LlamaIndex integration",
+        "• Multimodal: Text + Image search",
+        "",
+        "<strong>Best for:</strong> Data-heavy orgs, BigQuery integration, multimodal use cases"
+      ],
+      "ironicClosing": "Google Vertex: when your data is already on BigQuery and GCS",
+      "citations": [
+        {
+          "text": "Vertex AI Agent Builder with no-code and LangChain/LlamaIndex integration",
+          "source": "Medium - Vertex AI Guide 2025",
+          "url": "https://blog.gopenai.com/azure-ai-foundry-vs-aws-bedrock-vs-google-vertex-ai-the-2025-guide-25a69c1d19b1"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "OpenAI Vector Store & File Search",
+      "paragraphs": [
+        "<strong>New for 2024-2025:</strong> OpenAI Assistants API v2 with built-in Vector Store",
+        "",
+        "<strong>How it works:</strong>",
+        "1. Upload file (PDF, DOCX, TXT, code)",
+        "2. Auto-chunking, embedding, vector storage (managed)",
+        "3. File Search tool: Automatic RAG in chats",
+        "",
+        "<strong>Pricing (Nov 2025):</strong>",
+        "• Storage: $0.10/GB/day (first 1GB free)",
+        "• Query: token cost standard (input + output)",
+        "",
+        "<strong>Limits:</strong> Max 10,000 files per vector store, 512MB per file"
+      ],
+      "ironicClosing": "OpenAI does RAG in 3 lines of code. Magic? No, Assistants API.",
+      "citations": [
+        {
+          "text": "OpenAI Vector Store $0.10/GB/day storage, first 1GB free",
+          "source": "OpenAI Community - File Search Pricing",
+          "url": "https://community.openai.com/t/how-file-search-works-and-pricing/805817"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "OpenAI Vector Store: Example",
+      "code": {
+        "language": "python",
+        "snippet": "from openai import OpenAI\n\nclient = OpenAI()\n\n# 1. Create vector store\nvector_store = client.beta.vector_stores.create(\n    name=\"Company Knowledge Base\"\n)\n\n# 2. Upload files\nfile_paths = [\"policy.pdf\", \"handbook.docx\"]\nfile_streams = [open(path, \"rb\") for path in file_paths]\n\nfile_batch = client.beta.vector_stores.file_batches.upload_and_poll(\n    vector_store_id=vector_store.id,\n    files=file_streams\n)\n\n# 3. Create assistant with file search\nassistant = client.beta.assistants.create(\n    name=\"HR Assistant\",\n    instructions=\"You answer questions about company policies.\",\n    model=\"gpt-4-turbo\",\n    tools=[{\"type\": \"file_search\"}],\n    tool_resources={\n        \"file_search\": {\n            \"vector_store_ids\": [vector_store.id]\n        }\n    }\n)\n\n# 4. Ask question (RAG automatico)\nthread = client.beta.threads.create()\nclient.beta.threads.messages.create(\n    thread_id=thread.id,\n    role=\"user\",\n    content=\"What's the vacation policy?\"\n)\n\nrun = client.beta.threads.runs.create_and_poll(\n    thread_id=thread.id,\n    assistant_id=assistant.id\n)\n\nmessages = client.beta.threads.messages.list(thread_id=thread.id)\nprint(messages.data[0].content[0].text.value)"
+      },
+      "explanation": "RAG completely managed: upload, embed, search, answer - zero setup"
+    },
+    {
+      "type": "data",
+      "title": "RAG Production: Actual Costs (Nov 2025)",
+      "intro": "<strong>Example: 100K documents, 10K queries/day</strong>",
+      "metrics": [
+        {
+          "value": "~50GB",
+          "label": "Vector storage (embedding 1536 dim)"
+        },
+        {
+          "value": "$900/mese",
+          "label": "Pinecone storage cost"
+        },
+        {
+          "value": "$150/mese",
+          "label": "OpenAI Vector Store (50GB)"
+        },
+        {
+          "value": "$15-50",
+          "label": "Embedding cost (one-time, 100K docs)"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Query cost:</strong> Depends on LLM (GPT-4: ~$0.01-0.03/query with context)",
+        "<strong>Self-hosted:</strong> Qdrant/Milvus + GPU instance = $200-500/month",
+        "<strong>Hidden costs:</strong> Reindexing, monitoring, reranking"
+      ],
+      "ironicClosing": "Storage is the fixed cost. Queries are the variable. Monitor both.",
+      "citations": [
+        {
+          "text": "Pinecone $0.025/GB/hour = $18/GB/month storage cost",
+          "source": "Xenoss - Vector DB Pricing",
+          "url": "https://xenoss.io/blog/vector-database-comparison-pinecone-qdrant-weaviate"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "RAG Best Practices 2025",
+      "paragraphs": [
+        "<strong>1. Chunking:</strong> 256-512 tokens, overlap 10-20%, preserve semantics",
+        "<strong>2. Metadata filtering:</strong> Date, source, type - filter before search",
+        "<strong>3. Reranking:</strong> Cohere Rerank API ($1/1K searches) improves recall",
+        "<strong>4. Hybrid search:</strong> Vector + keyword for best results",
+        "<strong>5. Monitoring:</strong> Track retrieval quality, latency, costs",
+        "<strong>6. Caching:</strong> Cache frequent queries (save 90% on LLM costs)",
+        "<strong>7. Evaluation:</strong> RAGAS, TruLens to measure RAG quality"
+      ],
+      "ironicClosing": "RAG without monitoring is like driving blindfolded. It works until it doesn't."
+    },
+    {
+      "type": "summary",
+      "title": "Summary: Embeddings, Vector DB, RAG",
+      "items": [
+        "Embeddings: Text → Vectors that understand meaning (1536-3072 dim)",
+        "Similarity: Cosine similarity measures semantic proximity",
+        "Modelli: OpenAI $0.02-0.13/1M, Cohere $0.50/1M, Sentence Transformers free",
+        "Vector DB: FAISS (fast), ChromaDB (proto), Qdrant/Milvus (production), Pinecone (managed)",
+        "Pricing: Pinecone $18/GB/month, Qdrant $102, OpenAI $0.10/GB/day",
+        "RAG: Retrieve + Augment + Generate - LLM with private knowledge base",
+        "Framework: LlamaIndex (RAG-first), LangChain (flexible)",
+        "Hyperscaler: AWS Bedrock, Azure AI, Google Vertex - RAG managed",
+        "OpenAI Vector Store: RAG in 3 lines, $0.10/GB/day, first GB free"
+      ],
+      "ironicClosing": "Embeddings + Vector DB + RAG = The trio that makes AI work on real data. End of 2025: production-ready."
+    }
+  ],
+  "lastTranslated": "2025-11-18",
+  "sourceLanguage": "en"
+}

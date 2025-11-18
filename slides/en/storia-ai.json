@@ -115,7 +115,7 @@
         "",
         "<strong>Optimism:</strong> 2 months, 10 people, problem solved (LOL)"
       ],
-      "ironicClosing": "They thought they could solve AI in a summer. Here we are, 70 years later.",
+      "ironicClosing": "They thought they could solve AI in one summer. Here we are, 70 years later.",
       "citations": [
         {
           "text": "Dartmouth Conference 1956: McCarthy, Minsky, Rochester, Shannon coin 'AI' term",
@@ -137,7 +137,7 @@
         "",
         "<strong>Massive funding:</strong> DARPA, universities in the USA and UK, labs everywhere",
         "",
-        "<strong>The Euphoria:</strong> \"AI will solve everything in 20 years\""
+        "<strong>The euphoria:</strong> \"AI will solve everything in 20 years\""
       ],
       "ironicClosing": "The NY Times promised conscious robots in 1958. We're still waiting."
     },
@@ -149,7 +149,7 @@
         "",
         "<strong>The devastating critique:</strong>",
         "• The perceptron can only learn things it can represent.",
-        "• But it can represent very little (e.g., it can't do XOR)",
+        "• But it can represent very little (e.g. it can't do XOR)",
         "• Fundamental mathematical limitations",
         "",
         "<strong>The effect:</strong>",
@@ -194,7 +194,7 @@
     {
       "type": "data",
       "title": "1980s: Expert Systems Boom",
-      "intro": "<strong>La rinascita: AI diventa business</strong>",
+      "intro": "<strong>The rebirth: AI becomes business</strong>",
       "metrics": [
         {
           "value": "1980",
@@ -235,7 +235,7 @@
         "<strong>The ambition:</strong>",
         "• Budget: billions of yen, duration: 10 years (1982-1992)",
         "• Objective: thinking computers based on logic programming",
-        "• First national AI project with no military purposes",
+        "• First national AI project without military purposes",
         "• Approach: open, international, collaborative",
         "",
         "<strong>The US reaction:</strong>",
@@ -291,7 +291,7 @@
         "<strong>Expert Systems Bust:</strong>",
         "• XCON too expensive to maintain (15K rules)",
         "• Rigid systems, do not learn, qualification problem",
-        "• They do not scale on complex problems",
+        "• They do not scale to complex problems.",
         "",
         "<strong>FGCS fails (1991):</strong> No thinking machine, zero commercialization"
       ],
@@ -310,15 +310,15 @@
       "paragraphs": [
         "<strong>Fifth Generation: Post-mortem</strong>",
         "",
-        "<strong>Strategic Errors:</strong>",
+        "<strong>Strategic errors:</strong>",
         "• Bet on logic programming (Prolog) instead of neural networks",
         "• Unrealistic goals (thinking machines in 10 years)",
         "• Research disconnected from the market and real applications",
-        "• Too top-down, little flexibility",
+        "• Too top-down, not enough flexibility",
         "",
         "<strong>The lesson:</strong>",
         "• Predicting the technological future is impossible",
-        "• Massive government projects rarely work",
+        "• Massive government projects rarely work.",
         "• Without market validation, research becomes self-referential."
       ],
       "ironicClosing": "Japan invested billions in Prolog. The world chose Python and neural networks.",
@@ -345,7 +345,7 @@
         "",
         "<strong>Convergence:</strong> All together after 2012, not before"
       ],
-      "ironicClosing": "The AI wasn't working because we were missing GPUs, data, and patience. Now we have it all."
+      "ironicClosing": "The AI wasn't working because we were short on GPUs, data, and patience. Now we have it all."
     },
     {
       "type": "text",
@@ -353,7 +353,7 @@
       "paragraphs": [
         "<strong>AI changes name and works</strong>",
         "",
-        "<strong>1997 - Deep Blue beats Kasparov:</strong> Chess solved (brute force + heuristics)",
+        "<strong>1997 - Deep Blue beats Kasparov:</strong> Chess solved (brute force + heuristic)",
         "",
         "<strong>2000s - Machine Learning boom:</strong>",
         "• Spam filtering, recommendation systems (Netflix, Amazon)",
@@ -362,7 +362,7 @@
         "",
         "<strong>2006 - Geoffrey Hinton + Deep Learning:</strong>",
         "• Layer-wise pre-training for deep networks",
-        "• The term \"Deep Learning\" begins to spread"
+        "• The term \"Deep Learning\" begins to spread."
       ],
       "ironicClosing": "AI only works when you stop calling it AI and say 'machine learning'."
     },
@@ -395,7 +395,7 @@
     },
     {
       "type": "data",
-      "title": "2009: ImageNet - The Dataset That Changed Everything",
+      "title": "2009: ImageNet - The Dataset that Changed Everything",
       "intro": "<strong>Fei-Fei Li (Stanford): \"More data beats better algorithms\"</strong>",
       "metrics": [
         {
@@ -438,9 +438,9 @@
         "• Top-5 error: 15.3% (vs 26% competitors)",
         "• Victory margin: +10.8% (annihilation)",
         "• Architecture: CNN with 8 layers, 60M parameters",
-        "• Hardware: 2x NVIDIA GTX 580 (in Krizhevsky's room)",
+        "• Hardware: 2x NVIDIA GTX 580 (in Krizhevsky's lab)",
         "",
-        "<strong>What was converging:</strong>",
+        "<strong>What converged:</strong>",
         "1. Big Data (ImageNet)",
         "2. GPU (CUDA)",
         "3. Deep networks (Backprop + ReLU + Dropout)"
@@ -467,7 +467,7 @@
         "",
         "<strong>AI Investments:</strong> From $3B (2012) to $8B (2016)",
         "",
-        "<strong>Cultural shift:</strong> \"AI\" is no longer a dirty word"
+        "<strong>Shift culturale:</strong> \"AI\" non è più una parolaccia"
       ],
       "ironicClosing": "2012-2017: the years when 'deep learning' stopped being hype and became reality."
     },
@@ -503,9 +503,9 @@
       "paragraphs": [
         "<strong>Everyone experiments with Transformers</strong>",
         "",
-        "<strong>Giugno 2018 - GPT-1 (OpenAI):</strong>",
+        "<strong>June 2018 - GPT-1 (OpenAI):</strong>",
         "• 117M parameters, generative pre-training",
-        "• Idea: pre-train on a large amount of text, then fine-tune",
+        "• Idea: pre-train on a lot of text, then fine-tune",
         "",
         "<strong>October 2018 - BERT (Google):</strong>",
         "• Bidirectional (reads in both directions)",
@@ -516,7 +516,7 @@
         "• 1.5B parameters, trained on WebText (8M pages)",
         "• OpenAI: \"Too dangerous to release\" (then released)"
       ],
-      "ironicClosing": "GPT-2 'too dangerous'. GPT-4 is 1000x bigger. Oops.",
+      "ironicClosing": "GPT-2 'too dangerous'. GPT-4 is 1000x larger. Oops.",
       "citations": [
         {
           "text": "GPT-1 June 2018 (117M params), BERT Oct 2018, GPT-2 Feb 2019 (1.5B params)",
@@ -577,7 +577,7 @@
         "",
         "<strong>The effect:</strong> Mainstream AI. Everyone is trying it, newspapers are going crazy, governments are in a frenzy."
       ],
-      "ironicClosing": "70 anni di AI research. Poi una chat gratuita rende tutto mainstream in 2 mesi.",
+      "ironicClosing": "70 years of AI research. Then a free chat makes everything mainstream in 2 months.",
       "citations": [
         {
           "text": "ChatGPT Nov 30 2022, 1M users in 5 days, 100M in 2 months, fastest growing app ever",
@@ -637,7 +637,7 @@
         "<strong>What we have learned in 70 years</strong>",
         "",
         "<strong>1. Hype kills:</strong> Over-promise → under-deliver → winter. Always.",
-        "<strong>2. Hardware matters:</strong> Without a GPU, no deep learning. Point.",
+        "<strong>2. Hardware matters:</strong> Without a GPU, there’s no deep learning. Point.",
         "<strong>3. Data > Algorithm:</strong> ImageNet > clever tricks. Big data wins.",
         "<strong>4. Scaling works:</strong> GPT-3 → GPT-4 → bigger = better (so far)",
         "<strong>5. Timing is everything:</strong> Backprop 1986, used since 2012. Waited 26 years.",
@@ -672,7 +672,7 @@
         "1950 - Turing Test: the question 'Can machines think?'",
         "1956 - Dartmouth: AI is officially born (2 months to solve it! lol)",
         "1969 - Perceptrons critique → first decline of neural networks",
-        "1974-1980 - First AI Winter (funding stop, unfulfilled promises)",
+        "1974-1980 - First AI Winter (funding halt, unfulfilled promises)",
         "1980s - Expert systems boom ($1B industry) → bust (too rigid)",
         "1982-1992 - Japan FGCS: billions invested, zero results",
         "1986 - Backpropagation (Hinton): ignored for 20 years",

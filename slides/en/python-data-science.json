@@ -1,0 +1,503 @@
+{
+  "number": 6,
+  "title": "Python for Data Science",
+  "description": "From the basics to advanced libraries - A complete journey",
+  "steps": [
+    {
+      "name": "Introduction",
+      "slides": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Labor Market",
+      "slides": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "Python Fundamentals",
+      "slides": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "NumPy",
+      "slides": [
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "name": "Pandas",
+      "slides": [
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "name": "Visualizzazione",
+      "slides": [
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "name": "Machine Learning",
+      "slides": [
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "name": "Futuro",
+      "slides": [
+        23,
+        24
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Python for Data Science",
+      "subtitle": "From Basics to Advanced Libraries",
+      "description": "A complete path to becoming a Data Scientist by 2026",
+      "ironicClosing": "The language that has conquered the world of data, one list comprehension at a time."
+    },
+    {
+      "type": "text",
+      "title": "Why Python Dominates Data Science",
+      "paragraphs": [
+        "<strong>87%</strong> of data professionals use Python regularly (Kaggle survey)",
+        "<strong>30.27%</strong> share in the PYPL index (+1.4% growth)",
+        "<strong>1.19 million</strong> job listings on LinkedIn require Python",
+        "",
+        "<strong>Rich ecosystem:</strong> NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch",
+        "<strong>Simplicity:</strong> Readable syntax, gentle learning curve",
+        "<strong>Community:</strong> Stack Overflow, GitHub, thousands of libraries"
+      ],
+      "ironicClosing": "8 out of 10 experts recommend learning Python first. The other 2 are still debugging R.",
+      "citations": [
+        {
+          "text": "87% of data professionals use Python regularly, Kaggle survey",
+          "source": "Refonte Learning - Python Dominance 2025",
+          "url": "https://www.refontelearning.com/blog/why-python-dominates-data-science-in-2025-key-trends-insights"
+        },
+        {
+          "text": "PYPL index: Python 30.27% share (+1.4% increase)",
+          "source": "inVerita - Python Development Trends",
+          "url": "https://inveritasoft.com/blog-python-development-trends-innovations-and-latest-technology"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "The Market: Explosive Growth",
+      "metrics": [
+        {
+          "value": "+34%",
+          "label": "Crescita employment data science entro 2034"
+        },
+        {
+          "value": "21,000",
+          "label": "Nuovi job openings all'anno (prossima decade)"
+        },
+        {
+          "value": ">50%",
+          "label": "Domanda supererà offerta entro 2026 (McKinsey)"
+        }
+      ],
+      "ironicClosing": "One of the most in-demand tech jobs of the decade. No pressure.",
+      "citations": [
+        {
+          "text": "Data science employment predicted to grow 34% by 2034",
+          "source": "365 Data Science - Job Outlook 2025",
+          "url": "https://365datascience.com/career-advice/career-guides/data-scientist-job-outlook-2025/"
+        },
+        {
+          "text": "McKinsey: demand for data scientists will exceed supply by >50% by 2026",
+          "source": "365 Data Science - Future Trends",
+          "url": "https://365datascience.com/career-advice/the-future-of-data-science/"
+        }
+      ]
+    },
+    {
+      "type": "two-column",
+      "title": "Salaries 2025: USA vs Italy",
+      "leftColumn": {
+        "title": "🇺🇸 USA",
+        "items": [
+          "<strong>Entry:</strong> $152K (+$40K vs 2024)",
+          "<strong>Mid:</strong> $138-175K",
+          "<strong>Senior:</strong> $190-230K",
+          "<strong>Growth:</strong> +2.3% YoY"
+        ]
+      },
+      "rightColumn": {
+        "title": "🇮🇹 Italy",
+        "items": [
+          "<strong>Entry/Junior (<3 years):</strong> €25-32K",
+          "<strong>Mid (4-9 years):</strong> €35-40K",
+          "<strong>Senior (10-20 years):</strong> €44-55K",
+          "<strong>National average:</strong> €37-39K"
+        ]
+      },
+      "note": "<strong>Reality check:</strong> USA paga 3-4x l'Italia, ma costo vita e tasse contano",
+      "ironicClosing": "Impressive salaries in the USA. Rent in San Francisco too.",
+      "citations": [
+        {
+          "text": "USA: Entry $152K, mid $138-175K, senior $190-230K",
+          "source": "Motion Recruitment - Salary Guide 2026",
+          "url": "https://motionrecruitment.com/it-salary/data-science"
+        },
+        {
+          "text": "Italia: Entry €25-32K, mid €35-40K, senior €44-55K, media €37-39K",
+          "source": "Glassdoor Italia & Indeed Italia Nov 2025",
+          "url": "https://www.glassdoor.it/Stipendi/data-scientist-stipendio-SRCH_KO0,14.htm"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Most In-Demand Skills 2025",
+      "paragraphs": [
+        "<strong>Languages:</strong> Python (57% job postings), SQL (30%), R (33%)",
+        "<strong>Machine Learning:</strong> Appears in 69% of job descriptions",
+        "<strong>Deep Learning:</strong> Mentioned in ~20% of postings (doubled)",
+        "<strong>Cloud:</strong> AWS, Azure, Google Cloud (essential for deployment)",
+        "<strong>Top 5 skills:</strong> ML, AI, Python, PyTorch, TensorFlow"
+      ],
+      "ironicClosing": "Python is mentioned in 71% of AI engineering jobs. The other 29% only hire GPT-4.",
+      "citations": [
+        {
+          "text": "Python 57% job postings, SQL 30%, R 33%. ML in 69% descriptions.",
+          "source": "Cobloom - In-Demand Skills 2025",
+          "url": "https://www.cobloom.com/careers-blog/in-demand-data-science-skills"
+        },
+        {
+          "text": "Python in 71% of AI engineering job postings, top 5 skills: ML, AI, Python, PyTorch, TensorFlow",
+          "source": "365 Data Science - ML Engineer Outlook",
+          "url": "https://365datascience.com/career-advice/career-guides/machine-learning-engineer-job-outlook-2025/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Data Science Platform Market",
+      "metrics": [
+        {
+          "value": "$175.15B",
+          "label": "Market size 2025 (Precedence Research)"
+        },
+        {
+          "value": "$322.9B",
+          "label": "Proiezione 2026 (MarketsandMarkets)"
+        },
+        {
+          "value": "$676.51B",
+          "label": "Forecast 2034"
+        },
+        {
+          "value": "27.7%",
+          "label": "CAGR 2021-2026"
+        }
+      ],
+      "ironicClosing": "The market is growing faster than your pandas DataFrame.",
+      "citations": [
+        {
+          "text": "Data science platform market: $175.15B (2025), $322.9B (2026), $676.51B (2034)",
+          "source": "Precedence Research - Market Report",
+          "url": "https://www.precedenceresearch.com/data-science-platforms-market"
+        },
+        {
+          "text": "Data science platforms: $95.3B (2021) to $322.9B (2026), CAGR 27.7%",
+          "source": "MarketsandMarkets - Market Size",
+          "url": "https://www.marketsandmarkets.com/Market-Reports/data-science-platform-market-21532997.html"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Python Fundamentals for Data Science",
+      "paragraphs": [
+        "<strong>The fundamentals that really matter:</strong>",
+        "List comprehensions - Concise and readable code",
+        "Lambda functions - Quick transformations",
+        "Generators - Memory Efficiency",
+        "Context managers - Resource management",
+        "Type hints - Production-ready code"
+      ],
+      "ironicClosing": "When you understand list comprehensions, everything seems trivial."
+    },
+    {
+      "type": "code",
+      "title": "Python Fundamentals: Examples",
+      "code": {
+        "language": "python",
+        "snippet": "# List comprehension\nsquares = [x**2 for x in range(10) if x % 2 == 0]\n# [0, 4, 16, 36, 64]\n\n# Lambda con map/filter\nnumbers = [1, 2, 3, 4, 5]\ndoubled = list(map(lambda x: x * 2, numbers))\n# [2, 4, 6, 8, 10]\n\n# Generator per efficienza\ndef fibonacci_gen(n):\n    a, b = 0, 1\n    for _ in range(n):\n        yield a\n        a, b = b, a + b\n\n# Context manager\nwith open('data.csv', 'r') as f:\n    data = f.read()  # File chiuso automaticamente"
+      },
+      "explanation": "Efficient and Pythonic code"
+    },
+    {
+      "type": "text",
+      "title": "Python for Data: The Ecosystem",
+      "paragraphs": [
+        "<strong>NumPy:</strong> Numerical computation, multidimensional arrays",
+        "<strong>Pandas:</strong> Structured data manipulation (DataFrame)",
+        "<strong>Matplotlib/Seaborn:</strong> Visualization",
+        "<strong>Scikit-learn:</strong> Classic Machine Learning",
+        "<strong>PyTorch/TensorFlow:</strong> Deep Learning",
+        "<strong>Jupyter:</strong> Interactive notebooks for analysis"
+      ],
+      "ironicClosing": "A ecosystem so rich that choosing is the hardest problem."
+    },
+    {
+      "type": "data",
+      "title": "NumPy: The Foundation",
+      "intro": "<strong>Numerical Python - The foundation of everything</strong>",
+      "metrics": [
+        {
+          "value": "2.5 miliardi",
+          "label": "Download totali (all-time)"
+        },
+        {
+          "value": "50-100x",
+          "label": "Più veloce di Python puro (operazioni vettoriali)"
+        },
+        {
+          "value": "1995",
+          "label": "Anno di nascita (Numeric, poi NumPy nel 2005)"
+        }
+      ],
+      "ironicClosing": "Without NumPy, there would be no Pandas, TensorFlow, PyTorch... nothing.",
+      "citations": [
+        {
+          "text": "NumPy 2.5B+ downloads, 50-100x faster than pure Python",
+          "source": "Built With Science - NumPy Popularity",
+          "url": "https://builtwithscience.com/numpy-popularity/"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "NumPy: Array Operations",
+      "code": {
+        "language": "python",
+        "snippet": "import numpy as np\n\n# Create arrays\narr = np.array([1, 2, 3, 4, 5])\nmatrix = np.array([[1, 2, 3], [4, 5, 6]])\n\n# Vectorized operations (FAST)\narr_squared = arr ** 2  # [1, 4, 9, 16, 25]\narr_normalized = (arr - arr.mean()) / arr.std()\n\n# Broadcasting\nmatrix + 10  # Adds 10 to every element\n\n# Powerful indexing\nmatrix[matrix > 3]  # [4, 5, 6]\n\n# Statistical operations\nprint(arr.mean(), arr.std(), arr.sum())\n# 3.0, 1.41, 15"
+      },
+      "explanation": "Vector operations = performance"
+    },
+    {
+      "type": "text",
+      "title": "NumPy: Why It Is Essential",
+      "paragraphs": [
+        "<strong>Performance:</strong> Implemented in C, vector operations",
+        "<strong>Broadcasting:</strong> Operations on arrays of different shapes",
+        "<strong>Linear algebra:</strong> Matrices, decompositions, eigenvalues",
+        "<strong>Random:</strong> Generating random numbers for simulations",
+        "<strong>Integration:</strong> Pandas, Scikit-learn, TensorFlow use NumPy"
+      ],
+      "ironicClosing": "Loop Python? No thanks, vectorize everything."
+    },
+    {
+      "type": "data",
+      "title": "Pandas: Data Manipulation Powerhouse",
+      "intro": "<strong>Panel Data - The Swiss Army knife of data</strong>",
+      "metrics": [
+        {
+          "value": "2.4 miliardi",
+          "label": "Download totali"
+        },
+        {
+          "value": "86%",
+          "label": "Data scientists usano Pandas (Stack Overflow 2024)"
+        },
+        {
+          "value": "2008",
+          "label": "Creato da Wes McKinney"
+        },
+        {
+          "value": "DataFrame",
+          "label": "Struttura dati principale (tabelle)"
+        }
+      ],
+      "ironicClosing": "Excel for programmers, but with superpowers",
+      "citations": [
+        {
+          "text": "Pandas 2.4B downloads, 86% data scientists use it",
+          "source": "Stack Overflow Developer Survey 2024",
+          "url": "https://survey.stackoverflow.co/2024/"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "Pandas: DataFrame Basics",
+      "code": {
+        "language": "python",
+        "snippet": "import pandas as pd\n\n# Create DataFrame\ndf = pd.DataFrame({\n    'name': ['Alice', 'Bob', 'Charlie'],\n    'age': [25, 30, 35],\n    'salary': [50000, 60000, 70000]\n})\n\n# Read CSV (most common)\ndf = pd.read_csv('data.csv')\n\n# Filter\nhigh_earners = df[df['salary'] > 55000]\n\n# Group by and aggregate\navg_by_age = df.groupby('age')['salary'].mean()\n\n# Add new column\ndf['salary_k'] = df['salary'] / 1000\n\n# Sort\ndf.sort_values('salary', ascending=False)"
+      },
+      "explanation": "SQL-like operations in Python"
+    },
+    {
+      "type": "code",
+      "title": "Pandas: Advanced Operations",
+      "code": {
+        "language": "python",
+        "snippet": "# Merge (SQL JOIN)\ndf1 = pd.DataFrame({'id': [1,2,3], 'name': ['A','B','C']})\ndf2 = pd.DataFrame({'id': [1,2,4], 'value': [10,20,30]})\nmerged = pd.merge(df1, df2, on='id', how='left')\n\n# Pivot tables\npivot = df.pivot_table(\n    values='salary',\n    index='department',\n    columns='year',\n    aggfunc='mean'\n)\n\n# Apply custom functions\ndf['salary_category'] = df['salary'].apply(\n    lambda x: 'High' if x > 60000 else 'Low'\n)\n\n# Handle missing data\ndf.fillna(df.mean())  # Fill with mean\ndf.dropna()  # Drop rows with NaN"
+      },
+      "explanation": "Data wrangling superpowers"
+    },
+    {
+      "type": "text",
+      "title": "Pandas: Real Use Cases",
+      "paragraphs": [
+        "<strong>ETL:</strong> Extract, Transform, Load from CSV, JSON, SQL, Excel",
+        "<strong>Data cleaning:</strong> Missing values, duplicates, outliers",
+        "<strong>Exploratory analysis:</strong> Statistics, correlations, distributions",
+        "<strong>Time series:</strong> Resampling, rolling windows, date ranges",
+        "<strong>Reporting:</strong> Aggregations, pivot tables, export"
+      ],
+      "ironicClosing": "If your data is in a table, Pandas is the answer."
+    },
+    {
+      "type": "text",
+      "title": "Visualizzazione: Vedere i Dati",
+      "paragraphs": [
+        "<strong>Matplotlib:</strong> The grandfather, flexible but verbose",
+        "<strong>Seaborn:</strong> Matplotlib + aesthetics + statistics",
+        "<strong>Plotly:</strong> Interactive charts for the web",
+        "<strong>Altair:</strong> Declarative, elegant",
+        "",
+        "<strong>Golden rule:</strong> A chart is worth 1000 lines of data"
+      ],
+      "ironicClosing": "Data viz: where art meets science (and ugly colors)"
+    },
+    {
+      "type": "code",
+      "title": "Matplotlib + Seaborn: Quick Start",
+      "code": {
+        "language": "python",
+        "snippet": "import matplotlib.pyplot as plt\nimport seaborn as sns\nimport pandas as pd\n\n# Matplotlib basic\nplt.figure(figsize=(10, 6))\nplt.plot(x, y, label='Sales')\nplt.xlabel('Month')\nplt.ylabel('Revenue')\nplt.title('Monthly Sales Trend')\nplt.legend()\nplt.show()\n\n# Seaborn (prettier, statistical)\ndf = pd.read_csv('iris.csv')\nsns.set_style('whitegrid')\nsns.scatterplot(\n    data=df,\n    x='sepal_length',\n    y='petal_length',\n    hue='species'\n)\nplt.show()"
+      },
+      "explanation": "From numbers to images"
+    },
+    {
+      "type": "text",
+      "title": "Best Practices Visualization",
+      "paragraphs": [
+        "<strong>Choose the right chart:</strong> Line for trends, bar for categories, scatter for correlations",
+        "<strong>Significant colors:</strong> Colorblind-safe, adequate contrast",
+        "<strong>Clear labels:</strong> Title, axes, legend always present",
+        "<strong>Avoid 3D and pie charts:</strong> (almost always)",
+        "<strong>Interactivity:</strong> Plotly for dashboards and reports"
+      ],
+      "ironicClosing": "A 3D pie chart is the quickest way to lose credibility."
+    },
+    {
+      "type": "data",
+      "title": "Scikit-learn: Classic ML",
+      "intro": "<strong>Machine Learning for Everyone</strong>",
+      "metrics": [
+        {
+          "value": "600M+",
+          "label": "Download totali"
+        },
+        {
+          "value": "80+",
+          "label": "Algoritmi built-in"
+        },
+        {
+          "value": "2007",
+          "label": "Creato come progetto Google Summer of Code"
+        },
+        {
+          "value": "API consistente",
+          "label": "fit(), predict(), transform() ovunque"
+        }
+      ],
+      "ironicClosing": "Classic ML: when deep learning is overkill (often)",
+      "citations": [
+        {
+          "text": "Scikit-learn 600M+ downloads, 80+ algorithms with consistent API",
+          "source": "Scikit-learn Official Docs",
+          "url": "https://scikit-learn.org"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "title": "Scikit-learn: ML Pipeline",
+      "code": {
+        "language": "python",
+        "snippet": "from sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.metrics import accuracy_score\nimport pandas as pd\n\n# Load data\ndf = pd.read_csv('data.csv')\nX = df.drop('target', axis=1)\ny = df['target']\n\n# Split train/test\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42\n)\n\n# Train model\nmodel = RandomForestClassifier(n_estimators=100)\nmodel.fit(X_train, y_train)\n\n# Predict and evaluate\ny_pred = model.predict(X_test)\naccuracy = accuracy_score(y_test, y_pred)\nprint(f'Accuracy: {accuracy:.2f}')"
+      },
+      "explanation": "ML in 10 lines of code"
+    },
+    {
+      "type": "text",
+      "title": "Scikit-learn: Essential Algorithms",
+      "paragraphs": [
+        "<strong>Classification:</strong> Logistic Regression, Random Forest, SVM, XGBoost",
+        "<strong>Regression:</strong> Linear Regression, Ridge, Lasso, Gradient Boosting",
+        "<strong>Clustering:</strong> K-Means, DBSCAN, Hierarchical",
+        "<strong>Dimensionality:</strong> PCA, t-SNE, UMAP",
+        "<strong>Preprocessing:</strong> Scaling, encoding, feature selection"
+      ],
+      "ironicClosing": "80% of ML problems are solved with Random Forest. The remaining 20% are solved too."
+    },
+    {
+      "type": "text",
+      "title": "Deep Learning: PyTorch vs TensorFlow",
+      "paragraphs": [
+        "<strong>PyTorch (Meta):</strong> Research-friendly, dynamic graphs, community preference 2024-2026",
+        "<strong>TensorFlow (Google):</strong> Production-ready, deployment tools, Keras integration",
+        "",
+        "<strong>Trend 2026:</strong> PyTorch dominates research, TensorFlow still strong in enterprise",
+        "<strong>JAX:</strong> The new challenger (Google) - speed, functional"
+      ],
+      "ironicClosing": "PyTorch for the PhD, TensorFlow for deployment, JAX for masochists (affectionately)."
+    },
+    {
+      "type": "text",
+      "title": "Future: Data Science in 2026+",
+      "paragraphs": [
+        "<strong>AutoML:</strong> Democratization of ML (but experts are still needed)",
+        "<strong>LLM per coding:</strong> GitHub Copilot, GPT-4 per boilerplate",
+        "<strong>Edge ML:</strong> Lightweight models on devices (TensorFlow Lite, ONNX)",
+        "<strong>Mature MLOps:</strong> CI/CD for ML, monitoring, A/B testing",
+        "<strong>Causal inference:</strong> Beyond correlations"
+      ],
+      "ironicClosing": "AI will help data scientists. It won't replace them. (For now.)"
+    },
+    {
+      "type": "summary",
+      "title": "Python Summary for Data Science",
+      "items": [
+        "Python: 87% adoption, $152K+ entry-level salaries",
+        "NumPy: Foundation, vector operations 50-100x faster",
+        "Pandas: 2.4B downloads, DataFrame for everything",
+        "Matplotlib/Seaborn: Standard visualization, Plotly for interactivity",
+        "Scikit-learn: 80+ algoritmi ML, API consistente",
+        "PyTorch: Research leader, TensorFlow: production standard",
+        "Future: AutoML, LLM tools, MLOps maturity"
+      ],
+      "ironicClosing": "Data science in 2026: when you know Python, you already know half of the job."
+    }
+  ],
+  "lastTranslated": "2025-11-18",
+  "sourceLanguage": "en"
+}

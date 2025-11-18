@@ -3,12 +3,12 @@
     "chapters": [
       "storia-ai",
       "ai-generativa-stato-arte",
-      "ai-agentica-framework",
-      "workshop-crewai",
       "ai-energia-sostenibilita",
       "llm-transformer-fondamenti",
       "python-data-science",
       "embeddings-vector-db-rag",
+      "ai-agentica-framework",
+      "workshop-crewai",
       "pytorch-tensorflow-ml",
       "workshop-pytorch-nlp",
       "workshop-tensorflow-nlp"
@@ -24,7 +24,17 @@
   },
   "en": {
     "chapters": [
-      "storia-ai"
+      "storia-ai",
+      "ai-generativa-stato-arte",
+      "ai-energia-sostenibilita",
+      "llm-transformer-fondamenti",
+      "python-data-science",
+      "embeddings-vector-db-rag",
+      "ai-agentica-framework",
+      "workshop-crewai",
+      "pytorch-tensorflow-ml",
+      "workshop-pytorch-nlp",
+      "workshop-tensorflow-nlp"
     ],
     "guides": [
       "jupyter-fundamentals"

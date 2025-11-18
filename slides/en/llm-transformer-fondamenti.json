@@ -1,0 +1,450 @@
+{
+  "number": 5,
+  "title": "LLM and Transformer: The Fundamentals",
+  "description": "How they work, why Google lost, and what 'thinking' really means.",
+  "steps": [
+    {
+      "name": "Intro",
+      "slides": [
+        0
+      ]
+    },
+    {
+      "name": "Transformer Explained",
+      "slides": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "name": "Story: Google vs OpenAI",
+      "slides": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "Training: Costs and Data",
+      "slides": [
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "name": "Reasoning: LLM vs Human",
+      "slides": [
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "name": "Discussion",
+      "slides": [
+        16
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "LLM and Transformer",
+      "subtitle": "How They Really Work",
+      "description": "From theory to the architecture that changed everything",
+      "ironicClosing": "Quando 8 ricercatori Google cambiano il mondo... per altri"
+    },
+    {
+      "type": "text",
+      "title": "What Does an LLM Do?",
+      "paragraphs": [
+        "<strong>Basic task:</strong> Predict the next word",
+        "",
+        "<strong>Input:</strong> \"The cat climbed onto the...\"",
+        "<strong>Output:</strong> \"roof\" (probability 0.4), \"table\" (0.3), \"sofa\" (0.2)...",
+        "",
+        "<strong>But how does it choose?</strong>",
+        "• Context: what came first?",
+        "• Relationships: \"cat\" + \"climb\" → elevated surfaces",
+        "• Learned patterns: billions of examples seen during training"
+      ],
+      "ironicClosing": "Predicting words. 175 billion parameters to predict words. And yet, it works."
+    },
+    {
+      "type": "text",
+      "title": "The Pre-Transformer Problem",
+      "paragraphs": [
+        "<strong>RNN (Recurrent Neural Networks):</strong> They read word by word, sequentially",
+        "",
+        "<strong>Problem 1 - Short Memory:</strong>",
+        "\"The cat that ate the fish that was on the table that is in the kitchen is...\" → RNN forgets \"cat\"",
+        "",
+        "<strong>Problem 2 - Slowness:</strong>",
+        "Sequential = no parallelization = slow training",
+        "",
+        "<strong>Problem 3 - Limited context:</strong>",
+        "Difficult to capture long-range relationships"
+      ],
+      "ironicClosing": "RNN: when short-term memory is a problem even for AIs"
+    },
+    {
+      "type": "text",
+      "title": "Transformer: The Revolutionary Idea",
+      "paragraphs": [
+        "<strong>2017 - Google Brain:</strong> \"Attention Is All You Need\"",
+        "",
+        "<strong>The insight:</strong> Every word looks at <em>all</em> the other words, in parallel",
+        "",
+        "<strong>Example:</strong>",
+        "\"The animal didn't cross the street because it was too tired.\"",
+        "",
+        "• \"it\" looks at \"animal\" (high attention) and \"street\" (low attention)",
+        "• Understands that \"it\" = animal, not street",
+        "• Everything in parallel, not sequential"
+      ],
+      "ironicClosing": "Attention = ask every word 'who is important to you in this sentence?'",
+      "citations": [
+        {
+          "text": "Attention Is All You Need - Google Brain 2017, foundation of all transformers",
+          "source": "Vaswani et al. - Transformer Paper",
+          "url": "https://arxiv.org/abs/1706.03762"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Self-Attention: How It Works",
+      "paragraphs": [
+        "<strong>For each word, create 3 vectors:</strong>",
+        "",
+        "<strong>Query (Q):</strong> \"What am I looking for?\"",
+        "<strong>Key (K):</strong> \"What do I offer?\"",
+        "<strong>Value (V):</strong> \"My actual content\"",
+        "",
+        "<strong>Attention calculation:</strong>",
+        "1. Q · K = how similar Q and K are (dot product)",
+        "2. Softmax = convert to probabilities",
+        "3. Weighted sum of the Values",
+        "",
+        "<strong>Risultato:</strong> Ogni parola sa chi è importante nel contesto"
+      ],
+      "ironicClosing": "Query, Key, Value: stolen from databases. If it works, it works.",
+      "citations": [
+        {
+          "text": "Self-attention uses Query, Key, Value inspired by database retrieval",
+          "source": "IBM - Attention Mechanism",
+          "url": "https://www.ibm.com/think/topics/attention-mechanism"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "June 12, 2017: Google Invents the Transformer",
+      "paragraphs": [
+        "<strong>Paper:</strong> \"Attention Is All You Need\"",
+        "",
+        "<strong>Team Google Brain:</strong>",
+        "Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin",
+        "",
+        "<strong>Breakthrough:</strong> Eliminates CNN and RNN, uses only attention",
+        "",
+        "<strong>Results:</strong>",
+        "• Training 10x faster",
+        "• Better BLEU score on translation",
+        "• Scales very well (bigger = better)"
+      ],
+      "ironicClosing": "8 researchers, 1 paper, the foundations of GPT/BERT/Gemini/everything",
+      "citations": [
+        {
+          "text": "Google Brain team invented transformer architecture June 12, 2017",
+          "source": "MIT Technology Review - ChatGPT Origins",
+          "url": "https://www.technologyreview.com/2023/02/08/1068068/chatgpt-is-everywhere-heres-where-it-came-from/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "2018: OpenAI Strikes Fast",
+      "paragraphs": [
+        "<strong>June 2018 - GPT-1:</strong> OpenAI releases the first generative transformer model",
+        "",
+        "<strong>The insight from OpenAI:</strong>",
+        "\"If you scale transformers enough and train them on huge datasets, they become general-purpose reasoning engines.\"",
+        "",
+        "<strong>Strategy:</strong>",
+        "• Pre-train on all available text",
+        "• Fine-tune per task specifici",
+        "• Scale, scale, scale",
+        "",
+        "<strong>Google?</strong> Still debating internal reputational risks"
+      ],
+      "ironicClosing": "OpenAI read Google's paper and understood what it meant before Google did.",
+      "citations": [
+        {
+          "text": "OpenAI released GPT-1 in June 2018, capitalizing on Google's transformer",
+          "source": "Wikipedia - GPT",
+          "url": "https://en.wikipedia.org/wiki/Generative_pre-trained_transformer"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Why Google is Losing (Even Though It Invented Everything)",
+      "paragraphs": [
+        "<strong>1. Reputation Risk:</strong>",
+        "Google terrified: \"What if the model says something offensive/biased?\"",
+        "",
+        "<strong>2. Corporate Inertia:</strong>",
+        "Huge company, rigid standards, slow product development.",
+        "",
+        "<strong>3. Speed:</strong>",
+        "While Google was debating, OpenAI was shipping.",
+        "",
+        "<strong>4. Business Model:</strong>",
+        "Google earns from ads → LLM risks cannibalizing search",
+        "",
+        "<strong>Lesson:</strong> Inventing ≠ Winning. Execution matters."
+      ],
+      "ironicClosing": "Google created the transformer. OpenAI created the product. Microsoft wrote the check.",
+      "citations": [
+        {
+          "text": "Google feared reputation risk and corporate inertia while OpenAI shipped fast",
+          "source": "Adjmal - Why Google Missed First Transformer Wave",
+          "url": "https://adjmal.com/2025/05/03/the-rise-of-openai-and-why-google-missed-the-first-transformer-wave/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "The Awakening of Google (Too Late?)",
+      "paragraphs": [
+        "<strong>2022 - ChatGPT shock:</strong> Google in panic mode",
+        "",
+        "<strong>2023 - Bard released:</strong> Haste = fail (wrong demo, actions -9%)",
+        "",
+        "<strong>2024 - Gemini:</strong> Finally competitive",
+        "",
+        "<strong>2025 - Gemini 2.0:</strong> On par with GPT-4.5/o1",
+        "",
+        "<strong>Current situation:</strong>",
+        "• Google has technically recovered",
+        "• OpenAI has brand and momentum",
+        "• Microsoft has distribution (Office, Windows)",
+        "",
+        "<strong>Bottom line:</strong> It's no longer just a technical race."
+      ],
+      "ironicClosing": "Google is now playing catch-up on its own invention. The irony is delightful."
+    },
+    {
+      "type": "data",
+      "title": "GPT-3: The Training That Changed Everything",
+      "intro": "<strong>May 28, 2020 - OpenAI releases GPT-3</strong>",
+      "metrics": [
+        {
+          "value": "175 miliardi",
+          "label": "Parametri"
+        },
+        {
+          "value": "499 miliardi",
+          "label": "Token usati per training"
+        },
+        {
+          "value": "700 GB",
+          "label": "Dataset size (compresso)"
+        },
+        {
+          "value": "$4.6M",
+          "label": "Costo training stimato (single run)"
+        },
+        {
+          "value": "355 anni",
+          "label": "Tempo su singola GPU (ipotetico)"
+        },
+        {
+          "value": "3.1×10²³",
+          "label": "FLOPS necessari"
+        }
+      ],
+      "ironicClosing": "4.6 million dollars to teach an AI to predict words. Best money ever spent.",
+      "citations": [
+        {
+          "text": "GPT-3: 175B params, 499B tokens, $4.6M cost, 3.1e23 FLOPS",
+          "source": "Lambda Labs - GPT-3 Training Cost",
+          "url": "https://www.infoq.com/news/2020/06/openai-gpt3-language-model/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "GPT-3 Dataset: What It Has 'Read'",
+      "paragraphs": [
+        "<strong>Composition of the training set (300B effective tokens):</strong>",
+        "",
+        "<strong>CommonCrawl (60% - 410B token):</strong>",
+        "• Internet scrape (filtered for quality)",
+        "• Reddit links with ≥3 upvotes as a quality signal",
+        "",
+        "<strong>WebText2 (22%):</strong> Outbound links from Reddit",
+        "<strong>Books1 + Books2 (16%):</strong> Books (unspecified which)",
+        "<strong>Wikipedia (3%):</strong> All English articles",
+        "",
+        "<strong>Quality > Quantity:</strong> CommonCrawl heavily filtered for similarity with high-quality corpora"
+      ],
+      "ironicClosing": "GPT-3 has read the internet. It explains a lot about its... character.",
+      "citations": [
+        {
+          "text": "GPT-3 trained on 60% CommonCrawl, 22% WebText2, 16% Books, 3% Wikipedia",
+          "source": "DzoLab - GPT-3 Overview",
+          "url": "https://dzlab.github.io/ml/2020/07/25/gpt3-overview/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Cost Evolution: GPT-3 → GPT-4",
+      "paragraphs": [
+        "<strong>GPT-3 (2020):</strong> $4.6M training cost",
+        "",
+        "<strong>GPT-4 (2023 - unofficial estimates):</strong>",
+        "• Estimated training cost of over $100M",
+        "• 1.7 trillion tokens (vs 300B of GPT-3)",
+        "• 25,000+ A100 GPUs for months",
+        "",
+        "<strong>Trend:</strong> Costi crescono esponenzialmente con la scala",
+        "",
+        "<strong>Implication:</strong>",
+        "• Only big players can afford frontier models",
+        "• Open source mid-size models (Llama, Mistral) are growing",
+        "• Inference cost now > training cost (for many companies)"
+      ],
+      "ironicClosing": "From $5M to $100M in 3 years. Scaling laws apply to budgets too."
+    },
+    {
+      "type": "text",
+      "title": "LLM Reasoning: o1, o3 and 'Chain of Thought'",
+      "paragraphs": [
+        "<strong>September 2024 - OpenAI o1:</strong> The first \"reasoning model\"",
+        "",
+        "<strong>December 2024 - o3:</strong> Even better",
+        "",
+        "<strong>What changes?</strong>",
+        "Before: LLM generates response immediately",
+        "Now: LLM 'thinks' before responding (chain of thought)",
+        "",
+        "<strong>How it works:</strong>",
+        "• Reinforcement learning to learn to reason step-by-step",
+        "• 'Private chain of thought' (you don't see the reasoning)",
+        "• It can self-correct, try different approaches.",
+        "• Breaks complex problems into subproblems"
+      ],
+      "ironicClosing": "LLMs that 'think'. Or at least, they simulate thinking very well.",
+      "citations": [
+        {
+          "text": "o1 uses reinforcement learning to learn chain of thought reasoning",
+          "source": "OpenAI - Learning to Reason",
+          "url": "https://openai.com/index/learning-to-reason-with-llms/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Chain of Thought: Practical Example",
+      "paragraphs": [
+        "<strong>Problem:</strong> \"Maria has 3 apples. She buys 5 oranges. How many apples does she have?\"",
+        "",
+        "<strong>GPT-4 (standard):</strong>",
+        "→ Responds \"8\" (wrong, sum of apples + oranges)",
+        "",
+        "<strong>o1 (reasoning):</strong>",
+        "Thought 1: \"Question about apples, not total fruits\"",
+        "Thought 2: \"Buying oranges doesn't change the number of apples.\"",
+        "Thought 3: \"Maria had 3 apples, she still has 3 apples.\"",
+        "→ Responds \"3\" (correct)",
+        "",
+        "<strong>Difference:</strong> Breaking down, self-correction, focus on relevant info"
+      ],
+      "ironicClosing": "Chain of thought = showing the work, like in school. But it works."
+    },
+    {
+      "type": "data",
+      "title": "o3 Performance: Close to Human?",
+      "intro": "<strong>Benchmark ARC-AGI (Abstract Reasoning)</strong>",
+      "metrics": [
+        {
+          "value": "87.5%",
+          "label": "o3 score su ARC-AGI"
+        },
+        {
+          "value": "85%",
+          "label": "Human baseline"
+        },
+        {
+          "value": "5%",
+          "label": "GPT-4 score (senza reasoning)"
+        }
+      ],
+      "paragraphs": [
+        "<strong>ARC-AGI:</strong> Visual abstract reasoning test (patterns, logic)",
+        "<strong>Implication:</strong> On structured tasks (math, logic), o3 competes with humans.",
+        "<strong>But:</strong> Still pattern matching, not true understanding"
+      ],
+      "ironicClosing": "87.5% vs 85% human. Almost AGI? No. Impressive? Yes.",
+      "citations": [
+        {
+          "text": "o3 scores 87.5% on ARC-AGI vs 85% human baseline, 5% GPT-4",
+          "source": "Helicone - OpenAI o3 Benchmarks",
+          "url": "https://www.helicone.ai/blog/openai-o3"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Reasoning LLM vs Human Reasoning: The Differences",
+      "paragraphs": [
+        "<strong>What do they have in common:</strong>",
+        "• Step-by-step decomposition",
+        "• Self-correction when the approach doesn't work",
+        "• Focus on relevant information",
+        "",
+        "<strong>Critical differences:</strong>",
+        "",
+        "<strong>1. Mechanism:</strong>",
+        "• Human: semantic understanding, mental model of the world",
+        "• LLM: pattern matching at scale, no real understanding",
+        "",
+        "<strong>2. Generalization:</strong>",
+        "• Human: transfers knowledge to new domains",
+        "• LLM: excels in structured domains seen during training, struggles with novel contexts"
+      ],
+      "ironicClosing": "LLM simulates reasoning. Human... reasons. A subtle yet fundamental difference."
+    },
+    {
+      "type": "text",
+      "title": "Questions for Discussion 💬",
+      "paragraphs": [
+        "<strong>1. Google vs OpenAI:</strong>",
+        "Did Google err in being cautious? Or has OpenAI been irresponsible in moving quickly?",
+        "",
+        "<strong>2. Training Costs:</strong>",
+        "$100M+ for GPT-4. Does this concentrate power in the hands of a few big players? Is this a problem?",
+        "",
+        "<strong>3. Reasoning:</strong>",
+        "If o3 passes human tests but doesn't really 'understand', does it count? When should we trust AI reasoning?",
+        "",
+        "<strong>4. Dataset:</strong>",
+        "GPT has 'read' the internet without consent. Is that okay? How do we handle copyright and privacy?",
+        "",
+        "<strong>5. Future:</strong>",
+        "Quando (se mai) LLM reasoning diventerà indistinguibile da quello umano?"
+      ],
+      "ironicClosing": "Difficult questions don't have answers in 175B parameters. For now."
+    }
+  ],
+  "lastTranslated": "2025-11-18",
+  "sourceLanguage": "en"
+}

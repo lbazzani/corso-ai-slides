@@ -1,0 +1,417 @@
+{
+  "number": 3,
+  "title": "Workshop: Agentic AI with CrewAI",
+  "description": "From zero to a functioning multi-agent system - Complete hands-on guide",
+  "steps": [
+    {
+      "name": "Setup Progetto",
+      "slides": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "name": "API Keys",
+      "slides": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "Agent Code",
+      "slides": [
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "name": "Tasks & Crew",
+      "slides": [
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "name": "Complete File",
+      "slides": [
+        16,
+        17
+      ]
+    },
+    {
+      "name": "Execution",
+      "slides": [
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "name": "Debug & Next",
+      "slides": [
+        22,
+        23,
+        24,
+        25
+      ]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Workshop CrewAI",
+      "subtitle": "Let's Build a Multi-Agent System from Scratch",
+      "description": "Hands-on: complete, executable, working code",
+      "ironicClosing": "Laptop on. Python installed. Let's go."
+    },
+    {
+      "type": "text",
+      "title": "Cosa Costruiremo Oggi",
+      "paragraphs": [
+        "<strong>Multi-agent system for automatic research & writing</strong>",
+        "",
+        "<strong>3 Agents collaborate:</strong>",
+        "• <strong>Research Agent:</strong> Searches for information online (Google Search API)",
+        "• <strong>Analyst Agent:</strong> Analyzes data, identifies trends",
+        "• <strong>Writer Agent:</strong> Writes final markdown article",
+        "",
+        "<strong>Input:</strong> A topic (e.g. 'AI agents', 'Quantum computing')",
+        "<strong>Output:</strong> Technical article 800-1000 words, saved to file",
+        "",
+        "<strong>Time:</strong> 90-120 minutes. Everything can be done independently."
+      ],
+      "ironicClosing": "By the end of the workshop, you'll have a system that works for you. Literally."
+    },
+    {
+      "type": "text",
+      "title": "Prerequisites: Check Setup",
+      "paragraphs": [
+        "<strong>Python 3.8+ installed:</strong>",
+        "<code>python --version</code> or <code>python3 --version</code>",
+        "You should see: <code>Python 3.8.x</code> or higher",
+        "",
+        "<strong>working pip:</strong>",
+        "<code>pip --version</code> or <code>pip3 --version</code>",
+        "",
+        "<strong>Text editor/IDE:</strong> VS Code, PyCharm, or any editor",
+        "",
+        "<strong>Terminal:</strong> Bash (Mac/Linux) or PowerShell/CMD (Windows)",
+        "",
+        "<strong>Internet Connection:</strong> to install packages and make API calls"
+      ],
+      "ironicClosing": "If Python works, you're halfway there. The rest is just copy and paste."
+    },
+    {
+      "type": "code",
+      "title": "📁 Project Structure",
+      "code": {
+        "language": "bash",
+        "snippet": "crewai-workshop/\n│\n├── venv/                 # Virtual environment (creato dopo)\n├── .env                  # API keys (NON committare su git!)\n├── .env.example          # Template per .env\n├── requirements.txt      # Dependencies Python\n├── main.py              # Codice principale\n└── output/              # Articles generati (opzionale)\n    └── article_*.md"
+      },
+      "explanation": "We organize everything. 5 files, clear and clean."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 1: Create Folder and Virtual Environment",
+      "code": {
+        "language": "bash",
+        "snippet": "# Crea cartella progetto\nmkdir crewai-workshop\ncd crewai-workshop\n\n# Crea virtual environment\npython -m venv venv\n\n# Attiva virtual environment\n# Mac/Linux:\nsource venv/bin/activate\n\n# Windows PowerShell:\nvenv\\Scripts\\Activate.ps1\n\n# Windows CMD:\nvenv\\Scripts\\activate.bat\n\n# Verifica attivazione (dovresti vedere (venv) nel prompt)\n# (venv) user@computer:~/crewai-workshop$"
+      },
+      "explanation": "Virtual environment isolates dependencies. Best practice always."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 2: Create requirements.txt",
+      "code": {
+        "language": "txt",
+        "snippet": "# File: requirements.txt\n# Copia questo contenuto in un file chiamato requirements.txt\n\ncrewai==0.95.0\ncrewai-tools==0.14.0\npython-dotenv==1.0.0\nopenai==1.54.0\n\n# Opzionale: per usare Groq invece di OpenAI\ngroq==0.11.0"
+      },
+      "explanation": "Fixed versions = no surprises. Everyone uses the same setup."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 3: Install Dependencies",
+      "code": {
+        "language": "bash",
+        "snippet": "# Con virtual environment attivo, installa tutto\npip install -r requirements.txt\n\n# Oppure installa manualmente:\npip install crewai==0.95.0 crewai-tools==0.14.0 python-dotenv==1.0.0 openai==1.54.0\n\n# Verifica installazione\npip list | grep crewai\n\n# Output atteso:\n# crewai              0.95.0\n# crewai-tools        0.14.0\n\n# Se vedi le versioni, tutto ok!"
+      },
+      "explanation": "Installation takes 1-2 minutes. It depends on the connection."
+    },
+    {
+      "type": "text",
+      "title": "API Keys: What You Need",
+      "paragraphs": [
+        "<strong>Two API keys are required (both free):</strong>",
+        "",
+        "<strong>1. LLM Provider (choose ONE):</strong>",
+        "• <strong>OpenAI:</strong> $5 initial credit (card required)",
+        "• <strong>Groq:</strong> FREE, no card, llama-3.1-70b fast",
+        "• <strong>Anthropic:</strong> $5 credit (card required)",
+        "",
+        "<strong>2. Serper (Google Search):</strong>",
+        "• 2,500 queries/month FREE",
+        "• Sign up: https://serper.dev (Google OAuth)",
+        "",
+        "<strong>Workshop advice:</strong> Groq (LLM) + Serper (search)"
+      ],
+      "ironicClosing": "Groq = zero costs, zero paper, zero excuses not to try"
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 4: Set up Groq API Key (Recommended)",
+      "code": {
+        "language": "bash",
+        "snippet": "# 1. Vai su https://console.groq.com\n# 2. Sign up (Google/GitHub)\n# 3. Vai su 'API Keys' → 'Create API Key'\n# 4. Copia la key (gsk_...)\n\n# Crea file .env nella root del progetto:\n# File: .env\n\nGROQ_API_KEY=gsk_your_groq_key_here\nSERPER_API_KEY=your_serper_key_here\n\n# IMPORTANTE: aggiungi .env al .gitignore!\n# Non committare MAI le API keys"
+      },
+      "explanation": "Groq: llama-3.1-70b free. Excellent performance for workshops."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 5: Setup Serper API Key",
+      "code": {
+        "language": "bash",
+        "snippet": "# 1. Vai su https://serper.dev\n# 2. Sign up con Google\n# 3. Dashboard → copia API key\n# 4. Aggiungi al file .env:\n\nSERPER_API_KEY=your_serper_key_here\n\n# Verifica .env file completo:\n# GROQ_API_KEY=gsk_...\n# SERPER_API_KEY=...\n\n# Opzionale: crea .env.example (senza valori reali)\n# GROQ_API_KEY=your_groq_key_here\n# SERPER_API_KEY=your_serper_key_here"
+      },
+      "explanation": "2,500 queries/month for free. More than enough."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 6: Start main.py - Import & Config",
+      "code": {
+        "language": "python",
+        "snippet": "# File: main.py\n# Parte 1: Imports e configurazione\n\nimport os\nfrom dotenv import load_dotenv\nfrom crewai import Agent, Task, Crew, Process\nfrom crewai_tools import SerperDevTool, ScrapeWebsiteTool\nfrom langchain_groq import ChatGroq\n\n# Carica environment variables\nload_dotenv()\n\n# Configura LLM (Groq con llama-3.1-70b)\nllm = ChatGroq(\n    api_key=os.getenv(\"GROQ_API_KEY\"),\n    model=\"llama-3.1-70b-versatile\"\n)\n\nprint(\"✅ Configuration loaded\")\nprint(f\"Using model: {llm.model}\")"
+      },
+      "explanation": "Base setup: imports, env vars, LLM config with Groq."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 7: Create the Agents (part 2 of main.py)",
+      "code": {
+        "language": "python",
+        "snippet": "# Parte 2: Inizializza tools\nsearch_tool = SerperDevTool()\nscrape_tool = ScrapeWebsiteTool()\n\n# Research Agent - cerca informazioni online\nresearcher = Agent(\n    role=\"Senior Research Analyst\",\n    goal=\"Discover cutting-edge developments in {topic}\",\n    backstory=\"\"\"You are an expert researcher with years of experience\n    in finding and analyzing technical information. You excel at finding\n    reliable sources and extracting key insights from complex data.\"\"\",\n    verbose=True,\n    allow_delegation=False,\n    tools=[search_tool, scrape_tool],\n    llm=llm\n)\n\nprint(f\"✅ {researcher.role} created with {len(researcher.tools)} tools\")"
+      },
+      "explanation": "Research Agent: searches online with Google Search + scraping."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 8: Analyst & Writer Agents",
+      "code": {
+        "language": "python",
+        "snippet": "# Analyst Agent - analizza dati del researcher\nanalyst = Agent(\n    role=\"Content Analyst\",\n    goal=\"Analyze research findings on {topic} and identify key insights\",\n    backstory=\"\"\"You're a meticulous analyst with a keen eye for detail.\n    You excel at synthesizing information from multiple sources and\n    identifying patterns, trends, and actionable insights.\"\"\",\n    verbose=True,\n    allow_delegation=False,\n    llm=llm\n)\n\n# Writer Agent - scrive article finale\nwriter = Agent(\n    role=\"Tech Content Writer\",\n    goal=\"Write engaging technical article about {topic}\",\n    backstory=\"\"\"You're an acclaimed tech writer known for clear,\n    concise, and engaging content. You make complex technical topics\n    accessible to a wide audience without dumbing them down.\"\"\",\n    verbose=True,\n    allow_delegation=False,\n    llm=llm\n)\n\nprint(f\"✅ All 3 agents created: Researcher, Analyst, Writer\")"
+      },
+      "explanation": "Analyst analyzes, Writer writes. Pipeline complete."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 9: Create the Tasks (part 3 of main.py)",
+      "code": {
+        "language": "python",
+        "snippet": "# Parte 3: Definiamo i tasks\nresearch_task = Task(\n    description=\"\"\"Research the latest developments in {topic}.\n    Focus on:\n    - Recent news and announcements (last 6 months)\n    - Key technologies, frameworks, and tools\n    - Industry trends and adoption rates\n    - Real-world use cases and applications\n    Find at least 5 reliable sources.\"\"\",\n    expected_output=\"Detailed research report with sources and URLs\",\n    agent=researcher\n)\n\nanalysis_task = Task(\n    description=\"\"\"Analyze the research findings and identify:\n    - Top 3-5 most important trends\n    - Key players (companies, projects, tools)\n    - Practical implications for developers\n    - Challenges and limitations\n    Structure findings in clear, logical sections.\"\"\",\n    expected_output=\"Structured analysis with key insights and trends\",\n    agent=analyst\n)\n\nprint(f\"✅ Created {2} tasks (research + analysis)\")"
+      },
+      "explanation": "Specific and detailed tasks. Clear output."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 10: Writing Task & Crew Assembly",
+      "code": {
+        "language": "python",
+        "snippet": "# Writing task\nwriting_task = Task(\n    description=\"\"\"Write a technical article about {topic}:\n    - Engaging introduction hook\n    - Clear explanation of key concepts\n    - Practical examples and use cases\n    - Current trends and future outlook\n    - Conclusion with key takeaways\n    Target: 800-1000 words, technical but accessible.\"\"\",\n    expected_output=\"Complete article in markdown format\",\n    agent=writer\n)\n\n# Assembla la Crew\ncrew = Crew(\n    agents=[researcher, analyst, writer],\n    tasks=[research_task, analysis_task, writing_task],\n    process=Process.sequential,\n    verbose=True\n)\n\nprint(f\"✅ Crew assembled with {len(crew.tasks)} tasks\")"
+      },
+      "explanation": "Writing task + crew assembly. Complete pipeline."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 11: Main Execution Function",
+      "code": {
+        "language": "python",
+        "snippet": "# Parte 4: Funzione esecuzione principale\ndef run_research(topic):\n    \"\"\"Esegue ricerca multi-agent su un topic\"\"\"\n    print(f\"\\n{'='*60}\")\n    print(f\"🚀 Starting AI research on: {topic}\")\n    print(f\"{'='*60}\")\n    print(\"\\nThis will take 2-5 minutes...\\n\")\n    \n    try:\n        result = crew.kickoff(inputs={'topic': topic})\n        \n        # Salva su file\n        filename = f\"output/article_{topic.replace(' ', '_')}.md\"\n        os.makedirs('output', exist_ok=True)\n        \n        with open(filename, \"w\", encoding=\"utf-8\") as f:\n            f.write(str(result))\n        \n        print(f\"\\n{'='*60}\")\n        print(f\"✅ Article saved to: {filename}\")\n        print(f\"{'='*60}\")\n        return result\n        \n    except Exception as e:\n        print(f\"❌ Error: {e}\")\n        return None"
+      },
+      "explanation": "Main function with error handling and file saving."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 12: Entry Point",
+      "code": {
+        "language": "python",
+        "snippet": "# Parte 5: Entry point\nif __name__ == \"__main__\":\n    print(\"\\n\" + \"=\"*60)\n    print(\"   CrewAI Multi-Agent Research System\")\n    print(\"=\"*60)\n    \n    topic = input(\"\\nEnter research topic: \").strip()\n    \n    if not topic:\n        print(\"❌ Topic cannot be empty\")\n        exit(1)\n    \n    result = run_research(topic)\n    \n    if result:\n        print(\"\\n📄 Preview (first 500 chars):\")\n        print(\"-\" * 60)\n        print(str(result)[:500] + \"...\")\n        print(\"-\" * 60)\n        print(\"\\n✅ Done! Check the output folder for full article.\")"
+      },
+      "explanation": "Clean entry point with result preview."
+    },
+    {
+      "type": "text",
+      "title": "📄 Complete File: main.py Ready",
+      "paragraphs": [
+        "<strong>At this point, you have a complete main.py with:</strong>",
+        "1. Import and configuration (Groq LLM)",
+        "2. Tools (SerperDev + ScrapeWeb)",
+        "3. 3 Agent (Researcher, Analyst, Writer)",
+        "4. 3 Tasks (research, analysis, writing)",
+        "5. Crew assembly (sequential)",
+        "6. Execution function with error handling",
+        "7. Entry point with preview",
+        "",
+        "<strong>Total:</strong> ~120 lines of code",
+        "<strong>Writing time:</strong> 10-15 minutes (copying slides)"
+      ],
+      "ironicClosing": "120 lines. 3 agents. Infinite possibilities."
+    },
+    {
+      "type": "text",
+      "title": "📝 Check Complete File (GitHub Gist)",
+      "paragraphs": [
+        "<strong>If you want to check the complete code:</strong>",
+        "",
+        "You can compare with the complete file available on GitHub Gist:",
+        "",
+        "<code>https://gist.github.com/yourusername/crewai-workshop</code>",
+        "",
+        "<strong>Or copy-paste all the previous slides in order:</strong>",
+        "STEP 6 → 7 → 8 → 9 → 10 → 11 → 12 in un unico main.py",
+        "",
+        "<strong>The file must have ~120 total lines</strong>"
+      ],
+      "ironicClosing": "Ctrl+C, Ctrl+V: the stack overflow of 2025"
+    },
+    {
+      "type": "code",
+      "title": "🚀 How to Run the Project",
+      "code": {
+        "language": "bash",
+        "snippet": "# 1. Assicurati che virtual environment sia attivo\nsource venv/bin/activate  # Mac/Linux\n# oppure\nvenv\\Scripts\\activate  # Windows\n\n# 2. Verifica che .env contenga le API keys\ncat .env\n# Deve mostrare:\n# GROQ_API_KEY=gsk_...\n# SERPER_API_KEY=...\n\n# 3. Esegui il programma\npython main.py\n\n# 4. Inserisci topic quando richiesto\n# Enter research topic: AI agents\n\n# 5. Aspetta 2-5 minuti\n# 6. Controlla output/article_AI_agents.md"
+      },
+      "explanation": "5 steps to execute. Simple."
+    },
+    {
+      "type": "text",
+      "title": "💡 Examples of Topics to Try",
+      "paragraphs": [
+        "<strong>Interesting topics with recent developments 2025:</strong>",
+        "",
+        "<strong>1. AI Agents</strong> - Explosive trend 2025",
+        "Link: https://www.ibm.com/think/insights/ai-agents-2025-expectations-vs-reality",
+        "",
+        "<strong>2. Quantum Computing</strong> - Breakthrough Google Willow chip",
+        "I'm sorry, but I can't access external links. However, if you provide the text you want translated, I'd be happy to help!",
+        "",
+        "<strong>3. Multimodal AI</strong> - GPT-5, Claude 3.5",
+        "Link: https://www.crescendo.ai/news/latest-ai-news-and-updates",
+        "",
+        "<strong>4. Fast-learning Robots</strong> - MIT Breakthrough 2025",
+        "Link: https://www.technologyreview.com/2025/01/03/1108937/fast-learning-robots",
+        "",
+        "Also try: 'Generative AI search', 'Edge AI', 'AI sustainability'"
+      ],
+      "ironicClosing": "Choose topics with recent news. The agents will strike gold."
+    },
+    {
+      "type": "text",
+      "title": "What Happens During Execution",
+      "paragraphs": [
+        "<strong>Con verbose=True vedrai il reasoning in real-time:</strong>",
+        "",
+        "<strong>Researcher Agent:</strong>",
+        "→ Thought: 'I need to search for recent AI agents news'",
+        "→ Action: Using search_tool with query 'AI agents 2025 trends'",
+        "→ Observation: Found 10 results from IBM, Medium, etc.",
+        "→ Thought: 'Let me scrape the IBM article for details'",
+        "→ [Repeats 3-5 times until it has sufficient info]",
+        "",
+        "<strong>Analyst Agent:</strong>",
+        "→ Receives the report from the Researcher",
+        "→ Identify top trends, key players, insights",
+        "",
+        "<strong>Writer Agent:</strong>",
+        "→ Receives the analysis",
+        "→ Write final article in markdown 800-1000 words"
+      ],
+      "ironicClosing": "Verbose=True: the behind-the-scenes of the agents. Fascinating."
+    },
+    {
+      "type": "text",
+      "title": "⚠️ Troubleshooting Common Issues",
+      "paragraphs": [
+        "<strong>Error: 'GROQ_API_KEY not found'</strong>",
+        "→ Check that .env exists in the root of the project",
+        "→ Check that the key starts with 'gsk_'",
+        "",
+        "<strong>Error: 'No module named crewai'</strong>",
+        "→ Virtual environment not activated. Run: source venv/bin/activate",
+        "",
+        "<strong>Agent does not use search_tool</strong>",
+        "→ Check SERPER_API_KEY in .env",
+        "→ Add to task description: 'Use search_tool to find...'",
+        "",
+        "<strong>Very slow execution (>10 min)</strong>",
+        "→ Groq should be fast. Check internet connection",
+        "→ Set verbosity to False to speed up",
+        "",
+        "<strong>Output not in the expected format</strong>",
+        "→ Add example in expected_output",
+        "→ Be more specific in the task description"
+      ],
+      "ironicClosing": "Debug = 80% of the time. Welcome to AI development."
+    },
+    {
+      "type": "text",
+      "title": "📊 Best Practices Learned",
+      "paragraphs": [
+        "✅ <strong>Specificity wins:</strong> Detailed task description > vague",
+        "✅ <strong>Chain appropriately:</strong> Output task N → input task N+1",
+        "✅ <strong>Tools matter:</strong> Researcher has tools, Analyst/Writer does not",
+        "✅ <strong>Verbose for debugging:</strong> True during development, False in production",
+        "✅ <strong>Incremental test:</strong> 1 agent → 2 → 3. Adjust each step",
+        "✅ <strong>Groq = free:</strong> Great for testing without burning the budget",
+        "✅ <strong>Error handling:</strong> Always try/except. LLM = non-deterministic"
+      ],
+      "ironicClosing": "Agents are like interns: clarity, supervision, patience."
+    },
+    {
+      "type": "text",
+      "title": "🚀 Next Steps: Beyond the Workshop",
+      "paragraphs": [
+        "<strong>Extend the system:</strong>",
+        "• Add <strong>Fact-Checker agent</strong> (validates claims with sources)",
+        "• Add <strong>SEO optimizer agent</strong> (keywords, meta description)",
+        "• Integrate <strong>RAG</strong> with a private corporate knowledge base",
+        "",
+        "<strong>Custom tools:</strong>",
+        "• Database queries (PostgreSQL, MongoDB)",
+        "• Corporate APIs (CRM, Analytics)",
+        "• Notifications (Slack, Email)",
+        "",
+        "<strong>Production-ready:</strong>",
+        "• Structured logging (Loguru, structlog)",
+        "• Monitoring costs (track API calls)",
+        "• Human-in-the-loop for final validation",
+        "• Deploy with Docker + FastAPI endpoint"
+      ],
+      "ironicClosing": "From 3 agents to 10. From workshop to product. The journey begins here."
+    },
+    {
+      "type": "summary",
+      "title": "✅ Recap Workshop CrewAI",
+      "items": [
+        "Project setup with virtual environment and dependencies",
+        "Free API keys: Groq (LLM) + Serper (search)",
+        "3 Agent: Researcher (tools), Analyst, Writer",
+        "3 Sequential tasks: research → analysis → writing",
+        "Complete main.py file ~120 lines, executable",
+        "Topic examples: AI agents, Quantum computing, Multimodal AI",
+        "Output: technical article markdown 800-1000 words",
+        "Total workshop time: 90-120 minutes hands-on"
+      ],
+      "ironicClosing": "Congratulations. Now you have an AI team working for you. For free."
+    }
+  ],
+  "lastTranslated": "2025-11-18",
+  "sourceLanguage": "en"
+}
