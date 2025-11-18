@@ -132,7 +132,7 @@ function getCurrentStep(steps, slideIndex) {
 }
 
 // Genera navigation bar con supporto step
-function generateNavBar(allChapters, currentChapter, slideIndex = null) {
+function generateNavBar(allChapters, currentChapter, slideIndex = null, LANG) {
     const homeButton = `<a href="../index.html" class="nav-home">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -197,14 +197,14 @@ function generateNavBar(allChapters, currentChapter, slideIndex = null) {
 }
 
 // Genera una singola slide
-function generateSlide(slideData, slideIndex, totalSlides, chapterData, allChapters) {
+function generateSlide(slideData, slideIndex, totalSlides, chapterData, allChapters, LANG) {
     const template = readTemplate(path.join(TEMPLATES_DIR, 'slide.html'));
 
     const hasPrev = slideIndex > 0;
     const hasNext = slideIndex < totalSlides - 1;
 
     const slideContent = renderSlideContent(slideData);
-    const navBar = generateNavBar(allChapters, chapterData, slideIndex);
+    const navBar = generateNavBar(allChapters, chapterData, slideIndex, LANG);
 
     const data = {
         navBar: navBar,
@@ -231,7 +231,7 @@ function generateSlide(slideData, slideIndex, totalSlides, chapterData, allChapt
 }
 
 // Genera tutte le slide di un capitolo
-function generateChapter(chapterFile, allChapters, sourceDir = SLIDES_DIR) {
+function generateChapter(chapterFile, allChapters, sourceDir, LANG, OUTPUT_DIR) {
     const chapterPath = path.join(sourceDir, chapterFile);
     const chapterData = JSON.parse(fs.readFileSync(chapterPath, 'utf8'));
 
@@ -247,7 +247,7 @@ function generateChapter(chapterFile, allChapters, sourceDir = SLIDES_DIR) {
 
     // Genera ogni slide
     chapterData.slides.forEach((slide, index) => {
-        const slideHtml = generateSlide(slide, index, chapterData.slides.length, chapterData, allChapters);
+        const slideHtml = generateSlide(slide, index, chapterData.slides.length, chapterData, allChapters, LANG);
         fs.writeFileSync(path.join(chapterDir, `slide-${index + 1}.html`), slideHtml);
     });
 

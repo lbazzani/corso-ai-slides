@@ -79,22 +79,22 @@
       "metrics": [
         {
           "value": "$325 miliardi",
-          "label": "CapEx totale 2025 (infrastructure)"
+          "label": "CapEx combinato 2025 per infrastruttura cloud e AI (tutti e 4 insieme)"
         },
         {
           "value": "$100 miliardi",
-          "label": "AWS investment plan 2025"
+          "label": "Solo AWS - budget investimenti 2025 (più del PIL dell'Ucraina)"
         },
         {
           "value": "$80 miliardi",
-          "label": "Microsoft AI datacenter (fiscal 2025)"
+          "label": "Solo Microsoft - datacenter AI nell'anno fiscale 2025"
         },
         {
           "value": "$75 miliardi",
-          "label": "Google AI infrastructure 2025"
+          "label": "Solo Google - infrastruttura AI nel 2025"
         }
       ],
-      "ironicClosing": "Quando i datacenter costano più del PIL di alcuni paesi",
+      "ironicClosing": "Quando i datacenter di una singola azienda costano più del PIL di 50+ nazioni, forse l'AI è seria",
       "citations": [
         {
           "text": "Four big hyperscalers spending around $325 billion on infrastructure CapEx in 2025",
@@ -112,13 +112,13 @@
       "type": "text",
       "title": "I Mega-Progetti Globali",
       "paragraphs": [
-        "<strong>Meta:</strong> CapEx guidance $70-72 miliardi 2025",
-        "<strong>Amazon:</strong> Aumentato forecast a $125 miliardi",
-        "<strong>Google (Alphabet):</strong> CapEx boost a $91-93 miliardi",
+        "<strong>Meta:</strong> CapEx guidance $70-72 miliardi nel 2025 (quasi raddoppiato in 2 anni)",
+        "<strong>Amazon:</strong> Forecast aumentato a $125 miliardi (era $75B nel 2024)",
+        "<strong>Google (Alphabet):</strong> CapEx boost a $91-93 miliardi (+40% vs 2024)",
         "",
-        "<strong>Scala:</strong> 13x rispetto agli investimenti del 2015"
+        "<strong>Scala storica:</strong> 13x rispetto agli investimenti del 2015 (crescita esponenziale)"
       ],
-      "ironicClosing": "L'AI non gira su thin air, gira su miliardi di dollari in cemento e chip",
+      "ironicClosing": "L'AI non gira su thin air. Gira su miliardi di dollari in cemento, acciaio, rame e chip.",
       "citations": [
         {
           "text": "Tech megacaps plan to spend more than $300 billion in 2025 as AI race intensifies",
@@ -133,22 +133,22 @@
       "metrics": [
         {
           "value": "$5.3 miliardi",
-          "label": "AWS Saudi Arabia region (completamento 2026)"
+          "label": "AWS region in Arabia Saudita (completamento 2026)"
         },
         {
           "value": "$2.1 miliardi",
-          "label": "Microsoft Saudi cloud infrastructure"
+          "label": "Microsoft cloud infrastructure in Arabia Saudita"
         },
         {
           "value": "$5 miliardi",
-          "label": "NEOM DataVolt datacenter (1.5 GW capacity)"
+          "label": "NEOM DataVolt - datacenter da 1.5 GW (alimenta 1.5 milioni di case)"
         },
         {
           "value": "1 gigawatt",
-          "label": "OpenAI Stargate UAE (Abu Dhabi)"
+          "label": "OpenAI Stargate ad Abu Dhabi, UAE (alimenta 1 milione di case)"
         }
       ],
-      "ironicClosing": "Il petrolio finanzia i datacenter che consumeranno... più petrolio (per ora)",
+      "ironicClosing": "I petrodollari finanziano datacenter AI che bruceranno... più petrolio. Il circolo della vita tech.",
       "citations": [
         {
           "text": "AWS announces $5.3B Saudi Arabia infrastructure region, completion 2026",
@@ -169,22 +169,22 @@
       "metrics": [
         {
           "value": "415 TWh",
-          "label": "Consumo datacenter globale 2024 (1.5% elettricità mondiale)"
+          "label": "Consumo datacenter globale nel 2024 (1.5% dell'elettricità mondiale)"
         },
         {
           "value": "945 TWh",
-          "label": "Previsione 2030 (quasi 3% elettricità mondiale)"
+          "label": "Previsione 2030 (quasi 3% elettricità mondiale - più del doppio)"
         },
         {
           "value": "+15% annuo",
-          "label": "Crescita consumo 2024-2030"
+          "label": "Tasso crescita consumi 2024-2030 (compounding)"
         },
         {
           "value": "+130%",
-          "label": "Incremento USA entro 2030 (+240 TWh)"
+          "label": "Incremento consumi USA entro 2030 (+240 TWh in valore assoluto)"
         }
       ],
-      "ironicClosing": "Nel 2030 i datacenter consumeranno come il Giappone. Tutto l'anno. Ogni anno.",
+      "ironicClosing": "Nel 2030 i datacenter consumeranno come tutto il Giappone. Ogni anno. Per sempre.",
       "citations": [
         {
           "text": "Data centers consumed 415 TWh in 2024, IEA projects 945 TWh by 2030",
@@ -204,25 +204,25 @@
       "metrics": [
         {
           "value": "$100 milioni",
-          "label": "Costo training GPT-4"
+          "label": "Costo stimato training GPT-4 (solo compute, senza personale)"
         },
         {
           "value": "50 GWh",
-          "label": "Energia consumata (alimenta San Francisco per 3 giorni)"
+          "label": "Energia consumata - alimenterebbe San Francisco per 3 giorni interi"
         },
         {
-          "value": "25,000",
-          "label": "Nvidia A100 GPUs utilizzate"
+          "value": "25,000 GPU",
+          "label": "Nvidia A100 GPUs utilizzate in parallelo (cluster dedicato)"
         },
         {
           "value": "90-100 giorni",
-          "label": "Durata training"
+          "label": "Durata training continuo (24/7)"
         }
       ],
       "paragraphs": [
-        "<strong>40x</strong> il consumo di GPT-3"
+        "<strong>40x</strong> il consumo energetico di GPT-3"
       ],
-      "ironicClosing": "San Francisco al buio per 3 giorni, ma almeno ChatGPT sa scrivere poesie",
+      "ironicClosing": "San Francisco al buio per 3 giorni, ma almeno ora ChatGPT sa scrivere poesie e code review",
       "citations": [
         {
           "text": "GPT-4 training cost $100M, consumed 50 GWh, used 25K A100 GPUs for 90-100 days",
@@ -239,26 +239,26 @@
     {
       "type": "data",
       "title": "Il Costo dell'Inference: Per Query",
-      "intro": "Quanto consuma una domanda a ChatGPT?",
+      "intro": "Quanto consuma una singola domanda a ChatGPT?",
       "metrics": [
         {
           "value": "0.3 Wh",
-          "label": "GPT-4o query tipica (secondo OpenAI)"
+          "label": "GPT-4o query semplice (dato ufficiale OpenAI - probabilmente ottimistico)"
         },
         {
           "value": "2.9 Wh",
-          "label": "ChatGPT request (Electric Power Research Institute)"
+          "label": "ChatGPT request media (Electric Power Research Institute - più realistico)"
         },
         {
           "value": "2.5-40 Wh",
-          "label": "Query complesse con input lunghi"
+          "label": "Query complesse con prompt lunghi o reasoning esteso"
         },
         {
           "value": "10x",
-          "label": "vs. Google search tradizionale (0.3 Wh)"
+          "label": "vs. Google search tradizionale che consuma 0.3 Wh"
         }
       ],
-      "ironicClosing": "Ogni volta che chiedi a ChatGPT di scrivere un'email, una lampadina piange",
+      "ironicClosing": "Ogni volta che chiedi a ChatGPT di scrivere un'email formale, da qualche parte una lampadina piange",
       "citations": [
         {
           "text": "GPT-4o consumes ~0.3 watt-hours per typical query, 2.5-40 Wh for complex queries",
@@ -278,25 +278,25 @@
       "metrics": [
         {
           "value": "15 TWh",
-          "label": "Tutte le query AI generative nel 2025"
+          "label": "Consumo totale query AI generative nel 2025 (tutte le piattaforme)"
         },
         {
           "value": "347 TWh",
-          "label": "Previsione 2030"
+          "label": "Previsione consumo 2030 - 23x in 5 anni"
         },
         {
           "value": "24%",
-          "label": "Server AI sul totale energia datacenter (2024)"
+          "label": "% energia datacenter dedicata ai server AI nel 2024"
         },
         {
           "value": "35-50%",
-          "label": "Previsione AI workload sul totale datacenter (2030)"
+          "label": "Previsione % AI workload sul totale datacenter nel 2030"
         }
       ],
       "paragraphs": [
-        "<strong>Il vincitore:</strong> Inference. La crescita futura sarà guidata dall'uso, non dal training"
+        "<strong>Il vincitore:</strong> Inference. La crescita futura sarà guidata dall'utilizzo massivo, non dal training"
       ],
-      "ironicClosing": "Addestrare un modello costa tanto. Usarlo miliardi di volte al giorno costa di più.",
+      "ironicClosing": "Addestrare GPT-4 costa $100M. Farlo rispondere a 300M utenti/settimana costa molto, molto di più.",
       "citations": [
         {
           "text": "All generative AI queries consume 15 TWh in 2025, will use 347 TWh by 2030",
@@ -316,26 +316,26 @@
       "metrics": [
         {
           "value": "40%+",
-          "label": "Natural gas"
+          "label": "Natural gas (fonte principale - fossile)"
         },
         {
           "value": "24%",
-          "label": "Renewables (wind, solar)"
+          "label": "Renewables - wind e solar (seconda fonte)"
         },
         {
           "value": "20%",
-          "label": "Nuclear"
+          "label": "Nuclear - energia nucleare"
         },
         {
           "value": "15%",
-          "label": "Coal"
+          "label": "Coal - carbone (sì, ancora nel 2024)"
         }
       ],
       "paragraphs": [
-        "<strong>Contratti carbon-free:</strong> 90% globali firmati in USA",
-        "Di cui: 78% renewables, 22% nuclear"
+        "<strong>Contratti carbon-free:</strong> 90% dei contratti globali firmati negli USA",
+        "Di cui: 78% renewables (solar/wind), 22% nuclear"
       ],
-      "ironicClosing": "L'AI ama parlare di sostenibilità. Mentre brucia gas naturale.",
+      "ironicClosing": "L'AI ama parlare di sostenibilità nei keynote. Mentre brucia gas naturale nel datacenter.",
       "citations": [
         {
           "text": "US datacenters: 40%+ natural gas, 24% renewables, 20% nuclear, 15% coal (2024)",
@@ -380,22 +380,22 @@
       "metrics": [
         {
           "value": "27%",
-          "label": "Quota rinnovabili nei datacenter (2025)"
+          "label": "Quota energia rinnovabile nei datacenter nel 2025"
         },
         {
           "value": "50%",
-          "label": "Previsione 2030"
+          "label": "Target per il 2030 (quasi raddoppio in 5 anni)"
         },
         {
           "value": "90%+",
-          "label": "Progetti grid in attesa: solar, battery, wind"
+          "label": "% progetti in coda: solar, battery storage, wind (in attesa connessione grid)"
         },
         {
           "value": "+84%",
-          "label": "Crescita power generation renewables entro 2030"
+          "label": "Crescita attesa capacità generazione rinnovabile entro 2030"
         }
       ],
-      "ironicClosing": "Solar e wind si deployano veloce. Il problema è la notte e i giorni senza vento.",
+      "ironicClosing": "Solar e wind si deployano veloce. Il problema è la notte, i giorni nuvolosi, e quando non c'è vento.",
       "citations": [
         {
           "text": "Renewables 27% of datacenter electricity, projected 50% by 2030",
@@ -617,15 +617,15 @@
       "type": "summary",
       "title": "Cosa Abbiamo Imparato",
       "items": [
-        "$325B+ investimenti datacenter hyperscaler nel 2025",
-        "Consumo datacenter: 415 TWh (2024) → 945 TWh (2030)",
-        "Training costa tanto (GPT-4: $100M, 50 GWh), inference scala di più (347 TWh entro 2030)",
-        "Mix energia: USA 40% gas, Europa 50% renewables",
-        "Nuclear comeback: Three Mile Island 2028, SMR China 2026",
-        "Fusion: bella idea, ma commerciale solo 2050+ (realistically)",
-        "Energia cheap e sicura? Fine secolo, se tutto va bene"
+        "Investimenti: $325B+ dai Big 4 hyperscaler solo nel 2025 (più di molti PIL nazionali)",
+        "Consumi: datacenter 415 TWh (2024) → 945 TWh (2030) - raddoppio in 6 anni",
+        "Training vs Inference: GPT-4 costa $100M e 50 GWh, ma usarlo miliardi di volte costa 347 TWh/anno entro 2030",
+        "Mix energetico: USA 40% gas naturale, Europa 50% rinnovabili (gap significativo)",
+        "Nuclear comeback: Three Mile Island riapre 2028, SMR cinesi commerciali 2026",
+        "Fusione nucleare: breakthrough impressionanti, ma commercializzazione realistica solo 2050+",
+        "Energia cheap e sicura? Forse fine secolo. Nel frattempo: gas, nuclear restart, rinnovabili quando c'è sole/vento"
       ],
-      "ironicClosing": "L'AI è hungry. Di dati, di chip, e soprattutto di terawatt."
+      "ironicClosing": "L'AI ha fame. Di dati, di chip, di talento, e soprattutto di terawatt. Molti terawatt."
     }
   ],
   "lastTranslated": null,
