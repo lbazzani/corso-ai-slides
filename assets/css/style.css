@@ -391,8 +391,8 @@ body.slide-page {
 
 /* Paragrafi */
 .slide-content p {
-    font-size: 1.3rem;
-    line-height: 1.5;
+    font-size: 1.5rem;
+    line-height: 1.6;
     color: var(--text-dark);
     width: 100%;
     margin: 0 0 0.5rem 0;
@@ -418,12 +418,12 @@ body.slide-page {
 }
 
 .slide-list li {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     padding: 0.6rem 1rem;
     margin-bottom: 0.4rem;
     background: var(--light-bg);
     border-left: 3px solid var(--primary-color);
-    line-height: 1.4;
+    line-height: 1.5;
     border-radius: 4px;
 }
 
@@ -1216,11 +1216,11 @@ code[class*="language-"] {
     }
 
     .slide-content p {
-        font-size: 1.2rem;
+        font-size: 1.35rem;
     }
 
     .slide-list li {
-        font-size: 1.15rem;
+        font-size: 1.3rem;
         padding: 0.5rem 0.9rem;
     }
 }
@@ -1259,11 +1259,11 @@ code[class*="language-"] {
     }
 
     .slide-content p {
-        font-size: 1.05rem;
+        font-size: 1.2rem;
     }
 
     .slide-list li {
-        font-size: 1.05rem;
+        font-size: 1.2rem;
         padding: 0.5rem 0.8rem;
     }
 
