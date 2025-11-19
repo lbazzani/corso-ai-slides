@@ -312,30 +312,32 @@
     },
     {
       "type": "data",
-      "title": "Mix Energetico USA: Datacenter 2024-2025",
+      "title": "Mix Energetico USA: Dipendenza da Fossili",
+      "intro": "<strong>Mix elettrico datacenter USA 2024 (gas + carbone = 55% fossili)</strong>",
       "metrics": [
         {
           "value": "40%+",
-          "label": "Natural gas (fonte principale - fossile)"
+          "label": "Natural gas - fonte principale datacenter (fossile, non rinnovabile)"
         },
         {
           "value": "24%",
-          "label": "Renewables - wind e solar (seconda fonte)"
+          "label": "Renewables - wind e solar (seconda fonte, ma intermittente)"
         },
         {
           "value": "20%",
-          "label": "Nuclear - energia nucleare"
+          "label": "Nuclear - energia nucleare (carbon-free, 24/7)"
         },
         {
           "value": "15%",
-          "label": "Coal - carbone (sì, ancora nel 2024)"
+          "label": "Coal - carbone (sì, ancora nel 2024 - peggio del gas)"
         }
       ],
       "paragraphs": [
-        "<strong>Contratti carbon-free:</strong> 90% dei contratti globali firmati negli USA",
-        "Di cui: 78% renewables (solar/wind), 22% nuclear"
+        "<strong>Context:</strong> Produzione energetica PRIMARIA USA (totale): 54% fossili (include petrolio trasporti, gas riscaldamento)",
+        "<strong>Reality check:</strong> Datacenter dipendono 55% da fossili (gas+carbone) - sostenibile? No. Ma disponibile 24/7",
+        "<strong>Nuova capacità gas:</strong> 17.5 GW pianificati solo per datacenter - dipendenza aumenta, non diminuisce"
       ],
-      "ironicClosing": "L'AI ama parlare di sostenibilità nei keynote. Mentre brucia gas naturale nel datacenter.",
+      "ironicClosing": "L'AI USA gira a gas naturale. Sostenibile? No. Ma cheap e disponibile 24/7. Sì.",
       "citations": [
         {
           "text": "US datacenters: 40%+ natural gas, 24% renewables, 20% nuclear, 15% coal (2024)",
@@ -343,69 +345,115 @@
           "url": "https://www.pewresearch.org/short-reads/2025/10/24/what-we-know-about-energy-use-at-us-data-centers-amid-the-ai-boom/"
         },
         {
-          "text": "US hosts 90% of hyperscaler carbon-free contracts: 78% renewables, 22% nuclear",
-          "source": "TechCrunch - Renewable Energy",
-          "url": "https://techcrunch.com/2025/11/16/how-much-of-the-ai-data-center-boom-will-be-powered-by-renewable-energy/"
+          "text": "Fossil fuels (petroleum, natural gas, coal) account for 54% of US primary energy production",
+          "source": "US EIA - Energy Facts",
+          "url": "https://www.eia.gov/energyexplained/us-energy-facts/"
+        },
+        {
+          "text": "Utility companies planning 17.5 GW new natural gas capacity for data centers",
+          "source": "Rystad Energy - US Power Demand",
+          "url": "https://www.rystadenergy.com/news/us-power-data-centers-natural-gas-storage-solar"
         }
       ]
     },
     {
       "type": "comparison",
-      "title": "Mix Energetico: USA vs Europa",
+      "title": "Mix Energetico: USA vs Europa - Due Mondi",
       "items": [
         {
           "rank": "🇺🇸",
           "name": "USA (2024)",
-          "description": "Natural gas 40%, Renewables 23%, Nuclear 18%, Coal 16%"
+          "description": "Natural gas 40%, Renewables 24%, Nuclear 20%, Coal 15% - Dipendenza fossili 84% produzione primaria"
         },
         {
           "rank": "🇪🇺",
           "name": "Europa (2024)",
-          "description": "Renewables 50%, Nuclear 23%, Natural gas 16%, Coal 11%"
+          "description": "Renewables 47%, Nuclear 23%, Natural gas 16%, Coal 11% - Leadership rinnovabili ma limiti fisici"
         }
       ],
-      "note": "Europa: metà dell'elettricità da rinnovabili. USA: ancora dipendente da fossili.",
-      "ironicClosing": "L'AI europea è più green. Ma gira su server americani.",
+      "note": "<strong>USA:</strong> Ricco di oil & gas, può bruciare fossili (non sostenibile ma disponibile)<br><strong>Europa:</strong> Punta su rinnovabili ma grid capacity e intermittenza sono problemi strutturali",
+      "ironicClosing": "USA brucia gas 24/7. Europa aspetta che torni il sole. Chi vince la race AI?",
       "citations": [
         {
-          "text": "EU renewables 50% of electricity supply, nuclear 23%, gas 16%, coal 11%",
+          "text": "EU renewables 47% of electricity generation 2024, nuclear 23%, gas 16%, coal 11%",
           "source": "IEA - Global Energy Review",
           "url": "https://www.iea.org/reports/global-energy-review-2025/electricity"
+        },
+        {
+          "text": "US fossil fuels 84% primary production, natural gas main source for datacenters",
+          "source": "Ember - US Electricity 2025",
+          "url": "https://ember-energy.org/latest-insights/us-electricity-2025-special-report/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Europa: Il Problema delle Rinnovabili",
+      "paragraphs": [
+        "<strong>La promessa:</strong> 47% elettricità EU da rinnovabili (2024), target datacenter 75% entro 2025",
+        "",
+        "<strong>Problema 1 - Intermittenza:</strong>",
+        "Datacenter AI girano 24/7. Solar/wind no. Senza storage massiccio o backup (gas/nuclear), non funziona.",
+        "",
+        "<strong>Problema 2 - Grid Bottleneck:</strong>",
+        "• Grid connection: 2-10 anni attesa in EU (vs 6 mesi USA)",
+        "• 20% progetti datacenter a rischio ritardo per congestione",
+        "• Costi congestione: €4.3 miliardi (2024)",
+        "",
+        "<strong>Problema 3 - Geografia:</strong>",
+        "Wind/solar concentrati lontano da datacenter hub. Servono investimenti grid massicci."
+      ],
+      "ironicClosing": "Europa leader rinnovabili. Ma datacenter aspettano 10 anni per la connessione. Ironic.",
+      "citations": [
+        {
+          "text": "EU grid connection 2-10 years, 20% datacenter projects delayed, €4.3B congestion costs",
+          "source": "Bruegel - Europe Datacenter Energy",
+          "url": "https://www.bruegel.org/first-glance/how-data-centres-can-chase-renewable-energy-across-europe"
+        },
+        {
+          "text": "European datacenters target 75% renewables 2025, but hyperscale run 24/7 while renewables don't",
+          "source": "Strategic Energy Europe",
+          "url": "https://strategicenergy.eu/european-data-centre/"
         }
       ]
     },
     {
       "type": "data",
-      "title": "Crescita Rinnovabili nei Datacenter",
+      "title": "Il Gap Rinnovabili: I Numeri Non Tornano",
+      "intro": "<strong>Scenario 2030: Serve 450 TWh nuova capacità rinnovabile solo per datacenter</strong>",
       "metrics": [
         {
-          "value": "27%",
-          "label": "Quota energia rinnovabile nei datacenter nel 2025"
+          "value": "450 TWh",
+          "label": "Capacità rinnovabile addizionale necessaria entro 2035 per datacenter AI (IEA)"
         },
         {
-          "value": "50%",
-          "label": "Target per il 2030 (quasi raddoppio in 5 anni)"
+          "value": "27%",
+          "label": "Quota rinnovabili datacenter oggi (2025) - target 50% entro 2030"
         },
         {
           "value": "90%+",
-          "label": "% progetti in coda: solar, battery storage, wind (in attesa connessione grid)"
+          "label": "Progetti energy in coda grid sono solar/wind - ma aspettano anni per connessione"
         },
         {
-          "value": "+84%",
-          "label": "Crescita attesa capacità generazione rinnovabile entro 2030"
+          "value": "2-10 anni",
+          "label": "Attesa grid connection in Europa (troppo lento per scale AI)"
         }
       ],
-      "ironicClosing": "Solar e wind si deployano veloce. Il problema è la notte, i giorni nuvolosi, e quando non c'è vento.",
+      "paragraphs": [
+        "<strong>Reality check:</strong> Europa può spingere ancora su rinnovabili? Quanto?",
+        "Limiti fisici: terra disponibile, wind capacity saturation, storage costs"
+      ],
+      "ironicClosing": "Serve mezzo Giappone di energia rinnovabile. Entro 2035. Spoiler: non ce la faremo solo con solar.",
       "citations": [
         {
-          "text": "Renewables 27% of datacenter electricity, projected 50% by 2030",
-          "source": "IEA - Datacenter Energy Mix",
-          "url": "https://www.iea.org/reports/global-energy-review-2025/key-findings"
+          "text": "450 TWh additional renewable generation needed by 2035 for datacenter growth",
+          "source": "Strategic Energy Europe - Datacenter Demand",
+          "url": "https://strategicenergy.eu/data-center/"
         },
         {
-          "text": "90%+ of power projects awaiting grid connection are solar, battery or wind",
-          "source": "The Register - Renewables vs SMR",
-          "url": "https://www.theregister.com/2025/09/26/renewables_vs_smr_datacenter/"
+          "text": "90%+ power projects awaiting grid connection are solar, battery, wind",
+          "source": "TechCrunch - AI Renewable Energy",
+          "url": "https://techcrunch.com/2025/11/16/how-much-of-the-ai-data-center-boom-will-be-powered-by-renewable-energy/"
         }
       ]
     },
@@ -456,26 +504,75 @@
     },
     {
       "type": "text",
-      "title": "Small Modular Reactors (SMR): Timeline",
+      "title": "Nucleare: L'Unica Soluzione Scalabile?",
       "paragraphs": [
-        "<strong>2026:</strong> China Linglong One (ACP100) - Primo SMR land-based commerciale al mondo",
-        "<strong>2026:</strong> TerraPower - NRC approval attesa (operativo 2030)",
-        "<strong>2029:</strong> Westinghouse - Commercial deployments pianificati",
+        "<strong>Perché nucleare batte rinnovabili per datacenter AI:</strong>",
+        "• <strong>24/7 availability:</strong> Non intermittente come solar/wind",
+        "• <strong>Density:</strong> 1 GW nuclear su pochi ettari vs 100+ km² solar farm equivalente",
+        "• <strong>Carbon-free:</strong> Zero emissioni operazionali",
+        "• <strong>Scalabile:</strong> Teoria: costruisci quanti ne servono",
         "",
-        "<strong>Pipeline globale:</strong> 22 GW progetti SMR ($176 miliardi investment)",
-        "<strong>US DOE:</strong> $900 milioni per accelerare deployment Gen-III+"
+        "<strong>Tech giants lo sanno:</strong>",
+        "• Microsoft, Google, Amazon investono $10 miliardi in nuclear (SMR + restart)",
+        "• 22 GW progetti SMR in pipeline globale ($176B investment)",
+        "",
+        "<strong>Ma:</strong> Timeline 5-7 anni (permitting + construction). Troppo lento per AI boom 2025-2027?"
       ],
-      "ironicClosing": "La Cina lancia il primo SMR mentre gli USA ancora approvano i permessi",
+      "ironicClosing": "Nucleare è la soluzione. Ma servono 7 anni. L'AI cresce 15% annuo. Vedi il problema?",
       "citations": [
         {
-          "text": "China Linglong One SMR scheduled commercial operation 2026, first land-based SMR",
-          "source": "Nuclear Business Platform - SMR Tech 2025",
-          "url": "https://www.nuclearbusiness-platform.com/media/insights/top-5-smr-tech"
+          "text": "Tech giants commit $10B to nuclear, 22 GW SMR projects globally",
+          "source": "Introl - SMR Nuclear Power AI",
+          "url": "https://introl.com/blog/smr-nuclear-power-ai-data-centers-2025"
         },
         {
-          "text": "22 GW SMR pipeline globally, $176B potential investment",
-          "source": "Utility Dive - SMR Market",
-          "url": "https://www.utilitydive.com/news/small-modular-reactor-haleu-ge-hitachi-nuscale/709978/"
+          "text": "SMR deployment timeline: 5-7 years total (permitting + construction), construction alone 24-36 months",
+          "source": "ITIF - Small Modular Reactors",
+          "url": "https://itif.org/publications/2025/04/14/small-modular-reactors-a-realist-approach-to-the-future-of-nuclear-power/"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "Small Modular Reactors: Timeline Realistica",
+      "intro": "<strong>Quando avremo davvero SMR operativi per datacenter?</strong>",
+      "metrics": [
+        {
+          "value": "2026",
+          "label": "China Linglong One - primo SMR commerciale land-based (Cina vince la race)"
+        },
+        {
+          "value": "2027",
+          "label": "Oklo target deployment USA (ma scetticismo su timeline ottimistica)"
+        },
+        {
+          "value": "2028",
+          "label": "Three Mile Island restart (Microsoft) - 835 MW carbon-free"
+        },
+        {
+          "value": "2030",
+          "label": "Google Kairos Power - prima unità 500 MW (full deployment 2035)"
+        },
+        {
+          "value": "2035-2039",
+          "label": "Amazon X-energy - 5 GW target deployment (largest commercial SMR plan)"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Reality check:</strong> Nessun SMR operativo in USA oggi (2025). Timeline 5-7 anni è ottimistica.",
+        "<strong>Deployment scalabile:</strong> Late 2020s to early 2030s (quando AI avrà già raddoppiato consumi)"
+      ],
+      "ironicClosing": "SMR arrivano 2030. Datacenter AI raddoppiano consumi 2030. Chi vince? Il gas naturale.",
+      "citations": [
+        {
+          "text": "China Linglong One SMR 2026, Google Kairos 2030-2035, Amazon X-energy 5 GW by 2039",
+          "source": "Google TechCrunch - SMR Timeline",
+          "url": "https://techcrunch.com/2024/10/14/google-signed-a-deal-to-power-data-centers-with-nuclear-micro-reactors-from-kairos-but-the-2030-timeline-is-very-optimistic/"
+        },
+        {
+          "text": "SMR deployment timeline 5-7 years, realistic late 2020s to early 2030s, no SMR operational in US today",
+          "source": "DataCenter Knowledge - SMR Timeline",
+          "url": "https://www.datacenterknowledge.com/energy-power-supply/nuclear-powered-data-centers-when-will-smrs-finally-take-off-"
         }
       ]
     },
@@ -560,22 +657,31 @@
     },
     {
       "type": "text",
-      "title": "La Sfida: È Sostenibile?",
+      "title": "La Domanda da $4 Trilioni: Quando Saremo Pronti?",
       "paragraphs": [
-        "<strong>Problema:</strong> Domanda energia AI cresce 15% annuo",
-        "<strong>Problema:</strong> Renewables intermittenti (notte, no vento)",
-        "<strong>Problema:</strong> Nuclear lento da deployare (permessi, costruzione)",
-        "<strong>Problema:</strong> Grid infrastructure non pronta per il carico",
+        "<strong>Il problema in sintesi:</strong>",
+        "• Consumo datacenter AI: 415 TWh (2024) → 945 TWh (2030) - raddoppio in 6 anni",
+        "• Serve 450 TWh nuova capacità rinnovabile entro 2035",
+        "• USA: dipendente da gas naturale (84% fossili primari) - non sostenibile ma disponibile 24/7",
+        "• Europa: 47% rinnovabili ma grid bottleneck (2-10 anni attesa), intermittenza problematica",
+        "• Nucleare SMR: soluzione scalabile ma timeline 2030-2035 (troppo tardi per boom AI 2025-2027)",
         "",
-        "<strong>Opportunità:</strong> AI può ottimizzare energy sector stesso",
-        "<strong>Opportunità:</strong> Accelera investimenti in clean energy"
+        "<strong>Quando saremo davvero pronti?</strong>",
+        "• 2025-2028: Gas naturale domina (USA continua a bruciare fossili)",
+        "• 2028-2030: Primi nuclear restart + rinnovabili al 30-35% (ma gap energetico cresce)",
+        "• 2030-2035: SMR deployment scalabile (forse) - ma AI già consumato tutto il budget carbon"
       ],
-      "ironicClosing": "L'AI consuma troppo. Ma potrebbe anche risolvere il problema. Forse.",
+      "ironicClosing": "Siamo pronti per l'AI? Tecnologicamente sì. Energeticamente? Chiedimi nel 2035.",
       "citations": [
         {
-          "text": "AI set to drive surging electricity demand while offering potential to transform energy sector",
-          "source": "IEA - AI and Energy",
-          "url": "https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works"
+          "text": "450 TWh additional renewable generation needed by 2035, datacenter 945 TWh by 2030",
+          "source": "IEA & Strategic Energy Europe",
+          "url": "https://strategicenergy.eu/data-center/"
+        },
+        {
+          "text": "Europe grid connection bottleneck 2-10 years, US relies on natural gas 40%+ for datacenters",
+          "source": "Bruegel & Pew Research",
+          "url": "https://www.bruegel.org/first-glance/how-data-centres-can-chase-renewable-energy-across-europe"
         }
       ]
     },
@@ -617,15 +723,15 @@
       "type": "summary",
       "title": "Cosa Abbiamo Imparato",
       "items": [
-        "Investimenti: $325B+ dai Big 4 hyperscaler solo nel 2025 (più di molti PIL nazionali)",
-        "Consumi: datacenter 415 TWh (2024) → 945 TWh (2030) - raddoppio in 6 anni",
-        "Training vs Inference: GPT-4 costa $100M e 50 GWh, ma usarlo miliardi di volte costa 347 TWh/anno entro 2030",
-        "Mix energetico: USA 40% gas naturale, Europa 50% rinnovabili (gap significativo)",
-        "Nuclear comeback: Three Mile Island riapre 2028, SMR cinesi commerciali 2026",
-        "Fusione nucleare: breakthrough impressionanti, ma commercializzazione realistica solo 2050+",
-        "Energia cheap e sicura? Forse fine secolo. Nel frattempo: gas, nuclear restart, rinnovabili quando c'è sole/vento"
+        "Investimenti: $325B dai Big 4 hyperscaler 2025 - cemento, acciaio, chip (non solo finanza)",
+        "Consumi: 415 TWh (2024) → 945 TWh (2030) - serve 450 TWh nuova capacità rinnovabile entro 2035",
+        "USA: 84% fossili produzione primaria, datacenter 40% gas - sostenibile? No. Disponibile 24/7? Sì.",
+        "Europa: 47% rinnovabili ma grid bottleneck (2-10 anni attesa), intermittenza uccide datacenter 24/7",
+        "Gap rinnovabili: Non ce la faremo solo con solar/wind - limiti fisici, storage costs, geografia",
+        "Nucleare SMR: Unica soluzione scalabile 24/7 carbon-free, ma timeline 2030-2035 (troppo tardi?)",
+        "Quando saremo pronti? 2025-2028 gas domina, 2028-2030 nuclear restart, 2030-2035 SMR (forse). AI già raddoppiato consumi."
       ],
-      "ironicClosing": "L'AI ha fame. Di dati, di chip, di talento, e soprattutto di terawatt. Molti terawatt."
+      "ironicClosing": "L'AI boom è reale. L'energia per sostenerlo? Arriverà. Forse. Nel 2035. Speriamo."
     }
   ],
   "lastTranslated": null,

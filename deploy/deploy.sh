@@ -35,49 +35,23 @@ if [[ -n "$DRY_RUN" ]]; then
 fi
 echo ""
 
-# Verifica che i file esistano
-if [ ! -d "$PROJECT_ROOT/output/it" ] || [ ! -d "$PROJECT_ROOT/output/en" ]; then
-    echo "Errore: cartelle output/it/ o output/en/ non trovate. Esegui 'node generator.js' prima del deploy."
+# Verifica che la cartella output esista
+if [ ! -d "$PROJECT_ROOT/output" ]; then
+    echo "Errore: cartella output/ non trovata. Esegui 'node generator.js' prima del deploy."
     exit 1
 fi
 
-# Crea directory remote se non esistono
+# Crea directory remote se non esiste
 if [[ -z "$DRY_RUN" ]]; then
-    ssh "$REMOTE_HOST" "mkdir -p $REMOTE_PATH/{it,en}"
+    ssh "$REMOTE_HOST" "mkdir -p $REMOTE_PATH"
 fi
 
-# Deploy IT
-echo -e "${BLUE}[1/4] Deploying IT...${NC}"
+# Deploy tutto il contenuto di output/ (struttura identica a produzione)
+echo -e "${BLUE}Deploying entire output/ directory...${NC}"
 rsync -avz $DRY_RUN \
     --delete \
-    "$PROJECT_ROOT/output/it/" \
-    "$REMOTE_HOST:$REMOTE_PATH/it/"
-echo ""
-
-# Deploy EN
-echo -e "${BLUE}[2/4] Deploying EN...${NC}"
-rsync -avz $DRY_RUN \
-    --delete \
-    "$PROJECT_ROOT/output/en/" \
-    "$REMOTE_HOST:$REMOTE_PATH/en/"
-echo ""
-
-# Deploy assets (condivisi tra lingue)
-echo -e "${BLUE}[3/4] Deploying shared assets...${NC}"
-rsync -avz $DRY_RUN \
-    "$PROJECT_ROOT/assets" \
+    "$PROJECT_ROOT/output/" \
     "$REMOTE_HOST:$REMOTE_PATH/"
-echo ""
-
-# Deploy root index.html
-echo -e "${BLUE}[4/4] Deploying root index.html...${NC}"
-if [ -f "$PROJECT_ROOT/index.html" ]; then
-    rsync -avz $DRY_RUN \
-        "$PROJECT_ROOT/index.html" \
-        "$REMOTE_HOST:$REMOTE_PATH/"
-else
-    echo -e "${YELLOW}Warning: index.html not found in project root${NC}"
-fi
 echo ""
 
 # Imposta permessi
@@ -86,10 +60,10 @@ if [[ -z "$DRY_RUN" ]]; then
     ssh "$REMOTE_HOST" "chmod -R 755 $REMOTE_PATH && find $REMOTE_PATH -type f -exec chmod 644 {} \;"
 
     echo -e "\n${GREEN}✓ Deploy completato con successo!${NC}"
-    echo -e "Siti disponibili:"
+    echo -e "Sito disponibile:"
+    echo -e "  https://corsoai.bazzani.info/"
     echo -e "  IT: https://corsoai.bazzani.info/it/"
     echo -e "  EN: https://corsoai.bazzani.info/en/"
-    echo -e "  Root: https://corsoai.bazzani.info/"
 else
     echo -e "${YELLOW}Dry run completato. Riesegui senza --dry-run per copiare i file.${NC}"
 fi

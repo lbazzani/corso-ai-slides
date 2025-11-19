@@ -446,8 +446,13 @@ function generateNavBar(allChapters, currentChapter, slideIndex = null, LANG) {
     </nav>`;
 }
 
+// Helper function to generate slide filename with cache-busting timestamp
+function getSlideFilename(slideIndex, timestamp) {
+    return `slide-${slideIndex}-${timestamp}.html`;
+}
+
 // Genera una singola slide
-function generateSlide(slideData, slideIndex, totalSlides, chapterData, allChapters, LANG) {
+function generateSlide(slideData, slideIndex, totalSlides, chapterData, allChapters, LANG, timestamp) {
     const template = readTemplate(path.join(TEMPLATES_DIR, 'slide.html'));
 
     const hasPrev = slideIndex > 0;
@@ -463,8 +468,8 @@ function generateSlide(slideData, slideIndex, totalSlides, chapterData, allChapt
         chapterNumber: chapterData.number,
         slideNumber: slideIndex + 1,
         totalSlides: totalSlides,
-        prevSlide: hasPrev ? `slide-${slideIndex}.html` : '',
-        nextSlide: hasNext ? `slide-${slideIndex + 2}.html` : '',
+        prevSlide: hasPrev ? getSlideFilename(slideIndex, timestamp) : '',
+        nextSlide: hasNext ? getSlideFilename(slideIndex + 2, timestamp) : '',
         prevSlideClass: hasPrev ? '' : 'disabled',
         nextSlideClass: hasNext ? '' : 'disabled',
         indexLink: '../index.html'
@@ -481,7 +486,7 @@ function generateSlide(slideData, slideIndex, totalSlides, chapterData, allChapt
 }
 
 // Genera tutte le slide di un capitolo
-function generateChapter(chapterFile, allChapters, sourceDir, LANG, OUTPUT_DIR) {
+function generateChapter(chapterFile, allChapters, sourceDir, LANG, OUTPUT_DIR, timestamp) {
     const chapterPath = path.join(sourceDir, chapterFile);
     const chapterData = JSON.parse(fs.readFileSync(chapterPath, 'utf8'));
 
@@ -495,10 +500,19 @@ function generateChapter(chapterFile, allChapters, sourceDir, LANG, OUTPUT_DIR) 
         fs.mkdirSync(chapterDir, { recursive: true });
     }
 
-    // Genera ogni slide
+    // Pulisci vecchi file slide (mantieni solo i file che iniziano con slide- e finiscono con .html)
+    if (fs.existsSync(chapterDir)) {
+        const oldFiles = fs.readdirSync(chapterDir).filter(file => file.match(/^slide-\d+.*\.html$/));
+        oldFiles.forEach(file => {
+            fs.unlinkSync(path.join(chapterDir, file));
+        });
+    }
+
+    // Genera ogni slide con cache-busting filename
     chapterData.slides.forEach((slide, index) => {
-        const slideHtml = generateSlide(slide, index, chapterData.slides.length, chapterData, allChapters, LANG);
-        fs.writeFileSync(path.join(chapterDir, `slide-${index + 1}.html`), slideHtml);
+        const slideHtml = generateSlide(slide, index, chapterData.slides.length, chapterData, allChapters, LANG, timestamp);
+        const filename = getSlideFilename(index + 1, timestamp);
+        fs.writeFileSync(path.join(chapterDir, filename), slideHtml);
     });
 
     console.log(` Capitolo ${chapterData.number}: "${chapterData.title}" generato (${chapterData.slides.length} slide)`);
@@ -507,7 +521,7 @@ function generateChapter(chapterFile, allChapters, sourceDir, LANG, OUTPUT_DIR) 
 }
 
 // Genera l'indice principale del corso
-function generateMainIndex(chapters, guides = [], LANG, OUTPUT_DIR) {
+function generateMainIndex(chapters, guides = [], LANG, OUTPUT_DIR, timestamp) {
     const template = readTemplate(path.join(TEMPLATES_DIR, 'main-index.html'));
 
     // Carica traduzioni
@@ -531,8 +545,9 @@ function generateMainIndex(chapters, guides = [], LANG, OUTPUT_DIR) {
 
     const chaptersList = chapters.map(chapter => {
         const icon = chapterIcons[chapter.slug] || '📖';
+        const firstSlideFilename = getSlideFilename(1, timestamp);
         return `<li class="chapter-item">
-            <a href="${chapter.slug}/slide-1.html">
+            <a href="${chapter.slug}/${firstSlideFilename}">
                 <span class="chapter-icon">${icon}</span>
                 <span class="chapter-title">${chapter.title}</span>
                 <span class="chapter-slides">${chapter.slides.length} ${t.slides}</span>
@@ -540,15 +555,16 @@ function generateMainIndex(chapters, guides = [], LANG, OUTPUT_DIR) {
         </li>`;
     }).join('\n');
 
-    const guidesList = guides.map(guide =>
-        `<li class="guide-item">
-            <a href="${guide.slug}/slide-1.html">
+    const guidesList = guides.map(guide => {
+        const firstSlideFilename = getSlideFilename(1, timestamp);
+        return `<li class="guide-item">
+            <a href="${guide.slug}/${firstSlideFilename}">
                 <span class="guide-icon">📚</span>
                 <span class="guide-title">${guide.title}</span>
                 <span class="guide-slides">${guide.slides.length} ${t.slides}</span>
             </a>
-        </li>`
-    ).join('\n');
+        </li>`;
+    }).join('\n');
 
     const langSelector = `<div class="lang-selector">
             <button class="lang-btn" onclick="toggleLangMenu(event)">
@@ -609,6 +625,10 @@ function escapeHtml(text) {
 function generateForLanguage(LANG, chaptersOrderConfig) {
     console.log(`\n📚 Lingua: ${LANG.toUpperCase()}`);
     console.log(`${'='.repeat(50)}`);
+
+    // Genera timestamp per cache-busting (condiviso per tutte le slide di questa lingua)
+    const timestamp = Date.now();
+    console.log(`⏰ Cache-busting timestamp: ${timestamp}`);
 
     // Configurazione per questa lingua
     const SLIDES_DIR = `./slides/${LANG}`;
@@ -683,13 +703,13 @@ function generateForLanguage(LANG, chaptersOrderConfig) {
     const originalGenerateChapter = generateChapter;
     const originalGenerateMainIndex = generateMainIndex;
 
-    // Wrapper per passare le directory corrette
+    // Wrapper per passare le directory corrette e il timestamp
     const generateChapterWrapper = (file, allItems, dir) => {
-        return originalGenerateChapter(file, allItems, dir, LANG, OUTPUT_DIR);
+        return originalGenerateChapter(file, allItems, dir, LANG, OUTPUT_DIR, timestamp);
     };
 
     const generateMainIndexWrapper = (chapters, guides) => {
-        return originalGenerateMainIndex(chapters, guides, LANG, OUTPUT_DIR);
+        return originalGenerateMainIndex(chapters, guides, LANG, OUTPUT_DIR, timestamp);
     };
 
     // Seconda passata: genera ogni capitolo con la nav completa
@@ -736,6 +756,44 @@ function main() {
     const rootIndexTemplate = readTemplate(path.join(TEMPLATES_DIR, 'index-root.html'));
     fs.writeFileSync('./index.html', rootIndexTemplate);
     console.log(`\n✅ Index root generato: index.html`);
+
+    // Copia index root e assets in output/ per testing locale con struttura identica a produzione
+    console.log(`\n📦 Copia file comuni in output/ per testing locale...`);
+
+    // Copia index.html in output/
+    fs.writeFileSync('./output/index.html', rootIndexTemplate);
+    console.log(`  ✓ output/index.html`);
+
+    // Copia cartella assets in output/assets/
+    const assetsSource = './assets';
+    const assetsTarget = './output/assets';
+
+    if (fs.existsSync(assetsSource)) {
+        // Funzione ricorsiva per copiare directory
+        function copyDirRecursive(src, dest) {
+            if (!fs.existsSync(dest)) {
+                fs.mkdirSync(dest, { recursive: true });
+            }
+
+            const entries = fs.readdirSync(src, { withFileTypes: true });
+
+            for (const entry of entries) {
+                const srcPath = path.join(src, entry.name);
+                const destPath = path.join(dest, entry.name);
+
+                if (entry.isDirectory()) {
+                    copyDirRecursive(srcPath, destPath);
+                } else {
+                    fs.copyFileSync(srcPath, destPath);
+                }
+            }
+        }
+
+        copyDirRecursive(assetsSource, assetsTarget);
+        console.log(`  ✓ output/assets/`);
+    }
+
+    console.log(`\n💡 Puoi ora testare localmente servendo la cartella 'output/' (ha la stessa struttura di produzione)`);
 
     // Riepilogo finale
     console.log(`\n${'='.repeat(50)}`);

@@ -4,61 +4,62 @@
   "description": "Dati, numeri, player e previsioni per il 2026",
   "steps": [
     {
-      "name": "Introduzione",
+      "name": "Introduzione e Mercato",
       "slides": [
         0,
-        1
-      ]
-    },
-    {
-      "name": "Mercato e Adozione",
-      "slides": [
+        1,
         2,
         3
       ]
     },
     {
-      "name": "Player Principali",
+      "name": "I Player Principali",
       "slides": [
         4,
         5,
         6,
         7,
         8,
-        9
+        9,
+        10
       ]
     },
     {
-      "name": "Confronto LLM",
+      "name": "AI Coding Tools",
       "slides": [
-        10,
-        11
-      ]
-    },
-    {
-      "name": "Tendenze 2026",
-      "slides": [
+        11,
         12,
-        13
+        13,
+        14,
+        15
       ]
     },
     {
-      "name": "Investimenti",
+      "name": "LLM General Purpose",
       "slides": [
-        14
-      ]
-    },
-    {
-      "name": "Visione Pratica",
-      "slides": [
-        15,
         16
       ]
     },
     {
-      "name": "Conclusioni",
+      "name": "Tendenze e Futuro",
       "slides": [
-        17
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "name": "Investimenti e Sostenibilità",
+      "slides": [
+        20,
+        21
+      ]
+    },
+    {
+      "name": "Guida Pratica",
+      "slides": [
+        22,
+        23
       ]
     }
   ],
@@ -73,26 +74,34 @@
     {
       "type": "data",
       "title": "Il Mercato: I Numeri del 2025",
+      "intro": "<strong>Gartner prevede $1.5 trilioni di spesa globale AI nel 2025 (più del PIL dell'Australia)</strong>",
       "metrics": [
         {
-          "value": "$1.5 trilioni",
-          "label": "Spesa globale in AI nel 2025 (più del PIL dell'Australia)"
+          "value": "$282.6B",
+          "label": "AI Services - consulenza, implementazione, training (19% del totale)"
         },
         {
-          "value": "$2 trilioni",
-          "label": "Previsione 2026 - praticamente il PIL dell'Italia"
+          "value": "$267.5B",
+          "label": "AI Hardware - server con GPU/TPU, acceleratori AI (18% del totale)"
         },
         {
-          "value": "+33%",
-          "label": "Crescita anno su anno - più veloce di quanto caffè consumiamo per gestirla"
+          "value": "$209.2B",
+          "label": "AI Semiconductors - chip specializzati (Nvidia H100, TPU, etc.) (14%)"
+        },
+        {
+          "value": "$172.0B",
+          "label": "AI Application Software - prodotti finali che usi (11% del totale)"
         }
       ],
-      "ironicClosing": "Da 'interessante' a 'infrastruttura critica' in 24 mesi. ChatGPT ringrazia.",
+      "paragraphs": [
+        "<strong>Previsione 2026:</strong> $2 trilioni (+33% crescita) - praticamente il PIL dell'Italia"
+      ],
+      "ironicClosing": "L'AI costa più di quanto pensavi. Software è solo 11% del totale. Il resto? Chip, server, consulenti.",
       "citations": [
         {
-          "text": "Gartner: Worldwide AI spending will total $1.5 trillion in 2025",
-          "source": "Gartner Press Release",
-          "url": "https://www.gartner.com/en/newsroom/press-releases/2025-09-17-gartner-says-worldwide-ai-spending-will-total-1-point-5-trillion-in-2025"
+          "text": "Gartner: $1.5T AI spending 2025: $282.6B services, $267.5B servers, $209.2B semiconductors, $172B software",
+          "source": "Gartner Press Release & CIO Dive",
+          "url": "https://www.ciodive.com/news/global-ai-spending-trillions-cloud-infrastructure-software-gartner/760303/"
         },
         {
           "text": "Global AI spending forecast to top $2 trillion in 2026",
@@ -102,28 +111,38 @@
       ]
     },
     {
-      "type": "data",
-      "title": "AI Software: La Crescita",
-      "metrics": [
-        {
-          "value": "$297.9 miliardi",
-          "label": "Mercato globale del software AI entro il 2027"
-        },
-        {
-          "value": "CAGR 19.1%",
-          "label": "Crescita media annua composta (per chi non ama gli acronimi: +19.1% ogni anno)"
-        },
-        {
-          "value": "35%",
-          "label": "Quota GenAI sul totale AI software nel 2027 (era 8% nel 2023 - quadruplicata)"
-        }
+      "type": "text",
+      "title": "Utenti in Crescita Esplosiva",
+      "paragraphs": [
+        "<strong>ChatGPT (OpenAI):</strong>",
+        "• 800 milioni utenti settimanali (maggio 2025) - più della popolazione Europa",
+        "• 92% delle Fortune 100 lo usano in produzione",
+        "",
+        "<strong>Gemini (Google):</strong>",
+        "• 450 milioni utenti mensili (luglio 2025)",
+        "• Quota traffico web raddoppiata in 1 anno (da 6.5% a 13.7%)",
+        "",
+        "<strong>Claude (Anthropic):</strong>",
+        "• 30 milioni utenti mensili (Q2 2025)",
+        "• 25 miliardi chiamate API al mese",
+        "• 45% del traffico API è enterprise"
       ],
-      "ironicClosing": "Il software che scrive software sta diventando il software più venduto. Meta.",
+      "ironicClosing": "Adozione del 54.6% in 3 anni. PC nel 1984: 19.7%. Internet nel 1998: 30.1%. L'AI ha vinto.",
       "citations": [
         {
-          "text": "AI software spending to grow to $297.9B by 2027 with 19.1% CAGR",
-          "source": "Gartner Market Forecast",
-          "url": "https://softwarestrategiesblog.com/2024/01/24/gartner-predicts-ai-software-will-grow-to-297-billion-by-2027/"
+          "text": "ChatGPT 800M weekly users, 122.6M daily (May 2025), 92% Fortune 100 use it",
+          "source": "DataStudios - AI Chatbots 2025",
+          "url": "https://www.datastudios.org/post/the-most-used-ai-chatbots-in-2025-global-usage-trends-and-platform-comparisons-of-chatgpt-gemini"
+        },
+        {
+          "text": "Gemini 450M monthly users, traffic doubled from 6.5% to 13.7% in one year",
+          "source": "WebProNews - Gemini Growth",
+          "url": "https://www.webpronews.com/geminis-ai-ascendancy-traffic-doubles-eroding-chatgpts-enterprise-dominance/"
+        },
+        {
+          "text": "Claude 30M monthly users, 25B API calls/month, 45% enterprise traffic, GenAI adoption 54.6% in 3 years",
+          "source": "Views4You - AI Usage Statistics",
+          "url": "https://views4you.com/ai-tools-usage-statistics-report-2025/"
         }
       ]
     },
@@ -166,7 +185,7 @@
     {
       "type": "company",
       "name": "OpenAI",
-      "tagline": "Il Pioneer da $300 Miliardi",
+      "tagline": "Il Pioneer da $500 Miliardi (che Perde $9B/anno)",
       "facts": [
         {
           "label": "Fondata",
@@ -174,32 +193,75 @@
         },
         {
           "label": "Revenue 2024",
-          "value": "$3.7 miliardi - non male per un chatbot"
+          "value": "$3.7 miliardi - +1,700% in 2 anni"
         },
         {
-          "label": "Projected 2025",
-          "value": "$12.7 miliardi (+243%) - triplicare revenue è il nuovo normale"
+          "label": "Perdite 2024",
+          "value": "$5 miliardi - sì, perde più di quanto fattura"
+        },
+        {
+          "label": "Revenue 2025",
+          "value": "$13-15 miliardi (previsto)"
+        },
+        {
+          "label": "Perdite 2025",
+          "value": "$8.5-9 miliardi - ancora in rosso profondo"
         },
         {
           "label": "Valutazione",
-          "value": "$300 miliardi (Marzo 2025) - più di Nike, McDonald's, Pfizer"
-        },
-        {
-          "label": "Ultimo funding",
-          "value": "$40 miliardi - il round più grande della storia tech"
+          "value": "$500 miliardi (ottobre 2025) - quasi raddoppiata in 7 mesi"
         }
       ],
-      "ironicClosing": "Da 'ricerca open' a valutazione da big tech in meno di 10 anni. Il nome non ha invecchiato benissimo.",
+      "ironicClosing": "Valutazione tipo Apple. Perdite tipo startup. Benvenuti nel 2025: crescita > profitti (per ora).",
       "citations": [
         {
-          "text": "OpenAI founded December 2015, revenue $3.7B (2024), projected $12.7B (2025)",
-          "source": "Tap Twice Digital - OpenAI Statistics",
-          "url": "https://taptwicedigital.com/stats/openai"
+          "text": "OpenAI revenue $3.7B (2024), $13B target (2025), $5B loss (2024), $8.5-9B loss (2025)",
+          "source": "CNBC & DataStudios - OpenAI Financial Analysis",
+          "url": "https://www.datastudios.org/post/openai-hits-10-billion-annual-revenue-user-growth-income-losses-infrastructure-investments-and"
         },
         {
-          "text": "OpenAI valued at $300B after March 2025 funding round of $40B",
-          "source": "Calcalist Tech - OpenAI Funding",
-          "url": "https://www.calcalistech.com/ctechnews/article/bjfztiftjl"
+          "text": "OpenAI valuation nearly doubled from $300B to $500B in less than a year",
+          "source": "LessWrong - OpenAI Losses Analysis",
+          "url": "https://www.lesswrong.com/posts/CCQsQnCMWhJcCFY9x/openai-lost-usd5-billion-in-2024-and-its-losses-are"
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "title": "OpenAI: Dove Vanno i Soldi?",
+      "intro": "<strong>Costo operativo 2024: $9 miliardi (su $3.7B revenue = brucia il 243%)</strong>",
+      "metrics": [
+        {
+          "value": "$3 miliardi",
+          "label": "Compute per training modelli - GPU H100 non si pagano da sole"
+        },
+        {
+          "value": "$2 miliardi",
+          "label": "Compute per inference - far girare ChatGPT per 800M utenti settimanali"
+        },
+        {
+          "value": "$2.5 miliardi",
+          "label": "Stock compensation - trattenere talenti AI costa (letteralmente)"
+        },
+        {
+          "value": "$2 miliardi",
+          "label": "Sales & Marketing - crescere da zero a 800M utenti in 3 anni"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Piano futuro:</strong> $60 miliardi/anno investimenti infrastruttura con Oracle (prossimi 5 anni)"
+      ],
+      "ironicClosing": "Bruciare $9B/anno è insostenibile? Dipende. Se ti valutano $500B, hai tempo. Ma non infinito.",
+      "citations": [
+        {
+          "text": "OpenAI 2024 costs: $3B training compute, $2B inference, $2.5B stock comp, $2B sales/marketing",
+          "source": "Digitimes - OpenAI Operating Loss",
+          "url": "https://www.digitimes.com/news/a20251001PD244/openai-revenue-loss-2025.html"
+        },
+        {
+          "text": "OpenAI committed $300B with Oracle over 5 years ($60B/year) for computing power",
+          "source": "CNBC - AI Bubble Concerns",
+          "url": "https://www.cnbc.com/2025/10/21/are-we-in-an-ai-bubble.html"
         }
       ]
     },
@@ -213,8 +275,8 @@
           "label": "Fortune 500 usano OpenAI (459 aziende su 500 - praticamente tutti tranne i concorrenti)"
         },
         {
-          "value": "300M+",
-          "label": "Utenti attivi settimanali - più della popolazione USA"
+          "value": "800M+",
+          "label": "Utenti attivi settimanali (maggio 2025) - raddoppiato in 1 mese da 400M (feb 2025)"
         },
         {
           "value": "+1,700%",
@@ -355,37 +417,198 @@
       ]
     },
     {
-      "type": "comparison",
-      "title": "LLM Showdown: Coding",
-      "items": [
+      "type": "data",
+      "title": "GitHub Copilot: Il Pioneer che Ha Cambiato Tutto",
+      "subtitle": "Da esperimento a standard globale in 4 anni (2021-2025)",
+      "intro": "<strong>Giugno 2021:</strong> GitHub rilascia Copilot. Il mondo del coding non sarà più lo stesso.",
+      "metrics": [
         {
-          "rank": "🏆",
-          "name": "Claude Sonnet 4",
-          "description": "Precisione chirurgica, context awareness, scrive app complete funzionanti - il preferito dei dev"
+          "value": "20M",
+          "label": "Utenti totali (Luglio 2025) - crescita di 5 milioni in soli 3 mesi"
         },
         {
-          "rank": "🥈",
-          "name": "GPT-4o",
-          "description": "Versatile, creativo, spiega bene - ottimo per learning e prototipazione rapida"
+          "value": "90%",
+          "label": "Fortune 100 lo usano in produzione - da sperimentale a mission-critical"
         },
         {
-          "rank": "🥉",
-          "name": "Gemini Flash",
-          "description": "Veloce, economico, sorprendentemente capace - best ROI quando il budget conta"
+          "value": "85%",
+          "label": "Developer usano regolarmente almeno un AI coding tool nel 2025"
+        },
+        {
+          "value": "50%",
+          "label": "Più veloce il merge di codice nei team che lo adottano"
         }
       ],
-      "note": "Reality check: Claude 4 Sonnet costa 20x Gemini Flash. Scegli in base al task, non all'hype.",
-      "ironicClosing": "Il migliore LLM per te != il più costoso != il più hyped != quello che usa il tuo collega",
+      "paragraphs": [
+        "<strong>Settori leader:</strong> Tech startups (90% adoption), Banking (80%), Insurance (70%)",
+        "<strong>Da $10/mese a business miliardario:</strong> Copilot oggi fattura più di GitHub nel 2018"
+      ],
+      "ironicClosing": "Da 'simpatico assistente' a indispensabile in 4 anni. Benvenuti nel nuovo modo di scrivere codice.",
       "citations": [
         {
-          "text": "Claude excels in coding with precision and context awareness",
-          "source": "FastBots - LLMs Comparison 2025",
-          "url": "https://fastbots.ai/blog/top-llms-in-2025-comparing-claude-gemini-and-gpt-4-llama"
+          "text": "GitHub Copilot 20M users July 2025, 90% Fortune 100 adoption, 85% developers use AI coding tools",
+          "source": "TechCrunch & Second Talent - Copilot Statistics",
+          "url": "https://techcrunch.com/2025/07/30/github-copilot-crosses-20-million-all-time-users/"
         },
         {
-          "text": "Practical tests: Claude built complete game, GPT-4 structured code, Gemini solid",
-          "source": "AnalyticsVidhya - LLM Comparison",
-          "url": "https://www.analyticsvidhya.com/blog/2025/01/gpt-4o-claude-3-5-gemini-2-0-which-llm-to-use-and-when/"
+          "text": "Teams merge PRs 50% faster, 55% lead time reduction, 51% productivity improvement",
+          "source": "GitHub Research - Accenture Study",
+          "url": "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Copilot 2025: Oltre l'Autocompletamento",
+      "subtitle": "Da suggerimento singolo a collaboratore autonomo",
+      "paragraphs": [
+        "<strong>Modalità Agente (Febbraio 2025):</strong>",
+        "Non più solo suggerimenti - ora Copilot lavora in autonomia, corregge i propri errori, suggerisce comandi da terminale e risolve problemi da solo",
+        "",
+        "<strong>Workspace (2025):</strong>",
+        "Trasforma un'idea in codice funzionante in pochi minuti. Perfetto per team enterprise che vogliono prototipare velocemente",
+        "",
+        "<strong>Assegna Task all'AI (Maggio 2025):</strong>",
+        "Puoi letteralmente assegnare un problema a Copilot come faresti con un collega. L'AI lavora, testa, corregge e ti ritorna con il codice completo pronto per la revisione",
+        "",
+        "<strong>Il Futuro - Project Padawan:</strong>",
+        "In arrivo: assegna interi progetti, aspetta che l'AI finisca, rivedi il risultato. L'AI diventa un membro del team a tutti gli effetti"
+      ],
+      "ironicClosing": "Non è più 'AI che completa il codice'. È 'AI a cui deleghi il lavoro'. Differenza enorme.",
+      "citations": [
+        {
+          "text": "GitHub Agent Mode, AgentHQ, Copilot Workspace enterprise features announced 2025",
+          "source": "GitHub Newsroom & InfoQ",
+          "url": "https://github.com/newsroom/press-releases/agent-mode"
+        },
+        {
+          "text": "Copilot Coding Agent public preview May 2025, MCP GA July 2025 (VS Code 1.102+)",
+          "source": "GitHub Changelog - MCP Support",
+          "url": "https://github.blog/changelog/2025-07-14-model-context-protocol-mcp-support-in-vs-code-is-generally-available/"
+        }
+      ]
+    },
+    {
+      "type": "two-column",
+      "title": "I Modelli AI per il Coding: La Competizione si Intensifica",
+      "subtitle": "Claude e Gemini dominano, ma arrivano alternative potenti",
+      "leftColumn": {
+        "title": "I Leader di Mercato",
+        "items": [
+          "<strong>Claude Sonnet 4.5 (Anthropic):</strong> Il migliore per coding secondo i benchmark. Precisione chirurgica sul contesto, ragionamento multi-step avanzato",
+          "<strong>Google Gemini 2.5 Pro:</strong> Miglior rapporto qualità/prezzo (20x più economico di Claude). 2 milioni di token di contesto - leggi intere codebase",
+          "<strong>Gemini 3 Pro (Dicembre 2025):</strong> Appena rilasciato, vince 19 benchmark su 20. Modalità Agente disponibile da Giugno 2025"
+        ]
+      },
+      "rightColumn": {
+        "title": "Le Alternative Open Source e Specializzate",
+        "items": [
+          "<strong>DeepSeek Coder V2:</strong> Open source, 90.2% HumanEval, 338 linguaggi supportati, 128K context. La scelta per chi vuole controllo totale e zero dipendenze cloud",
+          "<strong>Mistral Codestral 25.01:</strong> 86.6% HumanEval, 2x più veloce della versione precedente. 80+ linguaggi, 256K context. Disponibile su AWS, Azure, Google Cloud",
+          "<strong>Meta CodeLlama 2:</strong> Fino a 128K context, 67.8% HumanEval (variante 70B). Open weight, licenza commerciale"
+        ]
+      },
+      "ironicClosing": "Non esiste 'il modello perfetto' - dipende da budget, compliance e stack. Ma la competizione spinge tutti a migliorare velocemente.",
+      "citations": [
+        {
+          "text": "Claude Sonnet 4 best overall for coding, Gemini 2.5 best value (20x cheaper)",
+          "source": "AICodeKing - Best Coding AI 2025",
+          "url": "https://aicodeking.com/best-ai-for-coding/"
+        },
+        {
+          "text": "Google Gemini Code Assist 2.5 with Agent Mode GA June 2025, 2M token context",
+          "source": "InfoWorld - Gemini Code Assist",
+          "url": "https://www.infoworld.com/article/3628289/google-adds-agent-mode-to-gemini-code-assist.html"
+        },
+        {
+          "text": "DeepSeek Coder V2: 90.2% HumanEval, 338 languages, 128K context, open source",
+          "source": "VentureBeat - DeepSeek V2",
+          "url": "https://venturebeat.com/ai/deepseek-coder-v2-delivers-coding-ai-for-338-programming-languages/"
+        },
+        {
+          "text": "Codestral 25.01: 86.6% HumanEval, 2x faster, 80+ languages, 256K context",
+          "source": "Mistral AI Blog - Codestral Release",
+          "url": "https://mistral.ai/news/codestral-25-01/"
+        },
+        {
+          "text": "Gemini 3 Pro tops charts on 19 of 20 benchmarks",
+          "source": "The Verge - Gemini 3 Launch",
+          "url": "https://www.theverge.com/2025/12/11/24318538/google-gemini-ai-model-3-pro-flash-thinking"
+        }
+      ]
+    },
+    {
+      "type": "two-column",
+      "title": "Gli Strumenti: IDE e Editor Potenziati dall'AI",
+      "subtitle": "Questi tool USANO i modelli AI sopra - non hanno AI propria",
+      "leftColumn": {
+        "title": "GitHub Copilot e Cursor",
+        "items": [
+          "<strong>GitHub Copilot:</strong> Il pioneer con 20M utenti. Usa modelli OpenAI (GPT-4). Modalità Agente (Febbraio 2025) lavora in autonomia. 90% Fortune 100 lo usano",
+          "<strong>Cursor 2.0:</strong> IDE basato su VS Code che usa GPT-4 o Claude. Velocissimo: task completati in <30 secondi (4x più rapido). 28% suggerimenti accettati in più. Multi-agente: 8 task in parallelo. 18% quota mercato in crescita"
+        ]
+      },
+      "rightColumn": {
+        "title": "Claude Code e Windsurf",
+        "items": [
+          "<strong>Claude Code 2.0:</strong> CLI ufficiale Anthropic. Usa Claude Sonnet 4.5. Checkpoint automatici prima di ogni modifica (Esc x2 per tornare indietro). Estensione VS Code con modifiche in tempo reale",
+          "<strong>Windsurf (ex Codeium):</strong> 800K+ sviluppatori. Acquisito da OpenAI per $3 miliardi (Maggio 2025). Integra Cascade AI Flow per context switching automatico"
+        ]
+      },
+      "note": "<strong>La differenza chiave:</strong> Copilot, Cursor, Claude Code e Windsurf sono INTERFACCE. I modelli AI (Claude, GPT, Gemini) sono i CERVELLI. Scegli il tool per UX/workflow, il modello per intelligenza/qualità.",
+      "ironicClosing": "Copilot ha democratizzato l'AI coding. Cursor ha alzato l'asticella. Claude Code ha portato qualità superiore. La competizione vince sempre.",
+      "citations": [
+        {
+          "text": "GitHub Copilot 20M users, uses OpenAI models, Agent Mode Feb 2025",
+          "source": "TechCrunch - Copilot Growth",
+          "url": "https://techcrunch.com/2025/07/30/github-copilot-crosses-20-million-all-time-users/"
+        },
+        {
+          "text": "Cursor 2.0 uses GPT-4 or Claude, 4x faster task completion, 28% higher accept rate",
+          "source": "Cursor Blog - 2.0 Release",
+          "url": "https://cursor.com/blog/2-0"
+        },
+        {
+          "text": "Claude Code 2.0 uses Sonnet 4.5, checkpoints, VS Code extension",
+          "source": "SmartScope - Claude Code 2.0",
+          "url": "https://smartscope.blog/en/generative-ai/claude/claude-code-2-0-release/"
+        },
+        {
+          "text": "Windsurf acquired by OpenAI $3B May 2025, 800K+ developers",
+          "source": "Editorial GE - Windsurf Acquisition",
+          "url": "https://editorialge.com/openai-windsurf-acquisition-2025/"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "Il Futuro: Autonomia Completa e Standard Universale",
+      "paragraphs": [
+        "<strong>Replit Agent 3 (Settembre 2025):</strong>",
+        "Lavora in autonomia per 200 minuti di fila. Pianifica, scrive, testa, corregge interi componenti software senza bisogno di supervisione. Costa 1/10 dei modelli precedenti ed è 3 volte più veloce. Si integra con Slack, email e Telegram.",
+        "",
+        "<strong>Devin 2.0 - Il Primo 'Ingegnere AI':</strong>",
+        "Può lanciare più agenti in parallelo: uno lavora sul frontend mentre un altro gestisce il backend. Fa testing e deployment automaticamente, creando pipeline complete. Legge requisiti, scrive codice, corregge bug e collabora su GitHub esattamente come un developer umano.",
+        "",
+        "<strong>MCP - Lo Standard che Unifica Tutto (Luglio 2025):</strong>",
+        "Model Context Protocol è diventato lo standard universale. Scrivi un'integrazione una volta e funziona su GitHub Copilot, Claude Code, Cursor, Windsurf e qualsiasi altro tool compatibile. Server pre-costruiti per Google Drive, Slack, GitHub, database e altro. GitHub sta dismettendo il vecchio sistema di estensioni - MCP è il futuro."
+      ],
+      "ironicClosing": "2021: AI che completa le frasi. 2025: AI che lavora per ore da sola. 2026? Forse assegneremo sprint interi.",
+      "citations": [
+        {
+          "text": "Replit Agent 3: 200 min continuous operation, 3x faster, 1/10 cost, Slack/email integration",
+          "source": "InfoQ - Replit Agent 3 Release",
+          "url": "https://www.infoq.com/news/2025/09/replit-agent-3/"
+        },
+        {
+          "text": "Devin 2.0 multi-agent parallelism, end-to-end deployment, first AI software engineer",
+          "source": "AI Critique - Devin vs Replit",
+          "url": "https://www.aicritique.org/us/2025/05/05/comparative-analysis-devin-ai-vs-replit-agent/"
+        },
+        {
+          "text": "MCP generally available July 2025 VS Code 1.102+, GitHub deprecates Extensions Nov 10 2025",
+          "source": "GitHub Changelog - MCP GA",
+          "url": "https://github.blog/changelog/2025-07-14-model-context-protocol-mcp-support-in-vs-code-is-generally-available/"
         }
       ]
     },
@@ -458,42 +681,105 @@
       ]
     },
     {
+      "type": "text",
+      "title": "Previsioni 2026 e Prospettive",
+      "paragraphs": [
+        "<strong>Scenario ottimista (probabile):</strong>",
+        "• Consolidamento piattaforme: vince chi integra tutto - LLM + RAG + agents + tools + deployment",
+        "• Commoditization modelli base: GPT-4 level diventa commodity, valore si sposta su specializzazione domain",
+        "• Enterprise adoption matura: da pilot a production, da '95% fail' a '70% success'",
+        "• Profittabilità selettiva: hyperscaler vincono (hanno già infra), startup B2C soffrono",
+        "",
+        "<strong>Rischi da monitorare:</strong>",
+        "• Regulation bites: EU AI Act + simili mordono davvero - audit trail, explainability, bias testing mandatori",
+        "• Energy costs: datacenter 945 TWh/anno entro 2030 - insostenibile senza nucleare/rinnovabili scale",
+        "• Revenue gap $800B non si chiude - investitori perdono pazienza entro 2027-2028",
+        "• Circular revenue deals: Lyft CEO 'siamo assolutamente in una bolla finanziaria'",
+        "",
+        "<strong>Open source accelera:</strong> LLaMA, Mistral, DeepSeek guidano innovazione bottom-up. Closed source perde appeal."
+      ],
+      "ironicClosing": "Il 2026 sarà l'anno in cui l'AI diventa noiosa. Nel senso buono: funziona, è affidabile, basta parlarne.",
+      "citations": [
+        {
+          "text": "Lyft CEO David Risher: 'Let's be clear, we are absolutely in a financial bubble'",
+          "source": "CNBC - AI Bubble Concerns",
+          "url": "https://www.cnbc.com/2025/10/21/are-we-in-an-ai-bubble.html"
+        },
+        {
+          "text": "Evidence of bubble-like behavior includes circular revenue deals and aggressive pricing",
+          "source": "Built In - AI Bubble Analysis",
+          "url": "https://builtin.com/artificial-intelligence/ai-bubble"
+        }
+      ]
+    },
+    {
       "type": "data",
       "title": "Investimenti: Follow the Money",
       "metrics": [
         {
-          "value": "$33.9B",
-          "label": "Investimenti privati in AI nel 2024 (+18.7% rispetto al 2023)"
+          "value": "$325B",
+          "label": "Big 4 hyperscaler (AWS, Microsoft, Google, Meta) - solo nel 2025"
         },
         {
-          "value": "$80B",
-          "label": "Budget Microsoft per datacenter AI nell'anno fiscale 2025 (solo loro)"
+          "value": "$4 trilioni",
+          "label": "Previsione CapEx datacenter AI 2025-2030 (5 anni di costruzione frenetica)"
         },
         {
-          "value": "$95.3B",
-          "label": "Spesa globale cloud infrastructure nel Q2 2025 (in un solo trimestre)"
+          "value": "1.1%",
+          "label": "Contributo AI al GDP USA nel H1 2025 - più del consumer spending"
         },
         {
-          "value": "$1.49T",
-          "label": "Mercato datacenter previsto per il 2026 (+36.2% anno su anno)"
+          "value": "117 GW",
+          "label": "Nuova capacità datacenter prevista entro 2030 (alimenta 100M case)"
         }
       ],
-      "ironicClosing": "Quando i datacenter AI costano più del PIL di 100+ nazioni, forse stiamo costruendo qualcosa di importante",
+      "ironicClosing": "L'AI è passata da 'nice to have' a infrastruttura critica nazionale. La scommessa è da $4 trilioni.",
       "citations": [
         {
-          "text": "AI attracted $33.9B in private investment in 2024, +18.7% vs 2023",
-          "source": "Hatchworks - Generative AI Statistics",
-          "url": "https://hatchworks.com/blog/gen-ai/generative-ai-statistics/"
+          "text": "Big 4 hyperscalers spending $325B in 2025, $4T datacenter CapEx by 2030, 117 GW capacity",
+          "source": "DataCenters.com & Yale Insights",
+          "url": "https://insights.som.yale.edu/insights/this-is-how-the-ai-bubble-bursts"
         },
         {
-          "text": "Microsoft plans $80B in AI-enabled datacenters fiscal 2025",
-          "source": "Mend.io - AI Investment Trends",
-          "url": "https://www.mend.io/blog/generative-ai-statistics-to-know-in-2025/"
+          "text": "AI-related CapEx surpassed US consumer as primary GDP driver H1 2025, contributing 1.1%",
+          "source": "CNBC - AI Investment Analysis",
+          "url": "https://www.cnbc.com/2025/10/21/are-we-in-an-ai-bubble.html"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "La Domanda da $800 Miliardi: È Sostenibile?",
+      "paragraphs": [
+        "<strong>Il paradosso:</strong>",
+        "• Investimenti reali: $325B/anno dagli hyperscaler (cemento, acciaio, chip)",
+        "• Utenti reali: 800M settimanali su ChatGPT, adozione 54.6% in 3 anni",
+        "• Revenue reale: OpenAI $13B, Anthropic $5B+ run-rate",
+        "• Ma: OpenAI perde $9B/anno, 95% progetti pilot enterprise falliscono",
+        "",
+        "<strong>Bain & Company allarme:</strong>",
+        "L'AI non genera abbastanza revenue per sostenere il computing power necessario",
+        "Serve $2 trilioni di nuova revenue entro 2030 - siamo $800B corti",
+        "",
+        "<strong>54% fund manager:</strong> AI stocks sono in 'bubble territory'",
+        "<strong>Ma:</strong> P/E ratio attuale 26x vs 70x del dot-com (2000) - meno estremo"
+      ],
+      "ironicClosing": "Investimenti reali. Utenti reali. Perdite reali. Quando arrivano i profitti reali? Nessuno lo sa.",
+      "citations": [
+        {
+          "text": "Bain: AI won't generate enough revenue to sustain computing power needed, world $800B short, needs $2T new revenue by 2030",
+          "source": "Bain & Company - Global Tech Report",
+          "url": "https://www.bain.com/about/media-center/press-releases/20252/$2-trillion-in-new-revenue-needed-to-fund-ais-scaling-trend---bain--companys-6th-annual-global-technology-report/"
         },
         {
-          "text": "Cloud infrastructure $95.3B Q2 2025, datacenter projected $1.49T 2026",
-          "source": "Channel Insider - Cloud Spending",
-          "url": "https://www.channelinsider.com/infrastructure/canalys-cloud-hyperscaler-report-sept-2025/"
+          "text": "54% of fund managers view AI stocks in bubble territory, but P/E ratio 26x vs 70x in dot-com 2000",
+          "source": "iShares & CNBC - AI Bubble Analysis",
+          "url": "https://www.ishares.com/us/insights/ai-stocks-bubble-2025-valuation-outlook"
+        },
+        {
+          "text": "95% of generative AI pilot programs at companies are failing (MIT report August 2025)",
+          "source": "Yale Insights - AI Bubble Burst",
+          "url": "https://insights.som.yale.edu/insights/this-is-how-the-ai-bubble-bursts"
         }
       ]
     },
@@ -519,28 +805,20 @@
       ]
     },
     {
-      "type": "text",
-      "title": "Previsioni 2026",
-      "paragraphs": [
-        "<strong>Consolidamento piattaforme:</strong> Vince chi integra tutto - LLM + RAG + agents + tools + deployment. Il modello da solo non basta più.",
-        "<strong>Commoditization modelli base:</strong> GPT-4 level diventa commodity. Il valore si sposta su: specializzazione domain, orchestrazione multi-agent, fine-tuning proprietario.",
-        "<strong>Regulation bites back:</strong> EU AI Act + simili iniziano a mordere davvero. Audit trail, explainability, bias testing diventano mandatori.",
-        "<strong>Open source accelera:</strong> LLaMA, Mistral, DeepSeek continuano a guidare innovazione bottom-up. Closed source perde appeal."
-      ],
-      "ironicClosing": "Il 2026 sarà l'anno in cui l'AI diventa noiosa. Nel senso buono: funziona, è affidabile, basta parlarne."
-    },
-    {
       "type": "summary",
       "title": "Cosa Abbiamo Imparato",
       "items": [
-        "Mercato: $1.5 trilioni (2025) → $2 trilioni (2026) - più veloce del previsto",
-        "OpenAI: Valutazione $300B, revenue $12.7B nel 2025 - da chatbot a infrastruttura critica",
-        "Anthropic: Valutazione $183B, run-rate $5B+ annui - AI safety che scala davvero",
-        "Adozione: 65%+ grandi aziende usano AI agents, 70% ISV integrano GenAI entro 2026",
-        "Tendenze 2026: Multimodalità nativa + AI Agentica autonoma diventano standard",
-        "Reality check: Non esiste 'il migliore LLM', esiste il fit giusto per problema e budget"
+        "Spesa globale: $1.5T (2025) → $2T (2026). Ma software è solo 11% - il resto è chip, server, consulenza",
+        "Utenti esplodono: ChatGPT 800M/settimana, Gemini 450M/mese, adozione 54.6% in 3 anni (fastest ever)",
+        "OpenAI paradosso: Valutazione $500B, revenue $13B, ma perdite $9B/anno - crescita > profitti (per ora)",
+        "AI Coding Revolution: GitHub Copilot 20M utenti, 90% Fortune 100. Agent Mode, AgentHQ, Cursor 2.0, Claude Code 2.0, Replit Agent 3 (200 min autonomy). Da autocomplete a AI teammates in 4 anni.",
+        "MCP Standard: Model Context Protocol GA luglio 2025 - build once, works everywhere. GitHub depreca Extensions, MCP è il futuro universale.",
+        "Investimenti reali: $325B/anno hyperscaler, $4T datacenter 2025-2030 - cemento e acciaio, non finanza",
+        "Il gap: Serve $2T nuova revenue entro 2030, siamo $800B corti. 95% pilot enterprise falliscono ancora",
+        "Non è dot-com: P/E 26x vs 70x del 2000, aziende profittevoli esistono (Nvidia, Microsoft, Google)",
+        "Prossimi 2-3 anni: Consolidamento piattaforme, commoditization modelli, profittabilità selettiva. AI agents diventeranno standard."
       ],
-      "ironicClosing": "Fine 2025: l'hype mediatico è morto, ma l'AI produttiva è appena iniziata. Benvenuti nell'era post-ChatGPT."
+      "ironicClosing": "L'AI è reale. Gli investimenti sono reali. Gli utenti sono reali. I profitti? Arriveranno. Forse."
     }
   ],
   "lastTranslated": null,

@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Course - Corso AI Generativa</title>
+
+    <!-- Prevent caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <style>
         body {
             margin: 0;
@@ -59,8 +64,27 @@
         // Determina lingua da usare
         const targetLang = savedLang || (isItalian ? 'it' : 'en');
 
-        // Redirect
-        window.location.href = `${targetLang}/index.html`;
+        // Determina se siamo in locale o produzione basandoci sull'hostname
+        const hostname = window.location.hostname;
+        const isLocalDev = hostname === 'localhost' ||
+                          hostname === '127.0.0.1' ||
+                          hostname.includes('.local') ||
+                          window.location.pathname.includes('/output/');
+
+        const basePath = isLocalDev ? 'output/' : '';
+
+        // Debug (rimuovere dopo il fix)
+        console.log('Hostname:', hostname);
+        console.log('IsLocalDev:', isLocalDev);
+        console.log('BasePath:', basePath);
+        console.log('TargetLang:', targetLang);
+
+        // Redirect con cache busting
+        const timestamp = new Date().getTime();
+        const targetUrl = `${basePath}${targetLang}/index.html?t=${timestamp}`;
+
+        console.log('Redirecting to:', targetUrl);
+        window.location.href = targetUrl;
     </script>
 </body>
 </html>

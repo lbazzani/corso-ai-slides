@@ -135,38 +135,52 @@
       ]
     },
     {
-      "type": "two-column",
-      "title": "Salari 2025: USA vs Italia",
-      "leftColumn": {
-        "title": "🇺🇸 USA",
-        "items": [
-          "<strong>Entry:</strong> $152K (+$40K vs 2024)",
-          "<strong>Mid:</strong> $138-175K",
-          "<strong>Senior:</strong> $190-230K",
-          "<strong>Growth:</strong> +2.3% YoY"
-        ]
-      },
-      "rightColumn": {
-        "title": "🇮🇹 Italia",
-        "items": [
-          "<strong>Entry/Junior (&lt;3 anni):</strong> €25-32K",
-          "<strong>Mid (4-9 anni):</strong> €35-40K",
-          "<strong>Senior (10-20 anni):</strong> €44-55K",
-          "<strong>Media nazionale:</strong> €37-39K"
-        ]
-      },
-      "note": "<strong>Reality check:</strong> USA paga 3-4x l'Italia, ma affitto a SF costa quanto una casa intera qui",
-      "ironicClosing": "$152K in Bay Area = €35K in Italia per potere d'acquisto reale. L'economia è una scienza triste.",
-      "citations": [
+      "type": "data",
+      "title": "Data Scientist Salaries USA (2025)",
+      "subtitle": "Quanto paga davvero il mercato americano",
+      "intro": "<strong>Median BLS (Bureau of Labor Statistics): $112,590/anno</strong>",
+      "metrics": [
         {
-          "text": "USA: Entry $152K, mid $138-175K, senior $190-230K",
-          "source": "Motion Recruitment - Salary Guide 2026",
-          "url": "https://motionrecruitment.com/it-salary/data-science"
+          "value": "$85-112K",
+          "label": "Entry Level (<2 anni esperienza) - Median $100K nazionale"
         },
         {
-          "text": "Italia: Entry €25-32K, mid €35-40K, senior €44-55K, media €37-39K",
-          "source": "Glassdoor Italia & Indeed Italia Nov 2025",
-          "url": "https://www.glassdoor.it/Stipendi/data-scientist-stipendio-SRCH_KO0,14.htm"
+          "value": "$122-145K",
+          "label": "Mid-Level (3-7 anni esperienza) - Median $130K"
+        },
+        {
+          "value": "$145-180K",
+          "label": "Senior (8+ anni esperienza) - Median $160K"
+        },
+        {
+          "value": "$240-295K",
+          "label": "Top performers & FAANG - Senior/Staff/Principal level"
+        }
+      ],
+      "paragraphs": [
+        "<strong>Variazione geografica:</strong>",
+        "• Silicon Valley/SF: +30-50% vs median nazionale (entry $130-150K)",
+        "• Seattle/NYC: +20-30% vs median (entry $115-135K)",
+        "• Midwest/South: median o -10% (entry $85-100K)",
+        "",
+        "<strong>Reality check:</strong> Big Tech (FAANG) paga 1.5-2x vs median. Startup early-stage paga -20-30% ma offre equity."
+      ],
+      "ironicClosing": "Entry level a SF: $130-150K. Affitto monolocale SF: $3,500/mese. Dopo tasse e affitto, rimangono... $40K/anno. Benvenuti in Silicon Valley.",
+      "citations": [
+        {
+          "text": "BLS median $112,590, entry $85-112K, mid $122-145K, senior $145-180K national",
+          "source": "Glassdoor, PayScale, Indeed - Data Scientist 2025",
+          "url": "https://www.glassdoor.com/Salaries/data-scientist-salary-SRCH_KO0,14.htm"
+        },
+        {
+          "text": "Entry level range $74K-$165K depending on location, company size, skills",
+          "source": "ZipRecruiter, Salary.com, InterviewQuery",
+          "url": "https://www.ziprecruiter.com/Salaries/Entry-Level-Data-Scientist-Salary"
+        },
+        {
+          "text": "Top earners (FAANG, senior/staff) $240-295K total compensation",
+          "source": "Coursera & Kanan.co - Data Scientist Salary Guide",
+          "url": "https://www.coursera.org/articles/data-scientist-salary"
         }
       ]
     },
