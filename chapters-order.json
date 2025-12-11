@@ -10,6 +10,7 @@
       "embeddings-vector-db-rag",
       "ai-agentica-framework",
       "workshop-crewai",
+      "workshop-langchain-agent",
       "pytorch-tensorflow-ml",
       "workshop-pytorch-nlp",
       "workshop-tensorflow-nlp"

@@ -1,0 +1,707 @@
+{
+  "number": 12,
+  "title": "Workshop: Agente AI con LangChain e Function Calling",
+  "description": "Costruisci un assistente di viaggio intelligente con tools reali - Guida hands-on completa",
+  "steps": [
+    {
+      "name": "Cos'è LangChain",
+      "slides": [0, 1, 2, 3, 4, 5]
+    },
+    {
+      "name": "Come Funzionano i Tools",
+      "slides": [6, 7, 8, 9]
+    },
+    {
+      "name": "Primo Esempio",
+      "slides": [10, 11, 12]
+    },
+    {
+      "name": "Il Nostro Progetto",
+      "slides": [13, 14, 15]
+    },
+    {
+      "name": "Setup Progetto",
+      "slides": [16, 17, 18, 19, 20]
+    },
+    {
+      "name": "Creiamo i Tools",
+      "slides": [21, 22, 23, 24, 25, 26, 27]
+    },
+    {
+      "name": "Creiamo l'Agente",
+      "slides": [28, 29, 30, 31, 32]
+    },
+    {
+      "name": "Esecuzione",
+      "slides": [33, 34, 35, 36]
+    },
+    {
+      "name": "Estensioni",
+      "slides": [37, 38, 39]
+    },
+    {
+      "name": "Debug & Next",
+      "slides": [40, 41, 42, 43]
+    }
+  ],
+  "slides": [
+    {
+      "type": "title",
+      "title": "Workshop LangChain Agent",
+      "subtitle": "Costruiamo un Assistente di Viaggio AI",
+      "description": "Da LangChain basics a Function Calling con API reali",
+      "ironicClosing": "Il tuo agente di viaggio personale. Gratis. Senza upselling."
+    },
+    {
+      "type": "text",
+      "title": "Cos'è LangChain?",
+      "paragraphs": [
+        "<strong>LangChain è un framework open-source per costruire applicazioni con LLM</strong>",
+        "",
+        "<strong>Il problema che risolve:</strong>",
+        "• Gli LLM da soli sono 'stateless' - non ricordano nulla",
+        "• Non possono accedere a dati esterni o API",
+        "• Non possono eseguire azioni nel mondo reale",
+        "• Ogni integrazione richiede codice custom",
+        "",
+        "<strong>LangChain fornisce:</strong>",
+        "• <strong>Chains:</strong> Sequenze di operazioni concatenate",
+        "• <strong>Agents:</strong> LLM che decidono quali azioni eseguire",
+        "• <strong>Tools:</strong> Funzioni che l'agente può chiamare",
+        "• <strong>Memory:</strong> Persistenza del contesto conversazionale",
+        "• <strong>Retrieval:</strong> Integrazione con vector databases (RAG)"
+      ],
+      "ironicClosing": "LangChain = il 'framework web' per le applicazioni AI."
+    },
+    {
+      "type": "text",
+      "title": "Storia di LangChain",
+      "paragraphs": [
+        "<strong>Timeline:</strong>",
+        "",
+        "<strong>Ottobre 2022:</strong> Harrison Chase crea LangChain",
+        "• Ex ML Engineer a Robust Intelligence",
+        "• Primo commit su GitHub: 25 ottobre 2022",
+        "• Obiettivo: semplificare lo sviluppo con LLM",
+        "",
+        "<strong>2023:</strong> Esplosione di popolarità",
+        "• Gennaio: 1,000 stelle GitHub",
+        "• Marzo: 25,000 stelle, Series A $10M (Benchmark)",
+        "• Aprile: Series B $25M (Sequoia)",
+        "• Dicembre: 70,000+ stelle GitHub",
+        "",
+        "<strong>2024-2025:</strong> Maturità e stabilità",
+        "• LangChain v0.1 → v0.2 → v0.3 (breaking changes ridotti)",
+        "• LangSmith: piattaforma di monitoring/debugging",
+        "• LangGraph: framework per workflow complessi",
+        "• 90,000+ stelle GitHub, 2,000+ contributors"
+      ],
+      "ironicClosing": "Da side project a $200M+ valuation in 18 mesi. Non male."
+    },
+    {
+      "type": "text",
+      "title": "Perché Usare LangChain?",
+      "paragraphs": [
+        "<strong>5 motivi per usare LangChain nel tuo progetto:</strong>",
+        "",
+        "<strong>1. Astrazione dei provider LLM</strong>",
+        "• Cambi da OpenAI a Anthropic con UNA riga di codice",
+        "• Stesso codice funziona con 50+ provider",
+        "",
+        "<strong>2. Tools e Function Calling standardizzati</strong>",
+        "• Decoratore @tool per creare funzioni chiamabili",
+        "• L'LLM decide autonomamente quando usarli",
+        "",
+        "<strong>3. Memory management integrato</strong>",
+        "• Buffer, summary, vector-based memory",
+        "• Conversazioni multi-turn senza codice custom",
+        "",
+        "<strong>4. Ecosistema ricchissimo</strong>",
+        "• 700+ integrazioni (databases, APIs, tools)",
+        "• Community attiva, documentazione completa",
+        "",
+        "<strong>5. Production-ready</strong>",
+        "• LangSmith per monitoring e debugging",
+        "• Streaming, caching, retry logic built-in"
+      ],
+      "ironicClosing": "Reinventare la ruota è sopravvalutato."
+    },
+    {
+      "type": "text",
+      "title": "Quando NON Usare LangChain",
+      "paragraphs": [
+        "<strong>LangChain non è sempre la scelta giusta:</strong>",
+        "",
+        "<strong>❌ NON usare LangChain se:</strong>",
+        "• Hai bisogno solo di chiamate API semplici a OpenAI",
+        "• Il tuo caso d'uso è molto specifico e custom",
+        "• Vuoi controllo totale sul codice (no abstrazioni)",
+        "• Performance critiche (ogni layer aggiunge overhead)",
+        "",
+        "<strong>✅ USA LangChain se:</strong>",
+        "• Costruisci agenti con tools multipli",
+        "• Hai bisogno di memory/context management",
+        "• Vuoi poter cambiare LLM provider facilmente",
+        "• Il progetto è complesso (RAG, multi-agent)",
+        "• Vuoi accelerare lo sviluppo",
+        "",
+        "<strong>Alternative:</strong>",
+        "• <strong>LlamaIndex:</strong> Migliore per RAG puro",
+        "• <strong>SDK nativi:</strong> OpenAI, Anthropic per casi semplici",
+        "• <strong>Haystack:</strong> Focus su search/retrieval"
+      ],
+      "ironicClosing": "Il miglior framework è quello che non ti serve. Ma spesso serve."
+    },
+    {
+      "type": "data",
+      "title": "LangChain in Numeri (2025)",
+      "intro": "L'ecosistema LangChain oggi:",
+      "metrics": [
+        {"value": "90K+", "label": "GitHub Stars"},
+        {"value": "2,000+", "label": "Contributors"},
+        {"value": "700+", "label": "Integrazioni"},
+        {"value": "50+", "label": "LLM Provider supportati"}
+      ],
+      "ironicClosing": "Numeri che farebbero invidia a qualsiasi startup."
+    },
+    {
+      "type": "text",
+      "title": "Come Funzionano i Tools in LangChain",
+      "paragraphs": [
+        "<strong>I Tools sono il cuore degli Agenti AI</strong>",
+        "",
+        "<strong>Cos'è un Tool?</strong>",
+        "Una funzione Python che l'LLM può decidere di chiamare",
+        "",
+        "<strong>Come funziona il flusso:</strong>",
+        "1. L'utente fa una domanda",
+        "2. L'LLM analizza la domanda",
+        "3. L'LLM decide SE e QUALE tool chiamare",
+        "4. LangChain esegue il tool con i parametri scelti dall'LLM",
+        "5. Il risultato torna all'LLM",
+        "6. L'LLM può chiamare altri tools o rispondere",
+        "",
+        "<strong>L'LLM NON esegue codice!</strong>",
+        "L'LLM genera solo una 'richiesta' di chiamata.",
+        "LangChain intercetta e esegue la funzione Python reale."
+      ],
+      "ironicClosing": "L'LLM è il cervello. I tools sono le mani."
+    },
+    {
+      "type": "text",
+      "title": "Anatomia di un Tool LangChain",
+      "paragraphs": [
+        "<strong>Un tool ha 3 componenti fondamentali:</strong>",
+        "",
+        "<strong>1. Nome (name)</strong>",
+        "• Identificativo unico del tool",
+        "• L'LLM usa questo nome per riferirsi al tool",
+        "",
+        "<strong>2. Descrizione (description)</strong>",
+        "• CRITICA: l'LLM decide se usare il tool basandosi su questa",
+        "• Deve spiegare QUANDO e PERCHÉ usare il tool",
+        "• Più chiara è, meglio l'LLM decide",
+        "",
+        "<strong>3. Schema degli argomenti (args_schema)</strong>",
+        "• Definisce i parametri che il tool accetta",
+        "• Tipi, descrizioni, valori di default",
+        "• L'LLM usa questo per passare i parametri corretti",
+        "",
+        "<strong>Il decoratore @tool genera tutto automaticamente</strong>",
+        "dalla docstring e dai type hints della funzione!"
+      ],
+      "ironicClosing": "Una buona docstring = un tool che funziona."
+    },
+    {
+      "type": "code",
+      "title": "Esempio: Struttura di un Tool",
+      "code": {
+        "language": "python",
+        "snippet": "from langchain.tools import tool\n\n@tool\ndef calcola_area_cerchio(raggio: float) -> float:\n    \"\"\"\n    Calcola l'area di un cerchio dato il raggio.\n    \n    Usa questo tool quando l'utente chiede di calcolare\n    l'area di un cerchio o una superficie circolare.\n    \n    Args:\n        raggio: Il raggio del cerchio in metri\n    \n    Returns:\n        L'area del cerchio in metri quadrati\n    \"\"\"\n    import math\n    return math.pi * raggio ** 2\n\n# Vediamo cosa ha generato LangChain:\nprint(f\"Nome: {calcola_area_cerchio.name}\")\nprint(f\"Descrizione: {calcola_area_cerchio.description}\")\nprint(f\"Args: {calcola_area_cerchio.args}\")"
+      },
+      "explanation": "Il decoratore @tool estrae nome, descrizione e schema dalla funzione."
+    },
+    {
+      "type": "text",
+      "title": "Function Calling: Come l'LLM Sceglie i Tools",
+      "paragraphs": [
+        "<strong>Il 'Function Calling' è una feature dei modelli moderni</strong>",
+        "",
+        "<strong>Come funziona internamente:</strong>",
+        "1. LangChain invia all'LLM la lista dei tools disponibili",
+        "2. Ogni tool viene descritto in formato JSON Schema",
+        "3. L'LLM riceve: prompt utente + lista tools",
+        "4. L'LLM risponde con UNA di queste opzioni:",
+        "   • Testo normale (risposta diretta)",
+        "   • Richiesta di chiamata tool (nome + parametri)",
+        "",
+        "<strong>Esempio di richiesta tool dall'LLM:</strong>",
+        "<code>{\"tool\": \"get_weather\", \"args\": {\"city\": \"Roma\"}}</code>",
+        "",
+        "<strong>LangChain poi:</strong>",
+        "• Intercetta la richiesta",
+        "• Esegue la funzione Python reale",
+        "• Rimanda il risultato all'LLM",
+        "• L'LLM formula la risposta finale"
+      ],
+      "ironicClosing": "L'LLM è bravo a scegliere. Python è bravo a eseguire."
+    },
+    {
+      "type": "text",
+      "title": "Primo Esempio: Calcolatrice con Tools",
+      "paragraphs": [
+        "<strong>Prima di costruire il progetto completo, facciamo un esempio minimo</strong>",
+        "",
+        "Creeremo un agente che può fare operazioni matematiche.",
+        "",
+        "<strong>Tools che creeremo:</strong>",
+        "• <code>somma(a, b)</code> - Somma due numeri",
+        "• <code>moltiplica(a, b)</code> - Moltiplica due numeri",
+        "",
+        "<strong>Query di esempio:</strong>",
+        "• 'Quanto fa 5 + 3?' → chiama somma(5, 3) → 8",
+        "• 'Moltiplica 7 per 4' → chiama moltiplica(7, 4) → 28",
+        "• 'Somma 10 e 20, poi moltiplica per 2' → due chiamate",
+        "",
+        "<strong>Obiettivo:</strong> Capire il flusso completo in 30 righe di codice"
+      ],
+      "ironicClosing": "Prima si cammina, poi si corre. Prima la calcolatrice, poi l'agente di viaggio."
+    },
+    {
+      "type": "code",
+      "title": "Esempio Completo: Agente Calcolatrice",
+      "code": {
+        "language": "python",
+        "snippet": "# File: esempio_calcolatrice.py\nfrom langchain_openai import ChatOpenAI\nfrom langchain.agents import create_openai_tools_agent, AgentExecutor\nfrom langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder\nfrom langchain.tools import tool\nimport os\n\n# 1. Definiamo i tools\n@tool\ndef somma(a: float, b: float) -> float:\n    \"\"\"Somma due numeri. Usa quando devi addizionare.\"\"\"\n    return a + b\n\n@tool\ndef moltiplica(a: float, b: float) -> float:\n    \"\"\"Moltiplica due numeri. Usa per moltiplicazioni.\"\"\"\n    return a * b\n\n# 2. Setup LLM\nllm = ChatOpenAI(model=\"gpt-4o-mini\", temperature=0)\n\n# 3. Prompt\nprompt = ChatPromptTemplate.from_messages([\n    (\"system\", \"Sei un assistente che fa calcoli matematici.\"),\n    (\"human\", \"{input}\"),\n    MessagesPlaceholder(variable_name=\"agent_scratchpad\")\n])\n\n# 4. Crea agente\ntools = [somma, moltiplica]\nagent = create_openai_tools_agent(llm, tools, prompt)\nexecutor = AgentExecutor(agent=agent, tools=tools, verbose=True)\n\n# 5. Test!\nresult = executor.invoke({\"input\": \"Quanto fa 15 + 27?\"})\nprint(f\"Risposta: {result['output']}\")"
+      },
+      "explanation": "30 righe per un agente funzionante. Questo è il pattern base."
+    },
+    {
+      "type": "text",
+      "title": "Output dell'Esempio (verbose=True)",
+      "paragraphs": [
+        "<strong>Ecco cosa vedi quando esegui l'esempio:</strong>",
+        "",
+        "<code>> Entering new AgentExecutor chain...</code>",
+        "",
+        "<code>Invoking: `somma` with `{'a': 15.0, 'b': 27.0}`</code>",
+        "",
+        "<code>42.0</code>",
+        "",
+        "<code>> Finished chain.</code>",
+        "",
+        "<code>Risposta: 15 + 27 fa 42.</code>",
+        "",
+        "<strong>Cosa è successo:</strong>",
+        "1. L'LLM ha ricevuto 'Quanto fa 15 + 27?'",
+        "2. Ha riconosciuto che serve una somma",
+        "3. Ha chiamato il tool <code>somma</code> con a=15, b=27",
+        "4. Ha ricevuto il risultato 42.0",
+        "5. Ha formulato la risposta naturale"
+      ],
+      "ironicClosing": "L'LLM ha fatto 1+1... letteralmente."
+    },
+    {
+      "type": "text",
+      "title": "Cosa Costruiremo: Assistente di Viaggio",
+      "paragraphs": [
+        "<strong>Ora che capisci i basics, costruiamo qualcosa di utile!</strong>",
+        "",
+        "<strong>Assistente AI di viaggio con 5 tools reali:</strong>",
+        "• <strong>search_location:</strong> Cerca città → coordinate GPS",
+        "• <strong>get_weather:</strong> Meteo attuale di una località",
+        "• <strong>get_forecast:</strong> Previsioni 7 giorni",
+        "• <strong>get_country_info:</strong> Info paese (valuta, lingua, fuso)",
+        "• <strong>convert_currency:</strong> Conversione valute real-time",
+        "",
+        "<strong>Esempi di query:</strong>",
+        "• 'Che tempo fa a Tokyo?' → 2 tool calls",
+        "• 'Voglio andare in Giappone, cosa devo sapere?' → 4 tool calls",
+        "• 'Converti 100€ in yen e dimmi il meteo a Osaka' → 4 tool calls",
+        "",
+        "<strong>Tempo stimato:</strong> 60-90 minuti hands-on"
+      ],
+      "ironicClosing": "5 API gratuite. 0 costi aggiuntivi. Infinita soddisfazione."
+    },
+    {
+      "type": "text",
+      "title": "Come Funziona: Il Loop Agentico",
+      "paragraphs": [
+        "<strong>L'agente decide autonomamente quali tools usare:</strong>",
+        "",
+        "<strong>1. Utente:</strong> 'Voglio andare a Tokyo, cosa devo sapere?'",
+        "",
+        "<strong>2. Agente pensa:</strong> 'Devo cercare info su Tokyo...'",
+        "→ Chiama <code>search_location('Tokyo')</code> → coordinate",
+        "→ Chiama <code>get_country_info('Japan')</code> → valuta, lingua",
+        "→ Chiama <code>get_weather(35.6762, 139.6503)</code> → meteo",
+        "→ Chiama <code>convert_currency('EUR', 'JPY', 100)</code> → cambio",
+        "",
+        "<strong>3. Agente sintetizza:</strong> Risposta completa con tutti i dati",
+        "",
+        "Il <strong>loop agentico</strong> continua finché l'agente ha tutte le info.",
+        "Ogni iterazione: pensa → chiama tool → riceve risultato → ripete o risponde"
+      ],
+      "ironicClosing": "L'AI decide. Tu chiedi. Semplice."
+    },
+    {
+      "type": "text",
+      "title": "Pre-requisiti: Verifica Setup",
+      "paragraphs": [
+        "<strong>Python 3.9+ installato:</strong>",
+        "<code>python --version</code> oppure <code>python3 --version</code>",
+        "Dovresti vedere: <code>Python 3.9.x</code> o superiore",
+        "",
+        "<strong>pip funzionante:</strong>",
+        "<code>pip --version</code> oppure <code>pip3 --version</code>",
+        "",
+        "<strong>Editor di testo/IDE:</strong> VS Code, PyCharm, o qualsiasi editor",
+        "",
+        "<strong>API Key OpenAI:</strong> Serve per il modello LLM",
+        "→ Costo stimato workshop: $0.10-0.50 (gpt-4o-mini)",
+        "",
+        "<strong>Connessione Internet:</strong> per chiamate API"
+      ],
+      "ironicClosing": "Python + OpenAI key. Il resto è copincolla."
+    },
+    {
+      "type": "code",
+      "title": "📁 Struttura del Progetto",
+      "code": {
+        "language": "bash",
+        "snippet": "langchain-agent-workshop/\n│\n├── .env                  # API keys (NON committare!)\n├── tools.py              # Definizione dei 5 tools\n├── agent.py              # Agente LangChain\n└── main.py               # Entry point + chat loop"
+      },
+      "explanation": "3 file Python + 1 file .env per la API key. Struttura minima e pulita."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 1: Crea Cartella Progetto",
+      "code": {
+        "language": "bash",
+        "snippet": "# Crea cartella progetto\nmkdir langchain-agent-workshop\ncd langchain-agent-workshop\n\n# Verifica di essere nella cartella giusta\npwd\n# /Users/tuonome/langchain-agent-workshop"
+      },
+      "explanation": "Una cartella dedicata per tenere tutto ordinato."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 2: Installa le Dipendenze",
+      "code": {
+        "language": "bash",
+        "snippet": "# Installa le librerie necessarie con pip\npip install langchain langchain-openai python-dotenv requests\n\n# Verifica installazione\npip show langchain\n# Name: langchain\n# Version: 0.3.x\n\n# Se hai problemi di permessi, usa:\npip install --user langchain langchain-openai python-dotenv requests"
+      },
+      "explanation": "4 librerie da installare. pip fa tutto il lavoro."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 3: Setup OpenAI API Key",
+      "code": {
+        "language": "bash",
+        "snippet": "# 1. Vai su https://platform.openai.com/api-keys\n# 2. Crea nuova API key (o usa una esistente)\n# 3. Copia la key (inizia con sk-...)\n\n# Crea file .env nella cartella del progetto\n# Il file deve contenere UNA sola riga:\n\nOPENAI_API_KEY=sk-proj-abc123...\n\n# ATTENZIONE: sostituisci con la TUA key reale!\n# La key deve iniziare con sk-"
+      },
+      "explanation": "Una sola API key serve. Le altre 4 API sono completamente gratuite."
+    },
+    {
+      "type": "text",
+      "title": "Le API Pubbliche Gratuite",
+      "paragraphs": [
+        "<strong>Useremo 4 API pubbliche GRATIS (no API key!):</strong>",
+        "",
+        "<strong>1. Nominatim (OpenStreetMap)</strong>",
+        "• Geocoding: nome città → coordinate GPS",
+        "• URL: https://nominatim.openstreetmap.org",
+        "• Limite: 1 request/secondo (più che sufficiente)",
+        "",
+        "<strong>2. Open-Meteo</strong>",
+        "• Meteo attuale + previsioni 16 giorni",
+        "• URL: https://api.open-meteo.com",
+        "• Nessun limite pratico per workshop",
+        "",
+        "<strong>3. RestCountries</strong>",
+        "• Info paesi: capitale, valuta, lingua, popolazione",
+        "• URL: https://restcountries.com",
+        "",
+        "<strong>4. ExchangeRate-API</strong>",
+        "• Conversione valute real-time",
+        "• URL: https://open.er-api.com"
+      ],
+      "ironicClosing": "4 API. 0 chiavi. 0 costi. Internet è bello."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 4: Crea tools.py - Imports",
+      "code": {
+        "language": "python",
+        "snippet": "# File: tools.py\n# Tools per l'agente di viaggio\n\nimport requests\nfrom langchain.tools import tool\nfrom typing import Optional\n\n# Headers per Nominatim (richiede User-Agent)\nHEADERS = {\n    'User-Agent': 'TravelAgentWorkshop/1.0 (workshop@example.com)'\n}\n\nprint(\"✅ Tools module loaded\")"
+      },
+      "explanation": "Import base. Nominatim richiede User-Agent header."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 5: Tool 1 - search_location",
+      "code": {
+        "language": "python",
+        "snippet": "# Continua in tools.py\n\n@tool\ndef search_location(query: str) -> str:\n    \"\"\"\n    Search for a location and get its coordinates and details.\n    Use this to find GPS coordinates of cities, landmarks, addresses.\n    \n    Args:\n        query: Name of the place to search (e.g., 'Tokyo', 'Eiffel Tower')\n    \n    Returns:\n        Location details including coordinates, country, and display name.\n    \"\"\"\n    import time\n    time.sleep(1)  # Rispetta rate limit di Nominatim\n    \n    url = \"https://nominatim.openstreetmap.org/search\"\n    params = {\n        'q': query,\n        'format': 'json',\n        'limit': 1,\n        'addressdetails': 1\n    }\n    \n    try:\n        response = requests.get(url, params=params, headers=HEADERS, timeout=10)\n        response.raise_for_status()\n        data = response.json()\n    except Exception as e:\n        return f\"Error searching location: {e}\"\n    \n    if not data:\n        return f\"Location '{query}' not found.\"\n    \n    loc = data[0]\n    return f\"\"\"Location: {loc.get('display_name')}\nLatitude: {loc.get('lat')}\nLongitude: {loc.get('lon')}\nType: {loc.get('type')}\"\"\""
+      },
+      "explanation": "Primo tool: geocoding con error handling. time.sleep(1) rispetta il rate limit."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 6: Tool 2 - get_weather",
+      "code": {
+        "language": "python",
+        "snippet": "# Continua in tools.py\n\n@tool\ndef get_weather(latitude: float, longitude: float) -> str:\n    \"\"\"\n    Get current weather for a location using coordinates.\n    Use search_location first to get coordinates, then call this.\n    \n    Args:\n        latitude: GPS latitude (e.g., 35.6762 for Tokyo)\n        longitude: GPS longitude (e.g., 139.6503 for Tokyo)\n    \n    Returns:\n        Current weather including temperature, humidity, wind speed.\n    \"\"\"\n    url = \"https://api.open-meteo.com/v1/forecast\"\n    params = {\n        'latitude': latitude,\n        'longitude': longitude,\n        'current': 'temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code',\n        'timezone': 'auto'\n    }\n    \n    try:\n        response = requests.get(url, params=params, timeout=10)\n        response.raise_for_status()\n        data = response.json()\n    except Exception as e:\n        return f\"Error getting weather: {e}\"\n    \n    current = data.get('current', {})\n    return f\"\"\"Current Weather:\nTemperature: {current.get('temperature_2m')}°C\nHumidity: {current.get('relative_humidity_2m')}%\nWind Speed: {current.get('wind_speed_10m')} km/h\nTimezone: {data.get('timezone')}\"\"\""
+      },
+      "explanation": "Secondo tool: meteo attuale con error handling e timeout."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 7: Tool 3 - get_forecast",
+      "code": {
+        "language": "python",
+        "snippet": "# Continua in tools.py\n\n@tool\ndef get_forecast(latitude: float, longitude: float, days: int = 7) -> str:\n    \"\"\"\n    Get weather forecast for upcoming days.\n    \n    Args:\n        latitude: GPS latitude\n        longitude: GPS longitude\n        days: Number of days to forecast (1-16, default 7)\n    \n    Returns:\n        Daily forecast with max/min temperatures and weather conditions.\n    \"\"\"\n    url = \"https://api.open-meteo.com/v1/forecast\"\n    params = {\n        'latitude': latitude,\n        'longitude': longitude,\n        'daily': 'temperature_2m_max,temperature_2m_min,precipitation_probability_max',\n        'timezone': 'auto',\n        'forecast_days': min(days, 16)\n    }\n    \n    try:\n        response = requests.get(url, params=params, timeout=10)\n        response.raise_for_status()\n        data = response.json()\n    except Exception as e:\n        return f\"Error getting forecast: {e}\"\n    \n    daily = data.get('daily', {})\n    dates = daily.get('time', [])\n    max_temps = daily.get('temperature_2m_max', [])\n    min_temps = daily.get('temperature_2m_min', [])\n    rain_prob = daily.get('precipitation_probability_max', [])\n    \n    forecast_lines = [\"Weather Forecast:\"]\n    for i in range(min(len(dates), days)):\n        forecast_lines.append(\n            f\"{dates[i]}: {min_temps[i]}°C - {max_temps[i]}°C, Rain: {rain_prob[i]}%\"\n        )\n    \n    return \"\\n\".join(forecast_lines)"
+      },
+      "explanation": "Terzo tool: previsioni con error handling."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 8: Tool 4 - get_country_info",
+      "code": {
+        "language": "python",
+        "snippet": "# Continua in tools.py\n\n@tool\ndef get_country_info(country_name: str) -> str:\n    \"\"\"\n    Get detailed information about a country.\n    \n    Args:\n        country_name: Name of the country (e.g., 'Japan', 'Italy', 'France')\n    \n    Returns:\n        Country details: capital, currency, languages, population, timezone.\n    \"\"\"\n    url = f\"https://restcountries.com/v3.1/name/{country_name}\"\n    \n    try:\n        response = requests.get(url, timeout=10)\n        if response.status_code != 200:\n            return f\"Country '{country_name}' not found.\"\n        data = response.json()[0]\n    except Exception as e:\n        return f\"Error getting country info: {e}\"\n    \n    # Estrai info principali\n    currencies = list(data.get('currencies', {}).keys())\n    languages = list(data.get('languages', {}).values())\n    \n    return f\"\"\"Country: {data.get('name', {}).get('common')}\nCapital: {', '.join(data.get('capital', ['N/A']))}\nRegion: {data.get('region')} / {data.get('subregion')}\nPopulation: {data.get('population'):,}\nCurrencies: {', '.join(currencies)}\nLanguages: {', '.join(languages)}\nTimezones: {', '.join(data.get('timezones', []))}\nDriving side: {data.get('car', {}).get('side', 'N/A')}\"\"\""
+      },
+      "explanation": "Quarto tool: info paese con error handling."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 9: Tool 5 - convert_currency",
+      "code": {
+        "language": "python",
+        "snippet": "# Continua in tools.py\n\n@tool\ndef convert_currency(from_currency: str, to_currency: str, amount: float) -> str:\n    \"\"\"\n    Convert an amount from one currency to another using real-time rates.\n    \n    Args:\n        from_currency: Source currency code (e.g., 'EUR', 'USD')\n        to_currency: Target currency code (e.g., 'JPY', 'GBP')\n        amount: Amount to convert\n    \n    Returns:\n        Converted amount with exchange rate.\n    \"\"\"\n    url = f\"https://open.er-api.com/v6/latest/{from_currency.upper()}\"\n    \n    try:\n        response = requests.get(url, timeout=10)\n        response.raise_for_status()\n        data = response.json()\n    except Exception as e:\n        return f\"Error converting currency: {e}\"\n    \n    if data.get('result') != 'success':\n        return f\"Currency conversion failed. Check currency codes.\"\n    \n    rates = data.get('rates', {})\n    to_upper = to_currency.upper()\n    \n    if to_upper not in rates:\n        return f\"Currency '{to_currency}' not found.\"\n    \n    rate = rates[to_upper]\n    converted = amount * rate\n    \n    return f\"\"\"{amount} {from_currency.upper()} = {converted:.2f} {to_upper}\nExchange rate: 1 {from_currency.upper()} = {rate:.4f} {to_upper}\nLast updated: {data.get('time_last_update_utc', 'N/A')}\"\"\""
+      },
+      "explanation": "Quinto tool: conversione valute con error handling."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 10: Export e Test dei Tools",
+      "code": {
+        "language": "python",
+        "snippet": "# Fine di tools.py - export lista tools\n\n# Lista di tutti i tools disponibili\nALL_TOOLS = [\n    search_location,\n    get_weather,\n    get_forecast,\n    get_country_info,\n    convert_currency\n]\n\n# Test rapido dei tools (opzionale)\nif __name__ == \"__main__\":\n    print(\"\\n🧪 Testing tools...\")\n    \n    # Test search_location\n    result = search_location.invoke(\"Rome, Italy\")\n    print(f\"\\n📍 search_location('Rome'):\")\n    print(result)\n    \n    # Test get_weather\n    result = get_weather.invoke({\"latitude\": 41.9028, \"longitude\": 12.4964})\n    print(f\"\\n🌤️ get_weather(Rome coords):\")\n    print(result)\n    \n    print(\"\\n✅ All tools working!\")"
+      },
+      "explanation": "Export tools + test standalone. Esegui: python tools.py"
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 11: Crea agent.py - Setup LangChain",
+      "code": {
+        "language": "python",
+        "snippet": "# File: agent.py\n# Agente LangChain con tools\n\nimport os\nfrom dotenv import load_dotenv\nfrom langchain_openai import ChatOpenAI\nfrom langchain.agents import create_openai_tools_agent, AgentExecutor\nfrom langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder\nfrom tools import ALL_TOOLS\n\n# Carica environment variables\nload_dotenv()\n\n# Configura LLM\nllm = ChatOpenAI(\n    model=\"gpt-4o-mini\",\n    temperature=0,\n    api_key=os.getenv(\"OPENAI_API_KEY\")\n)\n\nprint(f\"✅ LLM configured: {llm.model_name}\")\nprint(f\"✅ Tools loaded: {len(ALL_TOOLS)}\")"
+      },
+      "explanation": "Setup LangChain: LLM + tools importati. gpt-4o-mini = economico ma capace."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 12: System Prompt dell'Agente",
+      "code": {
+        "language": "python",
+        "snippet": "# Continua in agent.py\n\n# System prompt che definisce il comportamento dell'agente\nSYSTEM_PROMPT = \"\"\"You are a helpful travel assistant AI. You help users with:\n- Finding information about destinations (cities, countries)\n- Checking current weather and forecasts\n- Converting currencies\n- Providing travel tips and recommendations\n\nWhen answering questions:\n1. Use the search_location tool to find coordinates of places\n2. Use get_weather or get_forecast for weather information\n3. Use get_country_info for country details (currency, language, etc.)\n4. Use convert_currency for money conversions\n\nAlways provide helpful, accurate information based on the tool results.\nIf you need multiple pieces of information, call multiple tools.\nBe concise but complete in your responses.\n\nRespond in the same language the user uses (Italian or English).\"\"\"\n\n# Crea prompt template\nprompt = ChatPromptTemplate.from_messages([\n    (\"system\", SYSTEM_PROMPT),\n    MessagesPlaceholder(variable_name=\"chat_history\", optional=True),\n    (\"human\", \"{input}\"),\n    MessagesPlaceholder(variable_name=\"agent_scratchpad\")\n])"
+      },
+      "explanation": "Il system prompt definisce personalità e comportamento. Chiaro e specifico."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 13: Crea l'Agente e l'Executor",
+      "code": {
+        "language": "python",
+        "snippet": "# Continua in agent.py\n\n# Crea l'agente con tools\nagent = create_openai_tools_agent(\n    llm=llm,\n    tools=ALL_TOOLS,\n    prompt=prompt\n)\n\n# Crea l'executor (gestisce il loop agentico)\nagent_executor = AgentExecutor(\n    agent=agent,\n    tools=ALL_TOOLS,\n    verbose=True,  # Mostra reasoning dell'agente\n    handle_parsing_errors=True,\n    max_iterations=10  # Limite iterazioni per sicurezza\n)\n\nprint(\"✅ Agent created and ready!\")\n\n# Funzione helper per invocare l'agente\ndef ask_agent(question: str, chat_history: list = None) -> str:\n    \"\"\"Invia domanda all'agente e ritorna risposta.\"\"\"\n    result = agent_executor.invoke({\n        \"input\": question,\n        \"chat_history\": chat_history or []\n    })\n    return result[\"output\"]"
+      },
+      "explanation": "AgentExecutor gestisce il loop: pensa → chiama tool → pensa → risponde."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 14: Test Standalone dell'Agente",
+      "code": {
+        "language": "python",
+        "snippet": "# Fine di agent.py - test standalone\n\nif __name__ == \"__main__\":\n    print(\"\\n\" + \"=\"*60)\n    print(\"   🌍 Travel Agent AI - Test Mode\")\n    print(\"=\"*60)\n    \n    # Test query semplice\n    test_questions = [\n        \"Che tempo fa a Milano?\",\n        \"Dimmi qualcosa sul Giappone\",\n        \"Converti 100 euro in yen\"\n    ]\n    \n    for q in test_questions:\n        print(f\"\\n❓ Question: {q}\")\n        print(\"-\" * 40)\n        answer = ask_agent(q)\n        print(f\"\\n💬 Answer: {answer}\")\n        print(\"=\" * 60)"
+      },
+      "explanation": "Test standalone: python agent.py. Verifica che tutto funzioni."
+    },
+    {
+      "type": "code",
+      "title": "👨‍💻 STEP 15: Crea main.py - Chat Loop Interattivo",
+      "code": {
+        "language": "python",
+        "snippet": "# File: main.py\n# Entry point con chat loop interattivo\n\nfrom agent import ask_agent, agent_executor\nfrom langchain_core.messages import HumanMessage, AIMessage\n\ndef main():\n    print(\"\\n\" + \"=\"*60)\n    print(\"   🌍 Travel Agent AI - Interactive Mode\")\n    print(\"=\"*60)\n    print(\"\\nCiao! Sono il tuo assistente di viaggio AI.\")\n    print(\"Posso aiutarti con: meteo, info paesi, conversioni valuta.\")\n    print(\"\\nComandi speciali:\")\n    print(\"  'quit' o 'exit' - Esci\")\n    print(\"  'clear' - Pulisci cronologia chat\")\n    print(\"=\"*60)\n    \n    chat_history = []\n    \n    while True:\n        try:\n            user_input = input(\"\\n👤 Tu: \").strip()\n            \n            if not user_input:\n                continue\n            \n            if user_input.lower() in ['quit', 'exit', 'q']:\n                print(\"\\n👋 Arrivederci! Buon viaggio!\")\n                break\n            \n            if user_input.lower() == 'clear':\n                chat_history = []\n                print(\"🗑️ Cronologia chat pulita.\")\n                continue\n            \n            # Chiedi all'agente\n            print(\"\\n🤔 Sto pensando...\")\n            response = ask_agent(user_input, chat_history)\n            \n            # Aggiorna cronologia\n            chat_history.append(HumanMessage(content=user_input))\n            chat_history.append(AIMessage(content=response))\n            \n            print(f\"\\n🤖 Agente: {response}\")\n            \n        except KeyboardInterrupt:\n            print(\"\\n\\n👋 Interrotto. Arrivederci!\")\n            break\n        except Exception as e:\n            print(f\"\\n❌ Errore: {e}\")\n            continue\n\nif __name__ == \"__main__\":\n    main()"
+      },
+      "explanation": "Chat loop completo con cronologia e comandi speciali."
+    },
+    {
+      "type": "code",
+      "title": "🚀 Come Eseguire il Progetto",
+      "code": {
+        "language": "bash",
+        "snippet": "# Dalla cartella del progetto:\ncd langchain-agent-workshop\n\n# 1. Test tools (verifica che le API funzionino)\npython tools.py\n\n# 2. Test agent (verifica LangChain + OpenAI)\npython agent.py\n\n# 3. Avvia chat interattiva\npython main.py\n\n# 4. Prova domande come:\n#    - \"Che tempo fa a Tokyo?\"\n#    - \"Parlami dell'Italia\"\n#    - \"Converti 500 euro in dollari\"\n#    - \"Previsioni per Barcellona questa settimana\""
+      },
+      "explanation": "3 comandi per testare. Parti da tools.py per verificare le API."
+    },
+    {
+      "type": "text",
+      "title": "💡 Esempi di Query da Provare",
+      "paragraphs": [
+        "<strong>Query semplici (1-2 tools):</strong>",
+        "• 'Che tempo fa a Roma?' → search_location + get_weather",
+        "• 'Converti 100 euro in sterline' → convert_currency",
+        "• 'Parlami della Francia' → get_country_info",
+        "",
+        "<strong>Query complesse (multi-tool):</strong>",
+        "• 'Voglio andare a Tokyo, cosa devo sapere?' → 4 tools",
+        "• 'Confronta il meteo di Milano e Londra' → 4 tools",
+        "• 'Quanto costano 200€ in Giappone e qual è il meteo?' → 3 tools",
+        "",
+        "<strong>Query in sequenza (memoria):</strong>",
+        "• 'Parlami del Portogallo' → info paese",
+        "• 'E il meteo a Lisbona?' → usa contesto precedente",
+        "• 'Quanto valgono 50€ in valuta locale?' → usa EUR→EUR"
+      ],
+      "ironicClosing": "L'agente capisce il contesto. Come un vero assistente."
+    },
+    {
+      "type": "text",
+      "title": "Cosa Vedi con verbose=True",
+      "paragraphs": [
+        "<strong>Il reasoning dell'agente in tempo reale:</strong>",
+        "",
+        "<code>> Entering new AgentExecutor chain...</code>",
+        "<code>Invoking: search_location with {'query': 'Tokyo'}</code>",
+        "<code>Location: Tokyo, Japan</code>",
+        "<code>Latitude: 35.6762</code>",
+        "",
+        "<code>Invoking: get_weather with {'latitude': 35.6762, 'longitude': 139.6503}</code>",
+        "<code>Temperature: 18°C</code>",
+        "",
+        "<code>Invoking: get_country_info with {'country_name': 'Japan'}</code>",
+        "<code>Capital: Tokyo, Currency: JPY...</code>",
+        "",
+        "<code>> Finished chain.</code>",
+        "",
+        "Vedi esattamente <strong>quali tools</strong> chiama e <strong>perché</strong>."
+      ],
+      "ironicClosing": "verbose=True: il dietro le quinte dell'AI. Impagabile per capire."
+    },
+    {
+      "type": "code",
+      "title": "🧠 Aggiungi Memoria Persistente (Opzionale)",
+      "code": {
+        "language": "python",
+        "snippet": "# Modifica in agent.py per memoria più sofisticata\nfrom langchain.memory import ConversationBufferWindowMemory\n\n# Memoria che tiene ultimi 10 messaggi\nmemory = ConversationBufferWindowMemory(\n    memory_key=\"chat_history\",\n    return_messages=True,\n    k=10  # Ultimi 10 scambi\n)\n\n# Modifica agent_executor\nagent_executor = AgentExecutor(\n    agent=agent,\n    tools=ALL_TOOLS,\n    memory=memory,  # Aggiungi memoria\n    verbose=True,\n    handle_parsing_errors=True,\n    max_iterations=10\n)\n\n# Ora l'agente ricorda automaticamente!\n# Non serve più passare chat_history manualmente"
+      },
+      "explanation": "Memoria integrata: l'agente ricorda le conversazioni precedenti."
+    },
+    {
+      "type": "code",
+      "title": "💾 Salva Conversazioni su File (Opzionale)",
+      "code": {
+        "language": "python",
+        "snippet": "# Aggiungi in main.py\nimport json\nfrom datetime import datetime\nimport os\n\ndef save_conversation(chat_history, filename=None):\n    \"\"\"Salva conversazione su file JSON.\"\"\"\n    if not filename:\n        timestamp = datetime.now().strftime(\"%Y%m%d_%H%M%S\")\n        filename = f\"conversations/chat_{timestamp}.json\"\n    \n    os.makedirs(\"conversations\", exist_ok=True)\n    \n    # Converti messaggi in formato serializzabile\n    messages = []\n    for msg in chat_history:\n        messages.append({\n            \"role\": \"human\" if isinstance(msg, HumanMessage) else \"ai\",\n            \"content\": msg.content\n        })\n    \n    with open(filename, \"w\", encoding=\"utf-8\") as f:\n        json.dump(messages, f, indent=2, ensure_ascii=False)\n    \n    print(f\"💾 Conversazione salvata: {filename}\")\n\n# Usa nel loop: save_conversation(chat_history)"
+      },
+      "explanation": "Salva chat per analisi future o training."
+    },
+    {
+      "type": "code",
+      "title": "🌐 Aggiungi Endpoint API con FastAPI (Opzionale)",
+      "code": {
+        "language": "python",
+        "snippet": "# File: api.py (opzionale)\n# pip install fastapi uvicorn\n\nfrom fastapi import FastAPI\nfrom pydantic import BaseModel\nfrom agent import ask_agent\n\napp = FastAPI(title=\"Travel Agent API\")\n\nclass Query(BaseModel):\n    question: str\n\n@app.post(\"/ask\")\nasync def ask(query: Query):\n    \"\"\"Endpoint per interrogare l'agente.\"\"\"\n    response = ask_agent(query.question)\n    return {\"answer\": response}\n\n@app.get(\"/health\")\nasync def health():\n    return {\"status\": \"healthy\"}\n\n# Esegui: uvicorn api:app --reload\n# Test: curl -X POST http://localhost:8000/ask \\\n#       -H \"Content-Type: application/json\" \\\n#       -d '{\"question\": \"Che tempo fa a Roma?\"}'"
+      },
+      "explanation": "Da CLI a API REST in 20 righe. Pronto per frontend o integrazioni."
+    },
+    {
+      "type": "text",
+      "title": "⚠️ Troubleshooting Common Issues",
+      "paragraphs": [
+        "<strong>Errore: 'OPENAI_API_KEY not found'</strong>",
+        "→ Verifica che .env sia nella stessa cartella di agent.py",
+        "→ Verifica che la key inizi con 'sk-'",
+        "→ Niente spazi prima o dopo il '='",
+        "",
+        "<strong>Errore: 'No module named langchain'</strong>",
+        "→ Reinstalla: pip install langchain langchain-openai",
+        "→ Verifica Python: python --version (deve essere 3.9+)",
+        "",
+        "<strong>Tool non viene chiamato</strong>",
+        "→ Verifica docstring del tool (deve essere chiara)",
+        "→ Prova query più esplicita",
+        "",
+        "<strong>Rate limit Nominatim</strong>",
+        "→ Aspetta 1 secondo tra richieste",
+        "",
+        "<strong>Risposta lenta</strong>",
+        "→ Normale: ogni tool = 1 chiamata API",
+        "→ Query complesse = 3-5 secondi"
+      ],
+      "ironicClosing": "Il debug è il 50% del coding. L'altro 50% è Stack Overflow."
+    },
+    {
+      "type": "text",
+      "title": "📊 Costi Stimati Workshop",
+      "paragraphs": [
+        "<strong>OpenAI gpt-4o-mini:</strong>",
+        "• Input: $0.15 / 1M tokens",
+        "• Output: $0.60 / 1M tokens",
+        "",
+        "<strong>Stima per workshop completo:</strong>",
+        "• ~50 query di test",
+        "• ~100K tokens totali",
+        "• <strong>Costo: ~$0.10 - $0.30</strong>",
+        "",
+        "<strong>API gratuite (no costi):</strong>",
+        "• Nominatim: gratis (1 req/sec)",
+        "• Open-Meteo: gratis",
+        "• RestCountries: gratis",
+        "• ExchangeRate: gratis",
+        "",
+        "<strong>Totale workshop: < $0.50</strong>"
+      ],
+      "ironicClosing": "Meno di un caffè per un assistente AI personale. Deal."
+    },
+    {
+      "type": "text",
+      "title": "🚀 Next Steps: Oltre il Workshop",
+      "paragraphs": [
+        "<strong>Aggiungi più tools:</strong>",
+        "• <strong>Flight search:</strong> Amadeus API (free tier)",
+        "• <strong>Hotel search:</strong> Booking.com Affiliate API",
+        "• <strong>Points of Interest:</strong> Foursquare API",
+        "• <strong>Translation:</strong> DeepL API (free tier)",
+        "",
+        "<strong>Migliora l'agente:</strong>",
+        "• Aggiungi RAG con guide di viaggio",
+        "• Memoria long-term con vector database",
+        "• Multi-agent: Planner + Booker + Reviewer",
+        "",
+        "<strong>Deploy in produzione:</strong>",
+        "• FastAPI + Docker",
+        "• Frontend React/Streamlit",
+        "• Caching con Redis",
+        "• Monitoring con LangSmith"
+      ],
+      "ironicClosing": "Da workshop a startup. Il codice base c'è già."
+    },
+    {
+      "type": "summary",
+      "title": "✅ Recap Workshop LangChain Agent",
+      "items": [
+        "LangChain: framework per applicazioni AI con LLM",
+        "Tools: funzioni Python che l'LLM può chiamare autonomamente",
+        "Function Calling: come l'LLM sceglie quali tools usare",
+        "5 tools con API pubbliche gratuite (meteo, geocoding, valute, paesi)",
+        "Agente LangChain con loop agentico automatico",
+        "Chat interattiva con memoria conversazione",
+        "Estensioni: memoria persistente, API REST, più tools",
+        "Costo totale: < $0.50 per tutto il workshop"
+      ],
+      "ironicClosing": "LangChain + 5 API + 1 agente = infiniti viaggi possibili. Buon viaggio!"
+    }
+  ],
+  "lastTranslated": null,
+  "sourceLanguage": "it"
+}

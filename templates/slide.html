@@ -84,16 +84,47 @@
             pathParts[langIndex] = targetLang;
             const newPath = pathParts.join('/');
 
-            // Prova a caricare la pagina nella nuova lingua
+            // Debug
+            console.log('Switching language from', currentLang, 'to', targetLang);
+            console.log('New path:', newPath);
+
+            // Redirect diretto senza fetch (più affidabile)
+            window.location.href = newPath;
+        }
+
+        // Funzione alternativa per tornare all'index (caso non trovato)
+        function goToLanguageIndex(targetLang) {
+            const currentPath = window.location.pathname;
+            const pathParts = currentPath.split('/').filter(p => p);
+
+            // Trova la parte prima di 'it' o 'en'
+            const langIndex = pathParts.findIndex(p => p === 'it' || p === 'en');
+
+            if (langIndex !== -1) {
+                // Costruisci path relativo all'index della lingua
+                const baseParts = pathParts.slice(0, langIndex);
+                const newPath = '/' + [...baseParts, targetLang, 'index.html'].join('/');
+                window.location.href = newPath;
+            }
+        }
+
+        // Gestisci errori 404
+        window.addEventListener('error', function(e) {
+            // Se la pagina non esiste, potrebbe essere un cambio lingua fallito
+            if (e.message && e.message.includes('404')) {
+                const savedLang = localStorage.getItem('course-lang');
+                if (savedLang) {
+                    goToLanguageIndex(savedLang);
+                }
+            }
+        }, true);
+
+        // Vecchio fallback (non più usato ma lasciato per compatibilità)
+        function fallbackFetch() {
             fetch(newPath, { method: 'HEAD' })
                 .then(response => {
                     if (response.ok) {
-                        // Pagina esiste, redirige
                         window.location.pathname = newPath;
-                    } else {
-                        // Pagina non esiste, vai all'index della lingua target
-                        const indexPath = '/' + targetLang + '/index.html';
-                        window.location.pathname = indexPath;
                     }
                 })
                 .catch(() => {

@@ -64,18 +64,23 @@
         // Determina lingua da usare
         const targetLang = savedLang || (isItalian ? 'it' : 'en');
 
-        // Determina se siamo in locale o produzione basandoci sull'hostname
+        // Determina se siamo in locale o produzione
         const hostname = window.location.hostname;
-        const isLocalDev = hostname === 'localhost' ||
-                          hostname === '127.0.0.1' ||
-                          hostname.includes('.local') ||
-                          window.location.pathname.includes('/output/');
+        const pathname = window.location.pathname;
+        const protocol = window.location.protocol;
 
-        const basePath = isLocalDev ? 'output/' : '';
+        // Se siamo in file:// o già dentro /output/, non aggiungere basePath
+        const isFileProtocol = protocol === 'file:';
+        const isInsideOutput = pathname.includes('/output/');
 
-        // Debug (rimuovere dopo il fix)
+        // basePath vuoto se: file://, già dentro output, o in produzione
+        const basePath = (isFileProtocol || isInsideOutput || hostname === '') ? '' :
+                         (hostname === 'localhost' || hostname === '127.0.0.1') ? '' : '';
+
+        // Debug
+        console.log('Protocol:', protocol);
         console.log('Hostname:', hostname);
-        console.log('IsLocalDev:', isLocalDev);
+        console.log('Pathname:', pathname);
         console.log('BasePath:', basePath);
         console.log('TargetLang:', targetLang);
 
